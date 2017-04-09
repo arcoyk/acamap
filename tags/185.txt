@@ -1,0 +1,278 @@
+Partial Bookmarking: A Structure-independent Mechanism
+of Transclusion for a Portion of any Web Page
+Takehiro Nagatomo
+Takahiro Tachibana
+Keizo Sato
+Makoto Nakashima
+Dept. of Computer Science and Intelligent Systems, Oita University
+700 Dannoharu, Oita-shi, 870-1192, Japan
+{v16e3013, v1353041, k-sato, nakasima}@oita-u.ac.jp
+ABSTRACT
+
+A novel mechanism of transclusion for collecting and
+producing information on the Web, named partial
+bookmarking, is proposed. Partial bookmarking allows a
+user to collect portions of any web page by making it able
+to use for a spatial hypertext, like a web document element,
+without the need to duplicate its contents. Whereas the
+previous studies involving transclusion required predesigned linkable objects, such as XML elements or HTML
+objects, partial bookmarking does not rely on any document
+structure. To accomplish partial bookmarking, we enhanced
+a conventional web browser with multiple tabs by
+introducing the technology of mirroring to display only a
+portion of a web page appropriately while factoring in
+potential copyright issues.
+
+Arranging the selected portion
+Browsing Area
+
+Authoring Area
+
+Mouse scrolling
+
+Selecting a portion
+
+Spatial Hypertext
+
+Figure 1. An example situation of partial bookmarking
+
+This approach provides a great advantage in that the user
+can collect any portion of a web page, even if it is a part of
+an image or a scene within a movie. There is also no
+infringement of copyright in producing the spatial hypertext
+on the WWW.
+
+Author Keywords
+
+Partial bookmarking; Transclusion; Spatial hypertext
+ACM Classification Keywords
+
+H.5.4 [Information Interface and Presentation]:
+Hypertext/Hypermedia – Architectures, Navigation, User
+issues
+
+PARTIAL BOOKMARKING
+
+Figure 1, in brief, shows an example situation of partial
+bookmarking via our early version of the enhanced web
+browser. There are two areas: browsing area and authoring
+area. The former includes a web browser with multiple tabs,
+where the user visits the web page and browses its content
+on a web browser, and then selects a single portion of the
+web page, e.g. a part of an image and text, which the user is
+interested in and wants to access again later. The selected
+portion is able to be arranged to create the spatial hypertext
+and when the user needs on the latter area. As shown in the
+figure, partial bookmarking is proceeded by selecting the
+portion and recording it as an element of a spatial hypertext
+just as it is.
+
+INTRODUCTION
+
+The World Wide Web (WWW) provides the indispensable
+environment for collecting and producing information on a
+daily basis. Transclusion [4] is a technique enabling authors
+to include portions of existing contents into their own
+documents without duplicating any content. We here
+propose the mechanism of transclusion, named partial
+bookmarking, and introduce an enhanced web browser to
+utilize it for authoring a spatial hypertext. Partial
+bookmarking makes transclusion available regardless of the
+document structure which is presupposed in many previous
+studies [2,3] involving modularized documents written in
+languages for hypertext such as XML, XLink, or HTML.
+Our approach takes a way of mirroring a portion of a web
+page from the user’s web browser to a spatial hypertext.
+
+Partial Bookmark
+
+To identify the portion of the web page, the shortcut, called
+partial bookmark, is composed of two types of information:
+location and action information. The former includes the
+URL of the web page and the coordinates of the region of
+the portion on a web browser. The latter includes the
+information about the sequence of events that occurred on
+the web browser, e.g., button down or scroll down, which
+were performed when the user found the portion including
+the required information. Figure 2 shows the version of
+DTD defining the syntax and structure to represent the
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984761
+
+185
+
+User
+
+<!ELEMENT PB (Location_information, Action_information) >
+<!ELEMENT Location_information (url, portion)>
+<!ATTLIST Location_information id NMTOKEN #REQUIRED>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT portion EMPTY>
+<!ATTLIST portion upper_left_x CDATA #REQUIRED
+upper_left_y CDATA #REQUIRED lower_right_x CDATA #REQUIRED
+lower_right_y CDATA #REQUIRED >
+<!ELEMENT Action_information (event+)>
+<!ATTLIST Action_information id NMTOKEN #REQUIRED>
+<!ELEMENT event (type, position?)>
+<!ATTLIST event id NMTOKEN #REQUIRED>
+<!ELEMENT type (mouse_event | key_event)?>
+<!ELEMENT mouse_event (button_event|wheel_event)?>
+<!ELEMENT button_event (#PCDATA)>
+<!ELEMENT wheel_event (#PCDATA)>
+<!ELEMENT key_event (#PCDATA)>
+<!ELEMENT position EMPTY>
+<!ATTLIST position x CDATA #REQUIRED y CDATA #REQUIRED >
+
+tab1
+
+tab2
+
+tabn
+
+p-window2
+
+…
+
+p-window1
+
+Browsing area
+
+p-windown
+
+Authoring area
+PB Handler
+
+Image
+Information
+Event
+Information
+
+Partial
+
+bookmark
+Partial
+bookmark
+1 2
+tab1
+
+tab2
+
+Layout
+Layout
+information
+1
+
+tabn
+…
+
+information2
+
+Partial
+Layout
+bookmarkn informationn
+Spatial Hypertext
+
+Web browser
+
+Figure 3. The architecture of the enhanced web browser.
+
+Figure 2. DTD of partial bookmark
+
+The spatial hypertext consists of some partial bookmarks
+and their layout information on the authoring area. The
+reference web pages for the spatial hypertext are always
+loaded on the tabbed windows of the web browser.
+Premising the use of the enhanced web browser to see the
+spatial hypertext, the user can broadcast it publicly without
+copyright infringement.
+
+partial bookmark in XML. The element PB is the top
+element of partial bookmark. It contains two sub elements,
+i.e. Location_information and Action_information, for
+recording the pieces of the information explained above.
+From the aspect of browsing the web pages, the user has to
+perform a considerable number of actions on the web
+browser in order to find useful information. If the portion is
+found after performing these actions, the URL of the web
+page is mandatory but insufficient to identify the portion.
+Our idea is to reproduce the actions on the web browser,
+which were performed by the user when s/he visited the
+web page, and to display only the portion on the web
+browser. Note that there is no necessity to analyze the web
+page structure and to record any source document of the
+reference web page for the partial bookmark. The portion to
+be bookmarked is shown in the spatial hypertext as it is
+displayed on the web browser.
+
+CONCLUSION
+
+We proposed a partial bookmarking which is different from
+the previous mechanisms of transclusion premising the
+document structure of the web page. In the preliminary case
+study using our early version of the enhanced web browser,
+the subjects tended to prefer to use the partial bookmark
+usage similar to the ordinary bookmark usage. Even when
+the same web pages were given as the reference web pages,
+the subjects could create unique spatial hypertexts.
+ACKNOWLEDGMENT
+
+This work was partially supported by JSPS KAKENHI
+Grant Number JP25330236.
+
+The Enhanced Web Browser
+
+Figure 3 shows the architecture of the enhanced web
+browser. The browsing area allows the user to select the
+portions of any web page for creating partial bookmarks.
+The latter plays the role of an authoring place of a spatial
+hypertext, where a window, named p-window, for the
+portion identified by the partial bookmark can be arranged.
+
+REFERENCES
+
+1. Abe, Y., Matsusako, K., Kirimura, K., Tamura, M.,
+Nakashima, M. and Ito, T. Tolerant sharing of a singleuser application among multiple users in collaborative
+work. In Companion Proc. CSCW2010, ACM Press
+(2010), 555-556.
+
+In the figure, each p-window is a window mirroring the
+portion of a web page, which is referred by a partial
+bookmark. For mirroring the portion, PB handler uses the
+techniques [1,5] of intervening image/event-information
+between the user and the web browser. Its primary role is to
+collect the location and action information when the user
+selects the portion on the web browser for partial
+bookmarking. Another role is to reproduce the events in the
+partial bookmark for mirroring only the portion identified
+by this bookmark to the p-window from the reference web
+page on the tabbed window. Thus the dynamic changes on
+the web page are always updated on the p-window. When
+the user is aware of the layout changes of the reference web
+page, s/he can revisit the page through the tabbed window
+to revise the partial bookmark.
+
+2. Choi, J.-R., An, S., Lim, S.-B. Spatial hypertext
+modeling for dynamic contents authoring system based
+on transclusion. In Proc. HT’14, ACM Press (2014),
+303-304.
+3. Iorio, A.D. and Lumley, J. From XML inclusions to
+XML transclusions, In Proc. HT’09, ACM Press (2009),
+147-156.
+4. Nelson, T.H. Literary Machines. Mindful Press,
+Sausalito, CA, USA, 1990.
+5. Sato, K., Adachi, Y., Nakashima, M. and Ito, T. A
+mechanism of trailing the footprint for the previously
+visited web pages to ease a meta-knowledge-based
+search. In Proc. NBiS2012, IEEE (2012), 298-305.
+
+186
+
+

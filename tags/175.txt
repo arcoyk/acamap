@@ -1,0 +1,246 @@
+Initial Trials of ofxEpilog: From Real Time Operation to
+Dynamic Focus of Epilog Laser Cutter
+Mitsuhito Ando
+YCAM
+ando@ycam.jp
+
+Chisaki Murakami
+YCAM
+chiichan@ycam.jp
+
+Takayuki Ito
+YCAM
+taka@ycam.jp
+
+Kazuhiro Jo
+YCAM / Faculty of
+Design, Kyushu
+University
+jo@ycam.jp
+
+ABSTRACT
+
+BACKGROUND
+
+This paper describes ofxEpilog which enable people to
+control a laser cutter of Epilog in real time. ofxEpilog is an
+addon of openFrameworks, an open source C++ toolkit for
+creative coding. With the addon, people could directly send
+their image object to a laser cutter through Ethernet. By
+alternating the generation and transmission of the command
+of cutting, the addon could sequentially control a laser
+cutter in real time. This paper introduces our initial trials of
+ofxEpilog with a real time operation (A), dynamic focus (zaxis) control with a given 3D object (B), and a scanned 3D
+object (C). Technical limitations and our upcoming
+challenges are also discussed.
+
+The roots of the addon is cups-epilog.c, a cups driver for
+Epilog
+laser
+engraver
+by
+AS220
+(http://mtm.cba.mit.edu/cups/cups-epilog/src/cupsepilog.c). With the driver, people could control the laser
+cutter through a network with a diverse range of systems
+such as Mac, Linux, instead of a proprietary driver just for
+windows. Trammell Hudson updated the driver into a
+command line tool (https://trmm.net/Epilog_driver) that
+translates the PDF files into commands for the laser cutter.
+The both software (and the proprietary driver, of course)
+generate commands based on Hewlett-Packard Graphics
+Language (HP-GL) [4] to control the laser cutter.
+
+Author Keywords
+
+For example, a command of PD (Pen Down) starts an
+emission of laser till it receives PU (Pen Up) command. YP,
+ZS, and XR command controls the power, speed, and
+frequency of laser, and WD controld the height of a table of
+a laser cutter (Table.1).
+
+Laser cutter; Personal Fabrication; Open Source Toolkit
+ACM Classification Keywords
+
+H.5.2. Information interfaces and presentation (e.g., HCI):
+Miscellaneous.
+INTRODUCTION
+
+HPGL commands
+
+Laser cutter is one of a core tools in personal fabrication
+[3]. In accordance with the rapid growth of the community,
+several systems explore the use of laser cutter in their
+unique ways beyond the standard applications (i.e. Adobe
+Illustrator, Corel Draw, Inkscape) and the proprietary
+drivers [5].
+In this paper, we go step further the
+exploration with the flexibility of creative coding in which
+people try to produce something by programming at the
+intersection of art, media and technology. Specifically, we
+show our trials of
+ofxEpilog [1], an addon of
+openFrameworks (http://www.openframeworks.cc/), which
+enable people to control a laser cutter of Epilog
+(https://www.epiloglaser.com) in real time.
+
+PU [x, y]
+
+Function
+Move laser cutter head with x-y
+coordinates
+
+PD [x, y]
+
+Emit and move laser cutter head
+with x-y coordinates
+
+YP [power]
+
+Set the power of vector process
+
+ZS [speed]
+
+Set the speed of vector process
+
+XR [frequency]
+
+Set the frequency of vector
+process
+
+WD [z offset]
+
+Set the height of table
+
+Table 1. Examples of HPGL commands
+
+By standing on the shoulders of the precursors, we have
+developed our software from scratch as an addon (i.e.
+external library) of openFrameworks, an open source C++
+toolkit for creative coding. Because of the capability of
+openFrameworks
+for
+computational
+graphical
+programming, people could algorithmically generate a
+diverse range of vector graphics and send the data directly
+into the laser cutter.
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+/UIST'16 Adjunct/, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984756
+
+ofxEpilog
+
+ofxEpilog is an addon of openFrameworks that directly
+control a laser cutter of Epilog (e.g. Zing, Mini, Fusion).
+
+175
+
+With the addon, the coder could directly send their image
+object such as ofPolyline (i.e. multiple points vector data)
+or ofImage (i.e. pixel data) within openFrameworks through
+Ethernet. The x-y position and the parameter of power,
+speed, and frequency of a laser, as well as the height of a
+table (i.e. z-axis) could be controlled in the cutting process
+instead of the pre-configured setting of the proprietary
+driver. By alternating the generation and transmission of the
+command of cutting, the addon could sequentially control a
+laser cutter in real time.
+
+needs to have an angle of inclination less than 30 degrees
+while keeping the focal length.
+
+INITIAL TRIALS
+A. Real time operation
+
+Previously, most of the laser cutter works with a preconfigured set of data in series. However, the latest version
+of Epilog laser cutter (i.e. Fusion) features a real time
+operation of its height of a table, position, and fire with its
+handy joystick. ofxEpilog expands the possibilities of real
+time operation by enabling the coder to connect a diverse
+range of input devices such as a mouse, pen, and eyetracking with the parameters.
+
+Fig 2. Processing 3D scanned object with 3D curves.
+
+B. A dynamic focus (z-axis) with a structured 3D object
+
+ofxEpilog enables to control the focus (z-axis) of a laser
+cutter during its operation. Therefore, when we have
+differences in height in a material for cutting, we could
+dynamically change the focus with its contour instead of
+dividing the data into different layers with the height with
+the proprietary driver. According to a given structured 3D
+object with a free-form surface, the addon could engrave
+3D curves to the 3D object while keeping the focus (z-axis)
+by changing table height (Fig.1).
+
+Fig 3. A physical collision in a certain tool path.
+CONCLUSION
+
+In this paper, we have explained our initial three trials of
+ofxEpilog, an addon for openFrameworks. Since the code is
+open to the public as our precursors (https://github.com/
+YCAMInterlab/ofxEpilog), we anticipate to have successors to expand the use of our addon in a hackable manner [2].
+ACKNOWLEDGMENTS
+
+This work is partly supported by JSPS KAKENHI Grant
+Number 15K12842.
+REFERENCES
+
+1.
+
+Ando, M., Suganuma, K., Ito, T., Jo, K., ofxEpilog: An
+openFrameworks addon for controlling an Epilog laser
+cutter, Proceedings of 2nd International Conference on
+Digital Fabrication 2016 Tokyo, March 3-5, pp.64-67.
+
+2.
+
+Davison, Andrew. Kinect Open Source Programming
+Secrets: Hacking the Kinect with OpenNI, NITE, and
+Java, McGraw Hill Professional, 2012.
+
+3.
+
+Gershenfeld, Neil. Fab: the coming revolution on your
+desktop--from personal computers to personal
+fabrication. Basic Books, 2008.
+
+4.
+
+Hewlett-Packard, The HP-GL/2 and HP RTL
+Reference Guide: A Handbook for Program
+Developers
+(3rd
+Edition),
+Addison-Wesley
+Professional, 1997.
+
+5.
+
+Mueller, Stefanie, and Patrick Baudisch. "Laser cutters:
+a new class of 2D output devices." interactions 22.5
+(2015): 72-74.
+
+Fig 1. Processing pre structured 3D object with 3D curves.
+C. A dynamic focus (z-axis) with a scanned 3D object
+
+ofxEpilog also enable to control the focus with a scanned
+3D object. Based on a 3D curve of an object from a highresolution 3D scanner, we calculate a possible area for
+engraving (red in Fig.2) and dynamically control the focus
+with the given 3D model.
+TECHNICAL LIMITATIONS
+
+Because of the focal length (50.8mm) and the shape of laser
+cutter’s head, we have a physical collision in a certain tool
+path (P1-P2- P3 in Fig.3). To avoid the collision, the path
+
+176
+
+

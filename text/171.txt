@@ -1,0 +1,219 @@
+Transparent Reality: Using Eye Gaze Focus
+Depth as Interaction Modality
+Yun Suen Pai
+
+Benjamin Outram
+
+Noriyasu Vontin
+
+Kai Kunze
+
+Graduate School of
+Media Design, Keio
+University, Japan
+
+Graduate School of
+Media Design, Keio
+University, Japan
+
+Fujitsu Design Ltd.
+Kawasaki, Japan
+
+Graduate School of
+Media Design, Keio
+University, Japan
+
+Figure 1. (a) Focus depth of the user where left is close and right is far, (b) Custom hardware, integrating a pupil labs
+tracker into Oculus, and (c) Experimental setup
+
+some stimulus (e.g. smooth pursuit) for less stressful gaze
+interactions [4]. This paper presents an initial prototype of
+focus depth implementation in a standard VR headset.
+Although a couple of researchers already implemented
+binocular eye tracking systems in VR [3], so far we are not
+aware of any research using focus depth tracking as an
+interaction modality. Our contributions are as follows: (1)
+We implemented a custom prototype to use eye gaze focus
+depth as novel input modality for VR applications. (2) We
+show a sample application using focus as a switching
+mechanism and show that interactions using focus depth
+information are comparable to explicit input of a scroll
+wheel. (3) We present guidelines and application cases for
+using eye gaze depth in VR systems.
+
+ABSTRACT
+
+We present a novel, eye gaze based interaction technique,
+using focus depth as an input modality for virtual reality
+(VR) applications. We also show custom hardware
+prototype implementation. Comparing the focus depth based
+interaction to a scroll wheel interface, we find no
+statistically significant difference in performance (the focus
+depth works slightly better) and a subjective preference of
+the users in a user study with 10 participants playing a
+simple VR game. This indicates that it is a suitable interface
+modality that should be further explored. Finally, we give
+some application scenarios and guidelines for using focus
+depth interactions in VR applications.
+ACM Classification Keywords: H.5.1 [Information
+
+IMPLEMENTATION
+
+Interfaces and presentation]: Multimedia Information
+Systems – Artificial, augmented, and virtual realities
+Author Keywords: Virtual reality; Eye tracking; Focus
+
+depth; Interaction modality
+INTRODUCTION
+
+Eye tracking and eye movement analysis is often used in
+psychology experiments, marketing etc. to better understand
+user’s intentions [1], as implicit input in gaming or as automatic tagging and context recognition tool during
+everyday life [5]. So far, there are only few researchers
+exploring explicit eye- gaze based interactions, as users
+often feel eye fatigue [2]. The best approaches seem to use
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author. Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984754
+
+171
+
+We modified an Oculus Rift DK2 HMD for the initial
+prototype of the system. It consists of two infrared (IR)
+eye trackers by Pupil Labs that are placed in the cavity of
+the HMD just below the lenses to capture the user’s eyes.
+The HMD’s lenses were modified to provide more space
+for the cameras without interfering with the user’s
+comfort. The lenses were cut about one third of its total
+height at the bottom to achieve this. The result are shown
+in Figure 1(b). Since the Pupil trackers do not support VR
+environments by default, a custom plugin was written for
+the tracking software with Python that enables the raw
+data from the trackers to directly stream into Unity via
+open sound control (OSC). Unity then reads these values
+directly into the VR environment. We are using the two
+normal vectors of the iris for both eyes (provided by the
+pupil software) to perform the depth calculation, detecting
+the intersection point or the vector that represents the
+shortest distance between the two vectors. The focus
+depth is accurate for distances between 5 - 25 meters in
+VR space. For the user study, we use a calibration system
+
+based on the K- nearest neighbor (KNN) algorithm that
+teaches the system to recognize two layers of depth in the
+VR world. By selecting K= 3, KNN calculates the
+Euclidean distances of the current eye gaze with the
+trained values to determine the two closes values of K that
+contains the information of the layer currently being
+observed. This allows a robust user dependent recognition.
+
+our method is at least comparable to the scroll- wheel
+implementation.
+APPLICATION CASES AND GUIDELINES
+
+EXPERIMENTAL EVALUATION
+
+We conducted a case study to determine the usability of the
+proposed system by comparing two methods: scroll-based
+and gaze-based. The scroll-based method utilizes a more
+conventional approach where the user is required to obtain
+scores by touching a sphere, which is controlled with a
+mouse, to a 2D square placed in front of the user. However,
+the squares’ position also change in the z-axis (depth). The
+scroll wheel allows the sphere to move in the z-axis. For the
+gaze-based method, the scroll wheel’s function of depth
+control is substituted with eye gaze. After the calibration
+phase, the task is no different than the scroll-based method,
+except that the user is now able to control the sphere’s depth
+simply by focusing near or far. A total of 10 participants,
+consisting of 6 males and 4 females aged between 20 and 25
+and have variable degree of eye sight clarity were given a
+score-based task in the VR environment. At the end of the
+session, each participant is then required to complete the
+System Usability Scale (SUS) score questionnaire to
+determine the gaze-based method’s intuitiveness.
+
+Since the proposed system offers a new layer of interaction
+in VR, it has the potential to provide a hands-free
+experience in VR that preserves the immersion. For
+example, this method of selection would be useful for
+heads-up-display (HUD) based interaction where the user
+just focuses close to see the HUD, and focuses far to see the
+main content. This is particularly useful in spectating sports.
+
+Figure 3. The scoreboard changes in transparency depending on the
+user’s focus depth.
+
+Along the lines of the transparent HUD, focus depth can
+also be used for menu selection tasks, where different focus
+depths are associated with different menus. Another
+application in VR is that it can provide a user with a
+window to the physical world by mounting a camera on
+the HMD. By focusing close, the user may switch back to
+the physical world, while focusing far causes the physical
+world layer to fade away.
+CONCLUSION AND FUTURE WORK
+
+We presented a novel interaction technique based on eye
+gaze focus depth for virtual environments. Our prototype
+imple- mentation are comparable in performance to scroll
+wheel interactions with the advantage of being hands-free.
+In the future, we will determine the presence of eye fatigue.
+
+Figure 2. SUS Score of 65.5 of the proposed method and the average
+scores for both scroll-based and gaze-based method for the first, second
+and third trial
+
+The achieved scores are rather comparable overall with
+gaze-based method marginally higher in all three rounds,
+proving that its precision is also comparable to mouse
+movement. Two of the participants wore spectacles and had
+no previous experience with eye tracking and VR. One of
+the participant needed to remove it while wearing the HMD,
+whereas the other was able to fit the spectacles in it.
+Participant 6 and participant 8 suffers from both short
+sightedness, while participant 8 suffers from minor diplopia.
+This leads to difficulty in focusing at objects. If the results
+for both of these participants were excluded, the new SUS
+score would be 69, which is above the average SUS score
+that is deemed as a favorable system. Applying a T-Test on
+the score results show that for the first session, a p-value of
+0.804 was obtained. For the following second and third
+session, the value steadily decreases from 0.4266 to 0.295
+respectively. There is no statistical significance between the
+scroll-wheel and focus-depth based method. Indicating that
+
+172
+
+REFERENCES
+1. Serkan Alkan and Kursat Cagiltay. 2007. Studying computer
+game learning experience through eye tracking. British
+Journal of Educational Technology 38, 3 (2007), 538–542.
+2. Heiko Drewes, Alexander De Luca, and Albrecht Schmidt.
+2007. Eye-gaze interaction for mobile phones. In
+Proceedings of the 4th international conference on mobile
+technology, applications, and systems and the 1st
+international symposium on Computer human interaction in
+mobile technology. ACM, 364–371.
+3. Andrew T Duchowski, Vinay Shivashankaraiah, Tim
+Rawls, Anand K Gramopadhye, Brian J Melloy, and
+Barbara Kanki. 2000. Binocular eye tracking in virtual
+reality for inspection training. In Proceedings of the 2000
+symposium on Eye tracking research & applications.ACM,
+89–96.
+4. Augusto Esteves, Eduardo Velloso, Andreas Bulling, and
+Hans Gellersen. 2015. Orbits: Gaze Interaction for Smart
+Watches using Smooth Pursuit Eye Movements. In
+Proceedings of the 28th Annual ACM Symposium on User
+Interface Software & Technology. ACM, 457–466.
+5. Yoshio Ishiguro, Adiyan Mujibiya, Takashi Miyaki, and Jun
+Rekimoto. 2010. Aided eyes: eye activity sensing for daily
+life. In Proceedings of the 1st Augmented Human
+International Conference. ACM, 25.
+
+

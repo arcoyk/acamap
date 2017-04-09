@@ -1,0 +1,232 @@
+A Tangible Interface to Realize Touch Operations
+on the Face of a Physical Object
+Saraha Ueno
+Meiji University
+Nakano, Tokyo, Japan
+ev40585@meiji.ac.jp
+
+Kunihiro Kato
+Meiji University
+Nakano, Tokyo, Japan
+kkunihir@meiji.ac.jp
+
+Homei Miyashita
+Meiji University
+Nakano, Tokyo, Japan
+homei@homei.com
+
+ABSTRACT
+
+In this paper, we describe a tangible interface that can realize
+touch operations on a physical object. We printed physical
+objects that have conductive striped patterns using a multimaterial 3D printer. The ExtensionSticker technique allows
+the user to operate capacitive touch-panel devices by tapping,
+scrolling, and swiping the physical object. By shaping the
+structure of conductive wiring inside a physical object, a variety of interfaces can be realized. We examined the conditions
+for using our proposed method on touch-panel devices.
+Author Keywords
+
+Figure 1. (a,b) Scrolling interface, (c) Dial interface, (d) Knob interface.
+
+Physical interface; 3D printer; Capacitive touch panel.
+using tap, scroll, swipe, and rotate operations. In addition, by
+modifying the structural shape of conductive wiring inside the
+physical object, a variety of interfaces can be realized. Utilization of a 3D printer enables us to realize more varied interactions than those realized using only ExtensionSticker. The
+ExtensionSticker technique has a limitation whereby a touch
+input can occur unintentionally in the wiring area of the conductive pattern because the conductive pattern is printed on
+the same sheet surface. Thus, the user has to attach the ExtensionSticker onto the edge of the touch-panel display. When
+the user touches the face of the physical object, touch input
+can be generated at the point where the touch-panel display
+and the physical object are in contact. This allows the user
+to control a touch-panel device by tapping or scrolling on the
+face of the physical object. By shaping the structure of conductive wiring inside the object, we can create a variety of
+input / output patterns in order to realize tangible interfaces,
+such as a scrolling interface by using rotational manipulation.
+
+ACM Classification Keywords
+
+H.5.2. Information Interfaces and Presentation (e.g. HCI):
+User Interfaces Input Devices and Strategies.
+PROPOSED METHOD
+
+In [1], we proposed “ExtensionSticker”, to extend a touch interface. It comprises a sticker printed with a striped pattern
+using a conductive ink. The user attaches the sticker with its
+striped pattern onto the edge of a touch-panel display. When
+the user touches one side of this conductive pattern, a touch
+input can be generated on the touch panel attached to the other
+side of the conductive pattern. This method can not only generate a touch input at specific locations but can also perform
+continuous touch input operation such as scroll operations.
+In this study, we propose a tangible user interface that can
+realize touch operations on the face of a physical object (Figure 1). Our method adapts the ExtensionSticker technique to
+enable the user to generate touch input by touching on the
+face of the physical object. We printed a tangible interface
+that has a striped pattern using a multi-material 3D printer
+that uses both conductive and non-conductive materials. Previous studies have employed a variety of tangible interfaces
+that use touch-panel devices [2, 4]. The novelty of our proposed method is that it not only recognizes the position and
+direction of the object but also operates a touch-panel device
+
+We generated a separate 3D model for each of the filaments
+being used in order to enable simultaneous 3D printing from
+conductive and non-conductive parts. It is possible to output
+objects by using different types of filaments by loading the
+two models that were created and executing each of their respective filament settings. At present, however, it does not allow wires that are being 3D printed to come into contact with
+each another because of their conductive filaments. On the
+other hand, there is a quality degradation of the mold when
+outputting with a FDM 3D printer that has two hot ends.
+There is a possibility that adjacent conductive wires could
+come into contact with each other because of the gunk originating from the filament overflow at the printer head. These
+problems can be resolved to a certain extent by adjusting the
+quality settings of the slicer software and by adjusting the
+parameters of the amount of filament being output. In addi-
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985711
+
+81
+
+tion, in this research we also output objects that overcome the
+aforementioned limitations by making the wiring as thin as
+possible and by expanding the spaces in between the wires as
+much as possible.
+
+operations, the recognition rate was high for the 1.0 mm interval (100%), and 2.0 mm interval (over 90%). When the height
+was 50.0 mm, both operations achieved high recognition accuracy (over 80%) when the interval was 1.0 mm. In the tap
+and scroll operations experiment, our results show that the
+recognition accuracy dropped as the spacing and height were
+increased, for each device. We obtained a wide variation in
+the results in terms of recognition accuracy for objects with
+spacing intervals of 3.0 mm and 4.0 mm and height of 10.0
+mm and objects width spacing intervals of 1.0 mm and 2.0
+mm and height of 50.0 mm. Based on the experiment where
+the interval spacing was 0.5 mm, we observed that objects
+with 1.0 mm intervals can be considered suitable. However,
+objects with height greater than 50.0 mm are considered to
+have very low recognition accuracy.
+
+EXPERIMENTAL EVALUATION
+
+It is necessary to ensure that each conductive portion is sufficiently thin to ensure a touch input is not generated by touching a stand-alone portion. Moreover, the spacing between every two portions is required to be sufficiently narrow to generate a touch input through touching multiple portions. Therefore, we conducted an experiment to evaluate the recognition
+accuracy of tap and scroll operations using a physical object.
+In [1], we suggested that the touch input cannot be generated
+properly if the distance between the portion that is touched
+by a finger and attached with the touch panel is too long.
+Therefore, we evaluated the proposed set-up to confirm the
+height of the interface that can generate a touch input properly. We based the design of tangible interfaces on parameters
+that were established in [1]. We designed the thickness of the
+conductive and non-conductive portions of the striped pattern
+to be 0.5 mm. The striped patterns have different combinations of interval (1.0, 2.0, 3.0, 4.0 mm) and height (10.0, 50.0
+mm). Assuming the size of a human finger, we set the depth
+of the striped pattern to 10.0 mm, and the width to 50.0 mm.
+
+Figure 2. Experiment comprising tap and scroll operations at 10.0 mm
+and 50.0 mm height.
+
+For evaluating the tap operations, the participants tapped on
+specific locations on each object. Recognition mistakes were
+recognized as errors, and the recognition rate was recorded.
+Each participant performed the tap operations 20 times for
+each object. In all the experiments, the participants were
+given objects in a random order. In the scroll operations, a
+bar that moves at a constant speed from the left edge to the
+right edge of the display was demonstrated. The participants
+performed scroll operations on the object using the bar’s location as a guide. Interruptions in a touch input task when
+the bar was moved between the start and end positions were
+recognized as errors, and the corresponding recognition rate
+was recorded. Scroll operations were performed 10 times for
+each object. The experiment involved five participants, all of
+whom were university undergraduate and graduate students
+with experience in using smartphones. Each experiment was
+performed using MS Surface Pro 3 (2160×1440, 12 inch).
+Objects were attached to the display using a 10 mm wide
+double-sided tape (Nichiban NW-10, 0.09 mm thickness).
+They were printed using conductive PLA (Graphene 3D Lab.)
+and non-conductive ABS materials (Bonsai Lab. Inc.). The
+volume resistance of conductive filament was 0.6 Ω· cm. We
+printed the objects using an FDM-based 3D printer (BS01
+Dual ABS/PLA Model1 , Bonsai Lab, Inc.). The maximum
+build-size is 150×130×100 mm, and hot end nozzle diameter is 0.40 mm. The 3D Printing software used Repetier-Host,
+and Slicing Software is Slic3r. Molding temperatures of conductive and non-conductive material are 190 ◦ C and 220 ◦ C,
+respectively.
+
+INTERFACE EXAMPLE
+
+Figure 1a shows a scrolling interface. By sliding the surface
+of the objects, it is possible to scroll the content in the corresponding direction. Moreover, it is possible to perform a
+scrolling gesture by sliding the along the lateral direction.
+Placing multiple conductive points is a method proposed in
+previous studies [2, 4], which can realize an interface that
+can recognize the position and direction of the object. This
+interface is covered with conductive material on the face itself, and it is connected to multiple touch points. Figure 1b
+shows one such application intend for kids. It is possible to
+drag and change the direction of the duck. When users slide
+their finger along its body, the duck sings, like a virtual pet
+application for GaussBricks [3]. Figure 1c shows a dial interface. This interface has multiple conductive lines that are
+placed in a circular shape on the top of the object; these lines
+are connected with the conductive striped pattern placed on
+the bottom of the object. When the user performs a circular
+operation, continuous touch input can be generated. Figure
+1d shows a knob interface that utilizes a dial interface. This
+interface also has multiple conductive lines that are placed
+in a circular shape. These conductive lines are exposed on
+the side of the interface, which results in the generation of
+a touch input by turn operation on the side of the object. A
+knob interface used on the capacitive touch-panel devices has
+already been proposed [4]. However, compared with these
+studies, our method is fundamentally different. For example,
+it is possible to use the knob interface as volume knob for
+music applications.
+
+The results of the experiment evaluating tap and scroll operations is shown in Figure 2. In the tap operations, the 1.0 mm
+and 2.0 mm intervals achieved 100% accuracy. In the scroll
+1
+
+ACKNOWLEDGEMENT
+
+This work was supported by COI, JST project.
+
+https://www.bonsailab.asia/about.html
+
+82
+
+3. Rong-Hao Liang, Liwei Chan, Hung-Yu Tseng,
+Han-Chih Kuo, Da-Yuan Huang, De-Nian Yang and
+Bing-Yu Chen. 2014. GaussBricks: Magnetic Building
+Blocks for Constructive Tangible Interactions on
+Portable Displays, In Proceedings of the SIGCHI
+Conference on Human Factors in Computing Systems
+(CHI’14), pp.3153-3161.
+http://dx.doi.org/10.1145/2556288.2557105
+
+REFERENCES
+
+1. Kunihiro Kato and Homei Miyashita. 2015.
+ExtensionSticker: A Proposal for A Striped Pattern
+Sticker to Extend Touch Interfaces and its Assessment,
+In Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems (CHI’15), pp.1851-1854.
+http://dx.doi.org/10.1145/2702123.2702500
+2. Liwei Chun, Stefanie Muller, Anne Roudaut and Patrick
+Baudisch. 2012. CapStones and ZebraWidgets: Sensing
+Stacks of Building Blocks, Dials and Sliders on
+Capacitive Touch Screens, In Proceedings of the
+SIGCHI Conference on Human Factors in Computing
+Systems (CHI’12), pp.2189-2192.
+http://dx.doi.org/10.1145/2207676.2208371
+
+4. Sven Kratz, Tilo Westermann, Michael Rohs and Georg
+Essl. 2011. CapWidgets: Tangible Widgets versus
+Multi-Touch Controls on Mobile Devices, In CHI’11
+Extended Abstracts on Human Factors in Computing
+Systems (CHI’11), pp.1351-1356.
+http://dx.doi.org/10.1145/1979742.1979773
+
+83
+
+

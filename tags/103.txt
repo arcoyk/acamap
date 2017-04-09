@@ -1,0 +1,203 @@
+ScalableBody : A Telepresence Robot Supporting Socially
+Acceptable Interactions and Human Augmentation through
+Vertical Actuation
+Akira Matsuda
+The University of Tokyo
+Bunkyo-ku, Tokyo, Japan
+akira.matsuda.ut@gmail.com
+
+Jun Rekimoto
+The University of Tokyo, Sony CSL
+Bunkyo-ku, Tokyo, Japan
+rekimoto@acm.org
+
+Figure 1. ScalableBody: A Telepresence robot with a vertical actuation mechanism enables to communicate similar to face-to-face communication. (a)
+The remote user can make eye-contact even though they’re using telepresence robot. (b) The remote user can connect the robot to look around the place
+with 360-degree view. (c) Adjusting its height according to communication contexts.
+
+ABSTRACT
+
+ACM Classification Keywords
+
+Most telepresence robots have a fixed-size body, and are unable to change the camera or display position. Therefore, although making eye contact is important in human expression,
+current fixed-size telepresence robots fail to achieve this.
+
+H.5.3. Group and Organization Interfaces: Computersupported cooperative work; H.4.3. Communication Applications: Computer conferencing, teleconferencing, and videoconferencing
+
+We propose a novel telepresence robot called ScalableBody,
+which enables users to make eye contact during conversations
+by changing its height. ScalableBody extends its body to
+modify the position of its camera or display. This approach
+provides eye contacts in remote conversations, thus creating
+almost same situation when the remote and local users make
+conversation like a real meeting. As for the remote users, this
+approach also enables them to experience having a conversation from different heights, such as being a giant or a dwarf.
+This technique extends the possibilities of remote communication by telepresence robots.
+Author Keywords
+
+Telepresence robot; surrogate robot; remote communication;
+eye-contact; human augmentation
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+INTRODUCTION
+
+Non-verbal communication is an important component of natural communication. An eye contact is also regarded as an
+important communication cue that may change impressions
+during a conversation. These studies [2, 5] suggest the height
+of a robot is an important social cue for having communication. Thus, it is important to ensure eye contact to enable rich
+communication.
+However, with typical telepresence robots, a remote userâĂŹs
+expressions are not well conveyed for the following reasons.
+First, such a robot does not reflect the remote userâĂŹs actual
+height because a typical telepresence robot cannot change
+its height. Second, it is also difficult to make eye contact in
+different conversation contexts. For example, when a person
+is sitting, it is natural for the other party to also sit down to
+join a conversation, to enable equal-level eye contact.
+To deal with these problems, we designed and implemented
+a telepresence robot called ScalableBody with the ability to
+change its height dynamically and produce social equality between remote and local users through eye contact (Figure 1).
+It is also possible to adjust its height according to communication contexts such as standing or sitting. Furthermore, the
+robot has a 360-degree camera so the remote user can look
+around the place easily without any extra mechanism like a
+
+UIST’16 Adjunct October 16-19, 2016, Tokyo, Japan
+© 2016 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-4531-6/16/10.
+DOI: http://dx.doi.org/10.1145/2984751.2985718
+
+103
+
+motor actuation. Further still, by augmenting their eye position, the remote user can see the world from a giantâĂŹs or a
+dwarfâĂŹs point of view.
+SCALABLEBODY
+
+to understanding a local environment. So we added the 360degree camera and its wide omnidirectional view allows the
+remote user to overlook the local environment easily (Figure 1b). The camera view is live streamed to the remote user and
+the user can change the angle at will.
+DISCUSSION
+
+Changing the height of the robot enables the following applications.
+Collaboration work
+
+It helps in collaboration work, such as a factory inspection. A
+highly located pipe, unreachable for inspection by the local
+user, could still be inspected by the remote user.
+Figure 2. A detail of our telepresence robot, ScalableBody. (a) The vertical actuation allows to change the height dynamically. (b) Changing the
+height of body, it enables to reflect the same height of remote user.
+
+Designing society from another persons view
+
+We use iron reel to implement the vertical actuation mechanism. This is inspired by the dynamic structure of Kinereels,
+which is developed by Takei et al. [6]. This technique enables
+high extended ratio with small size and light weight, so it is
+easy to adopt to robot with limited payload and size. Alternative mechanisms, like leadscrews, a rack-and-pinion and
+scissor lifts, needs a lot of space. This mechanism enables the
+robot to change its height within a greater range while keeping
+a small size, so as to easily move around indoors. Our robot
+can change height from 65cm to 200cm (Figure 2-a), the range
+is 135cm, while for a conventional telepresence robot, such as
+Double [1], the range is just 30cm (120cm to 150cm).
+The robot has an iron reel sitting on an omniwheel robot base,
+a 360-degree camera and a display (Figure 2-b). The camera
+and display are lifted by the vertical actuation mechanism. To
+push up or pull down the iron reel, we use four motors and one
+motor driver. For the base of the robot, we use the omni-wheel
+robot 1 . The omni-wheel robot and motor driver are operated
+by Arduino Uno. The robot is controlled wirelessly by a PC
+on the same network via the UDP protocol. We describe the
+benefit of the vertical actuation and using a 360-degree camera
+in the following sections.
+
+This system allows the remote user to see the world from
+different height. A child view, might enable finding dangerous
+furniture in a house or a bad sight location in a residential
+areas.
+Sport Coaching
+
+The vertical actuation removes a gap of physique in sport
+coaching. A coach can see the view of a athlete and teach
+more flexibly in sports that require accurate aiming dependant
+on body height, like golf, baseball or archery.
+CONCLUSION AND FUTURE WORK
+
+In this study, we propose a novel telepresence robot using
+vertical actuation. It allows for matching the eye-level between remote and local users. We also describe a set of usage
+scenarios which benefit from vertical actuation.
+Our system has the following limitations. First, the display
+sways when the body is extended since its mounted on the top
+of the robot. We noticed that the swaying pattern, and natural frequency is different depending on the length. This may
+cause motion sickness, but some types of image stabilization
+technologies can resolve this issue. Second, because of weight
+limitations there is a performance limit of the camera and/or
+display. When the robot has too large a display or camera, the
+vertical actuation mechanism breaks when the robot is changing its height or moving. We will overcome these limitations
+in the next version.
+
+Eye-level matching with vertical actuation
+
+With vertical actuation, changing the height provides the following benefits. First, the robot can adapt its height to the
+context, like standing up or sitting down (Figure 1-c). It can
+make eye contact and conversation which is similar to face-toface communication. Second, the user can extend the body in
+accordance with the users height. This represents the actual
+height of a remote user. Third, users can have an extraordinary
+experience (Figure 1-b) such as taking the viewpoint of a giant
+or a dwarf by stretching the robot to very high or very low
+height. Namely, the vertical actuation also enables human
+augmentation.
+Free viewpoint through 360-degree camera view
+
+Remote conversation is common in collaboration work, and
+previous studies [3, 4] shows that 360-camera views are useful
+1 http://www.nexusrobot.com/product.php?id_product=87
+
+REFERENCES
+
+1. Double Robotics - Blended Learning / Hybrid Classroom.
+http://www.doublerobotics.com/education/. (????).
+2. M. Desai, K. M. Tsui, H. A. Yanco, and C. Uhlik. 2011.
+Essential features of telepresence robots. In 2011 IEEE
+Conference on Technologies for Practical Robot
+Applications. 15–20. DOI:
+http://dx.doi.org/10.1109/TEPRA.2011.5753474
+
+3. Shunichi Kasahara and Jun Rekimoto. 2015. JackIn Head:
+Immersive Visual Telepresence System with
+Omnidirectional Wearable Camera for Remote
+Collaboration. In Proceedings of the 21st ACM
+Symposium on Virtual Reality Software and Technology
+(VRST ’15). ACM, New York, NY, USA, 217–225. DOI:
+http://dx.doi.org/10.1145/2821592.2821608
+
+104
+
+4. Daniel A. Lazewatsky and William D. Smart. 2011. A
+Panorama Interface for Telepresence Robots. In
+Proceedings of the 6th International Conference on
+Human-robot Interaction (HRI ’11). ACM, New York,
+NY, USA, 177–178. DOI:
+
+Conference on Human-robot Interaction (HRI ’13). IEEE
+Press, Piscataway, NJ, USA, 1–8.
+http://dl.acm.org/citation.cfm?id=2447556.2447558
+
+6. Shohei Takei, Makoto Iida, and Takeshi Naemura. 2011.
+KineReels: Extension Actuators for Dynamic 3D Shape.
+In ACM SIGGRAPH 2011 Posters (SIGGRAPH ’11).
+ACM, New York, NY, USA, Article 84, 1 pages. DOI:
+
+http://dx.doi.org/10.1145/1957656.1957719
+
+5. Irene Rae, Leila Takayama, and Bilge Mutlu. 2013. The
+Influence of Height in Robot-mediated Communication.
+In Proceedings of the 8th ACM/IEEE International
+
+http://dx.doi.org/10.1145/2037715.2037810
+
+105
+
+

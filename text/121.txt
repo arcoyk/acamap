@@ -1,0 +1,194 @@
+Phones on Wheels: Exploring Interaction
+for Smartphones with Kinetic Capabilities
+Takefumi Hiraki∗
+
+Koya Narumi∗
+Koji Yatani
+Yoshihiro Kawahara
+The University of Tokyo
+7-3-1 Hongo, Bunkyo-ku, Tokyo, Japan
+{hiraki, narumi, kawahara}@akg.t.u-tokyo.ac.jp
+koji@iis-lab.org
+
+Figure 1. a: The overview of our hardware prototype. Our mobile accessory includes two robot wheels, offering kinetic capabilities to smartphones. b:
+Motor actuation allows a phone enough power to push small loads. c: With sensors, smartphones can kinetically react to the user. d: Thanks to rotary
+encoders, wheels can be used as an input channel, such as measuring the length of objects.
+
+ABSTRACT
+
+kinetic capabilities. We achieve this through attaching robot
+wheels to smartphones.
+
+This paper introduces novel interaction and applications
+using smartphones with kinetic capabilities. We develop an
+accessory module with robot wheels for a smartphone. With
+this module, the smartphone can move in a linear direction or
+rotate with sufficient power. The module also includes rotary
+encoders, allowing us to use the wheels as an input modality.
+We demonstrate a series of novel mobile interaction for mobile
+devices with kinetic capabilities through three applications.
+
+Yamanaka et al. [4] demonstrated kinetic behavior in
+smartphones using multiple vibration motors connected to
+a case. Their system can offer the user notifications through
+motions. For example, the device can move towards the user’s
+hand to make a contact for providing haptic notifications. The
+device can leave a message by rotation and change of its
+orientation for visual information even after the battery runs
+out. However, their approach can achieve a very limited set
+of movements, and thus interaction design in mobile devices
+with kinetic capabilities remains under-explored.
+
+ACM Classification Keywords
+
+H.5.2. Information Interfaces and Presentation (e.g. HCI):
+User Interfaces
+
+We demonstrate a series of interaction that smartphones with
+kinetic capabilities enable. We create an accessory with robot
+wheels for a smartphone (Figure 1a). This accessory can
+control the linear and rotational movements of the phone with
+enough power to push small loads (Figure 1b). Sensors in the
+smartphone allow interactions such as moving towards / away
+from human (Figure 1c). As robot wheels can serve as an input
+modality, users can interact with the phone through directly
+rotating the wheels (Figure 1d). In this paper, we describe
+our implementation, the interaction set our device offers, and
+applications demonstrating new forms of mobile interfaces.
+We conclude the paper with some future work.
+
+Author Keywords
+
+Mobile interfaces; kinetic interaction.
+INTRODUCTION
+
+Recent studies have made efforts on enriching and reshaping
+mobile interaction through additional output capabilities.
+Examples include haptic enhancements [1], shape-changing
+displays [2], and deformable surfaces [3]. This work attempts
+to extend the design space of mobile interaction by adding
+∗ Joint
+
+first authors.
+
+IMPLEMENTATION
+
+Our prototype device comprises of a smartphone (Google
+Nexus5), a custom-made accessory with wheels, and plastic
+cases. We manufactured the wheels and cases by 3D printing.
+The circuit board in the attachment component includes a
+micro-controller, USB-serial converter, motors, motor drivers,
+and rotary encoders. It is directly connected to the smartphone,
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author. Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985727
+
+1
+121
+
+Figure 2. Three applications illustrate unique characteristics of our device. A: Runaway Snooze is an alarm application enhanced by motion. By sensing
+the user with proximity and light sensors, it escapes from him/her and interferes snooze. B: Hard Push visually emphasizes important notifications by
+moving towards the user. C: Scale Trace demonstrates the feasibility of our prototype as an input modality. By measuring width, depth, and height
+using rotary encoders, it recommends the user the list of furniture that fits to the space.
+
+controlling and sensing the wheels. We chose a wired
+USB connection as a communication bus instead of wireless
+methods, achieving robust and responsive controls of the
+wheels. This design also allows the power supply of up to 500
+mA to the smartphone thanks to the correct USB connection
+with negotiation (if there is no negotiation, supply is limited to
+100 mA; this value is not enough for driving motors). Although
+robot wheels offer direct controls of kinetic behavior, future
+work should consider other approaches, such as vibration, soft
+robotic actuation, and electrostatic force.
+
+physical objects. But they are susceptible to ambient lighting
+conditions and physical shapes. The wheels in our device are
+sensitive and can achieve accurate measurements.
+Figure 2C shows an example use scenario of Scale Trace.
+The user can quickly measure the width, depth, height of a
+sideboard to make sure whether it fits into his/her room. The
+user can measure lengths on non-flat surfaces as well.
+CONCLUSION AND FUTURE WORK
+
+In this paper, we demonstrate smartphones with kinetic
+capabilities. We report the implementation of our prototype
+and describe three enabled applications. In future work, we
+will deeply examine the design space of smartphones with
+kinetic capabilities. We will also explore other possible
+approaches to producing kinetic behavior embeddable to
+devices in a mobile form-factor.
+
+APPLICATIONS
+
+We present three demonstrations that illustrate the unique
+capabilities of our device.
+Runaway Snooze
+
+Runaway Snooze is an alarm application enhanced by motion
+as shown Figure 2A. When the user is trying to hold the phone
+to stop an alarm, the device senses the user’s hand by the light
+and proximity sensors and escapes from it. In this manner, the
+phone can force the user to wake up and get off from the bed.
+
+ACKNOWLEDGMENTS
+
+This work was supported by ERATO, JST.
+REFERENCES
+
+1. Olivier Bau, Ivan Poupyrev, Ali Israr, and Chris Harrison.
+2010. TeslaTouch: electrovibration for touch surfaces. In
+Proceedings of the 23nd annual ACM symposium on User
+interface software and technology. 283–292.
+
+We may apply a similar concept to decrease user’s distractions
+by mobile phones. When the user is engaged in work on
+a laptop, the device gradually moves away from her and
+automatically stops notifications about unimportant messages.
+When the user is free, the phone moves closer to him/her so
+that it can be available to him/her needs.
+
+2. Sungjune Jang, Lawrence H Kim, Kesler Tanner, Hiroshi
+Ishii, and Sean Follmer. 2016. Haptic Edge Display for
+Mobile Tactile Interaction. In Proceedings of the 2016
+CHI Conference on Human Factors in Computing
+Systems. 3706–3716.
+
+Hard Push
+
+Hard Push is a new way to inform the user of incoming critical
+notifications shown in Figure 2B. For instance, when the phone
+receives uncritical emails or messages, it simply notifies the
+user in a silent way (e.g., blinking a LED light). But when
+an important notification comes, the phone moves towards
+the user to encourage him/her to check. Our system can
+offer a unique form of ambient displays as illustrated in this
+application.
+
+3. Viktor Miruchna, Robert Walter, David Lindlbauer,
+Maren Lehmann, Regine Von Klitzing, and Jörg Müller.
+2015. GelTouch: Localized Tactile Feedback Through
+Thin, Programmable Gel. In Proceedings of the 28th
+Annual ACM Symposium on User Interface Software &
+Technology. 3–10.
+4. Shota Yamanaka and Homei Miyashita. 2014. Vibkinesis:
+notification by direct tap and’dying message’using
+vibronic movement controllable smartphones. In
+Proceedings of the 27th annual ACM symposium on User
+interface software and technology. 535–540.
+
+Scale Trace
+
+Scale Trace is an example of demonstrations where robot
+wheels serve as an input modality. Existing applications
+mostly employ vision-based methods to measure the length of
+2
+122
+
+

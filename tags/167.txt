@@ -1,0 +1,208 @@
+Orchestrated Informal Care Coordination:
+Designing a connected network of tools in support of
+collective care activities for informal caregivers
+Kyungmin Youn
+Google Inc.
+Mountain View, CA, USA
+kyungminyoun@google.com
+ABSTRACT
+
+and promote senior’s independent living through
+monitoring and sensing data of residents. However, despite
+the fact that family caregivers play a significant role in
+managing seniors’ overall health care [1], little has been
+focused on how family caregivers can benefit from these
+technologies when it comes to care coordination for their
+loved ones in their own homes.
+
+Often, family caregivers experience difficulties in
+coordinating older adults’ health care because it requires not
+only a lot of time but also a diverse set of responsibilities to
+coordinate care for their loved ones. While many can
+reduce their individual burden by sharing care tasks with
+other family members, there are still many challenges to
+overcome in maintaining the quality of care when they
+work together. As they increase their informal care network,
+it becomes more difficult for them to stay informed and
+coordinated. Coordination breakdowns caused by having
+multiple caregivers who are cooperating to care for the
+same care recipient result in reduced quality of care. I
+explored opportunities for “Internet of Things (IoT)”
+technologies to help informal caregivers better coordinate
+and communicate care with each other for their loved ones.
+Based on identified design opportunities, I propose the
+concept of CareBot, a smart home platform consisting of
+interactive tools in support of collective care activities of
+family caregivers.
+
+I investigated opportunities for IoT technologies to help
+informal caregivers better coordinate and communicate care
+with each other for their loved ones. Using a user-centered
+design approach, I explored various facets that make up the
+overall experiences of family caregivers who are involved
+in in-home care coordination. My design process included:
+• Conducting in-depth interviews with 16 people including
+family caregivers, care recipients, and professional care
+coordinators
+• Developing design concepts that address findings
+extracted from the exploratory research
+• Speed dating as a means to validate user needs, obtain
+feedback and gain perspective on the concepts
+
+Author Keywords
+
+Caregiving; Caregiver; Connected Home; Internet of
+Things; Field Study; Qualitative Methods.
+
+• Physical form studies with various material forms and
+interactions as a way of further exploring design ideas.
+
+ACM Classification Keywords
+
+H.5.2. Information interfaces and presentation (e.g., HCI):
+User-centered design
+
+The findings of the qualitative study have revealed three
+main opportunities in which IoT can play a significant role
+for informal caregivers’ collective care coordination: (i)
+facilitating care works by reminding caregivers of tasks that
+need to be done and providing instructions on how to
+accomplish it, (ii) having crucial information accessible to
+everyone in the network of informal caregivers to stay
+organized and coordinated, and (iii) keeping everyone
+engaged and connected to avoid breakdown caused by poor
+communication and lack of information. Based on
+identified design opportunities, I suggest the concept of
+CareBot, a smart home platform consisting of interactive
+tools that help family caregivers better coordinate and
+communicate care with each other for their loved ones.
+
+INTRODUCTION
+
+According to the U.S. Census Bureau, about 1 in 5 U.S.
+residents are projected to be aged 65 and over by 2030 [4].
+Already more than 65 million Americans are informal
+caregivers providing care for an ill, disabled or aged family
+member [3]. Due to the continuous growth in the elderly
+population and the fact that most Americans would rather
+keep living in their homes than move to care facilities as
+they get older [2], the number of informal caregivers and
+the importance of in-home care will continually increase.
+In the face of this trend, research has been conducted from
+both health informatics and HCI communities on how smart
+home and IoT technologies can support home health care
+
+CONCEPT OVERVIEW
+
+CareBot is designed to provide a new way of engaging in
+care and preventing potential breakdowns caused by having
+multiple caregivers who work together. Main features of the
+concept of CareBot are three fold:
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full
+citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984752
+
+167
+
+1. Remind: It triggers reminders to prompt caregivers to
+complete care activities that haven’t been done on time.
+It aims to reduce the chances of forgetting and
+overlapping care works such as taking medication,
+drinking water, and simple exercise.
+2. Capture: It helps caregivers capture the care activities
+that should be coordinated at the point of action. It
+provides a way to document and annotate care activities
+that have or haven’t been done to give contextual
+information to other caregivers.
+3. Connect: It keeps all family caregivers connected to
+crucial information of care as well as to each other. It
+makes it easier for caregivers to stay in the loop and
+organize support together. It also gives caregivers the
+opportunity to volunteer and take over care tasks.
+!
+Figure 2. Physical tool of CareBot
+FUTURE WORK
+
+The caregiver role involves a wide variety of types of care,
+and caregivers and care recipients’ social dynamics are
+incredibly diverse. Although I tried to ensure a various
+spectrum of contexts of care, this research is still limited to
+certain types of contexts of care. Therefore, further research
+should be conducted to verify and extend the resulting
+design to different disease and circumstances.
+
+To concretize these features of CareBot, its design should
+leverage the benefit of smart home and IoT technologies.
+
+The concept of CareBot also requires a more robust system
+around it to better support family caregivers and care
+recipients. In the future, it can connect with a more diverse
+set of smart devices, such as a home medical kit, fitness kit,
+thermostat, and etc. The service side should be designed
+and verified as well in a holistic way in order to make
+CareBot more useful for family caregivers as a smart home
+platform. For example, family caregivers might want to
+seamlessly connect the information and data of their care
+activities that they gathered from CareBot to professional
+medical service providers for a better medical experience.
+Great opportunities exist for the bridge between informal
+care coordination and formal medical care, so further work
+is needed to explore these opportunities.
+
+!
+Figure 1. System map of CareBot.
+First, these technologies allow caregivers to keep track of
+important care information by monitoring data of residents.
+CareBot should communicate with a range of smart objects
+and devices to get necessary information of care such as a
+schedule for must-do activities and real-time data of
+caregivers and care recipients’ activities. Second, A
+connected network of physical objects would engage
+caregivers as more active and better-informed participants of
+care. CareBot has a physical tool which is directly situated in
+the real context of care to allow it to better trigger reminders
+and capture the care work at the point of action.
+
+REFERENCES
+
+1.Giovannetti, E. R., Wolff, J. L., Xue, Q. L., Weiss, C. O.,
+Leff, B., Boult, C., ... & Boyd, C. M. (2012). Difficulty
+assisting with health care tasks among caregivers of
+multimorbid older adults. Journal of general internal
+medicine, 27(1), 37-44.
+2.Mathew Greenwald & Associates, Inc. These Four Walls:
+Americans 45+ Talk About Home and Community, May
+2003. Retrieved March 12, 2016, from AARP
+Research: http://www.aarp.org/home-garden/livablecommunities/info-2003/four_walls.html.
+3.National Alliance for Caregiving and AARP Public Policy
+Institute. Caregiving in the U.S., June 2015. Retrieved
+March 15, 2016, from AARP Research: http://
+www.aarp.org/ppi/info-2015/caregiving-in-the-unitedstates-2015.html.
+4.Ortman, J.M., Velkoff, V.A. and Hogan, H. An Aging
+Nation: The Older Population in the United
+States, P25-1140 (2014).
+
+The physical tool of CareBot breaks mainly into two parts:
+the Bot and an e-ink display. The Bot is the part that signals
+users to take actions and that users actually interact with to
+get information. It is packed with multiple sensors and
+components including LED display, motion detector,
+Bluetooth, and etc. The e-ink display is the part that displays
+details of information that the Bot provides. The Bot lights up
+when there’s an action to take for the care recipient. Each
+side of the Bot has different types of information that
+caregivers need to know and lights up when there’s specific
+information to display. When users turn the Bot, the e-ink
+display presents details of information on the surface which
+correspond to the right side of the Bot.
+
+168
+
+

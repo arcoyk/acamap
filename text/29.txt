@@ -1,0 +1,385 @@
+Asymmetric Design Approach and Collision Avoidance
+Techniques For Room-scale Multiplayer Virtual Reality
+Misha Sra
+MIT Media Lab
+sra@media.mit.edu
+their own feeling of weightlessness. VR done well means being transported away from reality and into the created digital
+world, a phenomenon called ’place illusion’ or presence [10].
+
+ABSTRACT
+
+Recent advances in consumer virtual reality (VR) technology
+have made it easy to accurately capture users’ motions over
+room-sized areas allowing natural locomotion for navigation
+in VR. While this helps create a stronger match between proprioceptive information from human body movements for enhancing immersion and reducing motion sickness, it introduces a few challenges. Walking is only possible within virtual environments (VEs) that fit inside the boundaries of the
+tracked physical space which for most users is quite small.
+Within this space the potential for colliding with physical objects around the play area is high. Additionally, only limited haptic feedback is available. In this paper, I focus on
+the problem of variations in the size and shape of each user’s
+tracked physical space for multiplayer interactions. As part
+of the constrained physical space problem, I also present an
+automated system for steering the user away from play area
+boundaries using Galvanic Vestibular Stimulation (GVS). In
+my thesis, I will build techniques to enable the system to intelligently apply redirection and GVS-based steering as users
+explore virtual environments of arbitrary sizes.
+
+Following their introduction in the 1960s, head-mounted devices (HMDs) focused on visual and aural senses [13]. Since
+then a lot of research has gone into the design of natural interaction techniques predominantly using gesture and voice
+input. As the next step towards realism and immersion, many
+researchers are building systems to convey the physicality of
+the virtual world through haptics. The inability to provide tactile response when a user reaches out to touch something can
+disconcert to the point of jarring the user out of their suspense
+of disbelief, decreasing their sense of presence.
+Just as walking is fundamental to our negotiation of natural
+environments, it is of increasing relevance to interactions with
+VR. A serious limitation of real walking for VR is that users
+cannot move through virtual environments that are larger than
+the physical space typically available in home or office environments, or the working area of a tracking system. To
+overcome physical space restrictions, a number of redirection
+techniques have been proposed to manipulate the user to follow a virtual path that diverges from their perceived physical
+movements. Most of these require a large tracked space.
+
+Author Keywords
+
+Virtual reality; Tracking; Galvanic Vestibular Stimulation;
+Asymmetric Design; 3D mapping; Head-mounted displays;
+Games; Natural locomotion; Obstacle avoidance;
+
+In addition to the above, developing room-scale VR experiences presents several new challenges. Some of these are
+related to natural locomotion and full-body representation
+while others are about safety and designing around the current
+limitations of varying room sizes. I propose the following research questions that are related to variation in physical space
+sizes for multiplayer interactions and detection and avoidance
+of collisions with physical objects near the play area. I define
+play area as a rectangular area that players keep clear from
+floor to ceiling and developers keep their required interactive
+objects within. I use room-scale VR to refer to VR experiences in a tracked physical space that is a minimum of 2x1.5
+meters and maximum of 5x5m in size.
+
+ACM Classification Keywords
+
+H.5.1. Multimedia Information Systems: Artificial, augmented, and virtual realities
+See: http://www.acm.org/about/class/1998/ for more information and the full list of ACM classifiers and descriptors.
+INTRODUCTION
+
+The Lumiere Brothers introduced a new medium through
+their first film, The Arrival of a Train at Ciotat (1896), that
+generated wonder, terror, and excitement. We are now entering a similar era of wonder as millions try virtual reality (VR)
+for the first time whether to experience the swooping flight of
+a bird or to slide through the ocean dazzled by the colors and
+
+1. How can dynamic application of redirection techniques be
+used to optimally steer users away from physical boundaries without breaking immersion? How can redirected
+walking techniques be intelligently applied in small physical spaces as users explore virtual environments of arbitrary size and shape?
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the owner/author(s). Copyright is held by the author/owner(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984788
+
+2. In VR experiences that allow users to walk, there is a possibility of colliding with obstacles like furniture and walls.
+How do we map the virtual and physical spaces together?
+How does interconnectivity between physical and virtual
+
+29
+
+spaces provide richer opportunities for collaboration and
+play? What are the requirements for adaptability in how
+physical and virtual spaces are combined?
+
+worlds that adapt to any given physical space. Here, I present
+some selected prior work.
+MetaSpace I and II
+
+In MetaSpace [11], I created a multiuser VR system where the
+physical world was mapped to the physical world in placement of walls, furniture, and objects so as to create a correspondence in scale, spatial layout, and object placement
+between the two spaces. Each user also had a full-body
+avatar that was controlled through their natural movements in
+the real world. Additionally, interactive objects in the space
+were tracked in real-time and haptic feedback was provided
+through passive haptics. Together these elements created an
+experience where the entire body was in the experience, reacting viscerally and intuitively as if in a real shared space.
+
+RELATED WORK
+
+My current and previous work builds on prior research in
+the areas of using constrained physical spaces for navigating
+large VEs, passive haptics and adaptive systems.
+Navigation in VR
+
+Previous research has explored techniques of navigating large
+scale virtual environments like freezing and teleportation
+[15]. However, walking is not only the most natural way of
+traveling, it is also a more presence-enhancing metaphor than
+other navigation metaphors including “walking-in-place” and
+“flying” [14]. To reproduce the physical effort of walking, several different technologies have been used. Natural
+and unconstrained walking in VEs has become possible with
+redirected walking – without using mechanical locomotion
+devices – by manipulating the user’s real world trajectory
+such that they remain within the boundaries of the tracked
+space[8]. In Impossible Spaces, compressing a larger architectural layout into a smaller physical area was achieved by
+overlapping virtual rooms [12].
+Passive Haptics in VR
+
+Passive haptics have been shown to both enhance immersion in VR and also make virtual tasks easier to accomplish
+by providing haptic feedback [4]. Adding representations of
+real objects, that can be touched, to immersive VE enhanced
+the feeling of presence [5]. Low-resolution physical models
+made of styrofoam and plywood were found to significantly
+improve presence [6]. TurkDeck uses “human actuators” to
+operate physical props in real-time [1]. Substitutional Reality pairs every physical object surrounding a user to a virtual
+counterpart [9].
+
+Figure 1. User grasping a virtual proxy and a physical box simultaneously in a shared physical/virtual space with the freedom to walk around
+and interact with another user. The open space is mapped to a floating
+island and matches the physical space size and obstacles.
+
+Oasis
+
+In Oasis, I explored the idea of custom generated VR worlds,
+created on the fly to match a user’s physical space. The system captured indoor scenes through 3D scanning, detected
+obstacles like furniture and walls, and mapped walkable areas (WA) to enable real-walking in the generated VE automatically. Depth data was additionally used for recognizing
+and tracking furniture which were paired with virtual counterparts to leverage the physicality of the real world for a fullbody haptic experience.
+
+Adaptive Systems
+
+HTC Vive is a recently introduced consumer VR device that
+allows developers to create experiences using natural locomotion in a room sized space. Developers can choose to create apps that can be scaled up or down within a min/max
+size range, though the shape is fixed to a square or rectangle. Hololens1 and Occipital2 , both augmented reality (AR)
+devices, analyze the user’s physical environment to find flat
+surfaces like a wall or a couch seat to determine potential
+locations for placing virtual objects in the real world. SnapToReality [7] presents a related AR system where edges and
+planes are detected for aligning virtual content placement.
+
+Figure 2. The Oasis process. (a-b) 3D mapping of the real environment.
+(c) Obstacle and walkable area detection for automated virtual world
+generation. (d) Inset shows a user navigating the generated virtual environment by walking in the real environment while wearing an HMD.
+
+MY PREVIOUS WORK
+
+Virtual reality provides us with opportunities to immersively
+experience places and situations which, for reasons of time,
+distance, expense, and safety, would not otherwise be available. Through several research projects, I have explored
+haptics, full-body avatars, natural locomotion and co-located
+multiuser interactions, and the generation of flexible VR
+1
+
+CURRENT AND FUTURE WORK
+Gulliver
+
+Multiuser room-scale VR can create compelling immersive
+experiences by bringing together geographically separated
+users into a shared virtual environment. However, it introduces the problem of variations in the physical size and shape
+
+Hololens.https://www.microsoft.com/
+
+microsoft-hololens/
+2
+Occipital.https://occipital.com/
+
+30
+
+of each user’s space for mapping into a common virtual space
+that may be of an entirely different size. I propose an asymmetric approach for the design of multiuser VR experiences
+that solves the spatial variation problem, by allowing people to choose roles based on the size of their physical space.
+I demonstrate this concept through the implementation of a
+shooter game where two users, the agent and the overseer, coexist and interact in a shared virtual environment. The agent
+is the all-immersed VR player who is connected to and projected into the virtual environment through a wearable motion
+capture suit. The overseer is the detached player who can
+observe and manipulate the virtual world from above while
+interacting with the agent through an overlooking position.
+
+trajectory. 3) GVS - use of galvanic vestibular stimulation to
+steer the user away from obstacles in the real world as they
+approach the boundary of their play area. Due to space limitations, I will only describe GVS in this paper.
+When combined with existing redirection techniques, the
+proposed techniques can substantially augment the effective walking area, allowing potentially vast synthetic worlds
+to be explored using natural body movement within smallsized physically spaces. GVS focuses on automatically steering users away from physical boundaries while they are immersed in VR, and is conceptually related to the chaperone
+system of the HTC Vive that exists to prevent collisions with
+real-world obstacles. It works by displaying a wall-like blue
+grid in the user’s virtual vision when they are in close proximity to the boundaries of their configured play area. If the user
+gets closer still to the boundary, the forward-facing camera
+gives them a sort of thermal view of their surroundings.
+Flow Motion will automatically determine when to utilize the
+fast movement + slow motion visuals, or GVS techniques
+based on the user’s physical position relative to the virtual
+environment and potential collaborative tasks that may need
+to be performed with others in a different physical space.
+Galvanic Vestibular Stimulation (GVS)
+
+When we walk towards a destination it is not necessary for us
+to keep our vision continuously fixed on the target. Once we
+see a target, it is possible to close our eyes and walk directly
+to it if it is not too far. In this situation, proprioceptive sensory
+inputs from the limbs and the vestibular organs provide information about the path and stability of the body [3]. In a study
+on: (i) the effects of galvanic vestibular stimulation during
+walking, and (ii) the vestibular and proprioceptive contributions to the perceptions of a walked trajectory, it was shown
+that at ordinary walking speeds, the perception of trajectory
+can be based on vestibular input, and that the availability of
+proprioceptive input related to walking does not further improve the accuracy of the perception of trajectory [2].
+
+Figure 3. Agent wearing a motion capture suit that transmits body
+movements to the overseer who has a bird’s eye view of the agent’s
+virtual world. Inset shows the overseer’s perspective. Motion capture suit image used with permission from Perception Neuron (https:
+//neuronmocap.com/
+
+Through a set of devices consisting of an HMD, a motion
+tracking suit, and a haptic feedback suit, the agent is fully
+immersed in the environment. The overseer is the external
+player to the virtual world. Using the live data collected by
+the various wearable devices mounted on the agent, the overseer is able to observe a digitally recreated representation of
+the virtual environment and the agent. This representation
+is viewed through an augmented reality system using either
+a tablet or a see-through HMD. Through the AR device, the
+overseer will able to freely change his or her observational
+perspective into the virtual environment, providing a sort of
+portal into the agent’s world. Due to the external position of
+the overseer and the wireless components of the system, the
+overseer can be located anywhere.
+
+During a walking experiment, GVS caused subjects to turn
+from a planned trajectory (see Figure 4). Their altered perception could have contributed to this deviation. I have built
+the GVS hardware and I am currently working on turning a
+user’s trajectory in the physical space based on their proximity to the play area boundary while they walk around wearing
+an HMD. For example, when the user approaches an obstacle
+like a wall or furniture outside their play area, the system will
+automatically apply directional current through electrodes on
+the mastoids to turn the user away from the wall. I am exploring the design of VR spaces to enhance the GVS effect to
+keep the amount of current applied low.
+
+Flow Motion
+
+Flow Motion is a system of three redirection techniques to
+allow users to explore large virtual environments by walking
+in smaller physical spaces. 1) Quicksilver - the user travels
+at exceedingly high speeds through the virtual world, while
+viewing the world in bullet time and temporarily from a third
+person perspective to reduce motion sickness. The goal is
+to enable a user to cover large virtual ground with a much
+smaller movement in the physical space. 2) Spotlight - the
+user focuses on elements in the virtual scene using a sniper
+gun reticle metaphor such that a moving target causes the user
+to continuously adjust their weapon sight, allowing me to rotate the VE, resulting in an alteration of the user’s real world
+
+Similar to many other techniques for enabling natural walking through large-scale virtual environments, the versatility of
+proposed Flow Motion techniques is primarily limited by the
+size of the available physical space. With a sufficiently expansive tracking area, it is quite possible that much larger virtual
+spaces can be defined. However, for spaces the size of a small
+living room, when the size of the virtual space is not infinite,
+the techniques would allow remotely located users to share
+
+31
+
+4. Hinckley, K., Pausch, R., Goble, J. C., and Kassell, N. F.
+Passive real-world interface props for neurosurgical
+visualization. In Proc. of the SIGCHI conference on
+Human factors in computing systems, ACM (1994),
+452–458.
+5. Hoffman, H. G. Physically touching virtual objects
+using tactile augmentation enhances the realism of
+virtual environments. In Virtual Reality Annual
+International Symposium, 1998. Proc.., IEEE 1998,
+IEEE (1998), 59–63.
+6. Insko, B. E. Passive haptics significantly enhances
+virtual environments. PhD thesis, University of North
+Carolina at Chapel Hill, 2001.
+
+Figure 4. Left: GVS causes lateral virtual acceleration toward the anode, which shifts the sense of balance. Stimulus intensity 0.5 or 1.0
+mA was applied either anode-right or anode-left direction in an experiment. The GVS interface induced lateral walking diverging from intended straight line. Right: When a current is passed between the mastoid processes so that the current is anodal on one side and cathodal on
+the other, the user sways towards the direction of the anode [2].
+
+7. Nuernberger, B., Ofek, E., Benko, H., and Wilson, A. D.
+Snaptoreality: Aligning augmented reality to the real
+world. In Proc. of the 2016 CHI Conference on Human
+Factors in Computing Systems, CHI ’16, ACM (New
+York, NY, USA, 2016), 1233–1244.
+
+a virtual space for gaming, virtual tourism, socializing and
+more. As seen above, these techniques when combined with
+GVS and more traditional approaches to redirection, such as
+rotation (Spotlight) or curvature gains (depending on physical
+space size), can further augment the utility of natural walking.
+
+8. Razzaque, S., Kohn, Z., and Whitton, M. C. Redirected
+walking. In Proc. of EUROGRAPHICS, vol. 9, Citeseer
+(2001), 105–106.
+9. Simeone, A. L., Velloso, E., and Gellersen, H.
+Substitutional reality: Using the physical environment to
+design virtual reality experiences. In Proc. of the 33rd
+Annual ACM Conference on Human Factors in
+Computing Systems, ACM (2015), 3307–3316.
+
+CONCLUSION
+
+Virtual reality is becoming a mass consumer product and is
+considered a profoundly different medium. VR consists, in
+its barest form, a set of goggles allowing the view of computer generated 3D or 360 degree filmed environments. To
+say you are surrounded by screens misses the point. The difference is in the relationship between the user and the portrayed environment where the user is part of the environment,
+not looking at it or interacting with it from the outside. This
+paper presents an asymmetric design approach to resolving
+variations in the size and shape of each user’s tracked physical space for multiplayer interactions. It also presents an
+automated system for steering the user away from play area
+boundaries using Galvanic Vestibular Stimulation (GVS) for
+enhancing user safety during immersion in VR.
+
+10. Slater, M. Place illusion and plausibility can lead to
+realistic behaviour in immersive virtual environments.
+Philosophical Transactions of the Royal Society B:
+Biological Sciences 364, 1535 (2009), 3549–3557.
+11. Sra, M., and Schmandt, C. Metaspace: Full-body
+tracking for immersive multiperson virtual reality. In
+Proc. of the 28th Annual ACM Symposium on User
+Interface Software & Technology, ACM (2015), 47–48.
+12. Suma, E. A., Lipps, Z., Finkelstein, S., Krum, D. M.,
+and Bolas, M. Impossible spaces: Maximizing natural
+walking in virtual environments with self-overlapping
+architecture. IEEE Transactions on Visualization and
+Computer Graphics 18, 4 (2012), 555–564.
+
+ACKNOWLEDGMENTS
+
+The author would like to thank her thesis committee members
+Chris Schmandt (MIT), Scott Fisher (USC) and Mel Slater
+(Univ. of Barcelona).
+
+13. Sutherland, I. E. A head-mounted three dimensional
+display. In Proc. of the December 9-11, 1968, fall joint
+computer conference, part I, ACM (1968), 757–764.
+
+REFERENCES
+
+1. Cheng, L.-P., Roumen, T., Rantzsch, H., Köhler, S.,
+Schmidt, P., Kovacs, R., Jasper, J., Kemper, J., and
+Baudisch, P. Turkdeck: Physical virtual reality based on
+people. In Proc. of the 28th Annual ACM Symposium on
+User Interface Software & Technology, ACM (2015),
+417–426.
+
+14. Usoh, M., Arthur, K., Whitton, M. C., Bastos, R., Steed,
+A., Slater, M., and Brooks Jr, F. P. Walking >
+walking-in-place > flying, in virtual environments. In
+Proc. of the 26th annual conference on Computer
+graphics and interactive techniques, ACM
+Press/Addison-Wesley Publishing Co. (1999), 359–364.
+
+2. Fitzpatrick, R. C., Wardman, D. L., and Taylor, J. L.
+Effects of galvanic vestibular stimulation during human
+walking. The Journal of Physiology 517, 3 (1999),
+931–939.
+
+15. Waters, R. C., Anderson, D. B., Barrus, J. W., Brogan,
+D. C., Casey, M. A., McKeown, S. G., Nitta, T., Sterns,
+I. B., and Yerazunis, W. S. Diamond park and spline:
+Social virtual reality with 3d animation, spoken
+interaction, and runtime extendability. Presence:
+Teleoperators and Virtual Environments 6, 4 (1997),
+461–481.
+
+3. Gordon, C., Fletcher, W., Jones, G. M., and Block, E.
+Adaptive plasticity in the control of locomotor trajectory.
+Experimental Brain Research 102, 3 (1995), 540–545.
+32
+
+

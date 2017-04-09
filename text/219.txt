@@ -1,0 +1,228 @@
+Towards Understanding Collaboration Around Interactive
+Surfaces: Exploring Joint Visual Attention
+Hidde van der Meulen
+Utrecht University
+hiddevandermeulen@gmail.com
+
+Petra Varsanyi
+University of New Hampshire
+petra.varsanyi@gmail.com
+
+Andrew L. Kun
+University of New Hampshire
+andrew.kun@unh.edu
+
+Lauren Westendorf
+Wellesley College
+lwestend@wellesley.edu
+
+Orit Shaer
+Wellesley College
+oshaer@wellesley.edu
+design decisions impact the joint visual attention of
+multiple users. What is the relationship between gaze
+locations for multiple users, both in time and space? And
+how do the visual behaviors depend on the number of users,
+and the characteristics of the environment?
+
+ABSTRACT
+
+In this abstract, we present a novel method for exploring the
+visual behavior of multiple users engaged in a collaborative
+task around an interactive surface. The proposed method
+synchronizes input from multiple eye trackers, describes the
+visual behavior of individual users over time, and identifies
+joint attention across multiple users. We applied this
+method to analyze the visual behavior of four users
+collaborating using a large-scale multi-touch tabletop.
+
+To answer these questions, we developed a new method for
+identifying patterns of shifting visual attention around a
+large-scale tabletop. Our method synchronizes input from
+multiple mobile eye trackers, to describe the visual
+behavior of individual users over time, and to identify joint
+attention across multiple users. Our method does not
+require the use of markers (such as barcodes), which would
+change the look of collaborative settings. Instead, we use
+landmarks from the existing visual scene.
+
+Author Keywords
+
+Visual attention; collaboration; eye tracking
+ACM Classification Keywords
+
+H.5.m Information interfaces and presentation (e.g.,HCI):
+Miscellaneous
+
+RELATED WORK
+
+INTRODUCTION
+
+Most research using eye tracking has explored the visual
+behavior of one or two participants. In contrast, we explore
+the visual behavior of groups, by tracking the gaze of
+multiple users simultaneously.
+
+The increasing availability of large-scale multi-touch
+displays affords new forms of co-located collaboration.
+Such displays enable simultaneous use by multiple users,
+provide high resolution, and support intertwining individual
+and joint work [1,2]. However, the availability of such
+displays is not enough to design effective collaborative
+environments. We also need a deep understanding of how
+different design characteristics of the environment will
+affect users’ ability to collaborate. This problem motivates
+our exploration of visual attention among multiple users
+around a large-scale tabletop.
+
+Eye tracking in collaborative tasks
+
+Two earlier studies attempted to understand collaboration
+between two participants using synchronized eye tracking
+[1,2]. However, this work suggested that data processing
+remained a significant challenge. Schneider et al. [3]
+explored joint visual attention in pairs of participants
+engaged in a manual task. They computed a measure of
+joint attention using data from two eye trackers by carefully
+synchronizing the eye trackers using visual targets
+identified by 2D barcodes. Expanding on this work, our
+method synchronizes data from four eye-trackers, however
+it identifies joint visual attention while working on an
+interactive surface without using barcodes as landmarks.
+
+Our exploration of visual attention covers both behaviors
+exhibited by individual users, and behaviors exhibited by
+groups of users. For individuals we want to understand how
+design decisions will influence their ability to consume
+information. What are the areas of interest for users, and
+what are the patterns of shifting visual attention between
+these areas? For user groups, we need to understand how
+
+ANALYZING VISUAL BEHAVIOR AROUND A SURFACE
+Apparatus
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984778
+
+We used an interactive tabletop with four MultiTaction
+cells (https://www.multitaction.com). We recorded gaze
+data using head-mounted Pupil Labs eye trackers
+(https://pupil-labs.com). We processed data using Matlab.
+
+219
+
+Procedure
+
+Four female participants (average age=19.5), sat around the
+table while wearing eye trackers. Following a 5-minute
+tutorial, they were asked to collaboratively explore 135
+projects and select five that should receive funding from
+their class funds. Participants took about 15 minutes to
+complete this task.
+Processing method
+
+Our participants were free to look 360 degrees around, thus
+we had to calculate the position of the tabletop relative to
+the eye tracker frame by frame for each participant. Also,
+the eye tracker’s camera has a distorted image of the
+tabletop as shown in Figure 1. Finally, each participant sits
+in a different position, resulting in videos of the table from
+several perspectives.
+
+Figure 2. The visual attention on the different areas of
+participant displayed as a function of time. Note that this plot
+shows a short time segment of the entire experiment.
+DISCUSSION
+
+Our method allows assessing the visual behavior of
+multiple participants, and can thus allow us to gain deep
+understanding of collaborative behaviors in novel settings,
+such as large multi-touch surfaces. Our results indicate that
+the method is robust: in our 15-minute experiment with four
+participants we could calculate the location of the 8 areas
+about 90% of the time. And our method is not limited to
+four participants: in upcoming studies we plan to expand
+this number to 8 participants seated around the table.
+A limitation of our method is that it uses the displays that
+make up the table as landmarks. For a display that is not
+segmented as shown in Figure 1, a modified method is
+needed. We had to dim the environmental lights in order to
+accurately isolate the surface and the processing time of the
+method is about 2 frames per second on modern hardware.
+
+Figure 1. An analyzed frame showing the world camera view
+of an eye tracker with the four detected displays indicated
+with a red tint and a fitted curve splitting the multi-touch
+table into a total of 8 areas.
+
+CONCLUSION AND FUTURE WORK
+
+Since the surface emits light, we were able to isolate it from
+the rest of the video using a combination of filters. First we
+converted the image to a binary outline, covering the whole
+surface, using color filters, a median filter and a brightness
+threshold. Using morphological operations, we filtered
+noise on the binary image. Subsequently, we found four
+bright areas within this outline and identified displays based
+on size and position. Finally, we split each of the 4 areas
+into 2: top and bottom. We did this by calculating the center
+of mass points of the 4 displays and by fitting a curve to
+those points. The result is that we can mark each gaze by a
+participant as being aimed at one of 8 possible areas, as
+shown in Figure 1. In this figure, the green dot represents
+the gaze location of the participant. Our method would
+identify this gaze as being directed at the top of display 2.
+
+We seek to gain deep understanding of how different design
+characteristics of large-scale multi-device environments
+affect users’ ability to collaborate. The method we propose
+describes the visual behavior of individual users over time,
+and identifies joint attention across multiple users. We will
+expand this method in several ways. First, we need a more
+precise x-y coordinates of gaze locations on the table. Also,
+we will adopt the method to track gaze positions on vertical
+surfaces (walls). Finally, we will integrate it with other
+modalities including touch on the horizontal and vertical
+surfaces, as well as on mobile devices, to further explore
+collaborative work around interactive surfaces with
+different characteristics.
+ACKNOWLEDGEMENTS
+
+This work is partially funded by NSF grant CNS-1513077.
+
+Joint visual attention
+
+Joint attention indicates that participants are focused on the
+same task and are monitoring each other’s attention. This
+effect can be shown by tracking the gaze positions provided
+by the eye trackers and visualizing the combined visual
+attention of all participants.
+
+REFERENCES
+
+1. Pietinen, Sami, et al. "A method to study visual attention
+aspects of collaboration: eye-tracking pair programmers
+simultaneously." Proc. of symposium on Eye tracking
+research & applications. ACM, 2008.
+2. Sharma, Kshitij, et al. "Understanding collaborative
+program comprehension: Interlacing gaze and
+dialogues." Proc. of CSCL. 2013.
+3. Schneider, Bertrand, et al. "3D tangibles facilitate joint
+visual attention in dyads." Proc. of CSCL 2015.
+
+Figure 2 shows the visual behavior of our four participants
+for a short segment of the 15 minute experiment. We
+processed data for the entire experiment and found that for
+19.4% of the time at least two participants looked at the
+same area, indicating joint attention.
+
+220
+
+

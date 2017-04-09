@@ -1,0 +1,179 @@
+Virtual Sweet: Simulating Sweet Sensation Using Thermal
+Stimulation on the Tip of the Tongue
+Nimesha Ranasinghe
+Keio-NUS CUTE Center,
+Interactive and Digital Media Institute,
+National University of Singapore
+nimesha@nus.edu.sg
+
+Ellen Yi-Luen Do
+Keio-NUS CUTE Center,
+Interactive and Digital Media Institute,
+National University of Singapore
+ellendo@nus.edu.sg
+
+ABSTRACT
+
+Being a pleasurable sensation, sweetness is recognized as the
+most preferred sensation among the five primary taste sensations. In this paper, we present a novel method to virtually
+simulate the sensation of sweetness by applying thermal stimulation to the tip of the human tongue. To digitally simulate
+the sensation of sweetness, the system delivers rapid heating
+and cooling stimuli to the tongue via a 2x2 grid of Peltier
+elements. To achieve distinct, controlled, and synchronized
+temperature variations in the stimuli, a control module is used
+to regulate each of the Peltier elements. Results from our preliminary experiments suggest that the participants were able to
+perceive mild sweetness on the tip of their tongue while using
+the proposed system.
+Figure 1. A participant places the tip of the tongue in the middle portion
+of the Peltier grid to simulate virtual sweetness.
+
+CCS Concepts
+
+•Human-centered computing → Interaction paradigms;
+Mixed / augmented reality; Interaction devices;
+Author Keywords
+
+Thermal taste; virtual sweet; sweet; virtual reality;
+multimodal interaction
+INTRODUCTION
+
+Sweetness, one of the five basic taste sensations, is typically
+produced by sugar dissolving on the tongue. However, excess
+consumption of sugar and sugar-based foods or beverages
+can have a detrimental effect on a human’s health and lead to
+major health concerns, including obesity and diabetes [2]. By
+virtually simulating the sensation of sweetness, we will be able
+to introduce the sensation as a digitally controllable media
+and augment real-world flavors by virtually overlaying the
+simulated sweetness while users consume food and beverages.
+For example, having a similar system embedded on a personal
+glass or mug will enable a user to consume beverages with
+a lowered sugar content whilst maintaining the same sweet
+palatability of similar products with higher sugar content.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the owner/author(s). Copyright is held by the author/owner(s).
+UIST’16 Adjunct, October 16–19, 2016, Tokyo, Japan.
+ACM ISBN 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985729
+
+As a solution, we have developed a digital instrument to simulate sweetness on the tongue. The proposed method is built
+on existing research that has highlighted the possibility of
+generating taste sensations by heating and cooling the human
+tongue [1, 3, 4]. Prior work has shown that controlled thermal
+stimulation not only simulates sweetness, but also enhances
+the perception of sweetness on the tongue due to the activation
+of TRPM5 ion channels, which have a key role in triggering
+the human perception of sweetness [1, 4]. This phenomenon
+will enable consumption of reduced sugar food and beverages
+while maintaining their palatability. Ranasinghe et al. have
+developed a control system to study the effects of thermal stimulation on the tongue with a single Peltier element. They have
+recorded evidence of simulated sour, minty, spicy, and sweet
+sensations when the temperature of applied thermal stimuli is
+changed during continuous heating and cooling [3].
+The work presented in this paper explores the effects and
+perceptions of synchronous and simultaneous thermal stimuli
+on the tongue with a 2x2 grid of Peltier elements. Thus, the
+novelty of this work is the simultaneous utilization of two
+different thermal stimuli (synchronized heating and cooling)
+on the tongue. Figure 1 shows a participant interacting with
+the system by placing the tip of the tongue on the 2x2 grid
+Peltier elements.
+METHOD
+
+The virtual sweet instrument has three main submodules for
+power, control, and the output of stimuli. A 9V battery is used
+
+127
+
+detectable levels. Feedback also highlighted that some participants did not consistently experience singularly distinctive
+taste sensations but, instead, perceived mixtures of sensations
+such as sweet and minty. These results indicate the need for
+further sets of controlled experiments. We also observed several limitations: 1) manually aligning the placement of the
+tongue in the middle of the Peltier grid, 2) absorption of heat
+by the human tongue during the stimulation, which leads to
+poor performance, and 3) salivation due to the tongue is in
+contact with the instrument out of the mouth for an extended
+period. In addition to these points, due to the subjective nature
+of the sense of taste and sensory adaptation to stimuli, the presence of different sensory phenomena must be considered and
+tackled through the individual calibration of the instrument for
+every single user.
+Figure 2. Different components of the Virtual Sweet instrument.
+
+DEMO EXPERIENCE
+
+as the power source and a control system has been developed
+to manage the thermal stimuli. A dual channel DC motor
+driver, based on full H-bridge configuration, is used to control
+the flow of current through the Peltier elements. The technique
+of Pulse-Width Modulation (PWM) is then used to control the
+time required to achieve a distinct temperature change. By
+utilizing this method, the instrument is calibrated to achieve a
+5◦ C degree of change within approximately 4 seconds.
+To stimulate the tip of the tongue, a 2x2 grid of Peltier elements, each individually mounted on a heatsink, is used to
+achieve efficient and accurate temperature control. The dimensions of each Peltier element are 6mm x 6mm. This setup
+is shown in Figure 2, and as labeled on the Peltier elements,
+simultaneous thermal stimuli are applied as 1) heating, 2) cooling, 3) heating, and 4) cooling on different Peltier elements.
+EXPERIMENTAL RESULTS
+
+A preliminary experiment has been conducted with 15 participants (8 males and 7 females with an average age of 24) to
+explore the effectiveness of this approach, with a focus on the
+use of simultaneous thermal stimuli. The experiments were
+performed in a dark and quiet room that had a temperature that
+was constantly maintained at 20◦ C. The thermal stimuli are
+controlled within 20◦ C - 35◦ C and continuously fluctuate between these minimum and maximum boundaries. Participants
+were asked to place the tip of their tongue in the middle portion
+of the Peltier grid. Each participant was provided with three
+sessions and each session had three cycles of 20◦ C-35◦ C-20◦ C
+and 35◦ C-20◦ C-35◦ C stimuli. In between each session, participants were given a 5 minutes resting period; also providing
+time to correctly reset the temperature of the Peltier elements
+and the control system in order to provide accurate control of
+thermal stimuli. To obtain feedback after each session, participants were asked to report their perceived level of sweetness
+intensity on a 5-point rating-scale of: barely detectable, mild,
+medium, strong, and very strong. Only the feedback after the
+final session for each participant was recorded as their final
+perception.
+Preliminary results indicate that, although some of the participants perceive the sweet sensation (53% - 8 out of 15), the
+intensity of the simulated sweetness was only at mild or barely
+
+128
+
+During the interactive demonstration, users will experience the
+aforementioned virtual simulation of the sensation of sweetness on the tongue. Also, they may select different combinations of thermal stimuli, for example, contrasting thermal
+stimuli vs. similar stimuli (synchronized heating and cooling
+vs. separated heating and/or cooling) and different speeds of
+heating and cooling. With regards to hygiene considerations
+within the demonstration, we will use two different modules
+and clean the Peltier elements using alcohol swabs and deionizedăwater before each new trial.
+CONCLUSION
+
+In summary, this work demonstrates a novel instrumentation
+for providing controllable virtual sweet sensations that may
+be incorporated into interactive computer systems. Here, thermal stimulation is used to simulate sweetness, and employs
+synchronous heating and cooling of the tongue, via a 2x2 grid
+of Peltier elements.
+ACKNOWLEDGMENTS
+
+This research is supported by the National Research Foundation, Prime Minister’s Office, Singapore under its International
+Research Centres in Singapore Funding Initiative.
+REFERENCES
+
+1. A. Cruz and B.G. Green. 2000. Thermal stimulation of
+taste. Nature 403, 6772 (2000), 889–892.
+2. Robert H Lustig, Laura A Schmidt, and Claire D Brindis.
+2012. Public health: the toxic truth about sugar. Nature
+482, 7383 (2012), 27–29.
+3. Nimesha Ranasinghe, Ryohei Nakatsu, Hideaki Nii, and
+Ponnampalam Gopalakrishnakone. 2012. Tongue
+mounted interface for digitally actuating the sense of
+taste. In 2012 16th International Symposium on Wearable
+Computers. IEEE, 80–87.
+4. K. Talavera, K. Yasumatsu, T. Voets, G. Droogmans, N.
+Shigemura, Y. Ninomiya, R.F. Margolskee, and B. Nilius.
+2005. Heat activation of TRPM5 underlies thermal
+sensitivity of sweet taste. Nature 438, 7070 (2005),
+1022–1025.
+
+

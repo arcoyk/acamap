@@ -1,0 +1,282 @@
+Estimating Contact Force of Fingertip
+and Providing Tactile Feedback Simultaneously
+Nobuhiro Funato
+Tokai University
+4-1-1 Kitakaname, Hiratsuka-shi, Kanagawa
+259-1292, Japan
+3bda2109@mail.u-tokai.ac.jp
+
+Kentaro Takemura
+Tokai University
+4-1-1 Kitakaname, Hiratsuka-shi, Kanagawa
+259-1292, Japan
+takemura@tokai.ac.jp
+
+ABSTRACT
+
+This study proposes a method for estimating the contact force
+of the fingertip by inputting vibrations actively. The use of
+active bone-conducted sound sensing has been limited to estimating the joint angle of the elbow and the finger. We applied it to the method for estimating the contact force of the
+fingertip. Unlike related works, it is not necessary to mount
+the device on a fingertip, and tactile feedback is enabled using
+tangible vibrations.
+Author Keywords
+
+Active Sensing; Contact Force; Vibration; Haptic Interface
+
+Figure 1. Estimating the contact force of the index finger. The contact
+force is visualized as the elevation of a 3D surface.
+
+ACM Classification Keywords
+
+H.5.2. User Interfaces: Input devices and strategies; B.4.2.
+Input/Output Devices: Channels and controllers
+
+Currently, our implementation can only estimate the z-axis
+contact force. At the same time, this system affords the advantage of being able to sense the contact force and provide
+tactile feedback simultaneously.
+
+INTRODUCTION
+
+Various methods have been studied for estimating the contact
+force of the fingertip. A representative approach is to sense
+the variation of the nail color. Mascaro et al.[?] proposed a
+method for determining the three-dimensional contact force
+of the fingertip using a photodetector attached to the nail.
+Recently, Ono et al.[?] proposed a method for sensing the
+touch force using active acoustic sensing without a wearable
+device. The touch force can be estimated using an estimation model of each target object. These devices have enabled
+the usability of product packaging and stationery to be evaluated. The contact force can be expected to be widely used
+in various areas. However, the above methods suffer from
+some limitations such as the need to attach a device to the
+fingertip and to create an estimation model for each target object. These limitations must be overcome to use information
+about the contact force in daily life. In our previous studies,
+we proposed a method for determining the joint angle based
+on active bone-conducted sound sensing[?], with an actuator
+and a sensor arranged at a point distant from the measurement object. This enabled the contact force to be estimated.
+
+ESTIMATING CONTACT FORCE OF FINGERTIP USING
+ACTIVE BONE-CONDUCTED SOUND SENSING
+
+In active bone-conducted sound sensing, an actuator is used to
+produce vibrations in the bone, and the joint angles of the finger and elbow are estimated using the amplitude of the propagated vibration. The frequency of the inputted wave is around
+1000 Hz, because we avoid using frequencies perceptible by
+the tactile receptor. Figure 1 shows the result of estimating
+the contact force of the index finger, and the elevation of the
+3D surface on the display shows the value of the contact force
+when a subject touches anywhere.
+In our previous studies, we estimated the joint angle using
+propagated vibrations. Based on various experiments, we presumed that the dominant cause of variation is the condition of
+the articulating part. Therefore, the propagated vibration will
+likely vary when the contact force of the finger changes. In
+this study, we attached a contact microphone and a vibration
+actuator to the middle and proximal phalanx, respectively, as
+shown in Figure 2. For estimating the contact force, the relationship between the contact force and the amplitude of the
+inputted vibration must be recorded for calibration. When
+a subject pressed the force sensor, we measured the amplitude of the vibration and the contact force. The relationship
+between the amplitude and the contact force was linear, as
+shown in Figure 2, and linear regression can be performed by
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+UIST’16 Adjunct October 16-19, 2016, Tokyo, Japan
+c 2016 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-4531-6/16/10.
+DOI: http://dx.doi.org/10.1145/2984751.2984766
+
+195
+
+Vibration actuator
+
+Force sensor
+
+Average error of contact force [N]
+
+Amplitude of vibration[V]
+
+0.35
+
+Contact microphone
+
+0.3
+0.25
+0.2
+
+0.15
+0.1
+0.05
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+Contact force[N]
+
+Figure 2. Calibration for estimating the contact force of a fingertip. Left:
+The calibration device consists of a force sensor. Right: Relationship
+between the amplitude of the vibration and the contact force of the index
+finger.
+
+2.5
+2
+1.5
+1
+0.5
+0
+
+SubjectA
+
+SubjectB
+
+SubjectC
+
+All Subjects
+
+Figure 4. Average error of the estimated contact force.
+8
+Providing feedback
+
+Estimated value
+Ground Truth
+
+8
+
+7
+
+Estimated value
+
+Target of contact force
+
+Contact force [N]
+
+Contact force [N]
+
+6
+
+6
+
+4
+
+5
+4
+3
+
+2
+2
+1
+
+0
+0
+
+5
+
+10
+
+15
+
+0
+
+20
+
+0
+
+Time [sec]
+
+5
+
+10
+
+15
+
+20
+
+Time [sec]
+
+Figure 3. Comparison result of the estimated contact force and the
+ground truth.
+
+Figure 5. Result of estimating the contact force of the fingertip and providing feedback simultaneously.
+
+the least squares method. When the amplitude of the vibration is measured, we can compute the contact force using the
+model computed by linear regression.
+
+that we can estimate the contact force by providing tactile
+feedback.
+CONCLUSION
+
+This study proposes a method for estimating the contact force
+based on active bone-conducted sound sensing. We could
+estimate the contact force anywhere using a wearable device. When the contact force was larger than a threshold,
+tactile feedback could be provided using perceptible vibrations. Currently, only the contact force in the z-axis can be
+estimated. Therefore, in a future study, we will try to estimate the three-dimensional contact force.
+
+EVALUATION EXPERIMENTS
+Experimental results of estimating contact force
+
+Evaluation experiments were conducted for three trial subjects. Each subject pressed the force sensor three times for
+calibration. Then, each subject pressed the force sensor three
+times within 20 s for the evaluation, and we measured the
+amplitude of the vibration and the ground truth.
+Figure 3 shows the comparison results of the estimated contact force of the fingertip and the ground truth obtained using
+the force sensor. We confirmed that the contact force can be
+estimated continuously when a user pressed and released the
+fingertip. Errors were caused when the relationship between
+the amplitude of the vibration and the contact force did not
+hold on account of the user pressing the fingertip strongly.
+Figure 4 shows the average error of the estimated contact
+force. The average errors of all subjects were smaller than
+1 N, and we confirmed that our proposed method has performance comparable to those of related works.
+
+ACKNOWLEDGMENTS
+
+This research was supported by the MIC/SCOPE
+#162103009.
+REFERENCES
+
+1. S. A. Mascaro and others. 2001. Photoplethysmograph
+fingernail sensors for measuring finger forces without
+haptic obstruction. IEEE Trans. on Robotics and
+Automation 17, 5 (2001), 698–708. DOI:
+http://dx.doi.org/10.1109/70.964669
+
+2. Makoto Ono and others. 2015. Sensing Touch Force
+Using Active Acoustic Sensing. In Proc. of the Ninth
+Int. Conf. on Tangible, Embedded, and Embodied
+Interaction. 355–358. DOI:
+
+Experimental result of estimating contact force with tactile feedback
+
+The advantage of the proposed method is that it enables tactile feedback. In another experiment, when the contact force
+was around 6 N, a tangible vibration of around 200 Hz was
+provided by switching the inputted frequency rapidly. Additionally, we directed a subject to stop pressing when tactile
+feedback is provided. As shown in Figure 5, the subject stop
+pressing when the force was around 6 N, and we confirmed
+
+http://dx.doi.org/10.1145/2677199.2680585
+
+3. Kentaro Takemura and others. 2011. Active
+Bone-conducted Sound Sensing for Wearable Interfaces.
+In Proc. of the 24th Annual ACM Symp. Adjunct on User
+Interface Software and Technology. ACM, 53–54. DOI:
+http://dx.doi.org/10.1145/2046396.2046419
+
+196
+
+

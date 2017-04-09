@@ -1,0 +1,246 @@
+Watch Commander: A Gesture-based Invocation System for
+Rectangular Smartwatches using B2B-Swipe
+Yuki Kubo, Buntarou Shizuki, and Shin Takahashi
+University of Tsukuba
+Tennodai 1-1-1, Tsukuba, Ibaraki 305-8573, Japan
+{kubo,shizuki,shin}@iplab.cs.tsukuba.ac.jp
+ABSTRACT
+
+Ă
+
+We present Watch Commander, a gesture-based invocation
+system for rectangular smartwatches. Watch Commander allows the user to invoke functions easily and quickly by using
+Bezel to Bezel-Swipe (B2B-Swipe). This is because B2BSwipe does not conflict with other swipe gestures such as
+flick and bezel swipe and can be performed in an eyes-free
+manner. Moreover, by providing GUIs that display functions
+assigned with B2B-Swipe, Watch Commander helps the user
+memorize those functions.
+
+ď
+
+Author Keywords
+
+Ultra-small device; wrist-worn device; watch applications;
+shortcut; eyes-free; bezel swipe; watch GUI.
+ACM Classification Keywords
+
+H.5.2 [Information Interfaces and Presentation]: User Interfaces – Input devices and strategies, Interaction styles.
+INTRODUCTION
+
+In most smartwatch interfaces, selecting and invoking a function, including starting an application, is performed by tapping a soft button or an icon (e.g., an app icon on the application menu). However, owing to the fat finger problem [7]
+and occlusion, tapping precisely on an icon is difficult to accomplish on the small touch screen. This problem is even
+more pronounced for command selection on the small screen.
+On the other hand, swipes, including bezel swipes [6], are
+more promising for such selection, because they do not require the user to precisely point the finger at a specific touch
+area. However, existing swipes including bezel swipes cannot be assigned to new functions because these gestures have
+been already used as basic operations on a smartwatches.
+
+Figure 1. Watch Commander. Users can invoke a function by using B2BSwipe. (a) Invoking a staring command that starts a timer application.
+(b) Invoking a starting command that starts a messenger application.
+
+proposed WristTap that utilizes multi-touch and TwoTap, that
+consists of two rapid and sequential taps; while implementing WristTap needs a multi-touch screen and TwoTap cannot
+be performed in an eyes-free manner. While methods that
+increase input vocabulary by using sensors have been proposed [1, 4], these methods need additional sensors.
+In an attempt to overcome these limitations, we present Watch
+Commander, a gesture-based invocation system for rectangular smartwatches (Figure 1). In this system, the user is able
+to easily and quickly invoke a function in a smartwatch using
+Bezel to Bezel-Swipe (B2B-Swipe) [2].
+
+Previously, methods that increase input vocabulary of a
+smartwatch have been explored. For example, Beats [5] combines tapping and release patterns with two fingers, which
+can only be used on a multi-touch screen. Lafreniere et al. [3]
+
+B2B-SWIPE
+
+B2B-Swipe is a single-finger swipe gesture that starts and
+ends at a bezel. In rectangular smartwatches, 16 B2B-Swipes
+are available because there are four bezels. Experiments
+showed that B2B-Swipe does not conflict with the bezel
+swipe or flick. Moreover, the user can perform B2B-Swipe
+in an eyes-free manner. Furthermore, B2B-Swipe requires
+only a single-touch screen, because it is a swipe made with a
+single finger.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985697
+
+37
+
+This large input vocabulary of B2B-Swipe provides the user
+with a rapid selection/invocation of many functions that are
+available in a smartwatch. Specifically, the vocabulary allows us to organize global functions (i.e., functions available
+on all applications) and local functions (i.e., functions unique
+to individual applications) strategically: we assigned global
+functions to two specific bezels and local functions to the remaining two bezels.
+WATCH COMMANDER
+
+Watch Commander is a gesture-based invocation system for
+rectangular smartwatches. In this system, the user can easily and quickly invoke global functions by using B2B-Swipes
+that start at two specific bezels and local functions by using
+B2B-Swipes that start at the remaining two bezels. In addition, Watch Commander displays GUIs that help the user
+memorize the assignments.
+
+Figure 3. GUIs for memorization, showing the assigned functions. When
+the user stops a finger after crossing a start bezel, the functions assigned
+to the start bezel are displayed on the GUI. These figures show the GUI
+showing the functions assigned to B2B-Swipes that start at the left and
+right, respectively.
+
+Since memorizing all the functions assigned to B2B-Swipes
+is difficult, we designed GUIs to help the user search for the
+assignment and memorize it. When the user stops a finger
+after crossing a start bezel, the functions assigned to that bezel
+are displayed in the GUIs on the smartwatch (Figure 3). Now,
+the user can examine the functions that have been assigned.
+Once the user locates a desired function, he or she move the
+finger further towards the corresponding end bezel to invoke
+the function. On the other hand, the user can simply release
+the finger to cancel the B2B-Swipe. It is to be noted that a
+quick B2B-Swipe does not show the GUI. This design allows
+the user to memorize the assignments gradually.
+
+Global Functions
+
+In Android smartphones, functions such as “Back,” “Home,”
+and “Recent Apps” can be performed by using soft buttons in
+any applications. If these functions can be realized in smartwatches, selection of application will be easier and faster.
+Thus, we assigned these functions to B2B-Swipes that start
+at the bottom bezel (Figure 2a-d). This design contributes towards the reduction of impact at the side where the user wears
+the smartwatch (e.g., when the smartwatch is worn on one’s
+left wrist, the left bezel becomes a deep side, and performing
+a B2B-Swipe that starts from the left bezel becomes difficult).
+Moreover, we assigned functions such as “Do not disturb,”
+“Theater mode,” and “Settings” to B2B-Swipes that start at
+the top bezel (Figure 2e-g), similar to the menu of Android
+Wear OS invoked from the top bezel swipe.
+
+IMPLEMENTATION
+
+An ideal implementation of Watch Commander would be a
+system daemon that captures all the touch events to invoke
+both global functions and local functions. However, in this
+demonstration, we implemented a prototype of Watch Commander that assigns all the implemented functions to local
+functions to present a proof-of-concept of Watch Commander.
+
+Local Functions
+
+We strategically assigned local functions in the following
+manner: functions that can be categorized under a single
+group are assigned to B2B-Swipes that start at the same bezel.
+This will help the user remember the assigned functions better. For example, functions for time and text are assigned to
+the left and right B2B-Swipes, respectively.
+
+APPLICATIONS
+
+In this section, we show the some example assignments of
+local functions.
+
+GUI for Memorization
+Home
+Ă
+
+Đ
+
+ď
+
++RPH
+
+%DFN
+Ğ
+
+6HWWLQJV
+
+Ĩ
+
+7KHDWHU
+0RGH
+
+A user can invoke eight different applications as local functions in one step.
+
+Ě
+
+Timer
+
+1H[W
+%DFN
+$SSOLFDWLRQ $SSOLFDWLRQ
+Ő
+
+Because B2B-Swipes can be performed in an eyes-free manner, the user can set the timer without looking at the screen of
+the smartwatch. We assigned the minutes and seconds timers
+to the left and right B2B-Swipes, respectively.
+
+1RWLILFDWLRQ
+
+Messenger
+
+Text input is difficult in smartwatches. We implemented a
+messenger application where the user can send some frequently used messages (e.g., “Why don’t we have lunch?” or
+“Sorry”). The user can select a typical text as a local function,
+and subsequently send the message by tapping on the screen.
+
+Figure 2. Global Functions. (a) Back: Return to the previous display. (b)
+Home: Return to Home. (c) Previous Application: Return to the previous application. (d) Next Application: Change to the next application.
+(e) Settings: Smartwatch Settings. (f) Theater Mode: Switching to the
+theater mode. (g) Notification: Manage notifications.
+
+38
+
+of the 27th Annual ACM Symposium on User Interface
+Software and Technology, UIST ’14, ACM (New York,
+NY, USA, 2014), 389–394.
+
+REFERENCES
+
+1. Kim, J., He, J., Lyons, K., and Starner, T. The Gesture
+Watch: A wireless contact-free gesture based wrist
+interface. In Proceedings of the 11th IEEE International
+Symposium on Wearable Computers, ISWC ’07, IEEE
+Computer Society (Washington, DC, USA, 2007), 1–8.
+
+5. Oakley, I., Lee, D., Islam, M. R., and Esteves, A. Beats:
+Tapping gestures for smart watches. In Proceedings of the
+33rd SIGCHI Conference on Human Factors in
+Computing Systems, CHI ’15, ACM (New York, NY,
+USA, 2015), 1237–1246.
+
+2. Kubo, Y., Shizuki, B., and Tanaka, J. B2B-Swipe: Swipe
+gesture for rectangular smartwatches from a bezel to a
+bezel. In Proceedings of the 34th SIGCHI Conference on
+Human Factors in Computing Systems, CHI ’16, ACM
+(New York, NY, USA, 2016), 3852–3856.
+
+6. Roth, V., and Turner, T. Bezel Swipe: Conflict-free
+scrolling and multiple selection on mobile touch screen
+devices. In Proceedings of the 27th SIGCHI Conference
+on Human Factors in Computing Systems, CHI ’09, ACM
+(New York, NY, USA, 2009), 1523–1526.
+
+3. Lafreniere, B., Gutwin, C., Cockburn, A., and Grossman,
+T. Faster command selection on touchscreen watches. In
+Proceedings of the 34th SIGCHI Conference on Human
+Factors in Computing Systems, CHI ’16, ACM (New
+York, NY, USA, 2016), 4663–4674.
+
+7. Siek, K. A., Rogers, Y., and Connelly, K. H. Fat Finger
+Worries: How older and younger users physically interact
+with PDAs. In Proceedings of the 2005 IFIP TC13
+International Conference on Human-Computer
+Interaction, INTERACT’05, Springer-Verlag (Berlin,
+Heidelberg, 2005), 267–280.
+
+4. Laput, G., Xiao, R., Chen, X. A., Hudson, S. E., and
+Harrison, C. Skin Buttons: Cheap, small, low-powered
+and clickable fixed-icon laser projectors. In Proceedings
+
+39
+
+

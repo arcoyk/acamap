@@ -1,0 +1,195 @@
+Reconstruction of Scene from Multiple Sketches
+Ayuri Tomohiro
+Future University Hakodate
+Hakodate, Japan
+a-tomohiro@sumilab.org
+
+Yasuyuki Sumi
+Future University Hakodate
+Hakodate, Japan
+sumi@acm.org
+presents our current prototype of the proposed system and
+examples of its usage, to show that our system facilitates its
+users’ rapid extraction of target objects and spaces seen from
+their individual viewpoints.
+
+ABSTRACT
+
+This paper discusses the feasibility of extension of expressive
+style with multiple 3D sketches drawn by a sketching tool
+that enables its users to draw and paint on 3D structured
+surfaces. Users of our proposed system take a picture of
+target objects and sketch with reference to the taken picture.
+They can not only sketch on the pictures but can also change
+their viewpoint of the sketched environment, since the system
+captures 3D structure by using a depth sensor as well as
+RGB data. Trial usage of the system shows that our users
+can rapidly extract their target objects/space and extend
+their ideas by taking pictures and drawing/painting on them.
+This paper discribes a notion of reconstructing scenes from
+multiple sketches.
+
+RELATED WORK
+
+Teddy [2] helps its users to intuitively sketch 3D models
+using 2D drawings, but it does not aim at expressing
+individuality and originality. There are other approaches
+involving sketching on 3D models that place importance on
+individuality and originality, such as in [3] and [4]. However,
+the drawing in these approaches is it does not capture the 3D
+structure of real objects. We aim to expand the sketching of
+real objects and enable users to change their viewpoint in the
+sketched environment and share their sketch with other users.
+
+Author Keywords
+DRAWING AND INTERACTIVE VISUALIZATION
+
+Sketching; interactive illustrations.
+
+We use tablet PCs as sketching devices, and the ASUS Xtion
+as a depth sensor. The resulting sketches are 3D and allow
+users to change their viewpoints. Users begin by taking
+pictures of target objects, as with a normal camera. At
+the same time, the system captures 3D depth information
+with RGB information. Users can intuitively draw on the
+pictures and externalize their ideas on them. Afterwards,
+they can explore the sketched environment by changing their
+viewpoints. Users repeat the process of photographing,
+drawing, and altering the viewpoint to complete the sketch.
+This repetition prompts them to observe the hidden parts and
+3D structure of the target object.
+
+ACM Classification Keywords
+
+H.5.2 Information interfaces and presentation :
+Interfaces: Graphical user interfaces
+
+User
+
+INTRODUCTION
+
+Sketching is an intuitive and powerful method to capture
+and externalize designers’ ideas. We already proposed a
+sketching tool to enable designers to understand and design
+the 3D structure of target objects and spaces, by using a
+tablet PC and a camera with a depth sensor [1]. Users of
+the proposed system can take a picture of target objects and
+sketch with reference to the taken picture. They can not only
+sketch on the picture, but also change their viewpoint of the
+sketched environment since the system captures 3D structure
+using a depth sensor as well as RGB data. Resultantly, users
+can easily understand and manipulate the target objects by
+sketching, and then extend their ideas by drawing the textures
+they picture in their minds onto the 3D surface. We extended
+our system to collaborative spatial designing by multiple
+users, by enabling the merging of several 3D sketches. This
+arrows the users not only to merge several sketches to extend
+their sketch space and mix different viewpoints, but also
+to conduct spatial designing by multiple users. This paper
+
+EXAMPLES
+Merging different viewpoints
+
+Figure 1 (c-e) shows an example of prototyping a pseudo
+3D object with two sketches (a,b) from different viewpoints.
+These sketches are drawn from different viewpoints. The
+subject of one of the sketches is the surface of a box, the
+subject of the other is the inside of the box. By merging
+sketches, users can make a sketch which depicts the box from
+two viewpoints.
+Expanding a space
+
+Figure 5 shows an example of prototyping a pseudo 3D space
+with two sketches. In this example, the user firstly took
+several pictures while walking through the hallway of an old
+building. Secondly, he selected two pictures from those he
+had taken, drew and painted on them and then put them onto
+a virtual 3D canvas using our tool, so that we can virtually
+walk through and look around the space. The user tried to
+find better locations and viewpoints by taking pictures and
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985736
+
+143
+
+Figure 3. Capturing a series of frame from animation while change the
+viewpoint.
+
+Figure 4. Three time-lapse sketches.
+Figure 1. (a-b) Two sketches of a box drawn by the user from two
+viewpoints. (c-d) The result of merging.
+
+Figure 5. Sketch of a plaster figure. The expressive style is a mix of the
+three user’s styles.
+
+CONCLUSION
+
+In this paper we discussed the feasibility of extension of
+expressive style with multiple 3D sketches drawn by a
+sketching tool that enables its users to draw and paint
+on 3D structured surfaces. The trial usage showed that,
+by combining multiple sketches, we can make sketches
+that mix multiple viewpoints, virtually walk through and
+look around the sketched space, and produce collaborative
+sketches of objects. We aim to realize collaborative spatial
+designing from multiple sketches and facilitates its users’
+rapid extraction of target objects, access to spaces seen
+from their individual viewpoints and exchange intuitively
+exchange of views.
+
+Figure 2. Example of prototyping a pseudo 3D space with two sketches.
+
+painting on them several times in order to better capture his
+experience of touring the building. Our system enables users
+to easily capture and rethink the target environment, and then
+encourages their rapid prototyping through trial and error.
+Animation with time-lapse sketches
+
+Figure 3 is an example of 3D animation using three sketches
+(Figure 4a-c). In this animation, time-lapse sketches are
+displayed and switched in sequence: A, B, C, B, A .... As
+shown in Figure 3, it is possible to change the viewpoint while
+animating the sketch. Just by drawing a few sketches, users
+can reproduce motion and the lapse of time.
+
+REFERENCES
+
+1. A. Tomohiro and Y. Sumi. 2015. ”Sketching on 3D
+structured surfaces” In Adjunct Proc. UbiComp/ISWC’15.
+pp. 397–400.
+2. T. Igarashi, S. Matsuoka, and H. Tanaka. 1999. ”Teddy: A
+sketching interface for 3D freeform design” In Proc.
+SIGGRAPH99. pp. 409–416.
+
+Collaborative sketch
+
+3. R. Kalnins, L. Markosian, B. Meier, M. Kowalski, J.
+Lee,P. Davidson, M. Webb, J. Hughes, and A. Finkelstein.
+2002. ”WYSIWYG NPR: drawing strokes directly on 3D
+models” In Proc. SIGGRAPH02, pp. 755–762.
+
+Figure 5 (d-f) shows three sketches (a-c), drawn individually
+by three different users from three different viewpoints,
+which have been merged to create one plaster figure. The
+expressive style is a mix of the three user’s styles. In
+this example, each user takes a photo form a different
+viewpoint and sketches, then each sketch is shared in real
+time on their canvas. This arrows the users to look all
+around each other’s viewpoints, check individual points of
+focus and points of view, and exchange ideas and discoveries.
+
+4. J. Schmid, M. S. Senn, M. Gross, and R. W. Sumner.
+2011. ”Overcoat: An implicit canvas for D painting”
+ACM Trans. Graph. 30,4, Article 28(2011), 10 pages.
+
+144
+
+

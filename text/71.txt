@@ -1,0 +1,203 @@
+SoEs: Attachable Augmented Haptic on Gaming Controller
+for Immersive Interaction
+Kong-Chang Lee
+Ping-Hsuan Han*
+Jui-Chun Hsiao*
+‡
+*
+Chien-Hsing Chou
+Kuan-Yin Lu
+Yi-Ping Hung*
+*
+National Taiwan University
+‡
+Tamkang University
+{yeti0193275, pinghsuan.han}@gmail.com
+hung@csie.ntu.edu.tw
+
+Yang-Sheng Chen*
+Chiao-En Hsieh*
+
+‡
+
+Figure 1. Scenarios of multisensory interactive gameplay through immersive gaming controller
+ABSTRACT
+
+To provide a various and low-cost haptic feedback device
+for game makers, many works have influenced our
+prototyping. Birdly [1] creates a vivid full-body experience
+of flying by using a motion platform and a wind-feedback
+system. Like most of motion platform, they could provide a
+whole body haptic experience, but the device is expensive.
+Haptic Turk [2] is another kind of motion platform based on
+few people, which do not have any cost for machinery, but
+it could provide similar experiences of haptic feedback.
+Although these approach have been successful at whole
+body haptic experience, however, they are not suitable for
+recreating the touch-related experience.
+Therefore, prop-based feedback system could consider
+another usage. Annexing Reality [3] and Haptic Retargeting
+[4] provide a prop-based feedback for virtual object. Both
+design only provide a static tangible interface for user
+which use real physical object to simulate the tactile
+sensation of the virtual object. Additionally, OoEs [5] uses
+an orb-form feedback system which could provide four
+kinds of active tactile sensation to simulate nature element
+in the immersive game. Those works make prop-based
+approaches very stationary and not universally usable.
+TurkDeck [6] have shown another potential approach by
+scaling prop-based virtual reality through physical labor.
+This make prop-based tactile sensation more useful, which
+it is fun and interesting that having a group of people for
+doing this. Lopes et al. [7] proposed Impacto which uses a
+wearable device to simulate the physical impact by
+combing tactile stimulation with electrical muscle
+stimulation. Po2 [8] uses gloves to provide an illusion
+tactile feedback between hands. Although both wearable
+devices can provide augmented haptic in the immersive
+virtual reality, player has to wear something which is not
+usually wear it.
+
+We present SoEs (Sword of Elements), an attachable
+augmented haptic device for enhancing gaming controller
+in the immersive first-person game. Generally, Player can
+easily receive visual and auditory feedback through headmounted displays (HMD) and headphones from first-person
+perspective in virtual world. However, the tactile feedback
+is less than those feedbacks in immersive environment.
+Although gaming controller, i.e. VIVE or Oculus controller,
+can provide tactile feedback by some vibration sensors, the
+haptic feedback is more complicated and various, it
+includes kinesthesia and cutaneous feedback. Our key idea
+is to provide a low-cost approach to simulate the haptic
+feedback of player manipulation in the immersive
+environment such as striking while the iron is hot which the
+player could feel the heat and reaction force. Eventually,
+the game makers could utilize the attachable device into
+their games for providing haptic feedback.
+Author Keywords
+
+Augmented Haptic; Haptic Feedback; Immersive Game;
+Game Controller; Virtual Reality.
+INTRODUCTION
+
+Virtual Reality (VR) is an emerging field due to its
+powerful immersive feeling. To enhance the player
+experience in immersive game in the state of art, haptic
+feedback is one of the key feedback.
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985707
+
+71
+
+In this work, we present an attachable augmented haptic
+device for enhancing gaming controller, which is usually
+included in a HMD set.
+
+iron into a water sink which could feel the vapour from the
+water sink, and polishing the iron on the grinding wheel
+which could feel the vibration and the continues of reaction
+force. In the second phase, we design two action for player.
+When player pulling an arrow back on his longbow, he
+could receive the continues of reaction force. Then, when
+player releasing the arrow from his hand, he could receive a
+small wind caused by the arrow flying to the target.
+
+IMPLEMENTATION
+
+The hardware design of SoEs is shown on Figure2. The
+concept of the device is to design an attachable case for an
+immersive gaming controller, which is wireless and provide
+the position tracking of the controller. Therefore, in this
+implementation, we choice Vive to be our HMD sets,
+because they already include a gaming controller with
+position tracking. For combining both multiple haptic
+feedback and remote-controlled function, SoEs mainly
+consists of four parts of hardware modules on an attachable
+case: (1) Arduino Nano, (2) multiple tactile modules, (3)
+Bluetooth and (4) 12V Battery. Beside the build-in
+vibration sensor in Vive controller, for providing a
+multisensory interactive gameplay, we combine other three
+modules (Figure 2). So, the player can receive the related
+haptic when they playing in the immersive game through
+four kinds of tactile sensation. To integrate all of the details
+described above, we use Unity 5 to be our game engine.
+
+DISCUSSION AND FUTURE WORK
+
+In this work, we provide an attachable solution to enhance
+the player experience in the immersive game with
+augmented haptic. Through attaching SoEs on the gaming
+controllers, player can receive wind, thermal and
+centrifugal force feedback additionally. Furthermore,
+applying the concept presented in this work also could be
+used in other interactive gameplay. Our future work will
+gather the user feedback to inform researchers, game
+makers and practitioners the playful uses of this technology.
+ACKNOWLEDGMENTS
+
+This research was supported in part by the Ministry of
+Science and Technology of Taiwan under the grant MOST
+104-2221-E-002-050-MY3, and by NTU IoX Center under
+the grant NTU-105R104045 and MOST105-2633-E002001.
+REFERENCES
+
+1. Rheiner, Max. "Birdly an attempt to fly." ACM
+SIGGRAPH ‘14 Emerging Technologies. ACM, 2014.
+2. Cheng, Lung-Pan, et al. "Haptic turk: a motion platform
+based on people." In Proc. ACM CHI ’14.
+3. Hettiarachchi, Anuruddha, and Daniel Wigdor.
+"Annexing Reality: Enabling Opportunistic Use of
+Everyday Objects as Tangible Proxies in Augmented
+Reality." In Proc. ACM CHI ’16.
+
+Figure 2. Hardware Design of SoEs: (a) an attachable case
+on gaming controller, (b) motor module, (c) electronic fan
+module and (d) thermal module.
+
+4. Azmandian, Mahdi, et al. "Haptic Retargeting: Dynamic
+Repurposing of Passive Haptics for Enhanced Virtual
+Reality Experiences." In Proc. ACM CHI ’16.
+
+APPLICATIONS: IMMERSIVE ADVENTURE GAME
+
+5. Han, Ping-Hsuan, et al. "OoEs: Playing in the
+Immersive Game with Augmented Haptics." In Proc.
+ACM SIGGRAPH ’16 VR Village.
+
+To demonstrate our device, we develop an immersive
+virtual reality game with augmented haptic, which we
+called “The ancient maker”. This game scene mainly uses
+“The Blacksmith: Environment [9]” unitypackage, which is
+a 3D model of environment. In our game, player is a
+defender who need to make arrowheads and shoot the arrow
+to defend the intruder, therefore, we design two phases for
+player to experience the immersive interaction with
+augmented haptic: (1) Making arrowheads and (2) Shooting
+the intruder. In the first phase, we simulate the process of
+making arrow step by step. Player will receive variant
+combination of haptic feedback in the process such as
+heating pieces of wrought iron into the furnace which could
+feel the heat from the iron, striking while the iron is hot
+which could feel the heat and reaction force, quenching the
+
+6. Cheng, Lung-Pan, et al. "TurkDeck: Physical Virtual
+Reality Based on People." In Proc. ACM UIST ’15.
+7. Lopes, Pedro, Alexandra Ion, and Patrick Baudisch.
+"Impacto: Simulating Physical Impact by Combining
+Tactile Stimulation with Electrical Muscle
+Stimulation." In Proc. ACM UIST ’15.
+8. Israr, Ali, et al. "Po2: augmented haptics for interactive
+gameplay." In Proc. ACM SIGGRAPH’15 Emerging
+Technologies (p. 21).
+9. Unity. The Blacksmith. http://unity3d.com/cn/pages/theblacksmith
+
+72
+
+

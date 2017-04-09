@@ -1,0 +1,201 @@
+Sidetap & Slingshot Gestures on Unmodified Smartwatches
+Hui-Shyong Yeo 1
+hsy@st-andrews.ac.uk
+1
+
+Juyoung Lee 2
+ejuyoung@kaist.ac.kr
+
+Andrea Bianchi 3
+andrea@kaist.ac.kr
+
+Aaron Quigley 1
+aquigley@acm.org
+
+School of Computer Science, University of St Andrews, Scotland, United Kingdom
+2
+Graduate School of Culture Technology, KAIST, Republic of Korea
+3
+Department of Industrial Design, KAIST, Republic of Korea
+
+ABSTRACT
+
+We present a technique for detecting gestures on the edge of
+an unmodified smartwatch. We demonstrate two exemplary
+gestures, i) Sidetap - tapping on any side and ii) Slingshot pressing on the edge and then releasing quickly. Our technique is lightweight, as it relies on measuring the data from
+the internal Inertial measurement unit (IMU) only. With these
+two gestures, we expand the input expressiveness of a smartwatch, allowing users to use intuitive gestures with natural
+tactile feedback, e.g., for the rapid navigation of a long list of
+items with a tap, or act as shortcut commands to launch applications. It can also allow for eyes-free interaction or subtle
+interaction where visual attention is not available.
+
+Figure 1. Side tapping on both circular and square watches. The blue
+bar shows the direction of force applied.
+
+Author Keywords
+
+Smartwatches; tapping gesture; sidetap; slingshot
+Figure 2. Slingshot in action (1) not touching (2) pressing down (3) quick
+release. The green bar shows the direction of shot.
+
+ACM Classification Keywords
+
+H.5.2. Information interfaces and presentation: User interfaces - Input devices and strategies
+
+on wearable devices with limited computing resources. Finally, we demonstrate the implementation of our prototype
+on a square and a circular Android smartwatch.
+
+INTRODUCTION
+
+Wrist-worn wearables such as smartwatches and fitness trackers are of increasing interest in both research and commercial deployment. However, such devices rely on small touch
+screens or a few physical buttons for interaction. This can be
+difficult for the user due to the limited input expressiveness
+and the requirement for direct sight and visual attention.
+
+RELATED WORK
+
+Previous research has attempted to extend smartwatch interaction to support in-air [6], around device [2, 4] and mechanical [5, 7] gesture, which each typically require hardware modification. Xiao et al. [7] and SkinWatch [5] enhance the interaction by supporting tilt, twist and pan on the watchface with
+joysticks or photo-reflective sensors. EdgeSense [4], SkinButtons [2] and zSense [6] expand the input area to the side
+of the watch, skin surface beside the watch and mid-air area
+around the watch, using capacitive or infrared sensors.
+
+Here, we propose a new technique for detecting i) Sidetap and
+ii) Slingshot gestures, which are i) tapping on any side and ii)
+pressing on the edge and then releasing quickly. These two
+simple gestures allow us to expand the input expressiveness of
+wristworn devices beyond screen or button input. In addition,
+by focusing on “interaction on the edge”, we allow for eyesfree interaction where visual attention is not available.
+
+There are also approaches [3, 8] that are able to infer side or
+back tapping motion on the device without requiring external hardware. However, these have only been demonstrated
+on a smartphone, not on smartwatch, as these methods [3, 8]
+rely on machine learning to classify the tap, which might be
+difficult for wearables with limited computing resources.
+
+Our contribution is a simple, yet effective detection technique, which does not rely on classification methods that are
+computationally expensive such as machine learning or template matching. We employ only the built-in IMU data directly, thus making our technique suitable for deployment
+
+DESIGNING SIDETAP AND SLINGSHOT
+
+Our gesture design is motivated by five goals: i) No hardware
+or modification required. ii) Low processing requirement for
+running on smartwatch natively. iii) Accurate detection and
+robust to false triggering. iv) Intuitive and natural tactile feedback. v) Support for eyes-free interaction. The end result is
+Sidetap & Slingshot which support tapping and quick release
+gestures from all 8 directions (4 corners and on 4 edges).
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16, October 16-19, 2016, Tokyo, japan.
+ACM 978-1-4503-4531-6/16/10.
+
+http://dx.doi.org/10.1145/2984751.2984763
+
+189
+
+Figure 3. A Sidetap or Slingshot gesture causes spike in the acceleration
+and microphone input, which can be extracted via peak detector. Note
+the difference between the two gestures - the rotation value changes before impact (sidetap) or after impact (slingshot).
+
+Figure 4. Example: (top) file explorer (bottom) shortcut and angry bird.
+
+CONCLUSION, LIMITATION AND FUTURE WORK
+
+We presented a new technique for detecting Sidetap & Slingshot gestures on unmodified smartwatches. Our technique
+is lightweight yet effective, using only the built-in IMU data
+without heavy processing such as machine learning.
+
+Working Principle
+
+Wristworn devices are typically held in place by a strap to
+areas of human skin. Both the elasticity of human skin and
+any strap act to return the device to its original position (akin
+to RubberEdge [1]), when they encounter a light force.
+
+In current prototype, there are still some miss triggering. To
+reduce false triggering due to unintentional arm movement,
+we use a high threshold for the peak detection, thus requiring a strong tap from the user to register as input. This is a
+trade-off, as reducing threshold reduces miss triggering but
+increases false triggering, and vice-versa. Because there is
+only a single microphone embedded in the watch, the amplitude of microphone input is also different when tapping from
+different side (e.g., right side is higher on Gear Live).
+
+As a result of these two key characteristics, when a watchface
+is hit or tapped from one direction, it will move in the opposite direction, tilting the watchface slightly. By measuring
+this subtle change in the orientation value, we can determine
+the opposite direction of the applied force. In addition, when
+a tap or quick release occurs, there exist a sharp peak in both
+the acceleration data and microphone input amplitude.
+
+In future work, we aim to improve the robustness and then
+perform a thorough user study to evaluate the system. Furthermore, instead of binary state detection (tap or not tap),
+we aim to detect the pressure level and the impact force.
+
+Implementation
+
+We implemented a prototype on two unmodified Android
+smartwatches (Samsung Gear Live and LG Urbane), using
+Android Wear SDK, as shown in Figure 1 and 2. Linear acceleration and a rotation vector of the watch is polled at about
+100Hz while microphone input is sampled at 16kHz.
+
+REFERENCES
+
+1. Casiez, G., Vogel, D., Pan, Q., and Chaillou, C.
+Rubberedge: Reducing clutching by combining position
+and rate control with elastic feedback. In UIST ’07,
+
+The changes in rotation vector (Figure 3 right) before and after trigger are measured and converted to x-y coordinate linearly. This is used to determine the direction and which gesture. For Sidetap, the rotation changes after impact while for
+Slingshot, the rotation changes before impact. A short delay
+is used because the IMU data is very noisy during impact.
+
+2. Laput, G., Xiao, R., Chen, X. A., Hudson, S. E., and
+Harrison, C. Skin buttons: Cheap, small, low-powered
+and clickable fixed-icon laser projectors. In UIST ’14,
+3. McGrath, W., and Li, Y. Detecting tapping motion on the
+side of mobile devices by probabilistically combining
+hand postures. In UIST ’14,
+
+In addition, we need a robust way to trigger the gesture detection. Unfortunately, the side/rim of current smartwatches
+is not touch sensitive. After some experiments, we chose to
+employ a sensor fusion approach of detecting a sharp peak in
+both the acceleration and microphone input, as shown in Figure 3 left. This has proved to be quite robust. In addition, to
+avoid falsely triggering, the following heuristics are used - i)
+orientation of the watch should not fluctuate beyond a small
+threshold during or before the trigger (due to unintentional
+arm movement). ii) when microphone input is too loud (due
+to background noises or speaking), fall back to using linear
+acceleration peak only.
+
+4. Oakley, I., and Lee, D. Interaction on the edge: Offset
+sensing for small devices. In CHI ’14,
+5. Ogata, M., and Imai, M. Skinwatch: Skin gesture
+interaction for smart watch. In AH ’15,
+6. Withana, A., Peiris, R., Samarasekara, N., and
+Nanayakkara, S. zsense: Enabling shallow depth gesture
+recognition for greater input expressivity on smart
+wearables. In CHI ’15,
+7. Xiao, R., Laput, G., and Harrison, C. Expanding the input
+expressivity of smartwatches with mechanical pan, twist,
+tilt and click. In CHI ’14,
+
+EXAMPLE APPLICATIONS
+
+In a file explorer (Figure 4) with a long list of items, a
+top/bottom tap can skip to the first/last item. Sidetap gesture
+also allows shortcut command, e.g., left tap to start a timer
+or right tap to start a music player. Slingshot is particularly
+suitable for gaming purposes such as the “Angry bird” game
+(Figure 4), because of the realistic and natural feedback.
+
+8. Zhang, C., Guo, A., Zhang, D., Southern, C., Arriaga, R.,
+and Abowd, G. Beyondtouch: Extending the input
+language with built-in sensors on commodity
+smartphones. In IUI ’15,
+
+190
+
+

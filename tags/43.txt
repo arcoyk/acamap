@@ -1,0 +1,245 @@
+floatio : Floating Tangible User Interface Based on
+Animacy Perception
+Toshiya Yui
+
+Tomoko Hashida
+Waseda University
+3-4-1 Okubo Shinjuku-ku Tokyo 169-8555, Japan
+yui1048119@fuji.waseda.jp, hashida@waseda.jp
+ABSTRACT
+
+of animacy [4]. However, in the TUI field, there are still
+very few studies where creating a perception of animacy
+has been the initial intention. Our aim in this study is
+therefore to implement a TUI that can be moved in three
+dimensions by users, and is also capable of moving
+autonomously and has animacy qualities.
+
+In this study, we propose floatio: a floating tangible user
+interface that makes it easy to create a perception of
+animacy (lifelike movement). It has been pointed out that
+there are three requirements that make animacy more likely
+to be perceived: interactivity, irregularities, and automatic
+movement resisting the force of gravity. Based on these
+requirements, floatio provides a tangible user interface
+where a polystyrene ball resembling a pixel is suspended in
+a stream of air where it can be positioned passively by the
+user, or autonomously by the system itself. To implement
+floatio, we developed three mechanisms: a floating field
+mechanism, a pointer input/output mechanism and a handover mechanism. We also measured the precision of the
+pointer input/output and hand-over mechanisms.
+
+Nakayama et al. cited two properties that are required in
+order to easily convey a sense of animacy: (Requirement
+1) movements that interact with humans, and
+(Requirement 2) movements including irregular factors
+that express indecision or fluctuation [4]. Furthermore,
+Nakamura et al. stated that animacy can be perceived more
+immediately from automatic movements that resist the
+force of gravity (Requirement 3) [5]. The autonomous
+floating TUIs mentioned above all satisfy the requirements
+for conveying animacy in terms of (Requirement 1) and
+(Requirement 3). In this study, we focus on the use of a
+stream of air as a floating technique in order to express
+indecision or fluctuation (Requirement 2). A similar
+floating technique is used in the Aerial Tunes system [6],
+where balls appear to dance in mid-air due to instability,
+and it can be confirmed that this floating motion conveys a
+sense of animacy. In this study, we implement a TUI that
+not only exhibits autonomy but also conveys a sense of
+animacy by satisfying all of the above requirements.
+
+Author Keywords
+
+Tangible User Interface; Animacy Perception; 3D
+Interaction;
+ACM Classification Keywords
+
+H.5.2. User Interfaces.
+INTRODUCTION
+
+Recent studies of tangible user interfaces (TUIs) have
+shown increasing interest in active or autonomous
+movement that makes it possible to interact with physical
+interfaces not only in 2D planes but also in 3D spaces.
+Typical examples include the ZeroN system, where a ball is
+suspended in a magnetic field [3], and BitDrones, which
+uses miniature drones [1]. In TUIs that support autonomous
+movement, it is particularly easy for humans to feel a sense
+of animacy (lifelike movement), and it has been pointed out
+that this can help to attract the user’s attention and increase
+the system’s frequency of use [2]. In the field of robotics
+research, many studies have set out with the intention of
+designing a system whose movements create a perception
+
+Figure 1: The proposed system.
+IMPLEMENTATION
+Overview
+
+In this study, we propose a TUI called “floatio” that
+produces a display consisting of a ball resembling a pixel
+suspended in mid air, where the ball can be positioned
+passively by the user and can also be positioned
+autonomously by the system itself (Figure 1). To achieve
+this, we implemented three mechanisms: a floating field
+formation mechanism, a pointer input/output mechanism,
+and a hand-over mechanism. Our system is designed to
+convey a sense of animacy as discussed above by using a
+floating field formation mechanism to create fluctuations
+and uncertainty (Requirement 2), automatic floating
+
+Permission to make digital or hard copies of part or all of this work for personal
+or classroom use is granted without fee provided that copies are not made or
+distributed for profit or commercial advantage and that copies bear this notice
+and the full citation on the first page. Copyrights for third-party components of
+this work must be honored. For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985699
+
+43
+
+movements and hand-overs that resist the force of gravity
+(Requirement 3), and interaction via a pointer
+input/output mechanism (Requirement 1).
+
+EVALUATION
+
+To clarify the accuracy of the pointer input/output
+mechanism and hand-over mechanism, we carried out
+simple experiments to test them individually.
+
+Floating field formation mechanism
+
+First, we measured the precision during pointer input/output
+actions (the height error of the ball when controlled by the
+system, compared with the height of the ball when placed
+by the user). With the current mechanism, we used a laser
+rangefinder (Bosch GLM 100C) to measure the height of
+the ball across the possible output range (0–175 mm) in 14
+equal height increments. As shown in Figure 2, the
+maximum error was about 20 mm. Next, we measured the
+success rate of the hand-over mechanism. At 4 seconds per
+hand-over, the success rate was 99%. And at 1.8 seconds
+per hand-over, the success rate was 90%.
+
+To enable the ball to be positioned at any height, we
+implemented a mechanism that performs floating control.
+To create a floating effect, we used the Coandă effect — the
+phenomenon whereby a sphere can float stably in a stream
+of fluid due to the way in which the fluid changes direction
+as it flows around it. For the basic system configuration, we
+used PCs, Arduino controllers, a polystyrene ball (diameter
+~3.5 cm, weight ~1.2g), and a blower fan (SparkFun Com11270) with a variable flow rate controlled by pulse width
+modulation (PWM). Also, by determining the minimum
+and maximum PWM duty ratios (corresponding to the flow
+rates when the ball begins to float and when the ball reaches
+its maximum height) and interpolating linearly between
+these duty ratios, we determined the duty ratio needed to
+make the ball float at any height. With several of these fans
+arranged on a plane, it is possible to form a floating field by
+expanding the region where floating is possible.
+3.3 Pointer input/output mechanism
+
+Figure 2: Positioning error vs. height of ball.
+
+We implemented a pointer input/output function whereby
+input consists of grasping the ball and changing its position,
+and whereby the ball continues to float in the same position
+when it is released. Thus was achieved using a Kinect
+system in addition to the basic system configuration. The
+Kinect is used to ascertain the position and shape of the
+user’s hand, and the position of the ball. From this
+information, it figures out whether or not the user is holding
+the ball, and if so, the output of the fan directly beneath the
+ball is updated to match the ball’s position. In this way, the
+ball stays where it is when the user releases it, allowing
+system to show the finished input position. This makes it
+possible to perform pointer operations where the input and
+output are represented by the position to which the ball is
+moved when the user holds it.
+
+APPLICATION
+
+By combining the three mechanisms mentioned above, we
+implemented an application that operates a slider by making
+a single ball follow the user (Figure 3). Of the five fans
+arranged in a row, the ball is handed over to the fan closest
+to the user’s position. This can be operated as a slider by
+having the user change the height of the ball above the fan.
+With this implementation, we confirmed that it was
+possible for the ball to move to the intended position, and
+for the user to operate the system as a slider.
+
+3.4 Hand-over mechanism
+
+To move the ball to any fan situated on the plane, we
+implemented a mechanism for handing over the ball from
+one fan to another. In addition to the basic system
+configuration, this is configured from servo motors that
+change the direction in which the ball is to be passed, and
+servo motors that tilt the fans forwards and backwards. The
+hand-over method involves keeping the ball at a height of
+about 10 cm, and then tilting the fan at an angle of about
+70° in the direction in which the ball is to be handed over.
+This causes the ball to fall onto the neighboring fan situated
+19 cm away, and the hand-over is complete. To improve the
+hand-over success rate, we attached a saucer of 9 cm in
+diameter around the outlet of each fan. The hand-over
+mechanism made it possible for the system to move the ball
+autonomously in three dimensions when the fans are
+arranged in the form of an array.
+
+Figure 3: A slider application that tracks the user.
+CONCLUSION
+
+We have designed a floating TUI based on the findings
+relating to animacy perception. We exhibited floatio with a
+pointer function at the Interaction 2016 event (held at the
+Science Museum on March 3, 2016) and invited 200
+visitors to try it out. They reported that the system was
+“cute” and “like a living thing”, thus showing that animacy
+was perceived. Many of them were also very interested in
+the system, and were keen to interact with it.
+ACKNOWLEDGEMENTS
+
+This paper is a part of the outcome of research performed
+under a Waseda University Grant for Special Research
+Projects (Project number: 2015A-502).
+
+44
+
+REFERENCES
+
+1. Antonio Gomes, Calvin Rubens, Sean Braley, and Roel
+Vertegaal. BitDrones: Towards Using 3D Nanocopter
+Displays as Interactive Self-Levitating Programmable
+Matter. In Proc. CHI '16. 770 – 780. 2016.
+
+4. Ko Nakamura and Shigemasa Sumi. Motion information
+contributing to the perception of animacy or inanimacy
+from the motion of a single object. The Institute of
+Electronics, Information and Communication Engineers,
+2002.
+
+2. Diana Nowacka. Autonomous Behaviour in Tangible
+User Interfaces as a Design Factor. In Proc. TEI '14,
+289-292, 2014.
+
+5. Momoka Nakayama and Shunji Yamanaka. Animacy
+Perception by Linear Motion Simple Group Robots.
+IPSJ Interaction 2016.
+
+3. Jinha Lee, Rehmi Post, and Hiroshi Ishii. 2011. ZeroN:
+Mid-air tangible interaction enabled by computer
+controlled magnetic levitation. In Proc. UIST '11, 327336.
+
+6. Tobias Alrøe, Jonas Grann, Erik Grönvall, Marianne
+Graves Petersen, Jesper L. Rasmussen. Aerial tunes:
+exploring interaction qualities of mid-air displays. In
+Proc. NordiCHI '12. 514-523. 2012.
+
+45
+
+
