@@ -8,7 +8,7 @@ def get_head(text):
   return text[:500]
 
 def validate(point):
-  p = point > 5
+  p = point > 10
   return p
 
 def skipwords(tar, skips):
@@ -41,7 +41,7 @@ def test_all_pattern(text_paths):
       from_text = get_text(from_text_path)
       flag = is_referenced(from_text, to_text)
       if flag:
-        print(from_text_path, ',', to_text_path)
+        print(from_text_path + ',' + to_text_path)
 
 def pathlize(a):
   return '/'.join(a)
