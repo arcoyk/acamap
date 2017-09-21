@@ -1,15 +1,15 @@
 # PDF to reference network
 
-'''
+```
 source run.sh
 // cat ref.json
-'''
+```
 
 will produce reference network among scholarly papers saved in
 
-'''
+```
 pdfs
-'''
+```
 
 ---------
 
