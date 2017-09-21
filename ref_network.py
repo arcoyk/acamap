@@ -32,7 +32,8 @@ def get_text(path):
 to_text = get_text('text/101.txt')
 from_text = get_text('text/103.txt')
 
-def test_all_pattern(text_paths):
+def get_all_refs(text_paths):
+  rst = []
   for i in range(len(text_paths)):
     for k in range(len(text_paths))[i+1:]:
       to_text_path = text_paths[i]
@@ -41,7 +42,8 @@ def test_all_pattern(text_paths):
       from_text = get_text(from_text_path)
       flag = is_referenced(from_text, to_text)
       if flag:
-        print(from_text_path + ',' + to_text_path)
+        rst.append([from_text_path, to_text_path])
+  return rst
 
 def pathlize(a):
   return '/'.join(a)
@@ -59,10 +61,42 @@ def get_all_paths(r, d=list()):
 def only_txt(paths):
   return list(filter(lambda x:x.find('txt') != -1, paths))
 
+def path2name(path):
+  return path.split('/')[-1].split('.')[0]
+
+def dquote_join(c, a):
+  return c.join(list(map(lambda x:'"'+x+'"', a)))
+
+def to_json(refs):
+  # data restruction
+  uniq_from = list(set(map(lambda x:x[0], refs)))
+  h = {}
+  for u in uniq_from:
+    h[u] = list()
+  for from_path in uniq_from:
+    for ref in refs:
+      if ref[0] == from_path:
+        h[from_path].append(ref[1])
+  # to list and rename
+  net = []
+  for k in h:
+    net.append([path2name(k), list(map(lambda x:path2name(x), h[k]))])
+  # to json
+  print('{"nodes":[')
+  for link in net:
+    print('{')
+    print('"node_name":"' + link[0] + '",')
+    print('"link_to":[' + dquote_join(',', link[1]) + '],')
+    print('"attributes":["HCI"]')
+    print('},')
+  print(']}')
+
+
 SW = list(set(get_text('skipwords.txt').split('\n')))
 paths = get_all_paths('referencing')
 text_paths = only_txt(paths)
-test_all_pattern(text_paths)
+refs = get_all_refs(text_paths)
+to_json(refs)
 
 
 
