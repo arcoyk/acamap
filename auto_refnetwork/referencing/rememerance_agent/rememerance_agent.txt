@@ -1,0 +1,235 @@
+From: AAAI Technical Report SS-96-02. Compilation copyright © 1996, AAAI (www.aaai.org). All rights reserved.
+
+Remembrance Agent:
+A continuously running automated information retrieval
+
+system
+
+Bradley J. Rhodes
+MITMediaLab, E 15-305
+20 AmesSt.
+Cambridge, MA02139 rhodes@media.mit.edu
+Thad Starner
+MITMedia Lab, E15-394
+20 AmesSt.
+Cambridge, MA02139 thad@media.mit.edu
+Abstract
+The Remembrance Agent (RA) is a program which
+augments humanmemoryby displaying a list of documents which might be relevant to the user’s current
+context. Unlike most information retrieval systems,
+the RAruns continuouslywithout user intervention. Its
+unobtrusive interface allows a user to pursue or ignore
+the RA’ssuggestions as desired.
+
+Beyond simple memoryenhancement, the RAalso suggests alternative ways to organize knowledge. The connection between a suggested documentand the user’s current
+context maynot be obvious to the user until pointed out. In
+this waythe RAboth helps the user organize their owndatafiles into newcategories, and helps create continuousbrainstorming session where new ideas and possible connections
+are suggested.
+
+The RemembranceAgent
+Mostof a desktop computer’stime is spent waiting: waiting
+for the user to hit the next keystroke, waitingfor the user to
+read the next page, and waiting for the next packet to come
+downthe network. The remembranceagent uses those wasted CPUcycles constructively by performing continuous
+searches for information that might be of use in its user’s
+current situation. For example, while an engineer reads
+email about a project the remembranceagent reminds her of
+project schedules, status reports, and other resources related
+to the project in question. Whenshe stops reading email and
+starts editing a file, the RAautomatically changesit recommendationsaccordingly. These suggestions are presented in
+the form of one-line summariesat the bottom of the screen.
+Here they can be easily monitored, but won’t distract from
+the primary workat hand. The full text of a suggestion can
+be brought up with a single keystroke.
+Most applications for augmenting humanmemory,e.g.
+those developed by (Jones 1986) and (Lamming& Flynn
+1994), have concentrated on recall-on-demand. For example, they can answerquestions such as "whenis that conference paper deadline?". However, they do not address
+situations wherea user does not rememberenoughto realize
+he or she has forgotten somethingin the first place. This associative formof recall is whatremindsa user that an important conference exists at all. The RemembranceAgent
+augmentsthis continuous, associative formof recall.
+
+122
+
+Implementation
+The RAfront-end runs in elisp under Emacs-19, a UNIX
+based text editor which can also be used for applications
+such as email, netnews, and web access. The front end displays one-line suggestions along with a numericrating indicating howrelevant it thinks the documentis. It also brings
+up the full text of suggested documentswhenrequested. Every few seconds it collects the text within certain ranges
+aroundthe current cursor position and sends this text to the
+information retrieval program.
+The back-endis a programwhich, given a query-text, produces suggestions of similar documentsfrom a pool of documents which are pre-indexed nightly. The current
+implementation uses the SMART
+information retrieval program, which decides documentsimilarity based on the frequency of words commonto the query and reference
+documents (Salton & Lesk 1971). While SMART
+is not
+sophisticated as manymore modern information-retrieval
+systems, it has the advantagethat it requires no humanpreprocessing of the documentsbeing indexed.
+In the current version the RAutilizes two sources of suggestions. Thefirst three lines print suggestionsfromthe last
+year’s worth of personal email (a little over 60 Megabytes
+worth). The last line prints suggestions from about 7 Megabytes of notes files entered over the past few years. The
+
+Figure 1: A screen-shot from the Remembrance
+Agent
+short, one-line description of email messagescontains who
+the messagewas from, whenit wassent, and the subject line
+of the message.The one-line description of notes files contains the filename, the ownerof the file, date last modified,
+and the first few wordsof the document.
+The RAshould be able to suggest documents similar to
+tangents in a documentas well as those similar to the whole.
+At different times a user might be interested in suggestions
+relating to the person who’snamewas just typed, to the last
+paragraph typed, or relating to a muchbroader range. To
+achieve this, three "scopes"are defined for a document,centered aroundthe current cursor location. Onescope is dedicated to those suggestions relevant to the last thousand
+words (usually the entirety of the document). Another
+dedicated to the last fifty words,and a third to the last ten
+words. Each scope accesses either the email or text database, and is allotted one or more display lines. The number
+of wordseach scope covers, the numberof display lines each
+uses, the time betweenupdates, and the database each points
+to are all customizableby the user.
+
+DesignIssues
+There are three .different waysof handling the timing of an
+automatedtask. The first is to performa task only whenspecifically requested. Spell-checking a file and performinga
+web-search fall into this category. A second wayis for an
+automatedtask to alwayslurk in the background,but to only
+act whena specific "trigger" occurs. Suchprogramsinclude
+calendar programsthat automatically tell you whenyou’re
+going to be late for a meeting, and programsthat alert you
+123
+
+whenyou have new email waiting. Finally, there are tasks
+which are performed continuously, like a clock programor
+CPU-loadmeter. The RAfalls into this third category.
+Unlike programs which warn you about important meetings, it is usually not a major problemwhenthe user misses
+suggestions presented by the RA. However, since the RA
+runs continuously, suggestions could quickly distract from
+the user’s primarytask if they attracted too muchattention.
+For these reasons the RA’ssuggestions are kept unobtrusive. Suggestionsare kept to a single line each, and are always printed at the bottom of the text-editor window.The
+full display area is also limited to a maximum
+of 9 lines,
+thoughit defaults to operating with only three or four. Finally, no color cues or highlights were used in the suggestion-display area.
+It is often the case that just seeing the one-line description
+triggers the entire memory,with no need to bring up the full
+document.Also, in somecases the description line supplies
+desired information directly (for example, the last nameof
+someonewhosent email). For this reason, as muchinformation as possible is packedinto the short description line.
+Whilesuggestionsare unobtrusive, it is easy to access the
+entirety of a suggested document.To view the documentbeing suggestedon a given line, the user simplytypes "controlc" and the display line-number. It is similarly easy to get
+back to the primary document.
+As an additional feature, the user can explicitly ask for
+recommendationsbased on an input string. Whenthis method is used to receive suggestions, all the display lines are
+used to present the top possible suggestions, and the scope
+
+Knowledge transfer
+Oneof the large difficulties facing industry is bringing new
+membersof an existing work-groupup to speed quickly. If
+a work-group created its own knowledge-base, new members could access the group RemembranceAgent. This
+would not only give the employee access to the group
+knowledgeitself (as wouldany database), but also to the
+meta-knowledgeof whenparticular information is relevant
+or valuable. Similar applications would exist wherever
+"just-in-time training" is required. Whilethis application
+uses a knowledgebase not familiar to the user at first, they
+will not suffer too greatly from the lack-of-context problem
+discussed above because the knowledgeis focused on their
+current situation, namely their new position within the
+group. Anycontext they do not yet know,they need to learn
+anyway,and the RAwill help them learn it.
+
+information is ignored. The scope information is similarly
+ignored whenthe user reads email. Email messagesusually
+contains a single thought, so suggestions based on the entire
+email are usually more useful than those based on smaller
+ranges.
+Using the system has shownthat suggestions are much
+more useful whenthe documentbeing suggested only contains one "nugget" of information, and whenthat nugget is
+clearly displayed on its one-line description. This "less is
+more"approachsolves several problems.First, it allows the
+user to tell what a suggestion contains from its description
+without having to peruse the entire document. Second, a
+documentwith only one primary point is more likely to be
+a good hit. Documentswhich address several issues will
+rarely matchthe user’s situation exactly, but will often partially match. Finally, if a suggested documentis read, the
+shorter it is the quickerthe user can get on with their primary
+work. Old email are a good length for RAsuggestions.
+Several of the applications described in the next section
+use the RAto suggest documentsthe user has never seen before. Whilethis maybe a powerfulapplication, there are extra pitfalls when using someone else’s database. The
+primarypitfall is that the user will not have the context associated with a given suggestion. This makesit far less likely that the user will recognize a documentfrom its one-line
+summary,and it will be far moredifficult for themto judge
+whether a suggestion is useful. Anotherproblemis that the
+user won’t necessarily knowthe original context in which a
+document was created. For example, they might not know
+that a set of instructions weremadein jest, or werein a subsequent message shownto be incorrect. Similarly, documentation or lectures geared towards one kind of audience
+maybe inappropriate for another, causing the original
+speaker’s intention to be misinterpreted. Finally, there are
+privacy issues when using someone else’s "memories."
+Even if you access someone’semail files with their express
+permission, the people whosent that person mail might not
+have approved.
+
+Wearable computing
+Whenrunning on a desktop computer, an RAcan only
+guess the user’s context based on the documentthey are
+reading or editing. However,the advent of wearable computing (Starner et al. 1995) will allow RAsto work with
+muchmore information and manymore situations. Global
+Positioning Systems (GPS) will let the RAknowwhere the
+user is, while cameraand face recognition will let it know
+whothey’re talking to. Withthis extra information,a (greatly enhanced) RAcould knowthat it is around lunch time,
+that according to camerainput the user is with her lunch
+date, according to her appointmentbook she has an appointment with her boss in an hour, and according to her GPS
+she’s downtown.Fromthis information it could recommend
+several goodrestaurants knownfor their fast service that are
+within a few blocks of downtown,which wouldbe agreeable
+to her lunch date as well.
+
+Future Applications
+Reference advisor for technical papers
+Oneapplication is to have the RAsuggest technical reports
+on a given subject. Whenit recommends
+other researchers’
+papers, these could be referenced or tagged for later reading.
+Whenit recommendsone’s own old papers, these can be
+scannedfor similar material which might be used in the new
+paper. Such a system could also recommendconferences
+wherethe call-for-papers is similar in content to one’s own
+paper.
+
+124
+
+Automatic Hypertexting
+In the past year several on-line magazineshave appeared,
+such as HotWired (HotWired), many of which have paper
+counterparts. One of the values added by the on-line versions of these magazines are hyper-linked text, where a
+reader can click on a word and get moreinformation on that
+subject. A future RAcould conceivably automatically turn
+normal email, netnews, or papers into hyper-linked documents, automatically linking hot-words to relevant background information.
+Background checker
+Another Web-based RA could perform background
+checks on people sending mail, referenced in papers, or recognized by a wearable-computer-mountedcamera. Such an
+RAcould automatically provide information on a person’s
+
+employer,job title, phonenumbers,and profiles of their interests based on newsgroupsthey frequent. At the click of a
+button, the user could access that person’s home-pagefor
+even more information.
+
+References
+HotWired. http://www.hotwired.com/
+Jones, W. 1986. On the Applied Use of HumanMemory
+Models: the MemoryExtender Personal Filing System. The
+International Journal of Man-Machine
+Studies 25, 191-228
+Lamming,M., and Flynn, M. 1994. "Forget-me-not:" Intimate Computing in Support of HumanMemory. In Proceedings of FRIEND21,’94 International Symposiumon
+Next Generation HumanInterface, MeguroGajoen, Japan.
+Salton, G. ed. 1971. The SMART
+Retrieval System -- Experiments in Automatic Document Processing. Englewood
+Cliffs, NJ: Prentice-Hall, Inc.
+Starner, T., Mann,S., Rhodes, B., Healey, J., Russell, K.,
+Levine, J., and Pentland, A. 1995. WearableComputingand
+AugmentedReality, Technical Report, Media Lab Vision
+and Modeling Group RT-355, MIT
+Wickens, C. 1992. Engineering Psychology and Human
+Performance. Scott ForesmanLittle Brown.
+
+125
+
+

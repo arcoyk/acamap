@@ -1,0 +1,997 @@
+Designing for Collaborative Creative Problem Solving
+Otmar Hilliges, Lucia Terrenghi, Sebastian Boring, David Kim, Hendrik Richter, Andreas Butz
+Media informatics, Ludwig-Maximilians-Universität Munich
+Amalienstrasse 17, 80333 Munich, Germany
+otmar.hilliges|lucia.terrenghi|sebastian.boring|andreas.butz@ifi.lmu.de,
+kimdav|richterh@cip.ifi.lmu.de
+ABSTRACT
+
+quirements of communication, coordination and interpretation – is called collaborative creative problem solving [1].
+
+Collaborative creativity is traditionally supported by formal
+techniques, such as brainstorming. These techniques improve the idea-generation process by creating group synergies, but also suffer from a number of negative effects [12].
+Current electronic tools to support collaborative creativity
+overcome some of these problems, but introduce new ones,
+by either losing the benefits of face-to-face communication
+or the immediacy of simultaneous contribution.
+
+In Fischer [16] creativity occurs in the relationship between
+an individual and a society, and between an individual and
+his or her technical environment. Appropriate sociotechnical settings can amplify the outcome of a group of
+people by both augmenting individual creativity and multiplying rather than simply summing up individual output.
+Physical, social and interaction contexts thus play an important role in guiding cognitive processes.
+
+Using an interactive environment as a test bed, we are investigating how collaborative creativity can be supported
+electronically while maintaining face-to-face communication. What are the design-factors influencing such a system?
+
+In a ubiquitous computing scenario where technology
+blends in with the environment, we observe a paradigm
+shift from Human-Computer Interaction to computermediated human-to-human interaction. With the introduction of large, interactive, high-resolution displays built into
+walls and tables, we face for the first time the challenge,
+and the opportunity, to design socio-technical systems
+which not only support collaboration but also mediate and
+foster human-to-human communication and interaction.
+
+We have designed a brainstorming application that uses an
+interactive table and a large wall display, and compared the
+results of using it to traditional paper-based brainstorming
+in a user study with 30 participants. From the considerations that went into the design and the observations during
+the study we derive a number of design guidelines for collaborative systems in interactive environments.
+
+Current computer systems already offer a variety of communication channels for distributed collaboration (e.g., instant messaging, e-mail, online communities, groupware)
+and support for collaborative work (CSCW). However, important parts of our professional and personal life still depend on co-located collaboration and face-to-face communication, with all the nuances of facial expression and body
+language, and the immediacy of verbal communication.
+Visibility of action is a fundamental aspect of group awareness [13]. Shared displays that support simultaneous input
+afford novel communication patterns as well as social protocols, but the still predominantly used WIMP paradigm
+has poorly supported such social contexts thus far.
+
+Author Keywords
+
+Collaborative creative problem solving, brainstorming, interactive environments, tabletop displays, wall displays,
+large displays
+ACM Classification Keywords
+
+H5.m. Information interfaces and presentation (e.g., HCI):
+Miscellaneous, H.5.3 Group and Organization Interfaces:
+Organizational design
+INTRODUCTION
+
+Collaborative problem solving requires much more than
+simply joining work forces. Knowledge and information
+need to be exchanged, different skills have to be coordinated, and the information communicated by others needs
+interpretation so that new ideas can be created and new
+solutions can be found. This process – with its core re-
+
+In face-to-face collaborative creative problem-solving setups, technology is very often absent or shut down because it
+is considered disruptive to communication and the creative
+flow [37]. Using single-user systems in a collaborative setting leads, in most cases, to a communication breakdown
+since the user’s concentration has to shift away from the
+group and towards the computer in order to use it. Rather
+than relying on technology, these meetings still rely on the
+physical and social benefits of using surfaces such as tables
+and walls to exchange and visualize different types of information (paper documents, presentations, pictures, etc.)
+and the different collaboration behaviors implied therein.
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+C&C’07, June 13–15, 2007, Washington, DC, USA.
+Copyright 2007 ACM 978-1-59593-712-4/07/0006...$5.00.
+
+137
+
+Interactive surfaces offer new possibilities for the design of
+socio-technical systems that can partly exploit the physical
+and social affordances of a traditional face-to-face collaborative environment and at the same time benefit from the
+affordances of digital technology such as persistent data
+storage, easy information access, and the possibility to review previous processes or to undo certain actions.
+Building on an analysis of the factors that influence the
+brainstorming process in manual and electronic settings, we
+postulate the design goals for socio-technical systems that
+mediate creative group processes. We present a brainstorming system as an example of a socio-technical environment
+that supports co-located collaborative creativity and our
+results from the evaluation of this implemented system. In
+designing and evaluating the system we studied how several
+interactive displays, each having distinct roles and functions
+in the process, influenced co-located collaboration. In conclusion and building on previous work in the field, we propose new design considerations to meet the requirements of
+future collaborative ubiquitous computing systems.
+
+Figure 1: Factors influencing brainstorming productivity.
+
+Although EBS produce more ideas and can track the process better than manual brainstorming, the original technique
+(usually paper-based) is still ubiquitous in professional life
+and has not yet been replaced by EBS, as a recent study
+shows [11]. Why doesn’t a superior technology replace the
+inferior one? The answer to this has several aspects and not
+all of them are grounded in the qualities of the technique
+itself. The number and quality of ideas is not the only value
+to be assessed.
+
+COLLABORATIVE CREATIVE PROBLEM SOLVING
+
+Brainstorming [30] is a technique for divergent thinking. It
+can be individual, although the term more often refers to a
+group process for generating as many ideas or options as
+possible in response to an open question. Thus, it is frequently used for collaborative creative problem solving and
+it builds on a few main principles: quantity over quality of
+ideas, elaboration on others’ ideas and absence of criticism.
+The technique relies on the communication among group
+members to stimulate idea generation, and on coordination
+to maximize the individuals’ involvement and interpretation
+of ideas in order to create new intellectual associations. In
+this context the physical and social affordances of surfaces
+play an important role (e.g. a table for idea generation, a
+wall or whiteboard for idea discussion, paper for idea expression and recording). These properties of brainstorming
+qualify it as a prime example for the creative problem solving group processes we want to investigate.
+
+Since group processes involve individuals, the individuals’
+subjective perception of the process plays an important role.
+The perceived quality of the outcome itself depends on the
+degree to which personal interests are represented and valued in the group’s output. Second, the face-to-face situation
+of manual brainstorming has qualities which, in the long
+run, might even outweigh pure productivity measurements,
+namely the positive social aspects of team building, group
+awareness and a shared sense of achievement.
+If technology is either disruptive for an individual to express her/himself, or for a group to communicate in a faceto-face situation, EBS won’t maintain those values that
+people perceive in using the manual brainstorming technique, despite other quantifiable benefits such as productivity of ideas and storage provided by remote EBS.
+
+Osborn [30] anticipated positive synergy effects of such a
+technique, which affect the productivity of ideas. Other
+studies [12] show that these factors are apparently outweighed by several negative social implications of the technique (see Figure 1). They have shown that nominal brainstorming groups (aggregating ideas from separate individuals) outperform face-to-face groups. The main reasons for
+this are losses in productivity through production blocking,
+social loafing and evaluation apprehension [2].
+
+Considering the tradeoff (see Table 1) between technique
+performance and social implications of EBSs we wanted to
+build a system that maintains the empirically proven advantages of EBS while combining them with the social advantages of manual face-to-face brainstorming. Hence we sacrificed the anonymity of group members (which is expected
+to lessen evaluation apprehension) in favor of the social
+implications of group awareness and personal communication. We deliberately accepted that this decision might decrease the number of ideas generated because we expect
+that it improves the subjective perception of quality and
+hence the acceptance of the whole process. In addition, we
+are mostly interested in co-located collaboration since we
+want to generalize our findings to other collaborative creativity scenarios more complex than this particular one.
+
+In addition to these findings later studies have shown that
+groups using Electronic Brainstorming Systems (EBS) appear to outperform both manual and nominal brainstorming
+groups [5, 10, 12]. The main reasons (see Figure 1) for increased productivity are parallelism, to overcome production blocking, and anonymity, to reduce evaluation apprehension. Even if anonymity bears the danger of social loafing [23], its benefits appear to outweigh the losses.
+
+138
+
+PCbased
+face-to
+face
+
+Immediacy of Communication and Interaction
+
+Electronic Manual Electronic
+remote
+face-toface
+
+Synergy
+
+3
+
+3
+
+3
+
+3
+
+Group
+awareness
+
+3
+
+-
+
+3
+
+3
+
+Anonymity
+
+-
+
+3
+
+-
+
+-
+
+Parallelism
+
+-
+
+3
+
+-
+
+3
+
+Reduced soc.
+loafing
+
+-
+
+-
+
+3
+
+3
+
+Reduced
+production
+blocking
+
+3
+
+3
+
+-
+
+-
+
+Reduced
+evaluation
+apprehension
+
+-
+
+3
+
+-
+
+-
+
+Our main goal was to combine some of the benefits of previous EBS with the positive social implications of face-toface groups. First, we wanted to avoid production block by
+guaranteeing true parallelism of input such that every member of the group could contribute at any time. Additionally,
+we wanted to store every idea and make it permanently
+available such that it can be read and interpreted by every
+member at all times.
+We also wanted to minimize the costs of interaction and
+communication so that even in small groups the synergy
+effects can outweigh the losses. This can be achieved by
+two complementing measures: first, by blending the computer into the environment in which the collaborative creative processes take place, and second, by blending the virtual interface into the task so that knowing the craft (or
+technique) reduces the cost of learning and using the system. Thus, essential elements of the interface should behave
+just like their counterparts in the manual process.
+In this way we hope to avoid some of the factors that seem
+to hinder the communication process [2], e.g., the size of a
+personal computer screen or the keyboard as a disruptive
+interface in this context.
+
+Table 1: Properties of different technologies regarding brainstorming productivity and group processes
+
+Enhance Phrasing
+
+DESIGN GOALS
+
+The difference between chunking and phrasing is explained
+in more depth by Buxton [4]. Different representations of
+the task and different levels of skills between novices and
+experts imply different granularity of detail at which people
+approach the solution of a problem. The more novice the
+user, the lower the level at which s/he approaches the problem. This results in chunking the main goal into sub-goals,
+to be achieved through sub-tasks. The acquisition of skills
+enhances the automatic performance of some sub-tasks,
+thus achieving the high-level goals faster and more easily
+(phrasing). To enhance phrasing (i.e., the undisrupted flow
+of action and creativity), the task needs to be represented in
+a way that supports chunk maximization. Indeed, the bigger
+the chunks are, the less cognitive resources are wasted. In
+this sense we aim at an interface which allows a fluid and
+immediate interaction with the task at hand. Furthermore,
+the interface needs to support the externalization of the
+chunks so as to allow reflection and association.
+
+We aimed to design a socio-technical environment which
+positively affects collaborative creative problem solving.
+For the support of such a group process we tried to enhance
+both the divergent as well as the convergent thinking (i.e.,
+generation and elaboration of ideas), which are typical and
+essential activities in problem solving. Thus, we considered
+the affordances of technologically enriched environments.
+In order to facilitate both generation and selection of ideas,
+we used large interactive surfaces in the environment. The
+horizontal plane of a table affords writing, face to face
+communication, territoriality [35], and group awareness,
+while a wall display allows and supports shared visualization, overview and context awareness. The combination of
+these interactive surfaces opens interesting possibilities for
+the design of a socio-technical environment.
+The issue of more fluid interaction with large, highresolution displays that support creative group processes
+has been treated in [19, 21, 26, 39]. A summary of recent
+advances in the field of interaction techniques for large displays can be found in Czerwinski et al. [8]. Most of this
+research has focused either on the properties and design
+implications for vertical large displays [32] or on the influence of horizontal displays on co-located collaborative
+work [34], thus mostly focusing on a specific type of display. We take a more ecological, holistic approach by looking at the combination of different displays across the process, both in time and space.
+
+Minimize Cognitive Load
+
+The human capability of keeping chunks of information in
+short-term memory is very limited [28]. Thus, we need to
+design the context (e.g., the representation of the task) so as
+to minimize the use of cognitive resources for holding activated bundles in short term memory. Typical techniques for
+freeing cognitive resources are externalization, e.g., through
+the use of space, epistemic action [24, 25] and visual output
+as well as spatial mapping [29, 22]. Thus more resources
+remain available for creative associations.
+
+139
+
+Mediate Mutual Association Activation
+
+When a person is exposed to stimuli from a variety of contexts s/he is more likely to have novel associations [33].
+The activation of such associations can be automatic (without intentional conscious awareness), or depend upon the
+context of the stimuli (conscious capacity spreading activation, [3]). This suggests that the design of a context of interaction can affect the association patterns. Furthermore, it
+suggests that the context of interaction can stimulate activation patterns that would otherwise be unlikely in the automatic spreading activation. Thus, with a socio-technical
+environment which positively affects collaborative creativity, we hope to create a context that supports the exploration of different areas of our knowledge network.
+In order to enable such a process, it is important that people
+can perceive each other’s ideas and communicate about
+them. We think that providing different visual cues about
+the generated ideas on the table and on the wall, as well as
+giving users the possibility to explicitly exchange ideas
+(and the visual representation thereof) can enable and foster
+the generation of new unexpected associations.
+
+Figure 2: Our instrumented room with wall and table displays
+
+In this setup we developed an application, which metaphorically builds on the “idea card” method, i.e., the use of
+Post-its for brainwriting. Geschka [17] and VanGundy [42]
+developed the Interactive Brainwriting Pool Technique. In
+this method group members write their ideas on a piece of
+paper that is then placed in the center of the table for another member to read prior to writing their next comment.
+
+Supporting Group Awareness and Overview
+
+Visibility of action is a main design principle for embodied
+interaction [14]. It provides awareness of what other colleagues are doing and how the actions of group members
+affect the shared artifacts and relies on existing theories
+from CSCW [13]. Group awareness (i.e. the condition
+where members perceive the presence of other group members and the possibility to communicate with them), seems
+to provide a basis for informal communication. By giving
+every group member at any time the possibility to understand what other members are doing, the isolation of single
+individuals is avoided. Mutual visibility of actions eases the
+coordination and interpretation of the contributors’ actions.
+
+The use of Post-its during brainwriting has become a rather
+common practice in collaborative problem solving. They
+afford the recording of ideas in written rather than just verbal form in the generative phase. Furthermore, they support
+a certain territoriality and the creation of semantic regions.
+When participants are given a stack of post-its and start
+sticking them around their working area, they define their
+personal region, which remains visible to others, thus creating a mutual awareness among participants.
+Using Post-its on surfaces supports the convergent thinking
+phase as well, when participants stick and move Post-its on
+flip charts or white boards in order to recognize patterns
+and create clusters. In this phase they structure the developed ideas into more meaningful concepts and try to identify relations between them. The affordances of paper have
+been more deeply discussed in [36, 7, 18]. Studies of paper
+in work practice show that paper continues to be widely
+used for many reasons including its spatial flexibility (it can
+be quickly arranged in physical space), sociability (it facilitates face-to-face communication), and tailorability (it is
+easily annotated) [7]. Furthermore [18] explains that some
+of the reasons why designers use paper rather than electronic communication is for its “friendliness”, immediacy
+and affordances for face-to-face communication of ideas.
+
+DESIGN CHOICES
+
+By our design choices we try to merge some of the advantages of traditional techniques for face-to-face problem
+solving, with some of the benefits of the technology embedded in the interactive surfaces of the environment.
+In order to do so, we designed a multi-user application for
+supporting co-located collaborative problem solving, which
+together with the users forms a socio-technical environment
+resembling a face-to-face meeting situation. This means
+that the system doesn’t have any standard computer monitors or input devices but solely relies on interactive, touch
+sensitive displays built into the meeting room’s table and
+wall (see Figure 2). Presuming that display technology will
+be cheap and distributed enough to pervade our working
+environments in the near future, we explore the potential of
+a socio-technical environment as ecosystem, by analyzing
+how communication and spatial mapping can be supported.
+Thus, we do not focus on the real estate and properties of
+one specific display in isolation, but rather on the combination of displays and on the question how the relationships
+between the different surfaces affect the group process.
+
+To this respect we opted for a pen based input to support
+the fluid generation of ideas with handwriting. A limited
+gesture vocabulary was designed and implemented. Users
+can start generating ideas by drawing a square on the table
+surface. This event triggers the appearance of a large yellow
+square, resembling a Post-it, thus defining the area to write
+in (see Figure 3). By tipping a designated area of the Post-
+
+140
+
+Building on these considerations we designed the Post-its in
+such a way that they can be edited, moved, deleted and copied by any participant after they have been created. Additionally we created a mechanism to encourage building on
+each other’s ideas: With a quick movement of the pen, each
+user can deliberately skid one idea to the other participant.
+The Post-it slides quickly across the table and smoothly
+reorients itself towards the other user. This supports the
+explicit sharing of ideas and thus encourages the creation of
+association chains.
+
+it, the latter shrinks to a smaller size and becomes moveable
+(see Figure 4). The user can then create new Post-its/ideas
+by drawing new squares in a blank region of the table and
+writing within the yellow region. This choice was made in
+order to create visual constraints for writing, so as to identify ideas as units, and to create visual cues for distinguishing territories and patterns. When the Post-it is shrunk its
+content is still readable.
+
+Figure 4: Dragging a Post-it and skidding it
+
+The immediate and visible change of the shared visual
+landscape is supported by the system in additional ways. As
+the participants create Post-its in their working area, thus
+already creating a distinct territorial setup, the Post-its appear simultaneously on the vertical display, which is located next to the table. On the vertical display the Post-its
+are reoriented upright, i.e., readable for both readers, but
+they maintain a spatial mapping to the territorial setup on
+the table display. In this sense the perception of territoriality
+and group awareness are supported. A participant will recognize his/her own “territory” on the wall, but at the same
+time gain an overview of the ideas created by the group.
+
+Figure 3: Creating a Post-it and writing on it
+
+The choice of using handwriting and gestures to enhance
+fluid interaction and the group process was also made in
+Guimbretière et al. [20]. Furthermore Buxton [4] examine
+the effect of compound tasks on the users’ cognitive load.
+These are tasks that usually can be expressed in one sentence (e.g. write text onto a post-it) but have to be broken
+down into multiple steps in standard desktop applications
+(e.g. select target, choose text tool, type text). This may
+result in additional cognitive burden on top of the actual
+task (idea generation). Kinesthetic gestures can overcome
+such problems by mapping to whole phrases rather than
+functions of the underlying system. The desired one-to-one
+correspondence between concept and gesture leads to interfaces which are more compatible with the users’ mental
+model. Our design supports simultaneous, gesture-based
+interaction, as well as the mutual visibility of action. Direct
+manipulation in this context refers to a coincident spatial
+mapping of input and output (there is no such device as a
+pointer or a remote controller). This creates a transparent
+causal relationship between gestures and output, and supports visibility of gestures. Furthermore, it allows the creation of temporal spatial structures, which are fundamentals
+to epistemic actions [25]. Creative processes highly rely on
+epistemic actions, as these allow the externalization and
+visualization of different alternatives [24]. The size of the
+table (see Figure 2) allows participants to see each other’s
+actions, movements and gestures in real time. It also supports a sense of common ground by displaying the results of
+both participants’ interactions on a single shared display.
+Thus, both controls and resources (i.e., the different Postits) are continuously available to both participants.
+
+When users tip the Post-it in the middle, where a small grid
+is displayed (Figure 3), they can enlarge it again to edit its
+content. When they instead tip its periphery (Figure 4) and
+drag the pen, they move the Post-it, both on the horizontal
+and the vertical display. When users move from the table
+(generative phase, divergent thinking) to the wall display
+(structural phase, convergent thinking), they can spatially
+organize the ideas by rearranging them on the wall. In addition they can create clusters by drawing a circle around
+some Post-its (Figure 5). Clusters are merged by dragging
+them close together. Drawing a cross on the border of a
+cluster causes it to dissolve into single Post-its again. Clusters can be connected to each other or to single Post-its by
+drawing a line from the border of one cluster to the border
+of another one (Figure 5) or to the center of a Post-it.
+Finally, whole clusters can be moved across the display,
+thus moving all the Post-its they contain. This set of clustering techniques clearly extends the functionality of a physical whiteboard or flip chart while it maintains the direct
+manipulation characteristics thereof, facilitating the creation
+of a structured knowledge representation, which is easily
+editable by every participant through direct manipulation.
+
+141
+
+connections between ideas. We found in the analysis of our
+videotapes, that it was often not possible to identify all earlier ideas which might have contributed to the creation of a
+particular new one and that the attempt to do so would be
+very speculative and error-prone. Therefore, we only identified chains of ideas, which directly built on each other (association chains), and evaluated their size and number in
+order to obtain statistical data.
+Subjects
+
+Figure 5: Creating and connecting clusters.
+
+The study we conducted consisted of 30 participants in 15
+teams of two subjects each. To avoid gender bias we had 5
+pure male, 5 mixed and 5 pure female teams. Some of the
+subjects knew each other while others had never met before. Among the participants a variety of professions was
+present, such as computer science students, architects, designers, civil engineers, musicologists and journalists. All in
+all we had participants from 5 different nations.
+
+EVALUATION
+
+We implemented our brainstorming system in order to verify whether its design meets the initial design goals and to
+determine which effect our design choices had on the creative process, its objective outcome and the subjective feeling of productivity of the participants. The evaluation of
+subjective experiences is an open topic for the ubiquitous
+computing community, especially when the aim is to assess
+an experience involving different displays, people, and
+temporal phases. For the assessment of a single users’ subjective experience we opted for questionnaires. The collaborative creative process and its outcome are even harder
+to measure quantitatively. Different approaches for measuring collaborative creativity processes in novel interaction
+settings have been proposed in the literature.
+
+Environment
+
+The system was deployed in an instrumented environment
+containing an interactive meeting table as well as displays
+embedded into an interactive wall (see Figure 2). Both the
+table and the wall display were included in our electronic
+brainstorming system.
+The interactive table consists of an LCD monitor embedded
+into a wooden table and is equipped with a DViT overlay
+panel [38] (a vision based tracking system providing multiple simultaneous inputs) for interactivity. Hence, the participants share an overall table space of 1.6 x 1.2 meters.
+The complete wall is an interactive surface with a width of
+5 meters and a height of 2.5 meters containing three backprojected displays. The two side displays as well as the rest
+of the wall are tracked by four cameras. The center display
+additionally provides high precision input through another
+DViT panel.
+
+Conversational analysis has been previously used to assess
+collaboration. Tatar et al. [40] apply techniques from Psycholinguistics to evaluate the conversational patterns of a
+system supporting co-located brainstorming. Damm et al.
+[9] videotaped, observed and interpreted several sessions of
+a collaborative software design process. The observations
+allowed qualitative statements about the different designs
+studied, but the process didn't produce any quantitative
+data. Consolvo et al. [6] provide a good overview of relevant known study and evaluation techniques and discuss
+their applicability to ubiquitous computing settings. For
+quantitative evaluations, they propose Lag Sequential
+Analysis (LSA) and describe how it was applied to their
+environment. LSA relies on the idea of logging and counting relevant events in the environment and generates statistical data about the observed process. In our evaluation we
+logged the creation and exchange of ideas as the basic
+events in the creativity process.
+
+While applying the paper-based technique, the teams used
+the same table covered with paper in the idea generation
+phase and a large (1.8 x 1.5 meters) piece of paper,
+mounted on the opposite wall, in the structural phase.
+Tasks and Procedure
+
+We conducted a within-group comparative study between
+our system and the original paper-based manual brainstorming technique to assess the brainstorming productivity of
+both techniques. Furthermore, we ran questionnaires before
+and after the task as a qualitative user study to evaluate the
+subjective perception of and judgments about our system.
+We also assessed the subjective judgments of the brainstorming results in these questionnaires. Each session took
+approximately one hour and included the two questionnaires, introductions to the technique and the interface, as
+well as one warm-up task. The participants received two
+different but related tasks. Each of these tasks had to be
+executed in a different technique. The order of the techniques was inverted between each group to level fatigue
+and related effects.
+
+Pinelle et al. [31] propose the use of task analysis for the
+evaluation of collaborative processes. They propose a hierarchical task model and describe its application in a technique called collaboration usability analysis. The structure
+of the brainstorming task is relatively simple and in our
+study we only identified whether ideas were independently
+generated, built on an own previous idea, or resulted from
+seeing or discussing ideas of the brainstorming partner. Van
+der Lugt [43] specifically recorded how people built on
+each other's ideas in a brainstorming process and generated
+link diagrams from this data. From the link diagrams he
+then generated statistical data about the number and type of
+
+142
+
+Considering the broad variance in professional education
+we had to pick tasks that could be addressed without any
+domain specific knowledge or education. Thus, we picked
+rather simple tasks to which, we felt, everybody could relate, and thus contribute a significant number of ideas. In
+the first task we asked the teams to take care of an Inuit
+coming to a foreign country neither speaking the country’s
+language nor having any useful equipment for the new environment. We considered this task a fruitful field for idea
+generation, because necessary or useful items would include most, if not all, items in personal possession of the
+participants. For ease of comparison we designed the second task as similar as possible while still leaving plenty of
+room for new unique ideas. In this second task the teams
+had to discuss their own needs when they would leave their
+home country for emigration into harsh, icy arctic territories. The subjects were asked to collect all material and
+immaterial items they would consider necessary for survival under these conditions.
+
+100%
+80%
+60%
+40%
+20%
+0%
+More Communication
+Before Trial
+
+Here, we found that the judgment had slightly changed after
+using our electronic brainstorming system. From the participants’ point of view, the communication turned out to
+slightly decrease in the electronic version (70% before,
+60% after) while the perceived number of ideas remained
+the same (73% / 73%) and the quality (80% / 90%) of ideas
+increased. The perceived decrease in communication is
+valid within the participants but it is not strictly significant
+(p ≈ 0.15). The increase in the perceived quality of ideas is
+significant (p < 0.05).
+
+30
+
+N
+O
+S
+T
+
+15
+
+Sum
+
+Additionally, we asked the participants about the ease of
+use of each interaction gesture we have implemented. Here
+we received consistently good results regarding all interactions. Only the possibility to write on the table received
+rather low ratings. We think that this might be due to the
+clumsy pen used, and the slightly unusual hand posture
+which was required in order not to confuse the DViT tracking system. Figure 8 summarizes the results of users’ ratings of the different interaction gestures.
+
+Nc
+
+10
+
+Lc
+
+5
+0
+Paper-based
+
+After Trial
+
+In the questionnaire before the evaluation, we had asked the
+participants whether they had encountered problems with
+insufficient communication, and with an insufficient number and quality of ideas in their previous experience with
+manual brainstorming. In the questionnaire after the evaluation, we asked them about these same problems when using
+our electronic brainstorming system. Figure 7 shows a
+comparison of the results.
+
+In order to obtain quantitative data about the number and
+types of ideas generated, we analyzed the system’s log files
+and the videotapes to count new independent ideas (N),
+ideas which built on own earlier ideas (O), ideas which resulted from seeing somebody else write down an idea (S)
+and ideas which resulted from talking about an idea (T). In
+addition to this, we identified association chains and
+counted their number (Nc) and length (Lc). Figure 6 shows
+the overall numbers of ideas and their relative distribution.
+
+20
+
+Better Ideas
+
+Figure 7: Subjective judgments about communication, number and quality of ideas
+
+Results
+
+25
+
+More Ideas
+
+Electronic
+
+Figure 6: Overall number of ideas (from 15 sessions) and relative distribution of types N, O, S and T, as well as number (Nc)
+and the average length (Lc) of association chains
+
+To obtain an overall impression we finally asked the participants whether they would use the paper-based version or
+the electronic version of brainstorming in the future, assuming that our system would be at product level. In our study,
+80% of our participants would favor the electronic version
+over the paper-based one.
+
+We found out, that the overall number of ideas generated
+remained roughly equal (with a slight, but not statistically
+significant decrease). This roughly confirmed our expectations, since we had not really changed any of the influencing parameters (Figure 1). It also suggests that the introduced technology was not substantially disruptive for the
+process of collaborative creative problem solving.
+
+143
+
+ample, the interface contains visual elements that resemble
+the real world equivalents (e.g. Post-it notes). These elements are also manipulated in the same way as they would
+be in the real world (writing on paper with a pen). This allows users to build on knowledge they gathered from a lifelong learning experience with the real world and the objects
+in it. Touch sensitive interfaces and fluid gestures make
+using the technology more continuous and analog. This
+allows users to apply strategies they already use in the real
+world to both implicitly and explicitly convey information
+about the objects in the environment (e.g., territoriality).
+
+100%
+90%
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+
+Meta-Physicality
+
+0%
+Create
+Post-It
+
+Delete
+Post-It
+
+Open
+Post-It
+
+Hard to learn
+
+Close
+Post-It
+Neutral
+
+Copy
+Post-It
+
+Move
+Post-It
+
+Even if the close resemblance of virtual items to real world
+artifacts is beneficial to the ease of learning the interface, it
+is worth exploiting the specific and different affordances of
+digital media. These can augment physical actions, providing effects which are only possible in the digital realm (e.g.
+the automatic re-orientation and appearance on the wall of
+virtual Post-its). As long as objects have a clearly distinct
+and explainable behavior, users seem to be willing to accept
+and use a technique even if it is unrealistic in the strict
+sense. For example, the participants reacted very positively
+to the possibility to skid Post-its across the table, even if
+this is not possible with real paper. Some even figured out
+“that this is the behavior of a billiard ball”, which in fact is
+true in terms of the physics we used for simulation.
+
+Write
+Post-It
+
+Easy to learn
+
+Figure 8: Subjective judgments about the ease of use of interaction gestures implemented in our system
+INTERPRETATION
+
+The data from our questionnaires and video transcripts
+shows that the quantitative result of the brainstorming sessions doesn’t differ significantly between electronic and
+paper-based methods. In contrast to this, the perceived
+judgments were consistently better for electronic brainstorming. We attribute this to an improved communication,
+which is supported by the free form comments participants
+gave in the post-questionnaire, as well as two observations
+we made during the sessions.
+
+Seamless Social Transitions
+
+Transitions between concurrent and collaborative work
+must be seamless in order to minimize obstacles for communication. In co-located collaborative work it is natural
+for humans to transition fluidly between collaborative and
+concurrent individual activities [15]. For example, we experienced that participants in our study frequently switched
+between developing their own ideas and re-joining the
+group later to jointly develop an idea. This transition must
+not be disrupted by the technology in order to prevent
+communication breakdowns. To ensure this kind of seamless transitions several measurements can be taken:
+
+The first observation was that participants used the wall
+display, showing ideas written on the desk immediately, as
+an additional external reference. When they wanted to step
+back mentally and obtain an overview, they looked at the
+wall where all ideas generated so far were available in
+much better overview. This common reference was a factor
+which apparently increased group awareness and hence
+improved communication.
+The second observation is that this often led to resuming
+discussion after a pause or a dead end. When a team got
+stuck, it was much easier to review all the ideas generated
+so far and start over by elaborating on earlier ones.
+
+All elements of the interface must be designed such that
+there is no single or multi user mode. Every interaction
+atom must be performable (in a meaningful way) so that it
+can be carried out alone, in parallel with others and collaboratively. As in a conversation, there should be no explicit
+control token that has to be passed around in order for
+someone to use the system. Everyone must be able to interact with the system at any time. Thus it is important that all
+data structures and controls (both virtual and physical input
+devices) are replicated. This allows users to apply their
+learned and familiar social protocols.
+
+DESIGN CONSIDERATIONS
+
+From our observations with the implemented system, both
+from informal tests and our user study, we generalized the
+following design considerations which we think can be applied to other socio-technical environments in order to support collaboration and creativity. They partly confirm existing guidelines for co-located collaboration on tabletop displays [34], but also apply to more general socio-technical
+environments, comprising different classes of displays.
+
+Finally, it is important that users can dynamically reconfigure the spatial layout of items in the workspace so that they
+can create distinct areas: private areas for interactions with
+objects needed in personal work, and public areas to mediate communication and interaction with the group [41].
+
+Pseudo-Physicality
+
+Participants stated that they found the interface of the system very easy to learn. We credit this on the close resemblance of each interface element to the real world. For ex-
+
+144
+
+Visibility of Social Interaction
+
+REFERENCES
+
+Real time visibility of participants’ input actions and updated output representation can foster group awareness. In
+this sense, the system should afford communication through
+body language and mediate communication through the
+interface at the same time. The gesture vocabulary introduced by the system merges with the one which is typical in
+the face-to-face collaborative context. The possibility of
+skidding Post-its to each other is an example of that. In this
+context, the visible gesture of skidding a Post-it suggests to
+the other group members the idea of “passing” something
+over. Similarly, people move Post-its across the wall by
+passing them among each other with an explicit gesture. In
+contrast to a desktop or a mouse-based interaction paradigm, the system affords body language and facial expression, rather than hindering those with the use of a keyboard
+and of a small, vertical, personal screen.
+
+1. Amabile, T.M., The Social Psychology of Creativity.
+Springer Verlag, New York, 1993.
+2. Applegate, L., Konsynski, B., Nunamaker, J. A group
+decision support system for idea generation and issue
+analysis in organization planning. In Proceedings of
+CSCW 1986, Texas, 16 – 34.
+3. Barsalou, L. W. Context-independent and Contextdependent Information in Concepts. Memory and Cognition (10), 1982, pp. 82-93.
+4. Buxton, W. Chunking and Phrasing and the Design of
+Human-Computer Dialogues. In Proceedings of the
+IFIP World Computer Congress, Dublin, Ireland, 1986,
+475-480.
+5. Connolly, T., Jessup, L., Valacich, J. (1990), Effects of
+anonymity and evaluative tone on idea generation in
+computer-mediated groups. Management Science, 36,
+689-703.
+
+The visibility of the produced Post-its in real time both on
+the table and on the wall allows collaborators to immediately see, understand and react to the actions of others,
+which can spark innovation and new ideas. The redundancy
+of output representation on both displays affords different
+perspectives: people can visually “step back” from their
+focused view on the table and gain an overview of the
+shared output on the wall: this can produce novel ideas and
+communication.
+
+6. Consolvo, S., Arnstein, L., Franza, B., User Study
+Techniques in the Design and Evaluation of a Ubicomp
+Environment., Proceedings of the Fourth International
+Conference on Ubiquitous Computing 2002, 73-90.
+7. Cook, D. J. and Bailey, B. P. 2005. Designers' use of
+paper and the implications for informal tools. In Proceedings of CHISIG ‘05 of Australia on ComputerHuman interaction: Citizens online: Considerations For
+Today and the Future.
+
+SUMMARY
+
+Based on an analysis of the factors influencing collaborative creative problem solving, we have presented a number
+of design goals for electronic systems to support this process. Guided by these goals, we have designed and built an
+electronic brainstorming system in an interactive environment using a tabletop and a large wall display, and discussed the design choices we made.
+
+8. Czerwinski, M., Robertson, G.G., Meyers, B., Smith,
+G., Robbins, D. & Tan, D. (2006). Large display research overview. In Proceedings of CHI 2006, ACM
+Press, 69-74.
+9. Damm, C.H., Hansen, K.H., Thomsen, M., Tool Support
+for Cooperative Object-Oriented Design: Gesture Based
+Modeling on an Electronic Whiteboard. Proceedings of
+CHI 2000, ACM Press, 518- 525.
+
+Our system was evaluated in a user study with 30 participants in order to verify the success of our design choices
+and their influence on the brainstorming process. We found
+that the quality and number of ideas generated with our
+system was similar to classical paper-based brainstorming,
+with the additional advantage of storing ideas and processes
+which is afforded by our digital system. Furthermore the
+perceived quality of the results was slightly higher in the
+electronic brainstorming, possibly due to a design of the
+system, which did not disrupt, but rather support social interaction.
+
+10. Dennis, A., Heminger, A., Nunamaker, J., Vogel, D.
+(1990), Bringing automated support to large groups: The
+Burr-Brown experience. Information & Management,
+18(3), 111-121.
+11. Dennis, A.R. and Reinicke, B., Beta vs. VHS and the
+Acceptance of Electronic Brainstorming Technology
+MIS Quarterly, 28(1), 2004, 1-20.
+12. Diehl, M., Stroebe, W., Productivity loss in brainstorming groups: Toward the solution of a riddle. Journal of
+Personality and Social Psychology, 53, 1987, 497–509.
+
+From the results of this study and a number of observations
+we made in the process, we inferred a list of design considerations, which can help others to design future collaborative systems for this kind of socio-technical settings.
+ACKNOWLEDGMENTS
+
+13. Dourish, P. and Bellotti, V. Awareness and Coordination in Shared Workspaces. Proceedings of the Conference on Computer Supported Cooperative Work CSCW
+´92, ACM Press, New York, 107-114.
+
+We thank all participants of the user study for their time
+and patience.
+
+14. Dourish, P.: Where the Action is. The Foundations of
+Embodied Interaction. Bradford Books, 2001.
+15. Elwart-Keys, M., Halonen, D., Horton, M., Kass, R.,
+and Scott, P. (1990). User Interface Requirements for
+
+145
+
+Face to Face Groupware. In Proceedings of CHI ‘90,
+ACM press, 295-301.
+
+31. Pinelle, D., Gutwin, C., Greenberg, S., Task Analysis
+for Groupware Usability Evaluation: Modeling SharedWorkspace Tasks with the Mechanics of Collaboration.
+In ACM Tansactions on Computer-Human Interaction
+(TOCHI), Vol.10 Issue 4, 2003, 281-311.
+
+16. Fischer, G.: Social Creativity, Symmetry of Ignorance
+and Meta-Design. In Proceedings of the Conference
+Creativity & Cognition 1999, ACM Press, 116-123.
+
+32. Robertson, G. Czerwinski, M. Baudisch, P. Meyers, B.
+Robbins, D. Smith, G. Tan, D. Large Display User Experience. In IEEE Computer Graphics and Applications,
+Vol. 25, Issue 4, 2005, 44-51,.
+
+17. Geschka, H. (1978). Introduction and use of ideageneration of methods. Research management. 21 (3).
+18. Gladwell, M. (2002). The social life of paper. The New
+Yorker, 92-96.
+
+33. Santanen, E. L., Briggs, R. O., and de Vreede, G. 1999.
+A cognitive network model of creativity: a renewed focus on brainstorming methodology. In Proceeding of the
+20th International Conference on Information Systems
+(1999). Association for Information Systems, Atlanta,
+GA, 489-494.
+
+19. Guimbretière, F., Stone, M., Winograd, T. Fluid Interaction with High-resolution Wall-size Displays. In Procceedings of UIST 2001.
+20. Guimbretière, F., and Winograd, T. FlowMenu: Combining Command, Text and Parameter Entry.
+Procceedings of UIST 2000, 213 – 216.
+
+34. Scott, S.D., Grant, K., D., & Mandryk, R.: System
+Guidelines for Co-located, Collaborative Work on Tabletop Display. System Guidelines for Co-located Collaborative Work on a Tabletop Display. In Proceedings
+of ECSCW 2003, 159-178.
+
+21.Håkansson, M., Ljungblad, S. and Holmquist, L.E. Like
+Solving a Giant Puzzle: Supporting Collaborative
+Scheduling at a Film Festival. In Proceedings of
+INTERACT 2003, IFIP, pp 773-776.
+
+35. Scott, S.D., Carpendale, M.S.T, & Inkpen, K.M.: Territoriality in Collaborative Tabletop Workspaces. In Proceedings of CSCW 2004.
+
+22. Hutchins, E. Cognition in the Wild. MIT Press, Cambridge 1995.
+23. Kerr, N.L, Bruun, S.E. (1983), Dispensability of member effort and group motivation losses: Free-rider effects, Personality and Social Psychology Bulletin, 44,
+78-94.
+
+36. Sellen, A. J., & Harper, R. (2001). The myth of the paperless office.MIT Press.
+37. Streitz, N.A., Geißler, J., Holmer, T., Konomi, S.,
+Müller-Tomfelde, C., Reischl, W., Rexroth, P.,Seitz, P.,
+and Steinmetz, R. , i-LAND: An interactive Landscape
+for Creativitiy and Innovation. In Proceedings of CHI
+1999. ACM Press, 120-127.
+
+24. Kirsh, D. The Intelligent Use of Space. Artificial Intelligence, 73, 31-68.
+25. Kirsh, D., Maglio, P. (1994). On Distinguishing Epistemic from Pragmatic Action. In Journal on Cognitive
+Science, 18, 513-549.
+
+38. SmartTech DViT http://www.smarttech.com/DViT/
+39. Terrenghi, L., Fritsche, T., Butz, A.: The EnLighTable: Design of Affordances to Support Collaborative Creativity. In
+Proceedings of Smart Graphics Symposium 2006, 206-217.
+
+26. Klemmer, S.R., Newman, M.W., Farrell, R., Bilezikjian,
+M., Landay, J.A. The Designers' Outpost: a Tangible Interface for Collaborative Web Site Design. In Proceedings of UIST 2001, 1-10.
+
+40. Tatar, D.G., Foster, G., Bobrow, D.G. (1991). Design
+for Conversation: Lessons from Cognoter. In International Journal of Man-Machine Studies, 34:185-209,
+1991.
+
+27. Leganchuk, A., Zhai, S., Buxton, W. Manual and Cognitive Benefits of Two-Handed Input: An Experimental
+Study. In ACM Transactions on Computer-Human Interaction, Vol5, No.4, 1998.
+
+41. Tang, J.C., Findings from observational studies of collaborative work. In International Journal of ManMachine Studies (1991), 34, 143-160.
+
+28. Miller, G.A. The Magical Number Seven, Plus or Minus
+Two: Some Limits on our Capacity for Information
+Processing. Psychological Review (63), 1956, 81-97.
+
+42. Van Gundy, A.B. (1981). Techniques of Structured
+Problem Solving. NY. Van Nostrand, Reinhold.
+
+29. Norman, D. A., and Bobrow, D. G. On Data-Limited
+and Resource-Limited Processes. In Cognitive Psychology (7), 1975, 44-64.
+
+43. Van Der Lugt, R., Functions of Sketching in Design
+Idea Generation Meetings. In Proceedings of the 4th
+Conference on Creativity & Cognition,2002, 72-79.
+
+30. Osborn, A.F. Applied Imagination: Principles and Procedures of Creative Thinking. New York, Scribner, New
+York, 1953.
+
+146
+
+

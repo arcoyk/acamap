@@ -1,0 +1,620 @@
+arXiv:1704.03330v2 [physics.soc-ph] 14 Apr 2017
+
+Food-bridging: a new network construction to
+unveil the principles of cooking
+Tiago Simas⇤1,2 , Michal Ficek1 , Albert Diaz-Guilera3,4 ,
+Pere Obrador1 , and Pablo R. Rodriguez1
+1
+
+Telefonica Research, Edificio Telefonica, Barcelona, Spain
+2
+Department of Psychiatry, University of Cambridge,
+Cambridge, UK
+3
+Departament de Fisica de la Materia Condensada, Marti i
+Franques 1, Universitat de Barcelona, 08028 Barcelona, Spain
+4
+Universitat de Barcelona Institute of Complex Systems
+(UBICS), Universitat de Barcelona, Barcelona, Spain
+April 17, 2017
+
+Abstract
+In this manuscript we propose, analyse, and discuss a possible
+new principle behind traditional cuisine: the Food-bridging hypothesis
+and its comparison with the food-pairing hypothesis using the same
+dataset and graphical models employed in the food-pairing study by
+Ahn et al. [1].
+The Food-bridging hypothesis assumes that if two ingredients do
+not share a strong molecular or empirical affinity, they may become
+affine through a chain of pairwise affinities. That is, in a graphical
+model as employed by Ahn et al., a chain represents a path that joints
+the two ingredients, the shortest path represents the strongest pairwise
+chain of affinities between the two ingredients.
+⇤
+
+Email: tiago.simas@telefonica.com
+
+1
+
+Food-pairing and Food-bridging are di↵erent hypotheses that may
+describe possible mechanisms behind the recipes of traditional cuisines.
+Food-pairing intensifies flavour by mixing ingredients in a recipe with
+similar chemical compounds, and food-bridging smoothes contrast between ingredients. Both food-pairing and food-bridging are observed
+in traditional cuisines, as shown in this work.
+We observed four classes of cuisines according to food-pairing and
+food-bridging: (1) East Asian cuisines, at one extreme, tend to avoid
+food-pairing as well as food-bridging; and (4) Latin American cuisines,
+at the other extreme, follow both principles. For the two middle
+classes: (2) Southeastern Asian cuisines, avoid food-pairing and follow
+food-bridging; and (3) Western cuisines, follow food-pairing and avoid
+food-bridging.
+
+1
+
+CUISINE
+
+BRIDGING
+
+Western cuisine
+
+o
+
+East Asia
+
+x
+
+x
+
+Southeastern Asia
+
+o
+
+x
+
+Latin American
+
+o
+
+o
+
+Introduction
+
+Since the introduction by Francois Benzi and Heston Blumenthal of the Foodpairing hypothesis, a debate on this hypothesis has been risen in gastronomy
+science and cuisine. Originally it states that, if two ingredients share important flavour compounds1 , there is a good chance that they will result in
+a tasty combination, [1, 2]. In the last few years, this hypothesis attracted
+foodies, many chefs, and scientists. If food-pairing is one of the main principles behind our taste preferences, scientifically this would allow us to predict
+and build many successful new ingredient affinities based on which flavours
+they are composed.
+Ahn et al. [1], present a study of the food-pairing hypothesis across
+several regional cuisines, employing a set of tools which derive from a new
+scientific field: complex networks, a sub-field of complex systems [4]. These
+mathematical techniques were applied to several regional cuisines, to encode
+a relation between ingredients and flavours as a network, where nodes and
+edges represent ingredients and flavours sharing respectively. This network is
+called flavour network from now on. The authors have observed that Western
+cuisines show a tendency towards the food-pairing hypothesis, i.e. their
+flavour network contains many pairs of ingredients that share many flavour
+compounds, and that Eastern Asian cuisines tend to avoid compound sharing
+1
+By flavour compounds we mean molecular chemical compounds and from now on will
+describe these as flavours compounds or, in short, flavours.
+
+2
+
+PARING
+
+x
+
+ウイスキーとアプリコットは化学的に遠いがトマトを間に入れると近くなる（become affine, or have strong affinitiy)
+
+between ingredients. The study of food-pairing has lately been applied to
+other specific regional cuisines [5, 6, 7].
+The hypothesis of food-bridging stems from the combination of the theory
+of complex networks and gastronomy [1, 2, 3, 5, 8, 9, 12, 13]. It assumes that
+if two ingredients do not share a strong molecular or empirical affinity, they
+may become affine through a chain of pairwise affinities. That is, apricot and
+whiskey gum may not be affine,
+but if we join (or bridge) them with tomato
+affine = 親戚
+they may become affine – assuming that tomato is affine with apricot and
+whiskey gum, thus creating a chain of affinities. In a graphical model of a
+flavour network this corresponds to a path that joints the two ingredients,
+but not necessarily the shortest path. However, the shortest path represents
+the strongest pairwise chain of affinities between the two ingredients.
+In this manuscript we analyse and discuss the food-bridging hypothesis
+with a restriction to the optimal case, which corresponds to the shortest
+path in the graphical model. We use the same dataset and graphical models
+employed in the study of Ahn et al. [1]. This allows us to perform a direct
+comparative study between food-pairing and food-bridging.
+
+2
+2.1
+
+重みの最大値で割っても
+ネットワーク構造は変化しない
+
+Methods and Materials
+Data and Ingredient Networks
+
+The data used in this work as well as the methods employed to build ingredient networks, are based on the work of Ahn et. al. [1]. In short, the
+flavour network is a weighted graph obtained from a bi-partite graph that relates 1530 ingredients with 1106 flavour compounds [1]. Nodes in the flavour
+network represent the ingredients, edge weights are the number of flavours
+compounds shared between pairs of ingredients [1].
+We removed some regional cuisines from the original work [1]. The reason behind is that we employed the null-model Frequency-conserving described in the supplementary materials [1], and after a permutation test and
+multi-comparison correction (False Discovery Rate), they show evidence of
+no statistical di↵erence when compared with the null-model on the variables:
+food-pairing and food-bridging.
+In general, the weights of a weighted network lie in a non-normalised
+interval Zij 2 [a, b] ⇢ R. Normalising the network weights to the unit
+interval I = [0, 1] does not a↵ect network properties, if the normalisation
+
+Flavour network: 1530の食材と1106の化学物質にたいして、食材をノード、食材間のaffinityをエッジとしたグラフ。エッジの重みがエッジ両端の食材が共有している「化学物質の数」
+
+3
+
+is performed by a linear function. As shown in [9] there is only one unique
+linear function that performs such normalisation.
+wij =
+
+(1
+
+2✏)Zij + (2✏ 1) · M IN (Zij )
++✏
+M AX(Zij ) M IN (Zij )
+
+(1)
+
+We have parameterise this function with ✏ in order to avoid merging and/or
+isolating vertices with weights at the boundaries of Zij 2 [a, b]. In general ✏
+is set to 0.01.
+This normalisation allows us to apply the framework described in [9],
+i.e. allows us to treat weighted graphs as mathematical objects defined in
+a specific algebra, similar to the way in which we use algebras to deal with
+numbers.
+[9]で提案されたネットワークの数学モデルを適用するためにflavour networkを正規化した
+
+2.2
+
+Food-pairing, Food-bridging and Flavour Network
+Semi-metricity
+
+Food-pairing . As defined in [1] Food-pairing is measured by the number
+of flavours a pair of ingredients share. The food-pairing value of a recipe is
+the average number of shared flavours in the recipe, as defined in [1] and is
+calculated from the following equation:
+レシピの評価式。エッジの重みの平均＝全ての食材間で
+Ns (R) =
+
+SubNetwork
+
+X
+
+2
+
+Recipe
+
+nR (nR
+
+number of ings in recipe
+
+共有している化学物質の数を食材数で割ったもの、と
+言っているが、間違ってる気がスル
+
+edge
+
+1) i,j2R,i6=j
+
+|Ci \ Cj |
+
+(2)
+
+where Ck corresponds to the edge weight between the pair of ingredients
+in the flavour network, and nR is the number of ingredients in the recipe
+R. Each recipe defines a sub-graph in the flavour network and Ns (R) corresponds to the average of all edges in such sub-graph.
+Metric and Semi-metric edges and paths. As defined in [13, 12, 9, 11,
+= 計量可能 = エッジが存在する
+15, 14, 10], an edge in a weighted graph is metric if the shortest path is equal metric
+semi-metric = 準計量可能 = エッジが存在しない
+ので最短距離を計算する
+to the edge by itself (direct connection). Otherwise the edge is considered
+semi-metric, which means that there is at least one alternative path that
+involves other nodes. See figure 1 for an example.
+We may observe in a network of ingredients that two nodes are more
+strongly connected by other paths (semi-metric paths), whether or not there
+is a direct edge between them. Figure 1 shows an example of the combination of ”garlic” and ”strawberry” from the flavour network, which share 5
+4
+
+親和性＝affinityが弱いペアに
+３つめの食材を入れて親和性を
+向上させる
+
+flavours when mixed together. In this figure we show how we may increase
+the poor affinity between these two ingredients by adding additional ingredients that play in the semi-metric paths of the flavour network. From the
+flavour network, at least two semi-metric paths are stronger than the edge
+that connects them. In this case, among the possible stronger paths, the optimal semi-metric path is the path that indirectly connects the two ingredients
+in this network; that is, the path ”garlic + roasted onion + bantu beer +
+strawberry”. These intermediate ingredients potentiate the affinity between
+”garlic - strawberry”. Other semi-metric paths may exist as we show in this
+example: ”garlic + roast beef + strawberry”.
+Food-pairing is a particular case for which we only consider direct connections, if they exist. In another words k = 0 hops (zero nodes in between).
+However, with semi-metric paths we allow two ingredients to be strongly
+connected with k > 0 hops, whether the edge between the ingredients exists
+or not.
+There are many ways to calculate such alternative paths between any two
+nodes in a weighted graph. Refer to the Figure 1 in [15] for a summary of
+this calculation and, see further details in [9, 11, 15, 14, 16].
+Food-bridging . Food-briging is a hypothesis which assumes that if two
+ingredients do not share a strong molecular or empirical affinity, they may
+become affine through a chain of pairwise affinities. That is, apricot and
+whiskey gum may not be affine, but if we join (or bridge) them with tomato
+they may become affine – assuming that tomato is affine with both apricot
+and whiskey gum, thus creating a chain of affinities.
+化学物質を共有しない食材グループが存在するためネットワークは分断され、２食材間のパスは見つからないかもしれない
+
+Food-bridging is the ability to connect a pair of ingredients, that may or
+may not have a direct connection, through a path of non-repeating ingredients within a network of ingredient affinities; in the specific case of this work
+the flavour network. Several paths may exist, or none. In the case that no
+path exists, we say that no bridge exists, otherwise a bridge exists and all
+possible bridges are ranked by the strength of the path.
+The notion of food-bridging is directly related to semi-metric connections
+between ingredients in a network of ingredients as briefly mentioned above.
+Semi-metricity in weighted graphs is a mathematical property of distance
+that measures all levels of triangle inequality violations. That is, all k hop
+inequalities violations between two ingredients, where k 1 means that we
+5
+
+Figure 1: Semi-metric edge and paths example from the flavour network.
+The white edge that links ”garlic + strawberry” shares 5 flavours. Therefore
+it is semi-metric, because there are two alternative paths the yellow and orange paths that better overlap flavours or food-pairs based in a chain of other
+ingredients, smoothing the initial flavour contrast between these ingredients.
+The two semi-metric paths that connect ”garlic-strawberry” are: (1) Yellow
+path, with ”garlic + roasted onion + bantu beer + strawberry”, which shares
+16+32+88 = 136 flavours; and (2) orange path, with ”garlic + roasted beef
++ strawberry”, which shares 11+63 = 74 flavours. The first semi-metric path
+may inspire a ”garlic-strawberry” sauce, based on ”garlic + roasted onion +
+bantu beer + strawberry”, and with the second semi-metric path may inspire the dish composed of ”roasted beef” with garlic-strawberry sauce. This
+figure is an adapted print screen of the application developed by Telefonica
+I+D Appetit Team and available online at http://appetit.lab.tid.es - with
+Telefonica I+D printing permission.
+have k intermediate ingredients, see Figures 1 and 3(B) for an example.The
+degree of food-bridging in a recipe is defined as an average of all semi-metric
+edges in a recipe, or by the average strength of all optimal semi-metric paths,
+respectively.
+degree of food-bridging: semi-metricエッジの平均
+
+6
+
+⇤
+More specifically, we define the recipe optimal food-bridging strength Nsm
+(R)
+as an average of the strengths of all the optimal paths between any pair of
+ingredients in the defined recipe sub-graph:
+⇤
+Nsm
+(R) =
+
+where
+
+2
+nR (nR
+
+X
+
+1) i,j2R,i6=j
+si,j =
+
+(si,j > 1 ^ si,j < +1)
+dci,j + 1
+
+(3)
+
+di,j
+dci,j
+
+is the semi-metric ratio in the weighted sub-graph defined by the recipe R
+in the flavour network [9, 11, 15, 14]: di,j is the direct distance and dci,j
+denotes the shortest path between ingredients i and j, respectively. is the
+discrete-Kronecker function, i.e. (condition) = 1, if the logical condition
+T rue, otherwise (condition)P
+= 0 – for logical condition equals False. That
+is, the equation numerator;
+i,j (si,j > 1 ^ si,j < +1), counts only the
+semi-metric edges.
+⇤
+Although we define the recipe optimal food-bridging strength Nsm
+(R), in
+this work we measure the degree of food-bridging in a recipe as the average
+of all semi-metric edges in a recipe, which represents a simpler version.
+Network semi-metric percentage. As defined in [9, 11, 15, 14] the network semi-metric percentage is given by the following equation:
+P
+i,j (si,j > 1 ^ si,j < +1)
+SM P = P
+(4)
+1 ^ si,j < +1)
+i,j (si,j
+
+where si,j is the semi-metric ratio betweenPingredients i and j in the flavour
+network. The dominator of this equation; i,j P(si,j 1 ^ si,j < +1) counts
+all edges in the network and the numerator;
+i,j (si,j > 1 ^ si,j < +1),
+counts only the semi-metric edges.
+Recipe food-bridging percentage. Semi-metric percentage of the subgraph representing a recipe in the ingredient network is called recipe foodbridging percentage. In other words, Equation 4 above is applied to the
+sub-graph defined by the recipe.
+Network metric backbone. As defined in [9, 11, 15, 14] the metric backbone is the smallest weighted sub-graph of a weighed graph that preserves
+7
+
+the shortest paths: sub-graph with all metric edges.
+Network semi-metric backbone. The semi-metric backbone is a subgraph of a weighted graph with only semi-metric edges, i.e. all metric edges
+removed from the network [11, 15].
+
+3
+
+Results
+
+In Figure 2 we analysed food-pairing and optimal food-bridging (semi-metric
+percentage) according to equations 2 and 4, respectively. We plotted the averages of these variables for each of the seven distinct world regions, against
+how they rank, (Figure 2 (A) and (C)), and against the number of ingredients, (Figure 2 (B) and (D)).
+
+使われる食材数が
+増えるとfoodparing仮説が成り立
+ち温くなる
+
+Food-pairing : In Figures 2 (A) and (B) we observe that there are clearly
+two distinct groups with respect to food-pairing: Western-based cuisines;
+and Eastern Asian cuisines. It corroborates with the observations in [1, 2, 5]
+that Eastern Asian cuisines avoid food-pairing more than the Western based
+cuisines. Moreover, from Figure 2 (B), we observe that there is a negative
+trend of food-pairing against the average number of ingredients used in a
+recipe. Note that in this case, East Asian and Southeast Asian cuisines di↵er
+mainly in the average number of ingredients used in a recipe. East Asian
+cuisine is a complete outlier in this trend – flagging that Southeast Asian
+cuisine may di↵er from East Asian cuisine in some other dimension. We
+also observe that Eastern European as well as Southeast Asian cuisines show
+higher variability, suggesting a richer cuisine. In fact, the source of the variability may stem from a size e↵ect, since these two cuisines present lower
+volume of recipes when compared to the others, a collection of 381 and 457
+recipes, respectively, with the others containing over 2000 recipes each.
+
+Food-bridging : In Figures 2 (C) and (D) we observe that food-briding
+ranks non-linear and depends positively linearly on the average number of
+the ingredients used in recipes. From the rank we observe that, in this case,
+food-bridging: East and Southeast Asian cuisines di↵er significantly from
+each other; Western cuisines cluster together at the bottom extreme; and
+Southeast Asian at the other extreme.
+8
+
+Food-Pairing
+仮説が成り立つ度合い
+
+Food-Bridging
+仮説が成り立つ度合い
+
+Food-Bridgingで評価したランキング（国別）
+
+Figure 2: < N (R) > is the average over all recipes of the recipe food-pairing,
+< SM P (R) > is the average over all recipes of the recipe food-bridging,
+Rank is the sorted cuisine type by < N (R) > or < SM P (R) >, and < n >
+the average number of ingredients per recipe for a given cuisine type. (A)
+Average recipe Food-pairing (< N (R) >) vs. cuisine type Rank. (B) Average
+recipe Food-pairing (< N (R) >) vs. average number of ingredients per recipe
+(< n >) . (C) Average recipe Food-bridging (< SM P (R) >) vs. cuisine type
+Rank. (D) Average Food-bridging (< SM P (R) >) vs. average number of
+ingredients per recipe (< n >).
+In this case we note that food-bridging (semi-metric percentage) depends
+on the number of ingredients used in a recipe. This was an expected result
+since there are more possibilities to bridge ingredients, i.e. more degrees of
+freedom.
+
+Food-pairing and Food-bridging : In Figure 3 (A) we observe the relation
+9
+
+between food-pairing and food-bridging. We divided the group into four nonoverlapping regions, which represent the following four classes.
+1. Low food-pairing + Low food-bridging.
+2. Low food-pairing + High food-bridging.
+3. High food-pairing + Low food-bridging.
+4. High food-pairing + High food-bridging.
+We observe that East Asian falls into class (1), Southeast Asian into class
+(2), Southern, Eastern, Western European and North American into class (3)
+and Latin American into class (4).
+In class (1), with low food-pairing and low food-bridging, the recipe ingredients depend less on the co-occurrence of their flavour compounds, directly
+or indirectly (chains of pairings). Class (2) pairs flavour compounds mainly
+indirectly by chains or bridges between ingredients. In class (3), the ingredients mainly pair their flavour compounds without that many indirect chains
+or bridges. In class (4) the ingredients strongly pair and bridge their flavour
+compounds.
+In Figure 3 (B) we have an example of a SouthEast Asian recipe with
+six ingredients2 . We can observe five semi-metric edges (red) and six metric
+5
+edges (blue). The semi-metric percentage of this recipe is SM P = 5+6
+⇥
+100% = 45%. It shares in average eleven flavour compounds between pairs
+of ingredients, falling into class (2) according to figure 3 (A). Moreover, this
+recipe has nine possible semi-metric paths or bridges, where some of them
+are shown in the Figure 3 (B).
+In Figures 4-5, we show a sub-graph of the flavour network with the top
+100 ingredients that have stronger connections or pairings (node strength).
+Figure 4 edges represent only metric connections (metric backbone) and Figure 5 edges show only semi-metric connections (semi-metric backbone). Node
+colours represent network clusters after applying a community detection algorithm, e.g. Louvain algorithm [17], and node size proportional to the
+2
+
+The meaning of general ingredients products from Fenaroli’s book of Flavors [8] is for
+example:
+fish: sweet fish, fatty fish, raw fatty fish, ...
+seed: lovage seed, toasted sesame seed, angelica seed, ...
+
+10
+
+node metric or semi-metric strength, respectively. The metric percentage is
+27, 4% of the edges from the flavour network and the semi-metric percentage
+is 72, 6% from the flavour network, which demonstrates that there are a high
+number of bridge possibilities between pairs of ingredients.
+Highly metric ingredients (node size) tend to food-pair in pairs, and highly
+semi-metric ingredients (node size) tend to food-pair with the addition of
+intermediate ingredients. For example, from Figure 4 the ingredients ”beer”,
+”black tea”, ”gruyere cheese” etc, are good food-pairing ingredients. Figure
+5 shows that ”port wine”, ”rose wine”, ”tea”, ”tomato” are better mixed
+with intermediate ingredients, according to food-bridging hypothesis.
+In general, we may observe from Figures 4-5 that there is a dichotomy;
+with ingredients that are less suited to food-pairing tending to use the foodbridging mechanism, and vice-versa.
+
+4
+
+Discussion
+
+We have shown that the flavour network is 72, 6% semi-metric, which allows
+food-bridging to work extensively, i.e. the number of possible semi-metric
+paths between ingredients is large. Food-bridging or semi-metricity, by hypothesis may increase affinities between ingredients with or without a strong
+direct affinity based on chain of intermediate ingredient pairings, in this case
+a chain of flavour compounds affines.
+Food-pairing and food-bridging are di↵erent hypothesis that may represent possible mechanisms behind traditional cuisines. Food-pairing intensifies flavour with similar flavoured ingredients and food-bridging smooths
+contrasted flavoured ingredients in a recipe, respectively. Both hypothesis
+food-pairing and food-bridging, are jointly observed in traditional cuisines,
+as shown in this work.
+Regional cuisines cluster in four distinct classes defined by the possible relationship between these two mechanisms. Where East Asian cuisine is at one
+extreme class (1), and tends to avoid food-pairing as well as food-bridging;
+and Latin American cuisine is at the other extreme class (4), following both
+principles. Southeastern Asian and Western cuisines are in middle classes
+(2) and (3): class (2) avoids food-pairing and follows food-bridging; class (3)
+follows food-pairing and avoids food-bridging.
+It is worthwhile noting from figure 3 (A) that the represented cuisine
+classes follow in some way their geo-political distribution.
+11
+
+Figure 3: < N (R) > is the average over all recipes of the recipe foodpairing, and < SM P (R) > is the average over all recipes of the recipe foodbridging. (A) Classes of cooking based on average recipe Food-pairing (<
+N (R) >) versus average recipe Food-bridging (< SM P (R) >) . We divided
+the space into four distinct regions or classes, as follows: (1) Low foodpairing + Low food-bridging, (2) Low food-pairing + High food-bridging,
+(3) High food-pairing + Low food-bridging, (4) High food-pairing + High
+food-bridging. (B) An example of semi-metric analysis of a Southeast Asian
+cuisine with six ingredients. The semi-metric percentage of this recipe is
+5
+SM P = 5+6
+⇥ 100% = 45%. It shares in average eleven flavour compounds
+between pairs of ingredients, falling into class (2) according to (A). Moreover,
+this recipe has nine possible semi-metric paths or bridges, of which some are
+shown above.
+
+12
+
+Figure 4: Metric Backbone. Top 100 ingredients of Flavour Network with
+higher node strength. Edges represent metric connections and edge colour
+the target community colour (target node). Node colours represent network
+clusters after applying a community detection algorithm, e.g. Louvain algorithm, and size proportional to the node metric strength.
+East Asia cuisine, represented by Korean, Chinese, and Japanese cuisines,
+tends to use contrasted ingredients with respect to flavour. This results in a
+cuisine that contrasts several flavours.
+At the other extreme is Latin American cuisine, represented by Caribbean,
+Central America, South American, and Mexican cuisines. These tend to rein-
+
+13
+
+Figure 5: Semi-metric Backbone. Top 100 ingredients of Flavour Network
+with higher node strength. Edges represent semi-metric connections and edge
+colour the target community colour (target node). Node colours represent
+network clusters after applying a community detection algorithm, e.g. Louvain algorithm, and size proportional to the node semi-metric strength.
+force the intensity of flavour using both mechanisms, food-pairing and foodbridging. That is, direct and indirect intensification of flavours in a recipe,
+reinforcing common flavours and smoothing contrasts between flavoured contrasted ingredients.
+In class (2) we found Southeast Asian cuisine, represented by Indonesian,
+
+14
+
+Malaysian, Filipino, Thai, and Vietnamese. These cuisines are similar to East
+Asian cuisines with respect to food-pairing, using contrasted ingredients, but
+at the same time they smooth these contrasts with other ingredients that
+bridge the contrast.
+The other intermediate class is class (3), where we found Eastern, Southern, Western European, and North American cuisines. Eastern European
+cuisines are represented by Eastern Europe in general, and Russian cuisines.
+Southern European cuisine is represented by Greek, Italian, Mediterranean,
+Spanish, and Portuguese. Western European cuisine is represented by French,
+Austrian, Belgian, English, Scottish, Dutch, Swiss, German, and Irish. And
+North American is represented by American in general, Canada, Cajun,
+Southern soul food, and Southwestern U.S. These cuisines tend to follow
+the food pairing with the direct intensification of flavours in a recipe, avoiding contrasted ingredients. Therefore, these cuisines are characterised by
+avoiding flavour contrasted ingredients. Moreover, in this class, at one extreme we have Southern European, and at the other North American. The
+latter sub-clustering better with Western and Eastern European cuisines.
+We may suggest several explanations for why, in this analysis, traditional
+cuisines cluster in this way across these two dimensions: food-pairing and
+food-bridging. The clustering aligns well with a geo-political distribution.
+These cuisines may be driven by particular geographical weather and resource
+constrains as well as political trade in goods, which may influence the di↵erent
+styles of cuisine analysed in this work.
+Food-bridging, as shown, opens the possibility of better understanding
+possible mechanisms behind mixing ingredients in a recipe. This is a new
+mechanism or hypothesis, di↵erent from food-pairing, and both mechanisms
+are observed in traditional cuisines, in particular in this dataset [1].
+We recognise a number of limitations in this work. We have not included
+in this analysis important features such as texture, ingredient concentrations,
+processes used during the recipes, such as cooking method among others
+[3]. We restricted our analysis to the number of shared chemical flavour
+compounds between ingredients as in the works of Ahn et al. [1, 2]. However,
+for food-bridging, a contra-part of its mathematical representation – semimetricity – is not restricted to the flavour space or more specifically to the
+flavour network. In general, it may be employed to other modalities: texture,
+colour, among other empirical or scientifically affinities.
+Besides this work, semi-metricity as a topological property of weighted
+graphs has been shown to be a topological analysis, sensitive and specific
+15
+
+in identifying how the flow of information propagates in the human brain
+[11, 15], provide better recommendations in social networks [9, 13], and a
+better optimisation of large scale graphical algorithms [14].
+This work brings a new perspective on food-pairing, and introduces foodbridging as a new principle or vector behind cooking.
+
+Author Contributions
+All authors made significant contributions to the drafting of the article.
+
+Acknowledgements
+The authors would like to acknowledge Telefonica I+D for all support done
+in the Appetit project that have turn possible the present work. We also
+thank all of our colleagues involved in the Appetit project. We would like to
+acknowledge Oliver Smith and Emily Stott for their persistence on editing
+this manuscript.
+
+References
+[1] Y-Y. Ahn, S.E. Ahnert, J. P. Bagrow, and A-L. Barabasi. Flavor network
+and the principles of food pairing. Scientific Reports 1:196 (2011).
+[2] Y-Y. Ahn and S.E. Ahnert. The Flavor Network. Leonardo, Vol. 46, No.
+3, pp. 272-273, 2013. doi: 10.1162/LEON.a.00569.
+[3] Vega C., Ubbink J., and Van der Linden, E. The Kitchen as laboratory:
+reflexions on the science of food and cooking. Columbia University Press,
+New York, 2012.
+[4] S. Boccaletti, V. Latora, Y. Moreno, M. Chavez, D.-U. Hwang, Complex
+networks: Structure and dynamics, Physics Reports, Volume 424, Issues
+4-5, February 2006, Pages 175-308. doi: 10.1016/j.physrep.2005.10.009.
+[5] Jain A, N K R, Bagler G (2015) Analysis of Food Pairing
+in Regional Cuisines of India. PLoS ONE 10(10):
+e0139539.
+doi:10.1371/journal.pone.0139539.
+16
+
+[6] Kim S, Sung J, Foo M, Jin Y-S, Kim P-J (2015) Uncovering
+the Nutritional Landscape of Food. PLoS ONE 10(3): e0118697.
+doi:10.1371/journal.pone.0118697.
+[7] Varshney, Kush R., Varshney, Lav R., Wang, Jun, and Myers, Daniel.
+Flavor Pairing in Medieval European Cuisine: A Study in Cooking with
+Dirty Data. June 30, 2013. arXiv:1307.7982 [physics.soc-ph].
+[8] Burdock, G.A. Fenaroli’s handbook of flavor ingredients. CRC Press,
+5th edition, 2004.
+[9] T. Simas, and L. M. Rocha. Distance Closures on Complex Networks.
+Network Science (3) 2 (2015) 227-268. doi:10.1017/nws.2015.11.
+[10] Simas T, Chavez M, Rodriguez PR and Diaz-Guilera A (2015) An algebraic topological method for multimodal brain networks comparisons.
+Front. Psychol. 6:904. doi: 10.3389/fpsyg.2015.00904.
+[11] Simas T, Chattopadhyay S, Hagan C, Kundu P, Patel A, Holt R, et al.
+(2015) Semi-Metric Topology of the Human Connectome: Sensitivity
+and Specificity to Autism and Major Depressive Disorder. PLoS ONE
+10(8): e0136388. doi:10.1371/journal.pone.0136388.
+[12] Simas T.M.L.M. Stochastic Models and Transitivity in Complex Networks. Indiana University, May 2012. Ph.D Thesis.
+[13] T. Simas and L.M. Rocha. Semi-metric networks for recommender systems. Proceedings of the The 2012 IEEE/WIC/ACM International Joint
+Conferences on Web Intelligence and Intelligent Agent TechnologyVolume 03, pp. 175-179.
+[14] Kalavri V., Simas T. and Logothetis D. The shortest path is not always
+a straight line: leveraging semi-metricity in graph analysis. Proceedings
+of the VLDB Endowment Volume 9 Issue 9, May 2016, Pages 672-683.
+doi: 10.14778/2947618.2947623.
+[15] Simas T and Suckling J (2016) Commentary: Semi-Metric Topology of the Human Connectome: Sensitivity and Specificity to
+Autism and Major Depressive Disorder. Front. Neurosci. 10:353. doi:
+10.3389/fnins.2016.00353.
+17
+
+[16] D. B. Johnson, Efficient algorithms for shortest paths in sparse networks.
+Journal of the ACM 24 (1977) 1-13,
+[17] Santo Fortunato (2010) Community detection in graphs, Physics Reports, Volume 486, Issues 3?5, February 2010, Pages 75-174, ISSN 03701573, http://dx.doi.org/10.1016/j.physrep.2009.11.002.
+
+18
+
+

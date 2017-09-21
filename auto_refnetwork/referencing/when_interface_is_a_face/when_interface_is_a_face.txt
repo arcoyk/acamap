@@ -1,0 +1,1306 @@
+HUMAN-COMPUTERINTERACTION, 1996, Volume 11, pp. 97-124
+Copyright 0 1996, Lawrence Erlbaum Associates, Inc.
+
+When the Interface Is a Face
+Lee Sproull and Mani Subramani
+Boston University
+
+Sara Kiesler
+Carnegie Mellon University
+
+Janet H. Walker and Keith Waters
+Digital Equipment Corporation
+
+ABSTRACT
+People behave differently in the presence of other people than they do when
+they are alone. People also may behave differently when designers introduce
+more human-like qualities into computer interfaces. In an experimental study
+we demonstrate that people's responses to a talking-face interface differ from
+their responses to a text-display interface. They attribute some personality
+
+Lee Sproull is a sociologist interested in the social implications of new
+computing technologies; she is a Professor of Management at Boston University. Mani Subramani is a doctoral candidate in Management Information
+Systems at Boston University; his research interests are the im lications of
+information technologies for the design of work in organizations. ara Kiesler
+is a social psychologist who studies social aspects of computer-based technology; she is a Professor of Social and Decision Sciences and a Member of the
+Human Computer Interaction Institute at Carne 'e Mellon University.Janet
+H. Walker is a psychologist interested in visu media; at the time of this
+work, she was a Member of Research Staff at the Digital Equipment Corporation Cambridge Research Laboratory. Keith Waters is a computer scientist
+with interests in com uter graphics, multimedia, and computer vision; current1 he is a Consu ting Engineer at the Digital Equipment Corporation
+Cam ridge Research Laboratory.
+
+f
+
+f
+
+r,
+
+7
+
+98
+
+SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+CONTENTS
+
+1. INTRODUCIION
+2. THEORETICAL PRALEmVOblg AND HYPOTHESES
+3. OVERWEW OF STUDY
+4. METHOD
+4.1. Subjects
+4.2. Apparatus and Display Manipulation
+4.3. Procedure
+4.4. Measures
+5. RESULTS
+5.1. Check on Manipulation of Talking-Face Expression
+5.2. Social Perception of Question Asker
+5.3. Arousal and Attention to Performance
+5.4. Self-Presentation
+5.5. Differences Between Men and Women Across Conditions
+6. DISCUSSION
+
+APPENDIX
+
+traits to it; they are more aroused by it; they present themselves in a more
+positive light. We use theories of person perception, social facilitation, and
+self-presentation to predict and interpret these results. We suggest that as
+computer interfaces become more "human-like," people who use those interfaces may change their own personas in response to them.
+
+This work explores the implications of designing computer interfaces to
+look or act more as people do. People act differently in the presence of
+other people than they do when they are alone. They pay attention to
+those people; they work harder; they present themselves in a more positive light. If this phenomenon extends to people in the presence of "human-like" computers, then as interfaces display more human-like
+characteristics, people who use those interfaces may change their own
+behavior in response to them.
+Technologists have aspired to humanize computer interfaces for a long
+time. Humanizing interfaces entails making them more humane, in the
+sense of easier and more comfortable to use (Lawel, 1990; Shneiderman,
+1987). Humanizing may also entail "humanifymg," in the sense of embodying such human-like attributes as speech (Eichenwdd, 1986), speech
+recognition (Itou, Hayamizu, & Tanaka, 1992), and social intelligence
+(Binnick, Westbury, & Servan-Schreiber, 1989; Resnick & Lammers,
+
+WHEN THE INTERFACE IS A FACE
+
+99
+
+1985). Adding more human-like attributes presumably makes interacting
+with the interface more satisfymg-because it is more "natural," because it
+is emotionally more satisfying, or both. This assumption can be problematic, of course-consider, for example, the case of talking seatbelts in automobiles, which auto makers removed because of customer dissatisfaction.
+Because the human face is such a powerful signal of human identity,
+adding human faces to interfaces holds promise for interface designers to
+make interfaces more human-like. There is some history of using human
+face icons and human faces in interfaces (Laurel, 1990; Takeuchi & Nagao,
+1993; Thorisson, 1993).A well-known instance is "Phil," a semi-intelligent
+agent that appeared in Apple Computer Company promotional videotapes (although it has not yet appeared in any products). Exploration of
+human-like interfaces has been limited to date by technology barriers but
+this situation is changing because the base technology needed to implement a variety of personable interfaces is advancing rapidly. With a
+combination of speech synthesis technology (commercially available) and
+facial animation (in research prototype), it is possible to display a synthetic
+talking face on a workstation screen (e.g., Waters, 1987; Waters & Levergood, 1993). The face display is an image of a human face with the mouth
+animated in synchrony with speech delivered from an audio subsystem
+driven by a text-to-speech conversion algorithm. The animated face display with synchronized audio output has the likeness of a talking face. The
+talking face can speak arbitrary text and can participate more or less fully
+in an interaction with a user, depending on the underlying programming.
+The talking face could simply provide a stylized greeting and introduce
+the user to a more conventional interface. Alternatively, the face could
+represent the computer side of an entire interaction, speaking all words
+that would otherwise be displayed on the screen as text and responding to
+the user orally instead of via text.
+Interestingly, increasing the "humanness" of an interface by adding
+more human qualities to it does not necessarily make people like it more.
+For example, in one experimental study, users criticized "human-like"
+error messages more than they did "computer-like" error messages (Resnick & Lammers, 1985). In an interface design effort, developers of navigation agents for a large hypertext historical database used icons of
+historical characters to provide paths through the database. Users overgeneralized from the character icons to expect them to have personality,
+motivation, and emotion, and were disappointed when they did not (Oren,
+Salomon, & Kreitman, 1990). In a precursor to the study reported here,
+Walker, Sproull, and Subramani (1994) administered questionnaires to
+people using either a text display or one of two talking-face displays to ask
+the questions. They found that people interacting with a talking face
+display spent more time, made fewer mistakes, and wrote more comments
+than did people interacting with the text display. However, people who
+interacted with the more expressive face liked the face and the experience
+
+100 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+less than people who interacted with the less expressive face. At least some
+of the time, trying to make interfaces more like humans apparently results
+in disconcerting users, if not actuaily confusing or displeasing them. Instead of assuming that more human is always better, it is important to
+understand how people interpret and react to different human qualities
+embodied in interfaces. This work draws on social psychological theories
+of how people behave in the presence of others to investigate their response to a talking-face display.
+
+The human face is one of the most powerful human referents. Newborns exhibit a preference for face-like patterns over other pakterns (Bond,
+1972); infants begin to differentiate specifk visual features of the face by
+the age of 2 months (Morton &Johnson, 1991). Faces can induce appropriate behavior in social situations and covering people's faces with masks
+can produce inappropriate behavior (Deiner, Fra~er,Beman, & Kelem,
+1976). Faces, particularly attractive ones, even sell soap. That is, physically
+attractive models are found to be effective in improving people's responses
+to advertisements (Baker & Churchill, 1977).
+Faces signal social identity by providing cues to emotion and personality (Ekman, 1982; Warner & Sugarman, 1986). When an observer sees a
+person's face, the observer can "read" emotion states such as surprise,
+happiness, anger, fear, or disgust and some personality attributes such as
+friendliness or optimism (but not other personality aspects such as dominance or activity). These readings are reliably consistent across multiple
+observers looking at the same faces (Ekman, 1982; Warner & Sugarman,
+1986). Facial appearance also influences expectations for interaction (Hilton & Darley, 1991; Snyder, 1984).When people see a happy, friendly face
+they expect to have a more enjoyable interaction than when they see an
+unhappy, unfriendly one. Facial appearance is used (sometimes inappropriately) as an overall indicator of a person's goodness and competence
+(Berscheid & Walster, 1974). Facial appearance and facial expression can
+set off a self-fulfilling prophecy, whereby people's biased responses to
+appearance cues elicit responses that then reinforce their own expectations.
+Previous research on physical appearance suggests that appearance
+elicits social perceptions related to personality and emotion, which in turn
+affect social behavior. Therefore, to investigate if people change their
+behavior in the presence of a talking-face display, we fist asked if people
+would attribute personality attributes such as friendliness or pessimism to
+it, even though the display was of a synthetic face. In experimental studies
+of personality attribution, subjects often are exposed to stimuli such as a
+1-min tape recording of a person's voice, a single slide of a person's face,
+or a 1-min video of a person talking. Subjects do not interact with the
+stimulus persons but judge their personality by rating them on multiple
+
+WHEN THE INTERFACE IS A FACE
+dimensions of personality on the basis of initial exposure. These studies
+have documented that information about personality attributes is conveyed differentially by different information sources such as facial appearance, voice, and body gestures (O'Sullivan, Ekman, Friesen, & Scherer,
+1985; Warner & Sugarman, 1986). For instance, sociability is conveyed
+better by facial appearance than by voice; activity or energy level is
+conveyed better by voice than by appearance. Thus, our first hypothesis is:
+H1. People will differentially attribute appearance-linked personality
+attributes rather than non-appearance-linked ones to a talking-face
+display as compared with a text display.
+The mere presence of another human being can influence a person's
+behavior substantially. The presence of another person usually serves to
+increase arousal on the part of someone asked to perform a task (Zajonc,
+1965). It leads people to attend more to the social situation and may
+increase evaluation apprehension and task motivation. Deemed the 'social
+facilitation effect," this response can lead to improved performance, if the
+task is simple, or to degraded performance if it is complex (Holroyd,
+Westbrook, Wolf, & Badhorn, 1978; Zajonc, 1965). If people are cued to
+behave socially by a talking-face display, as they are by a real person, then
+we would expect to see the social facilitation effect in this situation. Hence
+our second hypothesis is:
+H2a. People will be more aroused when interacting with a talking-face
+display than with a text display.
+H2b. People will be more attentive when the task is presented by a
+talking-face display than when it is presented by a text display.
+The presence of other people generally also leads people to present
+themselves in a positive light. For example, face-to-face interviews elicit
+more socially desirable self-reports of behavior such as wearing seat belts
+or voting in elections than do paper-and-pencil questionnaires asking the
+same questions (Bradburn, 1983). Face-to-faceinterviews also elicit fewer
+reports of socially undesirable behavior such as drug abuse or alcohol
+consumption (Waterton & Duffy, 1984). If people are cued to behave
+socially by a talking-face display as they are by a real person, then we
+would expect people to present themselves in a positive light when interacting with the display. Hence our third hypothesis is:
+H3a. People will present themselves in a more positive light when
+interacting with a talking-face display than when interacting with a
+text display.
+
+I02 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+H3b. People will be more guarded in their revelations to a talking-face
+display than to a text display.
+There is substantial evidence that, during interaction, men and women
+are differentially aware of and sensitive to social cues such as facial
+expressions (Hall, 1979). Therefore, our fourth hypothesis is:
+H4. Men and women will differ more from one another in their responses to a talking-face display than in their response to a text
+display.
+
+3. OVERVIEW OF STUDY
+The study reported here experimentally investigated people's responses
+to an ostensible computer-based career counseling system. The subjects
+answered psychological test items and described themselves and their
+interests to an interactive career counselor program. The interface through
+which the subjects interacted with the system was either a talking-face
+display or a text display.
+The general context of the study, the interview survey, is a familiar one
+and one with an extensive literature on how the nature of the experience
+affects people's responses (Bailey, Moore, & Bailar, 1987; Schuman &
+Presser, 1981). Generally, surveys elicit social responses in much the same
+way as do other social contexts. Surveys delivered by human agents in
+face-to-face or telephone interviews are more socially involving than those
+delivered by paper and pencil. Thus response rates are higher; people give
+a greater quantity of information. But social involvement also can lead to
+social posturing; surveys delivered by human agents elicit more biased
+reports of socially desirable and undesirable behavior. We reasoned that
+our hypotheses could be tested in the context of a computer survey. We
+predicted more appearance-linked attribution and more social facilitation
+(arousal; attentiveness to the situation) in the presence of a talking-face
+survey interview than a text survey interview. We predicted that subjects
+would present themselves more positively in a survey interview delivered
+by a talking-face display than in an interview delivered by a text display.
+In order to rule out the possibility that a particular facial expression
+caused the predicted effects, we used two different talking faces-one with
+a relatively stern expression and one with a relatively pleasant one-each
+derived from the same underlying image. We predicted subjects in both
+face conditions would differ from those in the text-display condition.
+Different expressions might elicit different responses from people. For
+example, people might like a pleasant face more than a stern face but they
+might perceive the stern face as more judgmental and perform more
+carefully for a stern face than for a pleasant one. We did not develop
+hypotheses about specific differences in response to different expressions
+
+WHEN THE INTERFACE IS A FACE
+
+103
+
+because previous research does not imply clear directional predictions
+regarding appearance-linked attributes, arousal and attention, or disclosure. 1 In this experiment, the pleasant and stern faces were used as
+empirical replications of the talking-face display rather than investigated
+in their own right.
+
+4. METHOD
+The experiment was a 3 (Display) x 2 (Gender) between-subjects factorial design with 130 subjects randomly assigned to three display conditions. The display presented fmed-response and open-ended questions in
+a window on a computer screen either through text, through a talking face
+with a pleasant expression, or through a talking face with a stern expression. Approximately equal numbers of men and women were assigned to
+each condition.
+
+4.1. Subjects
+Subjects were Boston University students whose participation was solicited by fliers posted on campus seeking volunteers to "try out a prototype
+computer-based career counseling system." Subjects' mean age was 20.7
+years; 76% reported English as their native language; their self-report of
+typing skill was 3.0 on a 5-point scale ranging from 1 (very slow) to 5 (very
+fast). Men and women did not statistically significantly differ on any of
+these characteristics.
+
+4.2. Apparatus and Display Manipulation
+The computer workstation was a Digital Equipment Corporation Alpha
+AXP, with built-in telephone-quality audio and externally powered speakers. The workstation was running OSF Version 1.1, a software implementation of the DECtalk text-to-speech algorithm, and DECface for the
+animated face (Waters & Levergood, 1994). Face images were displayed in
+gray scale. The experimental session was managed using TWTcl (Ousterhout, 1994) and the Lisp facilities of Gnu Emacs.
+
+1. The research on arousal and disclosure in the presence of pleasant versus
+stern others did not suggest a clear prediction. For example, there is evidence
+people will disclose more information to a pleasant or liked other, but the strength
+of the effect depends on whether the other person is well known, also discloses, or
+is nonevaluative (Collins & Miller, 1994). Since the talking face was a "stranger,"
+did not itself disclose information about itself, and was collecting nonanonymous
+information that could be evaluated by a superior, the conditions for an increase
+in disclosure to a pleasant face as compared with a stem face were not satisfied.
+
+104 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+Figure I. Underlying geometric modeL
+
+The face display was produced by texture-mapping an image captured
+on videotape onto a geometric wire frame (see Figure 1). The mouth was
+animated by computing the mouth posture (viseme) corresponding to the
+current linguistic unit (phoneme) and using a cosine-based interpolation to
+transit between mouth postures (Waters & Levergood, 1994). The voice
+was produced by a software implementation of the KLSYN88 revisions of
+the DECtalk text-to-speech algorithm (Klatt & Klatt, 1990). The DECtalk
+parameters used a neutral voice in the female pitch range at 160
+worddmin (Waters & Levergood, 1994). DECtalk speech is acceptably
+comprehensible at this rate (Duffy & Pisoni, 1992).
+The pleasant and stern expressions were produced from the facial
+model of the neutral face used in Walker et al. (1994). The pleasant
+expression (Figure 2, right) was synthesized by slight contractions of the
+zygomatic major muscles in the geometric facial model that pull the
+corners of the mouth up and the frontalis inner and outer muscles that pull
+the eyebrows up (Waters, 1987). The stern expression (Figure 2, left) was
+synthesized by slight contractions of the zygomatic minor muscles that
+
+WHEN THE INTERFACE IS A FACE
+Figure 2. Facer stern (left) and pleasant (right).
+
+pull the corners of the mouth down and the corrugator muscles that pull
+the inner portion of the eyebrows in and down. These muscles are known
+to be involved in producing pleasant and stern expressions, respectively
+(Ekman, 1982). Expression was present only between utterances. During
+animation in synchrony with speech, each face returned to the initial
+neutral expression. As a result, the expression was identical in both face
+conditions during speech. The experimental expression was refreshed
+after each corn;,lete utterance. The facial animation software simulated
+eye blinking during speech; the face displayed between utterances was
+static.
+The open-ended questions were delivered in a "counselor interview*
+that used the Gnu Emacs implementation of ELIZA (Weizenbaum, 1976),
+an interactive program that simulates responses to subject input. The
+program consists of a simple table-driven keyword recognizer and response generator. When the subject's input contained a word classified as
+being related to academic performance, the program would generate a
+question using the word from the input and the next template in the list of
+academic-performance-related templates. If none of the words contained
+
+106 SPROULL, SUBRAMANI, IUESLER, WALKER, WATERS
+in the input had category information, the program chose one from a set
+of templates that changed the subject, sometimes returning to an earlier
+topic. The categories and templates shipped with Gnu Emacs were modified by removing inappropriate phrases and including a vocabulary relevant to career and lifestyle aspirations. We chose this appraach for its ease
+of implementation only; we make no claim of processing natural language.
+
+4.3. Procedure
+Each subject completed the study individually in a faculty office
+equipped with a computer workstation. The male experimenter introduced the study and told subjects that they were helping the researchers
+test a prototype of a computer-based career planning system. Subjects
+were told they would answer some standard psychological questions and
+some open-ended questions from a computer-baoed career counselor, and
+then would complete a questionnaire messing the experience. The experimenter introduced the system by having subjects complete a short
+demographic questionnaire and respond to a set of practice items, one in
+each of the response formats used in the psychological scales. After assuring that subjects understood how to enter their responses, the experimenter told subjects they could take as long as they wished and left the
+room. Figure 3 summarizes how the experiment proceeded across the
+different conditions. Note that both the piychological scales and the counselor interaction were presented in one of the experimental conditions of
+text display, pleasant talking-face display, or stern talking-fwe display.
+Subjects in the text condition first saw a window displaying the text of
+instructions on how to record their answers for the first psychological
+scale. Items were displayed one at a time as shown in Figure 4 and subjects
+used a mouse to click on their chosen response for each item and to go to
+the next item. In all conditions the three scales were presented in random
+order as were the items within scales. After completing all three psychological scales, subjects saw a text window with a welcoming message from
+the "prototype computer career counseling service." This message concluded with the prompt, "Tell me something about yourself." Subjects
+typed their response in the lower part of the window in which the counselor's prompt was displayed. The prompt remained visible in the upper
+part of the window until the subject finished typing his or her response.
+When the subject clicked "go ahead," the counselor's prompt and subject's
+response disappeared from the window and the counselor asked another
+question ostensibly based on the subject's response. Subjects could continue interacting as long as they wished and were free to terminate this
+interaction at any point by clicking on a command button in the window
+frame.
+In the window corresponding to the text-display window in the text
+condition, subjects in the talking-face conditions saw and heard a face
+
+WHEN THE INTERFACE IS A FACE
+F e r e 3. Flow diagram of experimental procedure.
+Introduction to experiment.
+Demographic data collected.
+
+Practice session for familiarization
+with interface.
+
+I
+
+Practice session for fsmiliarization
+with interface.
+
+Standard tests administered by
+
+Standard tests administered
+
+talking face.
+
+in text.
+
+Interaction with counselor using
+talking face.
+
+-I-
+
+I
+
+Interaction with counselor using
+
+7
+Post-experiment questionnaire.
+
+speaking the same words that had been displayed as text in the text
+condition. The appropriate response format for each psychological scale
+was then displayed in text identical to that in the text condition and
+subjects indicated their answers by clicking with the mouse. The face
+remained on the screen while subjects made their response and then asked
+the next question. In the interview, the face spoke the counselor's side of
+the interaction. After a 1-sec delay, the counselor's words were displayed
+in text in the top half of the response window and subjects typed in their
+
+I never hesitate to go out of my way to
+help someone in trouble.
+Social Desirability Question
+
+When I am in a group of people, I have
+trouble thinking of the right thing to say.
+
+Self-worth Question
+
+characteristic of me
+
+I
+The average person is conceited.
+
+Altruism Question
+
+OK, Next
+
+WHEN THE INTERFACE IS A FACE
+
+109
+
+response in the bottom half of the window just as in the text condition. The
+counselor's face remained on the screen while the subject was entering his
+or her text.
+After completing the three psychological scales and counselor interview, subjects completed a postexperiment questionnaire about their impressions of "the question asker" and their experience using the prototype
+system. The experiment and questionnaire were self-paced; subjects were
+free to work as long as they wished. Most subjects completed the session
+in less than 45 min. They were then debriefed by the experimenter, given
+a packet of career planning materials provided by the university's placement office, and paid $10 for their participation.
+
+4.4. Measures
+Social perceptions of the interface (i.e., was it perceived to have personality attributes) were measured in the postexperiment questionnaire by
+having subjects complete six scales composed of 33 items about perceptions of the "question asker" drawn from previous studies (Buss & Plomin,
+1984; Warner & Sugarman, 1986). Three of the scales (Social Evaluation,
+Intellectual Evaluation, and Sociability) measure appearance-linked personality attributes; the other three (Activity, Emotionality, and Potency)
+measure non-appearance-linked personality attributes. Social Evaluation,
+Intellectual Evaluation, and Potency use 7-point semantic differentials
+(e.g., unattractive-attractive); Sociability, Activity, and Emotionality use
+5-point Likert scales ranging from 1 (not at all true of thisperson) to 5 (very
+true of this person). (See Appendix for items, scale reliabilities, and intercorrelations.)
+Arousal was measured in the postexperiment questionnaire by asking
+subjects "How relaxed did you feel?" and "How confident did you feel?"
+during their use of the system. These items were reverse-scored so that a
+higher number would indicate less relaxed and less confident. These
+questions are similar to those used in other studies of arousal (Holroyd et
+al., 1978; Maslach, 1979).To measure subjects' attention to the experiment,
+the system recorded information on how much time subjects spent in each
+section of the experiment, the number of items they skipped in the scales,
+and the number of words subjects wrote in the counselor task. The number
+of interaction turns in the counselor task, also measured automatically by
+the system, was used as a control variable.
+Self-presentation was measured by subjects' responses to the three
+psychological scales. (See Figure 4 for an example of one item from each
+scale.) The Marlowe-Crowne Social Desirability scale is composed of 33
+true/false items. Scores on this scale range from 0 to 33, with a higher
+score indicating more social desirability. The Philosophy of Human Nature Altruism scale is composed of twenty 6-point Likert scale items, with
+anchors of disagree strongly (coded -3) and agree strongly (coded +3). Scores
+
+110 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+on this scale can range from -60 to +60, with a higher score indicating
+greater altruism. The Texas Social Behavior Inventory of Self-worth is
+composed of sixteen 5-point Likert scale items anchored at not at all
+(coded 0) and very much (coded 4). Scores on this scale can range from 0 to
+64, with a higher score indicating higher self-worth.
+The Social Desirability and Altruism scales measure aspects of self-presentation that are susceptible to situational influences (Kiesler & Sproull,
+1986; Paulhus, 1991; Wrightsman, 1974). We expected scores to vary by
+experimental condition. The Self-worth Inventory is more situationaily
+stable (Blascovich & Tomaka, 1991); hence we did not expect scores on
+this scale to vary by condition. We used this scale as a covariate in some
+analyses to control for self-esteem effects on responses.
+
+5. RESULTS
+The data were analyzed using SAS Version 6.07. We tested for overall
+differences with one- or two-way analyses of variance (ANOVAs) and then
+tested for differences between the two faces. Then, in planned contrasts we
+used Dunnett's one- or two-tailed (as appropriate) camparisons of treatments with a control to compare each of the face conditions with the text
+condition. Subject characteristics of age, first language, and typing skill did
+not vary significantly across condition and did not interact with the dependent measures and so were dropped from further analyses. We first
+present results for all subjects, then present results separately for men and
+women.
+
+5.1. Check on Maaipulatdon of WhgFace Ekpretnion
+Some of the main analyses entailed comparing responses to the two
+faces. Before doing those comparisons we wanted to know if subjects could
+discriminate between the two faces. Twenty-two subjects from the text
+condition in the main experiment participsted in a dimriminability test of
+the two faces after they had completed the main experiment and postexperiment questionnaire. Hard-copy prints of the two faces were presented
+side by side. Subjects were given 46 attribute questions drawn from
+previous research on perception of personality attributes and were asked
+to indicate, for each question, which of the two faces had more of the
+attribute-for example, "Which one is more intelligent?" or "Which one is
+happier?" Thirty-three of the questions constituted measures of the same
+six personality attribute scales used in the main experiment: Social Evaluation, Intellectual Evaluation, and Potency from Warner and Sugarman
+(1986) and Emotionality, Activity, and Sociability from Buss and Plornin
+(1984).(The other 13 questions were individual items drawn from separate
+studies. A factor analysis of these items did not reveal any interpretable
+factors and so they were dropped from the analysis.) A choice of the
+
+WHEN THE INTERFACE IS A FACE
+pleasant face in response to each question was coded as "In and a choice
+of the stern face was coded as "0." The scores for each scale were calculated by averaging responses across all the scale questions. The data were
+tested against the null hypothesis of no discrimination between faces
+(average score of 0.5) using a t test. Subjects consistently discriminated
+between the two faces on the Social Evaluation, 421) = 10.73, p < .001,
+Sociability, (1) = 4.3, p < .001, and Emotionality, 421) = 3.8, p < .001,
+scales, but did not discriminate on the Intellectual Evaluation, 421) = 0.52,
+Activity, 421) = 1.08, and Potency, 421) = 0.39, scales. These results are
+consistent with the previous literature for the attributes of social evaluation, sociability, activity, and potency. In previous studies people did not
+discriminate faces on the attribute of emotionality, although they did in
+this test. In previous studies people did discriminate faces on the attribute
+of intelligence, although they did not in this test. We note that this test
+demonstrates discriminability for the static faces only; a more rigorous test
+would have displayed the talking faces side by side.
+
+5.2. Social Perception of Question Asker
+Figure 5 shows that subjects did perceive some personality attributes of
+the "question askerndifferently across conditions. The data in Figure 5 are
+organized according to the theoretically derived categories of appearancelinked and non-appearance-linked traits from Warner and Sugarman
+(1986). We follow Warner and Sugarman in reporting Social Evaluation
+and Sociability separately, even though they are correlated at .56. Combining them into a single factor does not change the results. ANOVAs
+yielded significant A for Social Evaluation, J(2, 118) = 5.85, p < .01;
+Sociability, q 2 , 118) = 3.39, P < .05; and Activity, q 2 , 118) = 3.93, P < .05.
+Subjects did not differentiate the interfaces on Intelligence, Potency, or
+Emotionality. Planned contrasts revealed no statistically significant differences in the perception of attributes between the two faces.
+Subjects perceived the faces differently from the text on the appearance-based personality attributes of sociability and social evaluation,
+which is consonant with our first hypothesis. (Note that a lower Social
+Evaluation, Intellectual Evaluation, or Potency score means that subjects
+perceived that attribute more negatively, not that the stimulus had less of
+the attribute.) Subjects did not make different attributions of intelligence,
+as previous research had led us to predict. Previous research on appearance-based personality attributions typically elicits first impressions of
+personality with no or little interaction; in this study, the prolonged
+interaction with the "question asker" could have attenuated any initial
+differential intelligence attributions. That subjects differentially rated the
+interface on the attribute of activity also was unexpected. In previous
+studies, the personality attribute of activity was shown to be better conveyed by voice than by facial appearance. Both of the face conditions in
+
+112 SPROULL, SUBRAMANI, KIESLER, WALKER,WATERS
+
+Perception
+Appearance-linked attributes
+Social evaluation
+1 = negative, 7 = Positive
+Sociability
+1 = not at all true, 5 = ony true
+Intellechd evaluation
+1 = negative, 7
+Non-appearance-linkedattributes
+Potency
+1 = negative, 7 = positive
+Activity
+1 = not at all but, 5 = very true
+Emotionality
+1 = not at all true, 5 = acry true
+
+Text
+( n = 43)
+
+F'leasant Face
+( n = 44)
+
+Stern Face
+(n=43)
+
+4.17
+
+3.42'
+
+3.29'
+
+5.85**
+
+3.34
+
+3.04
+
+2.74+
+
+3.39*
+
+4.88
+
+4.73
+
+5.08
+
+0.85
+
+4.6
+
+4.4
+
+4.5
+
+0.2
+
+3.33
+
+2.84'
+
+2.90'
+
+3.93'
+
+2.82
+
+2.69
+
+2.79
+
+0.36
+
+q2,118 to
+2,119)
+
+No&. Cells with differ by at leastp < .05 from the text condition, which is used as a control
+in Dunnett's planned contrast 1 test with (gS ranging from 118 to 119.
+*p < .05. **P < .01.
++
+
+this study included (the same) voice. Thus, differentiating "faces" from text
+on the personality attribute of activity is consistent with previous research,
+if subjects were using voice (in the two face conditions) as their cue to
+activity. Although perhaps paradoxical that the diiplay with an animated
+face was rated as lower on the activity dimension than the text display,
+perhaps the subjects thought the face-based question asker was (relatively)
+slow paced and unenergetic.
+
+5.3. Arousal and Attention to Performance
+Factor analysis of attitude items from the postexperiment questionnaire
+that assessed subjects' experience in the experiment revealed three clear
+interpretable factors (see Figure 6). There were no differences across
+conditions in the factor we label H@fiincss (Factor l), which we interpret
+as a measure of general affect or mood while subjects were participating.
+Also, there were no differences across conditions in the factor we label
+Enjoyment (Factor 3), which we interpret as a measure of how much
+subjects enjoyed the overall experience. However, consistent with our
+second hypothesis, there were significant differences across conditions in
+the factor we label Arousal (Factor 2), which is a measure of relaxation and
+assurance. People reported themselves to be less relaxed and assured in
+the face conditions than in the text condition, q2, 119)= 3.64, p < .01.
+To examine differences in attentiveness to the experiment, we measured
+the time subjects took to complete the psychological scales and the
+
+WHEN THE INTERFACE IS A FACE
+Figare 6 Fa*
+
+113
+
+analylir of affltnde item8 about interacting with computer dirplay.
+
+I tem
+How satisfied were you?
+How happy were you?
+How much like to continue?
+How much like participating?
+How relaxed were you?
+How confident were you?
+Percent of variance explained
+
+Factor 1
+(Happiness)
+
+Factor 2
+(Arousal)
+
+Factor 3
+(Enjoyment)
+
+,86667
+37135
+-.00544
+.35401
+.07671
+.26205
+33
+
+.06041
+.I9513
+.09073
+.08058
+.88579
+.79803
+25
+
+.06674
+.08655
+.89989
+.77853
+.07799
+.09018
+24.5
+
+number of questions they answered (or skipped) in these scales. Subjects
+in the face conditions spent more time (M= 19.1 min) than did subjects in
+the text condition (M = 14.0 min), F(2, 112) = 25.6, P < .01, as shown in
+Figure 7. This result supports our hypothesis, in that a longer time to
+answer questions bespeaks thinking more carefully about one's answers.
+The difference may be partly owing to the 1-sec delay between the end of
+an utterance in the face conditions and the display of the answer window
+on the screen. However, subtracting 1.15 min from the overall response
+time in the face conditions to remove the effect of the 1-secdelay does not
+change the significance of these results. Another reason for the difference
+is that it may take longer to listen to a question than to read it. Because we
+did not measure reading speed we cannot investigate this possibility.
+Subjects in the face conditions skipped more questions across all the
+psychological scales (M= 3.3) than did subjects in the text condition (M=
+1.9), F(2, 127) = 3.22, P < .05. This difference suggests that subjects were
+less careful in the face conditions, but also suggests they were avoiding
+certain personal questions. This latter interpretation is supported by analyses showing that subjects in the face conditions skipped significantly more
+questions on the two scales known to be susceptible to social influence
+(Social Desirability and Altruism) than did subjects in the text condition
+but did not differ from subjects in the text condition in the number of
+questions they skipped on the scale less susceptible to social influence
+(Self-worth).
+Thus the results support Hypothesis 2a: subjects reported more arousal
+in the face conditions than in the text condition. The results provided
+some support for Hypothesis 2b. Subjects took longer to respond in the
+face conditions, a finding that may reflect heightened attention (although
+we cannot rule out alternative explanations).In the face conditions subjects
+had more missing answers (compared with text) on the two scales known to
+be subject to social influence but did not have more missing answers
+(compared with text) on the scale less susceptible to social influence.
+
+114 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+
+Response
+Arousala (1 to 7)
+Performance on self-presentationscales
+Minutes to complete all scales
+Number of skipped items overall
+Altruism items skipped
+Social Desirability items skipped
+Self-Worth items skipped
+Self-presentation
+Altruisma (-60 to +60)
+
+Text
+(n = 43)
+
+Pleasant
+Face
+(n = 44)
+
+Stern
+Face
+(n = 43)
+
+q2,109 to
+2,127)
+
+1.81
+
+2.37'
+
+2.40'
+
+3.64**
+
+Social Desirabilitya (0 to 33)
+Self-wortha (0 to 64)
+Interaction with counselor
+Minutes interacting
+Words to counselor
+Number of interaction turns
+
+Note. Cell values with + differ by at least p < .05 from the text condition, which is used as a
+control in Dunnett's planned contrast t-test.
+'More positive score means more of the trait. b~djustedFusing Self-worth as covariate.
+*p < .05. **p< 01. ***p< 001.
+
+5.4. Self-Presentation
+The Social Desirability score is the sum of responses to 33 social
+desirability items (Cronbach's coefficient a = 0.75). The mean across all
+subjects was 15.05 (SD = 4.58). The Altruism score is the sum of the 20
+responses to the Altruism scale (a= 0.79, M = -3.84, SD = 14.36). The
+Self-Worth score is the sum of responses to the 16 Self-worth items (a=
+0.75, M = 44.85, SD = 7.54).
+Self-presentation was more positive in the face conditions than in the
+text condition on Social Desirability and Altruism, the two scales known
+to be more sensitive to social context (see Figure 7). No difference across
+conditions on the Self-worth scale is consistent with findings that selfworth is more stable across situations. Subjects in the face conditions
+reported themselves to behave in more socially desirable ways, Jf2, 119)=
+2.20, p < 0.1, than did subjects interacting with the text interface. Subjects
+in the face conditions also reported themselves to be significantly more
+altruistic, 8 2 , 119) = 3.35, p < .01. Stronger results were obtained for the
+
+WHEN THE INTERFACE IS A FACE
+
+115
+
+Social Desirability and Altruism scales in ANOVAs with Self-worth as the
+covariate (see Figure 7).
+Subjects in the face conditions wrote less in the counselor interaction
+than did subjects in the text condition, q 2 , 109) = 2.88, p < .05. Note that
+there was no difference in the number of interaction turns across conditions; subjects in the face conditions were asked just as many questions by
+the counselor as were subjects in the text condition. They simply wrote
+less in reply to each question. In planned contrasts, there were no differences in self-presentation behaviors between the two different faces. Taken
+together, the pattern of results in which subjects in the face conditions
+presented themselves more positively in the self-presentation task and
+wrote less in the interaction task supports Hypotheses 3a and 3b.
+
+5.5. Differences Between Men and Women Across
+Conditions
+Figure 8 presents data on men and women separately. Men and women
+did not differ in their perception of the question asker across conditions.
+They did not differ in arousal or attention to the experiment (attitude
+items, missing answers, or how long it took to answer self-presentation
+scale questions).
+Women reported significantly higher self-worth than did men, t(124) =
+-2.04, jJ < .04, consistent with previous reports in the literature (Helmreich
+& Stapp, 1974). There were no significant differences between men and
+women on altruism or social desirability. Our interest was not in general
+differences between men and women but in whether they would react
+differently to the talking faces. In statistical terms, we were interested in
+the interaction of gender with display condition. We predicted the face
+display would evoke differences in the responses of men and women but
+the text display would not. There were significant differences across
+conditions in the patterns of how men and women presented themselves
+but the text and face displays often evoked differences in opposite directions (see Figure 8). Both men and women presented themselves more
+altruistically to the talking faces than to the text display, but only in the
+pleasant-face condition was the difference between men and women large,
+interaction F(2, 116) = 4.24, jJ < .01. Women wrote more in interaction
+with the counselor in the text condition than in the face conditions,
+whereas men wrote more in the face conditions, interaction q 2 , 123) =
+5.04, p < .01. Our hypothesis, derived from the gender literature, was that
+men and women would differ more in their response to a face display than
+in their response to a text display. Our results, however, showed that men
+and women differed in both text- and face-display conditions, but their
+responses diverged according to the nature of the display. In general, men
+responded more positively to the face displays whereas women responded
+more positively to the text display.
+
+116 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+
+Response
+
+Pleasant
+Face
+
+Text
+
+Stern
+Face
+
+Interaction F
+(2,106to 2,124)
+
+Self-Presentation
+Altruism
+Women
+Men
+Social Desirability
+Women
+Men
+Self-worth
+Women
+Men
+
+4.24'
+-8.0
+-8.8
+
+3.2
+-7.3
+
+-3.0
+.16
+
+15.0
+13.2
+
+15.8
+13.6
+
+16.1
+16.3
+
+46.2
+43.6
+
+44.5
+42.8
+
+45.5
+44.4
+
+8.0
+11.0
+
+7.4
+10.7
+
+0.93
+
+0.72
+
+Interaction
+Minutes to complete counselor interaction
+13.7
+Women
+8.7
+Men
+Number of words to counselor
+Women
+227
+Men
+140
+
+4.92"
+
+5.04..
+123
+167
+
+107
+160
+
+Attitudes Toward Experience
+3.58'
+Liked participating?
+8.2
+7.8
+7.7
+Women
+7.1
+8.4
+8.9
+Men
+-- - -- No&. In the text condition there were 19 men and 24 women; pleasant-face condition, 20 men
+and 24 women; stem-face condition, 19 men and 24 women.
+*p < .05. **p< .01.
+--
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+There were no significant Gender x Condition differences in the three
+attitude factors. However, an internal item analysis revealed that men
+significantly liked interacting with the face more than with text, whereas
+women preferred interacting with text, interaction fl2, 123)= 3.58, p < .05.
+
+6. DISCUSSION
+This study presents evidence that people respond to a talking-face
+display differently than to a text display. They attribute some personality
+attributes to the faces differently than to a text display. They report
+themselves to be more aroused (less relaxed, less confident). They present
+themselves in a more positive light to the taking-face displays. Men and
+women both presented themselves more positively to the taking faces
+than to the faceless interface. But men apparently enjoyed the experience
+
+WHEN THE INTERFACE IS A FACE
+
+117
+
+more than women did. They interacted more with the face-based counselors than with the text-based ones. They enjoyed the entire experience
+more in the face conditions than text, unlike women.
+Although the two expressions used in this study were perceived differently in a static discrimination study, generally subjects did not respond
+differently to them in the interaction context. An expressive face display,
+whether the expression was perceived positively or negatively, generally
+elicited the same kinds of behavior from subjects in comparison with a text
+display. Although surely it would be possible to create faces so grotesque
+or charming that they would elicit different behaviors, in this study perceptible differences in expression did not systematically affect behavior.
+We did not undertake to investigate the underlying reasons why people
+might have responded to a synthetic talking face as though it were human
+(relative to their response to a text display). One possibility is that some
+subjects thought there was a real person behind the screen; another is that
+the face interface might have caused subjects to think a real person would
+be reading and evaluating their answers. If the talking-face display reminded subjects of a real human being, that thought (rather than the face
+display itself) could have elicited social behavior. Throughout the instructions and experiment, we tried to ensure that subjects knew that the face
+was simulated and that no real human being would see their responses.
+Subjects' behavior during the experiment and their remarks during the
+debriefing suggested that we were successful. So why would people respond to a talking-face display as they might to a person? Nass and his
+colleagues have demonstrated that social cues (e.g., a taped human voice
+emanating from a computer) can lead people to respond to a computer as
+though it had some human attributes. For example, their experiments have
+shown that people act as though computers were motivated by self-interest
+(Nass, Steuer, Henriksen, & Dryer, 1994) and were sensitive to criticism
+(Nass, Steuer, & Tauber, 1994). Field research has described how people
+imbue computers with personality (Sproull, Kiesler, & Zubrow, 1984;
+Turkle, 1984).For the purposes of this research, it does not matter if people
+think the computer is actually human, is like a human, or has human-like
+qualities. We were interested in demonstrating that people change their
+own behavior in the presence of human-like attributes in the interface.
+Future research should explore how different components of a talking-face
+display contribute to people's social responses and how this might be so.
+(For instance, in our study the voice, rather than the face, might have
+caused subjects to behave socially. Or, certain "abnormal" features of the
+face, such as the regularity of the eye blinks or the lack of inflection in the
+voice, might have caused subjects to think that the "question asker* was
+uncomfortable.)
+On average subjects in all conditions said they liked the experience of
+interacting with a computer-based career counselor (M= 8.0 on a 10-point
+scale ranging from 1 [not at allj to 10 [very much]). There were no differences
+
+118 SPROULL, SUBRAMANI, KfESLER, WALKER, WATERS
+across conditions, although men liked the faces more than they liked the
+text. This generally positive response may have been caused by novelty,
+by demand characteristics (wanting to please the experimenter), or possibly even by a genuinely good technology application. The first and second
+explanations should be further investigated by designing studies that incorporate talking-face displays into more ongoing work tasks and by
+collecting longitudinal data. We note, however, that even though subjects
+shared a general positive attitude, their behavior differed significantly
+between text display and face display, as we had predicted.
+The gender differences we found merit further investigation along at
+least two different lines. One is related to the gender of the faces. It is
+possible that male and female subjects' behaviors and attitudes would have
+reversed themselves if the talking face had been male rather than female.
+We selected a female face for this study based on the survey methodology
+literature that shows that both men and women respond more and more
+positively to a female interviewer than to a male interviewer (Ba~kstrom&
+Hursh-Cesar, 1981; Luptow, Moser, & Pendleton, 1990). But we simply
+may have encountered a cross-sex interaction preference in this study.
+Although such preferences are common and expected in studies of interpersonal attraction, they are not commonly reported in the literature on
+counselor-client interactions (Snell, Belk, Flower, & Warren, 1988; Snell,
+Miller, & Belk, 1989).
+Women might have responded negatively to the talking-face display
+because it was a computer face. Women might be more sensitive to the
+"unnaturalness" of a computer face than men are. Men might like a
+talking-face display because it is a newer, more complex form of technology than a text display is. There is some evidence that men like new
+computing technology more than women do (Chen, 1985). Furthermore,
+in one recent study women thought it was less appropriate than men did
+for computers to take on roles entailing personal interaction, such as boss
+or psychiatrist (Nass, Lombard, Henriksen, & Steuer, in press). Although
+this study did not investigate why men and women responded differently,
+future work should pursue this topic. It takes on practical relevance, as
+well as theoretical import, since today it is disproportionately men who
+make decisions about how, whether, and when to incorporate synthetic
+faces into interface products.
+Part of the allure of computers is that they are malleable, in principle.
+In practice, interfaces have been fairly clunky for a long time, but that state
+is beginning to change. Designers can aspire to create ever more responsive interfaces. The technology used in this research was extremely primitive in comparison with what will be feasible in the future. Yet people did
+change their personas-and liked it or not-in response to talking faces. The
+prospect of people putting their best foot forward for their computer is an
+odd one indeed. Some will immediately embrace the idea. Will reservations or sales clerks work harder with a face on the screen? Will children
+
+WHEN THE INTERFACE IS A FACE
+
+119
+
+learn more from educational software if it is accompanied by a school
+teacher's face? Many people want computers to b e responsive to people.
+But d o we also want people to be responsive to computers?
+
+NOTES
+Acknowledgments. We gratefully acknowledge assistance from Tom Levergood,
+Andy Payne, Dave Wecker, and Ted Wojcik (Digital Equipment Corporation,
+Cambridge Research Laboratory) and Sebastian Sas andJoshua Bernstein (Boston
+University).
+Support. Financial support was provided by a grant to Lee Sproull from Digital
+Equipment Corporation and to Janet H. Walker from National Institute of Mental
+Health Scientist Development Award MN 00533.
+Authors' Present Addresses. Lee Sproull, School of Management, Boston University, 704 Commonwealth Avenue, Boston, MA 02215. E-mail:
+lsproull@bu. edu; Mani Subramani, School of Management, Boston University, 704 Commonwealth Avenue, Boston, MA 02215. E-mail: rsm@bu.edu;
+Sara Kiesler, Social and Decision Sciences, Carnegie Mellon University, Pittsburgh, PA 15213. E-mail: Sara. kiesler@andrew cmu .edu; Janet H.
+Walker, 103 Raymond Street, Cambridge, MA 02140. E-mail: jwalker@
+world. s td .com; Keith Waters, Digital Equipment Corporation, Cambridge
+Research Laboratory, One Kendall Square, Building 700, Cambridge, MA 02139.
+E-mail: waters@crl .dec .corn.
+HCI Editorid Record First manuscript received May 5, 1994. Revision receivedJanuary 24,1995. Accepted by Jonathan Grudin. Final manuscript received
+July 5, 1995. - Editor
+
+.
+
+REFERENCES
+Backstrom, C. H., & Hursh-Cesar, G. (1981). Survey research (2nd ed.). New York:
+Wiley.
+Bailey, L., Moore, T., & Bailar, B. (1987). An interviewer variance study for the
+eight impact cities of the National Crime Survey.Journal of the American Statistical
+Association, 73, 16-23.
+Baker, M. J., & Churchill,J. (1977). The impact of physically attractive models on
+advertising evaluations.J o u m l of Marketing Research, 14,538-555.
+Berscheid, E., & Walster, E. (1974). Physical attractiveness. In L. Berkowitz (Ed.),
+Advances in exfirimental socialpsychology (pp. 157-215). New York: Academic.
+Binnick, Y. M., Westbury, C. F., & Servan-Schreiber, D. (1989). Case histories and
+shorter communications. Behavioral Research Tlrcrapy, 27, 303-306.
+Blascovich,J., & Tomaka, J. (1991). Measures of self-esteem. In J. P. Robinson, P.
+R. Shaver, & L. W. Wrightsman (Eds.), Measures ofpersowlity and socialpsyclrological attitudes (pp. 115-160). San Diego: Academic.
+Bond, E. K. (1972). Perceptions of form by the human infant. Psychological Bulletin,
+77,225-245.
+
+120 SPROULL, SUBRAMWI, KIESLER, WALKER,WATERS
+Bradburn, N. (1983). Response effects. In P. H. Rossi, D. Wri t, & A. B.
+Anderson (Eds.), H p * k f ofsurvey n r e d (pp. 2*9-32d.~ew y o r e Academic.
+Buss, A. H., & momin, R. (1984). %n@wammt:&arty Bslrskgiftg p r s m l i l y &a&.
+Hillsdale, Nj: Lawrence Erlbaum Associates, Inc.
+Chen, M. (1985). Gender differences in adolescents' uses of and attitudes toward
+computers. In M. McLaughlin (Ed.), Cmmunication yearbook (pp. 200-216).
+Beverly Hilb, CA: Sage.
+Collins, N. L., & Miller, L. C. (1994). Self-disclosure and liking: A meta-analytic
+review. R y d r o w Bulb&, 176,457-475.
+Deiner, E., Fraser, S. C., Beaman, A. L., & Kelem, R. T. (1976). Effects of
+deindividusting variables on stealing by Halloween Mck-or-treaters.Journal of
+PGrsomZily and SoGfal ~ d r o l o33,178-183.
+~,
+Duffy, S. A., & Pisoni, D. B. (1992). Comprehension of synthetic speech produced
+by rule: A review and theoretical interpretation. Lmguagc and S'eech, 35,
+351-389.
+Eichenwald, K. (1986, November 2). Hi, voter. This is your president. New York
+Times, p. 19.
+Ekman, P. (Ed.). (8982). Emofion in the humanfoce (2nd ed.). Cambridge, England:
+Cambridge University Press.
+Hall, . A. (1979). Gender, gender roles, and nonverbal communication skills. In
+R. osenthal (Ed.), Skid in ~ n w r b acmmunicatidn
+l
+(pp. 32-67). Cambridge, MA:
+Oelgeschlager, Gunn & Hain.
+Helmreich, R., & Stapp, J. (1974). Short forms of the Texas Social Behavior
+Inventory (TSBI),an objective measure of self-esteem. Bulletin of he Rydonmic
+Society, 4,473-475.
+Hilton, J. L., & Darley, J. M. (1991). Effects of interaction goals on person
+perception. In M. P. Zanna (Ed.), Advanus i~ expdmmkrl social psy&logy (pp.
+235-267). San Diego: Academic.
+Holroyd, K. A., Westbrook, T., Wolf, M., & Badhorn, E. (1978). Performance,
+cognition, and physiological responding in test anxiety. Cognitive TlCrrapr and
+Research, 3, 165-180.
+Itou, K. S., Hayamizu, S., & Tanaka, H. (1992). Continuous speech recognition by
+context-dependentphonetic HMM and an efficient algorithm for finding N-best
+sentence hypotheses. Aoceedtirgs of ZCASSP '92, 121-124. San Francisco: IEEE
+Press.
+Kiesler, S., & Sproull, L. (1986). Response effects in the electronic survey. Arblic
+Opinion Quarterly, 50,243-253.
+Klatt, D. H., & Matt, L. C. (1990). Analysis, synthesis, and rception of voice
+~mwticalSoci~ty
+quality variations among f d e and mde talkers./ouml
+ofAmerica, 87,820-856.
+Laurel, B. (1990). Interface agents: Metaphors with character. In B. Laurel (Ed.),
+Tlre art of hunran-cmngtter ifftcfotz design (pp. 355-365). New York: AddisonWesley.
+Luptow, L. B., Moser, S. L., & Pendleton, B. F. (1990).Gender and response effects
+in telephone interviews about gender characteristics. Sex Ruh, 22,29-42.
+Maslach, C. (1979). Ne ative emotional biasing of unexplained arousal.Journal of
+Ikmu61iiy aul ~ . r ( . 1!&d&gy,
+33,953469.
+Morton,J., &Johnson, M. H. (1991). CONSPEC and CONLERN: A two-process
+theory of infant face recognition. Psyclwlogical Review, 98, 164-181.
+
+d
+
+ark
+
+WHEN THE INTERFACE IS A FACE
+
+121
+
+Nass, C., Lombard, M., Henriksen, L., & Steuer, (in press). Anthropocentricism
+and computers. Behuvior and Information Tcchnol! gy.
+Nass, C., Steuer, J., Henriksen, L., & Dryer, D. C. (1994). Machines, social
+attributions, and ethopeoia: Performance assessments of computers subsequent
+to "self-" or "other-" evaluations. IntnrurtionalJournul of Human-Computm Studies,
+40,543-559.
+Nass, C., Steuer, J., & Tauber, E. R. (1994). Computers are social actors. In
+Proceedings of the Conference on Human Factors in Computer s),stMnr, 72-78. Boston:
+ACM.
+Oren, T., Salomon, G., & Kreitman, K. (1990). Guides: Characterizing the interface. In B. Laurel (Ed.), Tlu art of human-computcr interface d u e (pp. 367-381).
+New York: Addison-Wesley.
+O'Sullivan, M., Ekman, P., Friesen, W., & Scherer, K. R. (1985). What you say and
+how you say it: The contribution of speech content and voice quality to judgments of others. Journal of Personality and Social Psyhlogy, 48,5442.
+Ousterhout,J. K. (1994). Tcl and the Tk Toolkit. Reading, MA: Addison-Wesley.
+Paulhus, D. L. (1991). Measurement and control of response bias. In J. P. Robinson, P. R. Shaver, & L. W. Wrightsman (Eds.), Measures Ofpersonality and social
+psyhological attitudes (pp. 17-60). San Diego: Academic.
+Resnick, P. V., & Larnmers, H. B. (1985). The influence of self-esteem on cognitive
+responses to machine-like versus human-like computer feedback. Journal of
+Social Psychology, 725, 761-769.
+Schuman, H., & Presser, S. (1981). Questions and answers in attitude surveys: ExpcrimGntJ in questionform, wording, and context. New York: Academic.
+Shneiderman, B. (1987). Designing the user intefacc: Strategicsfor effective human-computcr interaction Boston: Addison-Wesley.
+Snell, W. E., Jr., Belk, S. S., Flowers, A., & Warren,J. (1988). Women's and men's
+willingness to self-disclose to therapists and friends: The moderating influence
+of instrumental, expressive, masculine, and feminine topics. Sex Roks, 78,
+769-776.
+Snell, W. E., Jr., Miller, R. S., & Belk, S. S. (1989). Men's and women's emotional
+disclosures: The impact of disclosure recipient, culture, and the masculine role.
+Scx Rolcs, 27,467-486.
+Snyder, M. (1984). When belief creates reality. In L. Berkowitz (Ed.), Advances in
+experimental socialpsychology (pp. 247-305). Orlando, FL: Academic.
+Sproull, L., Kiesler, S., & Zubrow, I).(1984).Encountering an alien culture.J o u m l
+of Social Issucs, 4q3), 31-48.
+Takeuchi, A., & Nagao, K. (1993).Communicative facial displays as a new conversational modality. Proceedings of INTERCHI '93, 187- 193. Amsterdam: ACM.
+Thorisson, K. R. (1993). Dialog control in social interface agents. Roccedings of
+INTERCHI '93,139-140. Amsterdam: ACM.
+Turkle, S. (1984). Tire second st& Computers and the human spirit. New York: Simon
+& Schuster.
+Walker,J., Sproull, L., & Subramani, R. (1994).Using a human face in an interface.
+Roceedings of the ConfGrcnce on Human Factors in Computers '94, 85-91. Boston:
+ACM.
+Warner, R. M., & Sugarman, D. B. (1986). Attributions of personality based on
+physical appearance, speech, and handwriting. J o u m l of Personulity and Social
+Psychobg~,50,792-799.
+
+122 SPROULL, SUBRAMANI, KIESLER, WALKER, WATERS
+Waters, K. (1987). A muscle model for animating three-dimensional facial expressions. Computer Graphics, 21, 17-24.
+Waters, K., & Levergood, T. M. (1994). An automatic li synchronization algorithm for synthetic faces. Roc6:edings of the M~~lthQaiia
+8kmtG 31, 149-156.
+San Francisco: ACM.
+Waterton, J. J., & Duffy, J. C. (1984). A comparison of computer interviewing
+techniques and traditional methods in the collection of self-report alcohol consumption data in a field study. Intewwtional Statistical &vim, 52, 173- 182.
+Weizenbaum,J. (1976). ComputGrpower and human reason. San Francisco: Freeman.
+Wrightsman, L. S. (1974). Assum tiotls about human mbure: A sociol-9~ydolagrcaL
+analysis. Monterey, CA: Brooks Cole.
+Zajonc, R. (1965). Social facilitation. Scicnte, 149,269-274.
+
+?
+
+APPENDIX
+FfgnrsA-7. Wea wed to meuure r o d perception of computer dlrphyr
+Scale and Items (Source)
+Social Evaluation (Warner & Sugarman, 1986)
+Unattractive-attractive
+Depressed-cheerful
+Unfriendly-friendly
+Optimistic-pessimistic (reverse scored)
+Cool-warm
+Intellectual Evaluation (Warner & Sugannan, 1986)
+Ignorant-knowledgeable
+~ncompetent-competent
+Irresponsible-responsible
+Unintelligent-intelligent
+Foolish-sensible
+Potency (Warner & Sugarman, 1986)
+Weak-strong
+Frail-sturdy
+Submissive-dominant
+Sociability (Buss & Romin, 1984)
+Likes to be with people (not at all to v n y much)
+Refers working with others rather than alone
+Finds people more stimulating than anything else
+Is something of a loner (reverse scored)
+Activity (Buss & Romin, 1984)
+Life is fast paced (not at all to v n y much)
+Usually seems to be in a hurry
+Likes to keep busy all the time
+Often feels as if is bursting with energy
+Emotionality (Buss & Plomin, 1984)
+Frequently gets distressed (not at all to v n y much)
+Often feels frustrated
+Everyday events make troubled and fretful
+Gets emotionally upset easily
+Is easily frightened
+Often feels insecure
+When gets scared, panics
+Is known as hot-blooded and quick-tempered
+Takes a lot to make mad (reverse scored)
+There are many things that annoy
+When displeased, lets people know it right away
+
+B g ~ m A -r4h
+
+betwesin r O d . E p s r c c l p C k n ~ IC~&S.j
+Scale
+
+Scale
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+1. Social Evaluation
+2. Intellectual Evaluation
+3. Potency
+4. Sociability
+5. Activity
+6. Emotionality
+
+-
+
+.489
+-
+
+,098
+,243
+
+.559
+.295
+.I82
+-
+
+.433
+.296
+.I40
+
+-.I84
+-.I48
+-.125
+-.I67
+.I92
+-
+
+-
+
+,418
+
+-
+
+

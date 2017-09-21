@@ -1,0 +1,1220 @@
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+
+April 8th, 2009 ~ Boston, MA, USA
+
+WeSpace: The Design, Development, and Deployment of a
+Walk-Up and Share Multi-Surface Collaboration System
+Daniel Wigdor1
+
+Hao Jiang2,3
+
+Clifton Forlines2
+
+Michelle Borkin1
+
+Chia Shen1
+
+1
+
+2
+3
+Initiative in Innovative Computing,
+Mitsubishi Electric
+Dept. of Computer Science
+Harvard University
+Research Labs
+Tsinghua University
+Cambridge, MA
+Cambridge, MA
+Beijing, China
+dwigdor@microsoft.com h-jiang@mails.thu.edu.cn forlines@merl.com michelle_borkin|chia_shen@harvard.edu
+
+ABSTRACT
+
+We present WeSpace – a collaborative work space that
+integrates a large data wall with a multi-user multi-touch
+table. WeSpace has been developed for a population of
+scientists who frequently meet in small groups for data
+exploration and visualization. It provides a low overhead
+walk-up and share environment for users with their own
+personal applications and laptops. We present our year-long
+effort from initial ethnographic studies, to iterations of
+design, development and user testing, to the current
+experiences of these scientists carrying out their
+collaborative research in the WeSpace. We shed light on the
+utility, the value of the multi-touch table, the manifestation,
+usage patterns and the changes in their workflow that
+WeSpace has brought about.
+Author Keywords
+
+horizontal display, shared-display groupware,
+monitor interfaces, collocated collaboration
+
+multi-
+
+ACM Classification Keywords
+
+H.5.3. [Information Interfaces and Presentation (e.g., HCI)]:
+Group and Organization Interfaces.
+INTRODUCTION AND MOTIVATION
+
+The quantity of data that is pouring in from data and image
+capturing instruments, sensor networks, computer networks,
+and the web is ever-growing. The need to share, to search
+and explore, to manipulate and to make sense of these
+massive data collections has brought forth new humancomputer interaction and display design challenges.
+In recent years, multi-megapixel data walls and multi-user,
+multi-touch sensitive tabletop displays have become
+commercially available, offering tantalizing potential.
+These new form factors can offer larger physical areas and
+more pixels for information display and interaction.
+Questions remain as to whether and how these devices can
+actually benefit data-intensive, collaborative visual
+computing applications. In order for these emerging large
+
+display data walls and multi-touch digital tabletops to move
+out of their infancy to become a staple for the day-to-day
+collaborative visual computing and interaction, tangible
+benefits need to be shown. In light of this need, we have set
+out to address two research questions: (a) what are the key
+computational functionalities that will either enable the
+day-to-day usage of a multi-surface meeting room? and (b)
+can such a visual collaboration workspace change users’
+workflow processes for the better? In this paper, we present
+evidence that computational collaboration tools,
+appropriately built with new emerging display form factors,
+can indeed improve the day-to-day group work practices
+and collaboration in new ways, and can, most importantly,
+change scientists’ workflow processes for the better,
+enabling new discoveries.
+We present our research of a multi-surface collaboration
+space called WeSpace, a general-use tool for workplaces in
+which simultaneous visual exploration rendered from
+multiple data sources by multiple people is a crucial part of
+the work-flow process. WeSpace is the outcome of close
+collaboration between our research team and a population
+of scientists – astrophysicists from the Harvard Smithsonian
+Center for Astrophysics (the CfA). It is designed to enable
+modern day-to-day spontaneous collaborative sessions that
+are mediated and augmented with computational display
+devices. We report our year-long effort, starting with a
+period of ethnographic studies, utilizing a combination of
+Contextual Field Research (CFR) and intensive interviews,
+to iterations of design and development, and final results of
+actual user evaluation.
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+CHI 2009, April 4–9, 2009, Boston, Massachusetts, USA.
+Copyright 2009 ACM 978-1-60558-246-7/09/04...$5.00.
+
+1237
+
+Figure 1. Astrophysicists meeting in the WeSpace.
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+RELATED WORK
+
+Many research projects have studied digital meeting room
+systems and interaction techniques in supporting multisurface environments. The work reported in this paper is the
+first effort we are aware of that has put a multi-surface
+environment into actual use by a scientific user group.
+Collaborative Infrastructures
+
+Previous work in this area has focused mostly on providing
+low level infrastructure for cursor and screen sharing,
+moving data among display devices, and representation of
+visual layout of the room displays and objects within.
+The Collab system allowed teams to work together or
+remotely on multiple desktops and a large display wall [24].
+Dynamo allowed users’ media to be moved to a shared
+display [13].
+Streitz et al. have described digital furniture and interaction
+techniques designed to support spontaneous collaboration
+[25, 20]. Their designs included tabletop (InteracTable),
+vertical displays (Dyna Wall), and chairs (CommChairs)
+with built-in displays. They provided mechanisms for users
+to dynamically interconnect laptops and various furniture
+components to construct ad hoc collaborative spaces.
+Rekimoto and Saitoh [21] described a technique for users to
+move graphical objects from their laptop computers onto
+table and wall surfaces and among laptops in a workspace.
+Similarly, Shen et al’s UbiTable was also intended to
+provide a mechanism for spontaneous, walk-up-and-use
+functionality of easy sharing of data, such as photos and
+notes [23]. In a subsequent effort, Everitt et al. provided
+mechanisms for interaction and document transfer among
+vertical displays, a table, and portable devices [7].
+The iRoom project aimed to investigate and build seamless
+interactive spaces [16]. To enable this, the group built the
+Point Right system, which enables a mouse and keyboard to
+control any device connected to the system [17]. It enables
+a user’s complete control over the environment while
+remaining seated at a meeting table. Several projects have
+been based on the iRoom infrastructure. These include the
+Multibrowser project, which allowed web content to be
+moved across multiple displays 18, and a system to support
+meetings of architects for building design [8].
+Several efforts have addressed the mismatch between the
+continuous 2D motor space and the 3D display space that
+arises when navigating a pointer among various, nonaligned displays. Biehl et al. described the ARIS system that
+uses a flattened display environment, representing every
+display in the virtual space. Manipulations to the iconic
+representations in this display, such as moving on and
+between screens, are conveyed to the object [3,4]. Baudisch
+et al. introduce Mouse Ether [2], which attempts to unify
+multiple coplanar displays into a larger motor space, and
+Nacenta et al. presented the Perspective Cursor, which
+attempts to map the 2D motor space of the mouse to the
+image plane of a single viewer [19]. Wigdor used the world
+in miniature metaphor, present on the table miniature views
+
+April 8th, 2009 ~ Boston, MA, USA
+
+of the vertical display [30]. Forlines et al. presented a
+system which uses vertical displays to present views from
+cameras, the position and orientation of which are
+controlled from the table [10].
+Techniques also exist for simultaneously viewing data from
+multiple sources. Multiple applications can simply be run
+side-by-side on the same computer, or screens from many
+machines can be compared using screen sharing software,
+such as VNC (www.vnc.com). Wallace [29] and Tan [27]
+described systems for putting application windows or parts
+of a window from separate user desktops or laptop systems
+on a single display.
+Productivity and Collaborative Processes
+
+A key contribution of this paper is the field-work which
+shaped and then evaluated the WeSpace. A number of
+previous works have examined the efficacy of various
+visualisation and display technologies in controlled settings.
+With respect to work practice differences imposed by
+different display types, Rogers and Lindley [22] offer a set
+of observational user studies comparing vertical and
+horizontal interactive displays in a city tour planning task.
+Tan et al in [26] showed that large displays can improve
+productivity in spatial tasks, while Ball and North 1 showed
+potential performance benefits of large displays in low level
+navigation and visualization tasks.
+IMPROMPTU is a framework presented recently by Biehl
+et al. that provided facilities to share each user’s off-theshelf applications in multiple display environments [5] and
+has been field used by co-located software developers. The
+IMPROMPTU system is similar to the system we will
+present, with key differences. First, IMPROMPTU
+positions shared user-interface elements on private display,
+while WeSpace utilizes a shared display. Second, the
+WeSpace provides live images of users’ entire desktop on
+the shared display, IMPROMPTU shares applications at the
+window level. Finally, IMPROMPTU utilizes each laptop’s
+pointer for input, while the WeSpace utilizes a shared
+multi-touch table. We will examine the needs which led to
+these differences in the WeSpace later in this paper.
+In addition, one large shared touch display whiteboard
+system that has been studied in situ is the MERBoards [12,
+28]. Tollinger and Huang studied how NASA engineers
+used multiple MERBoards that were integrated into an
+environment of workstations, desktop displays and large
+projection displays within the context of the actual NASA
+JPL Mars Exploration Rover (MER) mission. One of the
+interesting findings in 12 is that the MERBoard was
+valuable in supporting tasks that were new and have not
+been “proceduralized” yet. In some sense, the work
+presented in this paper addresses one the problems reported
+in 12 that some scientists preferred using PC projectors to
+the MERBoard because of the relative ease of plugging a
+laptop into a projector when compared to loading one’s
+files onto the MERBoard.
+
+1238
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+
+April 8th, 2009 ~ Boston, MA, USA
+
+ETHNOGRAPHIC STUDIES
+
+Current Practice: Workflow
+
+Our goal was to develop a general tool to support scientists
+conducting collaborative research across disciplines. As a
+first step, we began by seeking out a research group to serve
+as partners in a participatory design process.
+
+COMPLETE is dedicated to conducting and analysing the
+results of a survey of regions of space. The researchers are
+concerned with producing two types of research products.
+The first is raw data, which is publically released following
+an embargo period. The second is research papers that
+describe the regions of interest and provide analysis as a
+novel scientific contribution. Because it constitutes a much
+larger portion of their time, we will focus on the publication
+process. To conduct part of the second phase of their
+project, the researchers described to us a 4-stage process:
+
+We chose the Coordinated Molecular Probe Line Extinction
+Thermal Emission Survey of Star Forming Regions
+(COMPLETE) group (www.cfa.harvard.edu/COMPLETE).
+The group is composed of professors, researchers, and
+graduate students. The group was selected largely because
+initial discussions indicated that they have challenging
+needs for a collaboration tool. We believed that satisfying
+such a group would yield the strongest possible outcome.
+Research Instruments
+
+To ensure that whatever system we developed provided an
+easy transition between the meeting and the remainder of
+the work process, we conducted intensive interviews with 4
+members of COMPLETE located at Harvard, as well as an
+additional 6 astrophysicists at Harvard not in COMPLETE.
+The goal was to gain a high-level understanding of their
+work flow. Simultaneously, we also observed group
+meetings in order to begin to build our interaction models,
+and to understand the portion of their process our tool
+would be built to support. We now review the results.
+Users and Tools
+
+All participants interviewed described a need for better
+tools to support their work. As the process continued, it
+became clear that the development of useful software would
+be significantly hindered by the highly variable individual
+practices of each member of the group. Of the many
+variables, two in particular would be highly inhibitive:
+Disparate data types: research teams in any discipline
+commonly examine different elements of a problem. Data
+sources and types examined by the COMPLETE team vary
+widely within a project. For example, the group utilizes a
+various telescopes to measure in all of radio, near and
+infrared, sub millimetre, and optical bandwidths.
+Astronomy data is commonly saved as a single file type,
+but the content of these files is highly variable. Often, only
+the person creating the file will be able to interpret its content.
+Different and Custom Software Tools: due in part to the high
+variability of data types, tools employed by members of the
+group also varied. Viewing applications are highly
+specialized, and mostly created by research teams and not
+software developers. Collaboration is further complicated
+by the high-level of customization and augmentation of
+these tools. Many group members write their own software
+in various languages (eg: C, Perl, Python, IDL), the output
+of which often does not conform to any standard.
+It was clear that our tool would need to support any number
+of data types, as well as custom software utilized by the
+various participants. As such, any tool that requires the
+users to execute applications on a server would not be
+suitable. We expected this particular outcome to drive much
+of our development process.
+
+Proposal Preparation: in order to conduct a higherresolution observation of a particular region of space, a
+team must submit a formal proposal to the agencies
+operating the various telescopes. In the proposal preparation
+phase, members of COMPLETE perform analyses of their
+own previously collected data, of raw data from other
+sources, and of published works. From these, they must
+provide a proposal outlining the benefits to science of
+allowing the new high-resolution observations to take place.
+Data Reduction: if their proposal is accepted, the
+observations are conducted using the particular telescope as
+instructed by the researchers. The newly acquired raw data
+usually requires significant massaging before analysis can
+begin, including file format conversions, applying
+transformations to account for known instrument
+peculiarities, filtering to remove noise and unwanted
+features, and almost always transformations to adjust the
+content of the data to suit the analysis.
+Data Analysis: analysis is typically performed within the
+context of the proposal, confirming or refuting hypotheses.
+This stage of the workflow can introduce an interesting
+problem: often, researchers wish to be highly collaborative
+with one another. Due to the previously discussed problems
+with data types and custom tools, the amount of
+collaboration is often limited to e-mail exchanges, often
+with data reduced to raster image files to ensure
+compatibility between collaborators.
+Write-up: after analysis, the researchers will typically
+write-up their results for publication. As with any research
+area, writing too is usually a collaborative process among
+the authors of the paper.
+Current Practice: Group Meetings
+
+We attended several of the COMPETE group’s regularly
+scheduled meetings over a 2-month period: observing,
+photographing, and taking notes on their current practice.
+The group treats the meetings as an opportunity to synchronize
+activities among the members through status reports, to receive
+guidance from other members, and to discuss current research.
+As each member of the group is given the floor, the meeting
+room’s projector is connected to and driven by that
+member’s laptop. The content shown on the projector varies
+widely based on the circumstances of the meeting, but
+typically falls in to one of two categories.
+
+1239
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+
+Documents, such as a research paper or proposal in
+progress, or a previously published work, are typically
+shown on the display to solicit feedback or to provide
+evidence to support a position during a discussion.
+Data, such as observations from telescopes, are usually
+shown after one or more members of the group has spent a
+significant amount of time analysing it.
+It occurs frequently that one or more members of the group
+wishes to share data or documents simultaneously to
+support the ongoing discussion. To facilitate this, they will
+typically position one of the laptops in such a way to allow
+others to see (the laptop-sharing strategy), or will attempt
+to pass their data to the laptop connected to the projector
+(the data passing strategy). In the case of the laptop-sharing
+strategy, the size of the display inhibits other group
+members’ examination of the data. The data-passing
+strategy is inhibited by the disparate data types and custom
+tools we described earlier: often, the members will take a
+screen shot or output a raster file to ensure the proper
+visualisation is shown when passed to the other user’s
+machine. This strategy removes the ability to further
+manipulate the data and imposes significant overhead.
+Opportunities for Collaboration
+
+While the regular group meetings demonstrate a need for a
+low-overhead meeting tool, interviews with group members
+suggested another opportunity to enhance the scientific
+process. As outlined earlier, the workflow for each research
+product is typically composed of 4-steps: proposal
+preparation, data reduction, data analysis, and write-up.
+Each of these steps might require contributions from more
+than one member of the group. The practice of the group at
+the time of our study was typically to engage in
+asynchronous and spontaneous collaboration. A researcher
+engaged in data analysis, for example, might encounter a
+formation or image that requires further analysis from
+another researcher with different expertise. At that point,
+the first researcher might e-mail a screenshot or textual
+description of the image (resulting in a low-fidelity
+artefact), or might schedule a meeting to discuss the finding
+(resulting in a slow-down in the process).
+As we continued to interview the group members, it became
+apparent that there was a desire for synchronous co-located
+collaboration at various phases of their process. Nearly all
+of the group members indicated that they would prefer to
+conduct spontaneous face to face meetings to do their work
+together. Each expressed frustration that their current tools
+and facilities did not properly support such collaboration,
+and were, at times, a burden rather than an aid to their
+workflow. In interviews, we discussed what a new tool to
+support collaboration might need in order to properly
+support their processes. These discussions yielded a list of
+requirements for such a tool, some of which were suggested
+by the users explicitly, while others were determined from
+analysis of their input.
+
+April 8th, 2009 ~ Boston, MA, USA
+
+System Requirements
+
+Provide a sharable display: the current primary
+opportunity for collaborative science is during group
+meetings. At these meetings, the lack of a large, shared,
+high-resolution display limits the data that can be shared
+and imposes an overhead on to their work practice. The
+ideal environment would include displays that would
+sufficiently allow the researchers to share their work with
+the group, while also functioning at a high resolution.
+Multiple data visualizations need to be rendered
+simultaneously to facilitate easy comparison, overlays and
+collaboration.
+Allow the use of their laptops: because of the necessities
+of using different data types and custom software, the
+collaboration tool must allow the scientific users to run
+applications from their own native laptops while visualizing
+and analyzing the output rendering on a shared display.
+Maintain interactivity of existing applications: as
+described above, the current collaborative practice often
+requires sharing screenshots of applications with one
+another. The ideal tool would allow data being shown on
+the large display interactively, within the application
+generating its view. This allows for a faster iterative
+process, while maintaining the fidelity of data.
+Retain user control over their own data: when presented
+with the idea of a tool to replace the practice of sharing
+screenshots, all members of the group were initially
+enthused. However, many engage in collaborations with
+researchers who are not members of COMPLETE. On such
+occasions, each of the collaborators needs to maintain
+control over their own data, ensuring that only those
+renderings and projections they choose are shown, and that
+proprietary underlying data are not shared.
+Support egalitarian input: frequently, a discussion will
+involve input and data from a diverse group, each of whom
+bring a different expertise to the table. Interviews with users
+indicated that a system that supports such collaboration
+must allow group members to have equal opportunity for
+control of the discussion at all times, preventing a single
+user from exclusively controlling the system and thus the
+conversation.
+Provide a record / work product at the meeting: the
+working meetings we observed often involve a great deal of
+collaborative work product: diagrams, discussions of
+research direction, and text for publication. This product is
+often drawn on a whiteboard, hastily jotted down, or never
+actually recorded. Several group members insisted that the
+tool we built should have functionality to collaboratively
+generate and to store work products. It is important to
+distinguish work product from meeting logs: the group
+members desired a tool to produce tangible, useful piece of
+text, data, or imagery, and not a facility to search logs
+looking for elements which might have been used to
+produce these.
+
+1240
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+DESIGN CONSIDERATIONS AND IMPLEMENTATION
+
+Our ultimate goal in the development of the WeSpace is to
+create a collaborative visual computing space for users to
+walk-up and share with minimum interruption to their dayto-day scientific practices. Details of the system
+implementation of the WeSpace, as well as a video of its
+use, can be found in [15]. In this section, we discuss some
+elements of its implementation.
+While we viewed it as important that the WeSpace meet
+each of the user-driven system requirements designed
+previously, we also took it as a central tenet that it was
+essential to provide an extensible system for the analysis of
+visual data. Images of user applications, therefore, must
+pass-through the processing pipeline of the WeSpace, to
+provide an opportunity for the development of imageprocessing.
+Existing models of sharing user laptop contents fall short in
+many respects in fulfilling our user requirements: 1)
+Provide VGA/DVI cable(s) to connect to a single projector
+or multiple projectors, the most common and simple
+solution today, does not provide a facility to produce
+collaborative work product, or to easily overlay and
+compare the data from more than one user’s laptop. 2)
+Upload data to a shared compute server with native viewer
+applications [14, 13, 20, 30]. This ensures good rendering
+performance. However, viewers and tools used by scientists
+are often customized and can include software they wrote
+themselves, making configuring such a server prohibitive.
+This solution would also require that users relinquish
+underlying data. 3) IMPROMPTU: the system described by
+Biehl et al. provides for the sharing of application windows
+across multiple systems and displays. While this system
+provides for many of the requirements we have described, it
+does not meet them all. First is their decision to provide
+user interface elements on the private display of each
+participant. While useful for the group they are seeking to
+support, in a visual collaboration space, such as the
+WeSpace, the large shared displays are the focus of
+collaboration. The distribution of user interface elements
+across the smaller displays detracts from this focus. Second,
+the IMPROMPTU system provides no mechanism for the
+processing of the live images of the desktop applications,
+making image processing and overlay impossible without
+extensive modification. Last, the IMPROMPTU system
+uses users’ mice as the input mechanism to the system. To
+support a collaboration space, we have found that a shared
+direct-touch interface helps users maintain a focus on the
+visual data, and better supports egalitarian input.
+
+April 8th, 2009 ~ Boston, MA, USA
+
+over mouse-pointer mapping when multiple mice were
+present in the system. Subsequent design iterations lead to
+the modification of the table interface to further promote
+egalitarian input and awareness.
+Here, we will describe those elements of the system which
+were critical to its success, and which underwent changes as
+part of the iterative design process. For more details about
+the design itself, we refer the reader to [15].
+Display Ecology & Infrastructure
+
+The WeSpace includes a large high resolution display wall
+and a multi-touch tabletop, both driven by a WeSpace
+server machine. Laptops or desktops can be brought into the
+space on-the-fly. The multi-touch tabletop is 4 feet by 3.5
+feet including a 7-inch non-touch sensitive border around
+the tabletop, providing comfortable seating for three or four
+participants (see Figure 1). The table is situated in front of
+the display wall, to provide a means for egalitarian input
+and to facilitate fact-to-face collaboration. Control events
+are passed amongst the laptops, the data wall, and the multitouch table, allowing all participants to control from each of
+the laptops or the multi-touch table. Through the table, all
+elements of the system can be controlled: native
+applications, as well as individual laptop displays.
+The current implementation of the WeSpace server is built
+in Java running on a 3.2GHz Windows PC. The server
+drives a 10ft by 5ft rear-projection Megaview data wall
+with a resolution 3072 x 1536, and a DiamondTouch
+tabletop [6] with a projected resolution of 1280 x 1024. We
+use OpenGL (jogl) to render live screen images and user
+interfaces. With four clients connected and displayed, both
+the wall and the table update at the frame rate around 15fps.
+The software infrastructure is based on screen-sharing
+techniques, sending live computer screens to the server over
+the network. This allows a user to launch any application on
+their own laptop and share its visualization, and the server
+software to have flexible control over those visualizations
+as a rendered stream. User customization and data
+protection are simultaneously supported.
+A lightweight client is installed on each laptop. Group
+members may use either Ethernet cables, or WiFi to
+connect to the server. We provide clients running on both
+Windows (XP & Vista) and Mac OS X. We leverage tools
+which utilize the VNC protocol to share displays.
+
+Indeed, an earlier version of the WeSpace did not use a
+touch-table, but rather relied on mice and other pointing
+devices for input. In this early version, each laptop’s mouse
+pointer could move among all of the windows shown on the
+wall-display – including other users’ laptops. Based on
+early design iterations with our target group, the touch-table
+was added to the system to make input more egalitarian, to
+make input visible to other users, and to remove confusion
+
+1241
+
+Figure 2 WeSpace software architecture.
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+WeSpace Native Tools
+
+The WeSpace APIs allow development of user defined
+applications. As of now, two such applications have been
+developed in our environment: the Layout Manager, and
+LivOlay. Users may launch into one of these applications
+by tapping on the corresponding icons that are portals to
+these applications on the multi-touch table.
+Layout Manager enables users to control the layout of
+connected laptop screen images on the shared surfaces.
+Both synchronized and asymchronous views are
+supporteded between the tabletop and data wall: what a user
+sees and manipulates on the tabletop has an identical visual
+correspondence on the wall.
+Each client laptop connected to the space is assigned a
+display status: important, public, or private. An important
+laptop’s display is enlarged and highlighted on the shared
+surfaces, while a screen with public status will appear
+relatively small. A private screen indicates its owner’s
+desire for privacy, thus will not be displayed on the shared
+surfaces. Figure 1 (left) shows a WeSpace session where
+one user laptop is important while the other two are public.
+Status controls are provided on each laptop’s native client
+interface, as well as rendered next to each laptop’s screen
+on the table. When a display’s status changes, an automatic
+layout change is applied and the transition is animated to
+ensure visual fluidity. Users can also use gestural input on
+the tabletop to control size and position of laptop images.
+In layout Manager, the multi-touch tabletop also performs
+input on the connected laptops. Double-tapping a laptop’s
+image on the table severs the synchronized view between
+surfaces: the wall keeps the layout display of multiple
+screen images, while the table zooms in to a full-screen
+display of the selected laptop. User actions on the tabletop
+are interpreted as mouse input and sent to the client laptop.
+The use of the tabletop to control the Layout Manager
+evolved in the later stages of our iterative design process.
+This occurred primarily out of the reported confusion users
+experienced in tracking their mouse pointer across multiple
+displays, and in keeping track of other users’ actions. We
+found that the tabletop’s direct-touch input eliminated the
+need for pointer tracking, as well as making visually
+apparent what other users were doing with the system.
+
+April 8th, 2009 ~ Boston, MA, USA
+
+LivOlay,was developed as part of an early iteration of the
+WeSpace. It is implemented using the WeSpace APIs, and
+is intended to facilitate easy visual exploration and
+comparison of imagery from multiple laptops. Although he
+Layout Manager allows the enlarging of two laptop displays
+to show them side-by-side, during our evaluations it
+became apparent that there was a need for users to overlay
+live imagery of applications running on the laptops.
+LivOlay works by users selecting corresponding landmark
+points in visualizations to be registered for overlay. An
+early version without the mult-touch table support of
+LivOlay is presented in [14].
+In the current implementation, the multi-touch tabletop acts
+as the group input and command centre for visual
+exploration tasks. When the team first enters LivOlay, they
+select application windows to overlay by tapping them on
+the tabletop. The application boundaries are acquired using
+the WeSpace API and are visually highlighted.
+In LivOlay, the large-size, high-resolution data wall
+provides two view modes to users: a linked view and an
+overlapped view (left and center of Figure 3). In the linked
+view, applications are displayed side-by-side, each showing
+registered points as well as links to corresponding points on
+other application images; in the overlapped view, live
+renderings are overlapped according to the transformation
+calculated using their registration points. Users can switch
+between the two modes by tapping a button on the tabletop.
+LivOlay we emphasizes the role of the interactive table as
+the command center in the multi-display environment.
+Identical toolbars, are designed and displayed along each
+edge of the table to ensure egalitarian input (Figure 3 right).
+To register a point in one application, pick a pin on the
+toolbar, and drop it on the target position. The transparency
+of the current application in the overlapped visualization is
+controlled by tapping or sliding the slider in the toolbars.
+Also, a “Table Mode Switch” button appears in each
+toolbar allowing users to switch to or out of the overlapped
+view of those applications on the table. When the table is in
+the overlapped view, it’s synchronized with the wall
+display: visual explorations, such as zoom, pan and
+transparency change are reflected on both surfaces. With a
+stylus, users are able to annotate directly on the overlapped
+visualization displayed on the table.
+
+Figure 3. LivOlay in use. (left) Linked view of 3 registered images. (center) Overlapped view of the same 3 images. (right) A screen
+shot of the multi-touch tabletop ((A) Portal icon to Layout Manager, (B) Portal icon to LivOlay, (C) an astronomical data viewer
+(DS9) image to be overlaid, with registered points displayed, (D) wall mode switch, (E) table mode switch, (F,H) load next/previous
+application, (G) transparency control slider, (I) unused registration pins, pick up and drag to target position to register a point.)
+
+1242
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+
+April 8th, 2009 ~ Boston, MA, USA
+
+EVALUATION
+
+Functionality Benefits
+
+After the final design iteration with our target group, we
+again made WeSpace available to them. Three researchers
+(MB, a research assistant, and JK, and JF, graduate
+students) conducted collaborative research sessions in the
+WeSpace. Face-to-face collaborative research sessions are
+not normally part of their workflow – it is rather the type of
+sessions the users indicated that they would like to add to
+their workflow, and which WeSpace is intended to support.
+
+Our own observations indicated that the software was
+robust and facilitated the users’ research. In this snippet
+from the post task feedback, one of the users describes how
+the particular functionality of the WeSpace helped in
+performing data analysis:
+
+We wished to determine the value of the space and the
+addition of collaboration to the workflow in general. MB
+and JK had been present at every iterative design session,
+and JF had been present for most of them. These sessions
+varied from our regular design iteration meetings in that we
+asked the participants to immerse themselves in their
+research experience, and not to spend any time explaining
+concepts or engaging us in design discussion. The group
+members brought their actual, current research materials
+with them on their own laptops, with the intention of
+discussing their current work and actually performing their
+scientific process during our observation sessions.
+We observed the meetings and took notes of interesting
+events, video-taped the sessions, and logged input and
+system events. To understand the impact on their workflow,
+we asked members of the group to describe their
+experiences with the system, and to explain how their
+workflow was affected by its use.
+The results were quite positive. Conducting these
+collaboration sessions was extremely beneficial to the users,
+and actually resulted in new research products. In the
+following sections, we will examine the data collected from
+this final session and post task feedback. In some cases, this
+feedback addresses not only the final prototype, but also the
+positive disruptions the users foresee to their research
+process – also a contribution of this work.
+Post Task Feedback
+
+In this section, we report verbatim from post-task feedback
+written by our participants. Our intention is to validate our
+process and our designs and, just as importantly, to point
+others in similar directions when building systems for
+collaborative research.
+According to user feedback, the addition of collaboration in
+the WeSpace to the actual scientific workflow was
+extremely valuable:
+From my perspective of studying outflows1 and shells2, what our two
+WeSpace sessions allowed me to do is look for evidence of outflows
+and shells in data sets that I may not normally look at, and look at
+these data sets with experts that work with them on a daily basis. It
+is true that, if I had thought "what does my outflows look like in
+other wavelengths?", I could have tried tracking-down all the data
+myself, tried to look at them side-by-side or do some form of hack
+overlay, and then if I was confused track-down one of the experts
+(e.g. JF or JK). But this scenario would be quite unlikely to happen
+due to a technological and social-effort barrier. However, being put
+under the circumstances of the WeSpace, it was all easy (like, really
+really easy!).
+
+Another note on my own research, I have already detected the
+outflows and shells for Perseus using other methods and am
+prepping the papers for publication. However, what the
+collaborative meetings with WeSpace (and specifically using
+LivOlay) allowed me to do is confirm whether the newly discovered
+features I found in the radio wavelengths are observable at other
+wavelengths. Outflows and shells are very good candidates for these
+kinds of multi-wavelength studies because you can see in different
+forms. (In the radio, I see the actual gas emission. In the optical, I
+see the shock fronts where outflows & shells are impacting the
+visible dust). I will probably include some of JF's images in my
+papers (or similar images) with my outflows/shells overlaid to prove
+"here are my new features at other wavelengths thus they are real".
+Process Changes
+
+We intended the WeSpace to serve not only as a support
+tool, but also as an enabler for the introduction of
+collocated collaboration in the early stages of the
+COMPLETE group’s scientific process. Here, one of the
+users describes how their process was affected.
+Use of the WeSpace definitely is different than our normal work
+procedure. It basically takes some of the "usual" workflow steps and
+makes them much more efficient and convenient, and introduces
+new "steps" that are extremely helpful.
+
+Here, the same user describes first the usual procedure for
+processing new observations, and then how the WeSpace
+changed this process for the discussions held during the
+session.
+Traditional Process: I (or a generic astronomer) gets some new
+data. After I have reduced and cleaned-up the raw data, I inspect it:
+what sources do I see? What known and new features are there? Are
+there artefacts or noise that shouldn't be there? Once I identify the
+"points of interest", I go into my data and start to analyze, measure,
+and identify stuff. And, if I'm a good astronomer, I then compare my
+data (be it the actual image or at least the location of interesting
+features) to other published papers, and data (either published or
+from other collaborators). This may turn into a cyclical process
+where I will identify/research the feature, go take more
+measurements or refine my image, then go back and
+identify/research some more. Eventually, I'll settle on what is new
+(be it a feature or calculation/measurement) and publish it. Then
+write an observing proposal to conduct follow-up observations, get
+data, and start the whole process over again.
+
+1
+
+Outflow, more accurately bipolar outflow, is the physical phenomena
+associated with the stage of star formation where gas that is collapsing
+onto a forming protostar is ejected due to angular momentum as collimated
+flows along the star's poles.
+
+2
+
+Shell: a relatively generic term for the phenomena where gas and dust is
+spherically blown away from a source. Examples of shells include super
+nova (the source of the shell is an exploding star), or "spherical winds" (a
+shell produced when a star emits enough radiation to cause a wind).
+
+1243
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+
+April 8th, 2009 ~ Boston, MA, USA
+
+case of JK and MB, we explored data (sic) that we had
+already compiled/analyzed but within the context of other
+data sets (and with other collaborators) than we normally
+would have used worked-with.
+
+Process Changes with WeSpace: where WeSpace changes
+things is in this middle iterative process of exploring your data. So,
+JF came to our session at the stage of "I have brand new data from
+my telescope and have no idea what is in the image". LivOlay
+allowed him to easily and rapidly explore his data and compare it to
+other data sets and catalogues of known features (both in published
+and unpublished images). Better yet, the WeSpace set-up allowed JF
+to conduct this exploration with not only the data sets he thought
+were important, but the data sets JK and I thought were important
+thus broadening his analysis. JK and I came into the session with
+data sets we had already picked-apart and explored, but with the
+tantalizing sneak-peak of JF's images at the regular group meeting
+[we] decided we wanted to see if his data could shed any light or
+new inferences on our data.
+
+These changes to the workflow are described by the user as
+being positive and useful. As for ease of integration in to
+their work practice, user MB noted in particular that:
+Now that I know it is so easy, I will be far more likely to put the use
+of WeSpace into my workflow.
+
+Moving forward from the collaborative session, each of the
+group members will continue to work on the results found
+during their meeting. A user describes the
+WeSpace definitely enhanced and improved our working experience.
+At this point all three of us are back to re-investigating our data
+independently. Either each will decide that there is nothing new to
+learn with the current data sets or that there are some new possible
+features of interest (based on the post-session independent work),
+and getting back together would be useful/merited. If this system
+were conveniently at the CfA, I could see it easily being
+incorporated into an astronomer’s workflow (in addition to other
+collaboration meetings/presentations). And LivOlay on its own
+would be a wonderful tool for astronomers to use on their own
+computers. Also, having publication quality/resolution versions of
+the LivOlay images would be fantastic.
+Value of Collaboration
+
+In addition to the value of the WeSpace as a tool, our
+studies were also intended to determine the value in general
+of the addition of collocated collaboration to a scientific
+team’s workflow. To this point, one of our users noted:
+I went into the WeSpace session anticipating we would make great
+new discoveries and gain a better understanding of our data (which
+we did). However, what I did not expect was the amazing value in
+the collaborative working. Sure, I thought that the WeSpace would
+be good for things like COMPLETE meetings where it is hard to
+show each other what we are working on and compare. What our
+sessions showed me was that working with others is a wonderful
+resource and of great value. Normally I only get others' opinions
+when I'm at the stage of "here are my results, let me show you" or
+"my code to reduce my data is broken, can you help me fix it?"
+However, working side-by-side with people of different backgrounds
+who are interested in the same data was fantastic!!! It was
+extremely productive, useful, and insightful.
+
+The same user goes in to great detail about how the face to
+face meeting allowed the users to work collaboratively to
+quickly identify interesting features, made evident by
+overlaying data sets that JF and JK would otherwise have
+been working on separately: [WeSpace] definitely helped in
+the analysis of papers that each of us is working on. In the
+
+Other than giving all of us a better understanding of our data, we
+did identify one particular feature that was striking in one of JF's
+images - what appeared to be a dense blob of gas with a cometary
+tail on it. Then putting it within a context of my and JK' data, we
+realized that there was a young source3 inside of the blob driving an
+outflow, and that the outflow lobes are bent in the same direction as
+the cometary. So the question is what is the cause of this feature?
+We realized based on data overlays that two possible sources for
+wind could be a young cluster of stars in the direction of the tail,
+and that one of my newly identified shells in the region could be
+expanding into it.
+
+As the user described, because of collocated collaboration,
+and the presence of experts bringing more than one data
+source to the discussion, new discoveries were made. The
+user notes:
+Thus, we worked along with JK to write an observing proposal!
+
+Each of the users credits their face to face meeting and the
+tools in the WeSpace with enabling this discovery. They
+note that it might not have occurred without the face to face
+collaboration enabled by our tool.
+In addition to this proposal, there were additional scientific
+outcomes from the two sessions we observed.
+Tangible Outcomes
+
+The clearest evidence of the success of the WeSpace and
+the addition of collaboration to the COMPLETE group’s
+workflow are the multiple, tangible scientific outcomes
+produced during the sessions. In all, the users reported that
+the work done during the sessions will enable them to
+submit a new observing proposal, as we describe above, as
+well as three scientific ongoing journal papers, as well as
+another not yet named:
+JF will eventually write a paper officially publishing the optical
+images we were looking at with him. (sic) Also, the three papers
+listed above plan to be submitted for publication within the next
+couple months.
+
+As we have described, the users found significant value not
+only in the WeSpace as a tool, but also in the positive
+process changes it introduced to their workflow. In
+particular, the group members found great value in the
+collaboration it enabled, and in the new discoveries that this
+collaboration allowed them to make during our session. The
+value of the workflow changes, collaboration, and
+discoveries is clearly demonstrated by the tangible
+outcomes from the session: significant content from 4
+papers, and a new observing proposal which otherwise
+would not have been made.
+
+3
+Young source: is the term used in astronomy, specifically star formation,
+to refer to a young star still forming or newly formed.
+
+1244
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+Observations & Data Logging
+
+General Observations: It is apparent that JK, MB and JF
+know each other very well and have been working together
+for a long time. The collaborative discussions were engaged
+and focussed. Much time was spent on visual inspection of
+data on the wall and on the table. We were happily
+surprised with the fluency in which they moved data in and
+out of their own laptops and onto the group space on these
+surfaces. Over the long hours of the meeting sessions, we
+observed: continued verbal utterances by all group
+members in turns; all three felt comfortable touching and
+inputting from the multi-touch tabletop; they all contributed
+data and documents frequently from their respective
+laptops; laser pointing to the pixel location of interest on the
+wall by one participant while touch gesturing to zoom in
+and out the visual data by another person often was seen.
+The Value of the Multi-Touch Table: The multi-touch
+table in the WeSpace has proven to be conducive to these
+collaborative visual explorations. In particular, the tabletop
+has been observed to be very useful in supporting two
+aspects of this type of scientific collaborative work. First, it
+created egalitarian input and navigation amongst the group.
+Our users felt at ease in reaching out and touch-operating
+their visual data. The recorded data analysis discussed
+below confirms this. A second utility of the tabletop is that
+its horizontality afforded the group to use physically
+tangible tools on top of the digital data. For example, they
+used a wooden ruler to measure the distance between stars
+on the digital display of the tabletop. They also frequently
+used a stylus we provided to mark and annotate their work
+product, a fluid integration of physical to digital worlds.
+Recorded Data: During the evaluation sessions, our system
+recorded the number and type of input from each of the
+scientists participating in the session. Using these logs, we
+were able to begin to address questions concerning the
+relative contribution from each group member in terms of
+controlling the system, and directing the conversation.
+Overall, the relative contribution from the three group
+members in the number of input actions was fairly equal,
+with a distribution of input of 22%, 33%, and 45% for JK,
+MB, and JF respectively. This stands in contrast to a
+group’s use of a single-user system: member controlling the
+mouse and keyboard greatly influences the conversation.
+
+April 8th, 2009 ~ Boston, MA, USA
+
+While the distribution of input was fairly equal when the
+meeting was viewed as a whole, a different story emerged
+when we examined input from each of the three users over
+time. Figure 4 shows the relative number of input events
+performed by each of the three users for each 5 minute time
+period. While the overall distribution of input was relatively
+even, the distribution during the 5 minute samples was not.
+The logs suggest that the control of the system passed from
+user to user at different times during the meeting as the
+participants took turns directing the conversation. While the
+majority of input was normally made by one participant, it
+was rare to see any one user monopolising the table. These
+patterns match our observations of the meeting that the
+scientists took turns introducing new data and hypotheses,
+with their colleagues reacting to these additions.
+Lessons Learned
+
+In conducting our iterative design process, we learned
+several lessons that will inform our future approach.
+Make the Process Win-Win: as with any iterative design
+process, our results demonstrate the importance of
+participants perceiving benefit. What we found to be
+equally important, however, was conducting our in-lab
+iterative design sessions around actual meetings, where our
+target users were simultaneously undergoing their scientific
+process. We found that ensuring that each individual
+meeting, and not just the end product, was helpful to their
+process ensured more productive iterations.
+Set expectations: our goal was to produce a useful system
+for our target users. We often found it necessary to balance
+the needs of our particular users with what would ultimately
+be beneficial to a wider audience. Also, our users were
+generally unaware of the development process, meaning
+they were often unable to understand why some requests
+could not be met. Setting expectations at the beginning and
+on an ongoing process was critical to our collaboration.
+Let Participants Take Ownership of the Process: that users
+possessed a sense of ownership of the process was essential.
+We regularly met and solicited their advice not just in
+understanding problems, but also in solutions. Although
+these recommendations would not always be grounded,
+giving the users a sense of ownership did help in gaining
+their trust and in ultimately delivering the best design.
+
+Figure 4. The relative input contribution from each of the three scientists over time. Overall, our three scientists contributed
+equally; however, each group member lead the control of the system at different points in the meeting.
+
+1245
+
+CHI 2009 ~ Using Tabletops for Education, Science, and Media
+CONCLUSION AND FUTURE WORK
+
+6.
+
+WeSpace provides a low overhead user interface to
+seamlessly integrate and coordinate the interaction among
+large interactive tables, data walls, and personal computers
+and laptops. WeSpace also provides a set of native services
+and applications to facilitate collaborative exploration. The
+current set of services include functionalities to (a) layout
+and manipulate multiple live desktops on multi-touch
+tabletops and display walls, (b) select and pull-out any userchosen applications from their own laptops onto the wall
+and the table, (c) enable visualization, overlay and mark up
+of live visual renderings from any of users’ own
+applications, and (d) give all group members equal access
+to touch manipulation around a multi-touch tabletop. These
+functionalities enable collaboration participants to use the
+often highly customized visualisation software running on
+their own laptops, and avoid the hindering overhead of
+requiring users to copy data to a separate display system
+[12]. Users benefit from spontaneous walk-up collaboration,
+larger display areas, and multi-touch input models.
+Designers seeking to apply our results should consider two
+elements: the design requirements we outlined, and the
+WeSpace system we implemented to satisfy those
+requirements. An interesting issue not yet fully explored is
+to examine the impact of the WeSpace in isolation,
+comparing its use with a modified practice in which users
+utilize some other method for face-to-face collaboration.
+
+7.
+
+8.
+
+9.
+10.
+
+11.
+12.
+
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+The next step in this line of research will be the evaluation
+of WeSpace with other groups of astrophysicists, not
+involved in the iterative design process. Once this is
+complete, we will begin the modification and deployment
+of WeSpace for use by other groups. The WeSpace system
+is designed to allow custom applications to plug-in to suit
+the needs of particular domains. We look forward to
+generalizing this workspace for a diverse set of group
+activities as we move forward.
+
+18.
+
+ACKNOWLEDGEMENTS
+
+23.
+
+We thank the COMPLETE group and other members of the
+Harvard Smithsonian Center for Astrophysics for their time
+and support. We also thank members of the MERL and IIC
+labs for invaluable collaboration.
+
+24.
+
+Hao Jiang is partially sponsored by the 863 Project
+2008AA01Z132 and 2009AA01Z336.
+REFERENCES
+1.
+2.
+
+3.
+4.
+5.
+
+Ball, R. and North, C. (2005). Effects of tiled high-resolution display on basic
+visualization and navigation tasks. In CHI 05 Extended Abstracts, 1196-1199.
+Baudisch, P., Cutrell, E., Hinckley, K., Gruen, R.(2004) Mouse ether:
+accelerating the acquisition of targets across multi-monitor displays. In Proc.
+CHI 04, 1379-1382.
+Biehl, J.T., Bailey, B.P. (2004). ARIS: an interface for application relocation in
+an interactive space. In Proc. Graphic Interface 04, 107-116.
+Biehl, J.T., Bailey, B.P. (2006). Improving interfaces for managing applications
+in multiple-device environments. In Proc AVI 06, 35-42.
+Biehl, J.T., Baker, W.T.,Bailey, B.P., Tan, D.S., Inkpen, K.M., Czerwinski, M.,
+(2008). IMPROMPTU: A New Interaction Framework for Supporting
+Collaboration in Multiple Display Environments and Its Field Evaluation for
+Co-located Software Development. In Proc. CHI 08, 939-948.
+
+19.
+
+20.
+21.
+22.
+
+25.
+
+26.
+
+27.
+
+28.
+29.
+30.
+
+1246
+
+April 8th, 2009 ~ Boston, MA, USA
+
+Dietz, P. and Leigh, D. (2001). DiamondTouch: a multi-user touch technology.
+In Proc. UIST 01, 219-226.
+Everitt, K. , Shen, C., Ryall K., Forlines C. (2006). MultiSpace: Enabling
+Electronic Document Micro-mobility in Table-Centric, Multi-Device
+Environments. In Proc. Tabletop 06, 27-34.
+Fischer, M., Stone, M., Liston, K., Kunz, J., Singhal, V. (2002). Multistakeholder collaboration: The CIFE iRoom. In Proceedings CIB W78
+Conference 2002: Distributing Knowledge in Building, 6-13.
+Fits Files: http://fits.gsfc.nasa.gov/fits_intro.html
+Forlines, C., Esenther, A., Shen, C., Wigdor, D., Ryall, K. (2006). Multi-user,
+multi-display interaction with a single-user, single-display geospatial application.
+In Proc. UIST 06, 273-276.
+Gray, J., Szalay, A. The World-Wide Telescope, an Archetype for Online
+Science. MSR-TR-2002-75.
+Huang, E.M., Mynatt, E.D., Trimble, J.P. (2006). Displays in the wild:
+Understanding the dynamics and evolution of a display ecology. In Proc.
+Pervasive 06.
+Izadi, S., H. Brignull, T. Rodden, Y. Rogers and M. Underwood. Dynamo: A
+Public Interactive Surface Supporting the Cooperative Sharing and Exchange of
+Media. Proc. UIST, 2003, 159-168.
+Jiang, H., Wigdor, D., Forlines, C., Borkin, M., Koffmann, J., Shen, C. (2008).
+LivOlay: Interactive Ad-Hoc Registration and Overlapping of Applications for
+Collaborative Visual Exploration. Proc. CHI 08, 1357-1360.
+Jiang, H., Wigdor, D., Forlines, C., Shen, C. (2008). System Design for the
+WeSpace: Linking Personal Devices to a Table-Centered Multi-User, MultiSurface Environment. In Proc. Tabletop 2008, 105-112.
+Johanson, B., Fox, A., Winograd, T. (2002). The Interactive Workspaces
+Project: Experiences with Ubiquitous Computing Rooms. IEEE Pervasive
+Computing, v.1, n.2 (April 2002), 67-74.
+Johanson, B., Hutchins, G., Winograd, T., Stone, M. PointRight: experience
+with flexible input redirection in interactive workspaces. In Proc. UIST 02, 227234.
+Johanson, B., Ponnekanti, S., Sengupta, C., Fox, A. (2001). Multibrowsing:
+Moving Web Content across Multiple Displays. UbiComp 2001, 346-353.
+Nacenta, M. A., Sallam, S., Champoux, B., Subramanian, S., Gutwin, C. (2006).
+Perspective cursor: perspective-based interaction for multi-display
+environments. In Proc. CHI 06, 289-298.
+Prante, T., Streitz, N., Tandler, P. (2004). Roomware: Computers Disappear and
+Interaction Evolves. Computer 37, 12 (Dec. 2004), 47-54.
+Rekimoto, J., Saitoh, M. (1999). Augmented surfaces: a spatially continuous
+work space for hybrid computing environments. In Proc. CHI 99, 378-385.
+Rogers, Y., Lindley, S. (2004) Collaborating around vertical and horizontal
+displays: which way is best? Interacting With Computers, 16, 1133-1152.
+Shen, C., Everitt, K.M., Ryall, K. UbiTable: Impromptu Face-to-Face
+Collaboration on Horizontal Interactive Surfaces. UbiComp 2003, LNCS 2864,
+281-288.
+Stefik, M., Foster, G., Bobrow, D. G., Kahn, K., Lanning, S., Suchman, L.
+Beyond the chalkboard: computer support for collaboration and problem solving
+in meetings. Commun. ACM 30, 1 (Jan. 1987), 32-47.
+Streitz, N. A., Geißler, J., Holmer, T., Konomi, S., Müller-Tomfelde, C.,
+Reischl, W., Rexroth, P., Seitz, P., Steinmetz, R. (1999). i-LAND: an interactive
+landscape for creativity and innovation. In Proc. CHI 99, 120-127.
+Tan, D.S., Gergle, D., Scupelli, P., Pausch, R. (2006). Physically large displays
+improve performance on spatial tasks. ACM Trans. Comput.-Hum. Interact. 13,
+1 (Mar. 2006), 71-99.
+Tan, D.S., Meyers, B., Czerwinski, M. (2004). WinCuts: manipulating arbitrary
+window regions for more effective use of screen space. In Proc. CHI 04, 15251528.
+Tollinger, I., McCurdy, M., Vera, A.H., Tollinger, P. Collaborative Knowledge
+Management Supporting Mars Mission Scientists. In Proc of CSCW 04, 29–38.
+Wallace, G., Li, K. (2007). Virtually Shared Displays and Input Devices. In
+Proceedings of the 2007 USENIX Annual Technical Conference, 375-379.
+Wigdor, D., Shen, C., Forlines, C., Balakrishnan, R. (2006). Table-centric
+interactive spaces for real-time collaboration. In Proc. AVI 06, 103-107.
+
+

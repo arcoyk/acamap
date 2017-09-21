@@ -1,0 +1,391 @@
+Idea Expander: Supporting Group Brainstorming with
+Conversationally Triggered Visual Thinking Stimuli
+Hao-Chuan Wang1, Dan Cosley1,2, Susan R. Fussell1,2
+1
+Information Science, 2Department of Communication
+Cornell University, Ithaca, NY 14850 USA
+[hw346, drc44, sfussell] @cornell.edu
+ABSTRACT
+
+improvisational jazz music performance in a band.
+
+Creativity is central to much human problem solving and
+innovation. Brainstorming processes attempt to leverage
+group creativity, but group dynamics sometimes limit their
+utility. We present IdeaExpander, a tool to support group
+brainstorming by intelligently selecting pictorial stimuli
+based on the group’s conversation The design is based on
+theories of how perception, thinking, and communication
+interact; a pilot study (N=16) suggests that it increases
+individuals’ idea production and that people value it.
+
+Group brainstorming that engages individuals to generate
+ideas jointly has been one of the most popular teamwork
+techniques for supporting creative idea generation. In
+brainstorming groups, individuals focus on generating a
+large amount of ideas without worrying too early in the
+process about whether those ideas can be eventually used to
+solve the given problems. The goal is to accumulate an
+abundance of ideas that the group can sift through later.
+
+Author Keywords
+
+Creativity support tool, group brainstorming
+ACM Classification Keywords
+
+H5.3 Group and Organization Interface: Computersupported cooperative work
+General Terms
+
+Design, Experimentation, Human Factors, Performance
+INTRODUCTION
+
+Generating new ideas is at the core of many types of work.
+Researchers think of new topics to study, new ways to
+analyze data, and new experimental paradigms to advance
+their work. Business teams consider new products, new
+features for existing products, new ways of advertising and
+better ways of producing their wares. Designers and
+engineers seek innovative solutions for multiply constrained
+design problems.
+Identifying new ideas can be difficult due to individuals’
+limited vision, knowledge, experience, motivation and time.
+Collaborative teamwork that pools and integrates efforts
+from multiple individuals is thus considered a useful way to
+approach creativity. Some forms of creativity cannot even
+happen without the involvement of group members, such as
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise,
+or republish, to post on servers or to redistribute to lists, requires prior
+specific permission and/or a fee.
+CSCW 2010, February 6–10, 2010, Savannah, Georgia, USA.
+Copyright 2010 ACM 978-1-60558-795-0/10/02...$10.00.
+
+From a system point of view, group brainstorming can be
+viewed as a self-sustained social creativity system in which
+the producer and consumer of ideas reside at the same
+locus. Conversational interactions allow multiple thinkers
+to exchange their ideas. Overhearing other people’s ideas
+may stimulate individuals’ thinking [5] and consequently
+make more ideas available as stimuli to the group members.
+Successful group brainstorming is therefore an iterative
+process that involves two main stages, idea exchange at the
+social level and idea expansion at the cognitive level. Idea
+expansion, generating new ideas based on existing ideas, is
+a crucial stage that both determines the final product and
+generates new stimuli that keep the brainstorming process
+going. Group brainstorming is a fragile process, because
+generating new, unconventional, or even deviant ideas can
+be difficult, both in terms of cognitive and social
+psychological processes [2][5].
+In this paper, we propose to support group brainstorming
+and enhance group creativity by shifting some agency of
+idea exchange and idea expansion to computers, thereby
+extending the creative power of brainstorming groups. We
+describe IdeaEpxander, a system that creates an extra visual
+communication channel that retrieves and shows pictorial
+stimuli dynamically based on conversational content. Its
+design is informed by cognitive theories that account for
+how visual perception, communication, and thinking
+interact in the context of group brainstorming. We evaluate
+the system with a laboratory study. In a 14 minute
+brainstorming session, IdeaExpander helped individuals
+working in dyads each generate two more ideas (about
+20%) than without IdeaExpander. This shows that
+IdeaExpander is potentially helpful, especially as enhancing
+ideation in dyads has been shown to be difficult [4].
+
+(a)
+
+(b)
+
+Figure 1. Cognitive and socio-cognitive processes mediated by IdeaExpander. (a) Cognitive processes of expanding ideas from
+picture stimuli. (b) Socio-cognitive processes of exchanging and expanding ideas with conversationally retrieved pictures.
+
+SOCIO-COGNITIVE PROCESSES IN BRAINSTORMING
+
+Group brainstorming essentially involves idea generation at
+the individual level and social interactions at the group
+level. A complete picture of group brainstorming processes
+would therefore require an understanding of cognitive
+factors, social factors, and how social inputs may influence
+individuals’ thinking processes and outcomes.
+At the cognitive level, theories posit that human semantic
+memory can be represented as a network structure in which
+concepts are nodes with associative links with each other
+[e.g.,,8]. A fundamental cognitive operation to generate
+ideas is to retrieve concepts from associative memory.
+Given the network structure of memory, retrieving one
+concept may then make other interconnected concepts more
+accessible and easier to retrieve. For example, thinking
+about the concept “pet” may activate the concept “cat,”
+which in turn might activate concepts like “cute” and
+“playful.” In this way, activation of one concept spreads
+through the memory network, with the degree of activation
+attenuating with successive steps across nodes [8].
+Spreading activation helps explain why brainstorming in
+groups is useful. Overhearing another person’s idea helps
+trigger the same concept in the overhearer’s associative
+memory, thereby initiating the spreading activation process
+in a subset of memory that has not yet been explored by the
+individual, the cognitive stimulation effect [8]. In this paper,
+we term the cognitive process of generating new ideas
+based on earlier ideas as idea expansion.
+However, despite the potential cognitive benefits, group
+brainstorming often fails to actually help people generate
+quantitatively more or qualitatively better ideas than what
+they are able to do on their own [2]. There are negative
+social side effects of working in groups, such as evaluation
+apprehension (the fear of expressing ideas due to peer
+
+evaluation pressure) and production blocking (taking turns
+to speak up) [2]. These social side effects are primarily due
+to the fact that people tend to view group brainstorming as a
+social activity, not just an impersonal event for idea
+exchange. As a result, social processes like impression
+management and interpersonal communication play a
+significant role in brainstorming groups. Because these
+social barriers make it difficult to exchange ideas fully,
+there may be fewer external stimuli available to stimulate
+thinking and make idea expansion happen.
+A three-step vicious circle arises from the interplay between
+these social and cognitive processes:. (1) Social inhibition
+of idea exchange: Individuals may not exchange all their
+ideas due to peer evaluation pressure; (2) Poverty of
+stimuli: Thus, fewer ideas are made available as stimuli for
+others’ idea expansion; (3) Iterative convergence and
+fixation: As group brainstorming progresses, the poverty of
+stimuli leads to convergence of thoughts and may make it
+even more difficult to think of new ideas.
+Early research on brainstorming support mostly focused on
+addressing the social inhibition issue by reducing peer
+pressure as much as possible [4]. Limited attention has been
+paid to ways of increasing cognitive stimulation.
+THE IDEA EXPANDER MODEL
+
+We take an innovative system approach to support idea
+exchange and idea expansion by widening the bandwidth
+between group members with a conversation-aware visual
+communication channel. That is, IdeaExpander adds a
+picture space that is shared by group members and is
+sensitive to conversational content. An agent chooses
+pictures related to ideas that have recently been discussed,
+which may then stimulate the generation of new ideas.
+Figure 1(a) shows the cognitive processes that bridge the
+picture and the verbal communication space. We explain
+
+Picture
+Chooser
+
+Picture
+Retriever
+
+Language
+Processor
+
+Figure 2. IdeaExpander screenshot and high-level
+architecture. The system monitors the group conversation
+(right) and selects pictures to display to the group (left).
+
+the process by following Figure 1(a) from top to bottom,
+starting at the picture space. We choose pictures as a
+stimulus because cognitive theories and studies suggest that
+human attention and perception may vary based on people’s
+contexts, experiences, and culture. For example, individuals
+with a collectivist cultural background tend to pay greater
+attention to peripheral or background objects in a scene [1].
+In Figure 1(a), when seeing the picture of a person throwing
+a frisbee (the picture at the top-right), some people may
+first notice the frisbee while others may notice subtleties
+like the baseball caps or the crowd.
+Second, in the internal perception space, individuals then
+recognize and understand the visual elements they have
+attended to. There could also be cognitive variability at this
+level. People may interpret what they attend to differently
+based on prior experiences and current framing; visual
+illusions are often cited to demonstrate this variability [3].
+Third, these perceptions may trigger concepts in the space
+of associative memory, followed by spreading activation of
+interconnected concepts. Again, people differ in how
+concepts are organized and stored in their memory due to
+experiences, socialization and education. In Figure 1(a),
+thinking of “baseball cap” by viewing the picture at the top
+left may lead the person to think of “sport” via the
+associative link between concepts, even though the picture
+at the top left has nothing to do with sports. (Others of us
+may, unfortunately, think “bald”.)
+At the bottom of the Figure 1(a), verbalization feeds into
+the cognitive process as well. Words from the chat may
+activate concepts; combining the spreading activation from
+both pictures and words may lead to new ideas being
+generated. This may in turn lead to the activation of new
+concepts, the expression of new ideas, and the selection of
+new pictures to continue the cycle of idea generation—
+reversing the vicious circle described earlier.
+Collaborative Idea Expansion
+
+The power of the cognitive processes may be fully
+unleashed when we connect multiple individuals with both
+the picture and verbal communication spaces because this
+
+leverages interpersonal variability. Figure 1(b) shows the
+scenario of connecting two people in a social creativity
+system. By using the concepts currently present in the chat
+to select pictures, the agent can take advantage of the
+differences in perception and associative memory between
+people to find pictures that are both related to currently
+activated concepts (as reflected by the words people type).
+That may lead to divergent chains of spreading activation in
+each participant, reducing the chance that the conversation
+will become fixated and increasing the chance of new idea
+generation. In short, the system helps people to see what
+other people have said in new ways and to expand their
+ideas using multiple pathways.
+IMPLEMENTATION AND EVALUATION
+
+We implemented a prototype of IdeaExpander in order to
+evaluate the general approach of using pictures to stimulate
+creativity. The implementation uses a combination of
+machine learning, information retrieval, and wizard-of-oz
+techniques. The wizard of oz aspects draw on a prior
+experiment in which participants brainstormed in a
+chatroom about the benefits and drawbacks of having an
+extra eye or thumb [9].
+Figure 2 shows both a screenshot and the agent’s high-level
+architecture. Participants use a chat window on the right
+side of the window, while the agent displays pictures it
+chooses based on the conversation on the left. The
+architecture has three main components: a language
+processor, a picture retriever, and an image chooser. We
+briefly discuss each in turn.
+Language processor. IdeaExpander monitors the chat to
+find keywords that it takes to be related to the set of
+currently activated concepts among partners in the
+conversation. Because brainstorming conversations include
+both on-task and off-task remarks, IdeaExpander uses a
+SVM classification model to determine whether a remark
+contains an idea or not based on 5,391 labeled turns from
+the experiment in [9], achieving a classification reliability
+of Kappa .61 (80% accuracy).
+Picture retriever. IdeaExpander uses keywords drawn from
+remarks classified as containing ideas to retrieve candidate
+pictures to show. The end goal is to use datasets such as
+Google Images or Flickr that contain well-labeled images;
+since thesedatabases are not yet well-labeled, we created
+our own tailored for these tasks. In [9], analysis resulted in
+a coding scheme containing 110 (thumb) and 118 (eye) idea
+categories. We collected 60 pictures for each task from
+Flickr; two people then coded each picture with the idea
+categories that pertained to the picture (Krippendorff’s
+alpha=.5). We then labeled each picture with the tags it
+already had from Flickr and the words contained in the
+codebook descriptions of the idea categories.
+The agent matches conversational turns it classifies as
+containing ideas against the keywords in the database using
+TF-IDF in order to retrieve a relevant set of pictures. For
+
+simplicity, it currently matches each turn individually.
+Exploring the design space for how much and how strongly
+to consider previous turns would be interesting future work.
+Picture chooser. The agent then attempts to choose pictures
+that will optimize cognitive stimulation. In the general case,
+we think this would involve choosing pictures associated
+with concepts that are near both participants’ currently
+activated concepts and that lead to new ideas. This is nontrivial in general (see [7]); here, we compute a utility score
+that prefers pictures that may stimulate many ideas and
+ideas that are less likely to be generated.
+We used the dataset from [9] to estimate the probability that
+a brainstorming group would generate each idea category,
+and weighed each idea i as log(1/probability of idea i). The
+utility score for a picture is the sum of weighted scores of
+the ideas coded as pertaining to it. The agent selects the
+picture from the relevant set with the highest utility score
+that has not yet been shown and updates the picture space
+with a new picture every three seconds.
+Evaluation
+
+We recruited 16 participants, forming eight brainstorming
+pairs. Each pair performed both the thumb and eye tasks,
+using IdeaExpander for one task and a standard chatroom
+for the other, generating a total of 32 observations. The
+order of tasks and tool use was counterbalanced. Pairs
+worked 14 minutes for each task. Residual analysis showed
+that one of the 32 observations was an outlier, so it is not
+included in the statistics below.
+We first compared ideation productivity across conditions.
+Two people independently coded the chat using the coding
+scheme from the prior experiment (Kappa=.66). Categories
+were only counted as unique ideas once per group. A mixed
+model ANOVA that accounts for the dependency between
+group members showed that even with the small sample
+size, individuals appear to generate more ideas when
+working with IdeaExpander (14.3) than without (12.0)
+(F[1,13]=2.88, p≤0.1). That is, IdeaExpander helped people
+think of 2.3 more ideas in a short brainstorming session.
+Quantity may breed also quality and originality of ideas.
+People generated more “rare” ideas (those with rates of
+occurrence lower than 1%) with IdeaExpander (4.3) than
+without it (3.5) (F[1,13]=2.36, p≤0.1).
+We also looked at people’s attitudes toward IdeaExpander.
+On a post-experiment survey, 13 of 16 participants said the
+pictures were helpful (6) or sometimes helpful (7). Some
+informally praised the system; one volunteered that the
+pictures were helpful for him to think smoothly; another
+was excited about IdeaExpander’s interaction model.
+CONCLUSION
+
+The evaluation demonstrates the value of IdeaExpander as a
+tool to support group brainstorming. IdeaExpander itself is
+
+a proof-of-concept. A fully functional system would require
+work in a number of areas, including developing effective
+representations of active concepts in the group and in each
+member, creating larger databases of labeled picture
+information, and creating algorithms that more effectively
+use associative networks of concepts, perhaps drawing on
+ideas from work around concept maps [6] or general tools
+for discovering associations between ideas (e.g., [7]).
+IdeaExpander could also use different media (sounds,
+videos, text clips), or allow participants to contribute
+keywords directly to the agent as a way of sidestepping
+social inhibitions about expressing ideas in the conversation
+itself. Our results suggest it is worth exploring these
+questions in support of group creativity.
+ACKNOWLEDGEMENTS
+
+We thank Rebecca Flewelling, Meaghan Frank and Leslie
+Setlock for their assistance. The material is based on work
+supported by the National Science Foundation under Grants
+No. IIS-0803482, IIS-0325047 and IIS-0845351.
+REFERENCES
+
+1. Chua, H. F., Boland, J. E., & Nisbett, R. E. (2005).
+Cultural variation in eye movements during scene
+perception. Proc. Nat’l Acad. Sci., 102, 12629- 12633.
+2. Diehl, M., & Stroebe, W. (1987). Productivity loss in
+brainstorming groups: toward the solution of a riddle. J.
+Personality and Social Psychology, 53, 497-509.
+3. Edelman, S. (2008). Computing the Mind: How the
+Mind Really Works. New York: Oxford Univ. Press.
+4. Gallupe, R. B., Dennis, A. R., Cooper, W. H., Valacich,
+J. S., Bastianutti, L. M., & Nunamaker, J. F. (1992).
+Electornic brainstorming and group size. The Academy
+of Management Journal, 35, 350-369.
+5. Nijstad, B. A., & Stroebe, W. (2006). How the group
+affects the mind: a cognitive model of idea generation in
+groups. Pers. and Social Psych. Review, 10, 186-213.
+6. Novak, J. D. (1998). Learning, creating, and using
+knowledge: Concept maps as facilitative tools in schools
+and corporations. Mahwah, NJ: Lawrence Erlbaum.
+7. Maguitman, A., Leake, D., & Reichherzer, T. (2005).
+Suggesting novel but related topics: towards contextbased support for knowledge model extension. Proc. of
+IUI 2005.
+8. Raaijmakers, J.G.W., & Shiffrin, R.M. (1981). Search of
+associative memory. Psych. Review, 88(2), 93-134.
+9. Wang, H-C. , Fussell, S. R., & Setlock, L. D. (2009).
+Cultural difference and adaptation of communication
+styles in computer-mediated group brainstorming.
+Proceedings of CHI 2009.
+
+

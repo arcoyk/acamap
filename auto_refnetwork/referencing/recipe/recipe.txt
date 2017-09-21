@@ -1,0 +1,3561 @@
+Recipe recommendation using ingredient networks
+Chun-Yuen Teng
+
+School of Information
+University of Michigan
+Ann Arbor, MI, USA
+
+chunyuen@umich.edu
+
+Yu-Ru Lin
+
+IQSS, Harvard University
+CCS, Northeastern University
+Boston, MA
+
+yuruliny@gmail.com
+
+Lada A. Adamic
+
+School of Information
+University of Michigan
+Ann Arbor, MI, USA
+
+ladamic@umich.edu
+
+ABSTRACT
+
+1.
+
+The recording and sharing of cooking recipes, a human activity dating back thousands of years, naturally became an
+early and prominent social use of the web. The resulting
+online recipe collections are repositories of ingredient combinations and cooking methods whose large-scale and variety yield interesting insights about both the fundamentals of
+cooking and user preferences. These insights include preferences for cooking methods depending on the nutritional
+value extracted from food, and the geographic region from
+which the recipe originates. At the level of an individual ingredient we measure whether it tends to be essential or can
+be dropped or added, and whether its quantity can be modified. We also construct two types of networks to capture the
+relationships between ingredients. The complement network
+captures which ingredients tend to co-occur frequently, and
+is composed of two large communities: one savory, the other
+sweet. The substitute network, derived from user generated
+suggestions for modifications, can be decomposed into many
+communities of functionally equivalent ingredients, and captures users’ preference for healthier variants a recipe. Our
+experiments reveal that recipe ratings can be well predicted
+with features derived from combinations of ingredient networks and nutrition information.
+
+The web enables individuals to collaboratively share knowledge and recipe websites are one of the earliest examples of
+collaborative knowledge sharing on the web. Allrecipes.com,
+the subject of our present study, was founded in 1997, years
+ahead of other collaborative websites such as the Wikipedia.
+Recipe sites thrive because individuals are eager to share
+their recipes, from family recipes that had been passed down
+for generations, to new concoctions that they created that
+afternoon, having been motivated in part by the ability to
+share the result online. Once shared, the recipes are implemented and evaluated by other users, who supply ratings
+and comments.
+The desire to look up recipes online may at first appear
+odd given that tombs of printed recipes can be found in almost every kitchen. The Joy of Cooking [12] alone contains
+4,500 recipes spread over 1,000 pages. There is, however,
+substantial additional value in online recipes, beyond being able to look them up. While the Joy of Cooking contains a single recipe for Swedish meatballs, allrecipes.com
+has “Swedish Meatballs I”, “II”, and “III”, submitted by different users, along with 4 other variants, including “The
+Amazing Swedish Meatball”. Each variant has been reviewed, from 329 reviews for “Swedish Meatballs I” to 5
+reviews for “Swedish Meatballs III”. The reviews not only
+provide a crowd-sourced ranking of the di↵erent recipes, but
+also many suggestions on how to modify them, e.g. using
+ground turkey instead of beef, skipping the “cream of wheat”
+because it is rarely on hand, etc.
+The wealth of information captured by online collaborative recipe sharing sites is revealing not only of the fundamentals of cooking, but also user preferences. The cooccurrence of ingredients in tens of thousands of recipes provides information about which ingredients go well together,
+and when a pairing is unusual. Users’ reviews provide clues
+as to the flexibility of a recipe, and the ingredients within
+it. Can the amount of cinnamon be doubled? Can the nutmeg be omitted? If one is lacking a certain ingredient, can a
+substitute be found among supplies at hand without a trip
+to the grocery store? Unlike cookbooks, which will contain
+vetted but perhaps not the best variants for some individuals’ tastes, ratings assigned to user-submitted recipes allow
+for the evaluation of what works and what does not.
+In this paper, we seek to distill the collective knowlege and
+preference about cooking through mining a popular recipesharing website. To extract such information, we first parse
+the unstructured texts from the recipes and users’ reviews.
+We construct two types of networks that reflect di↵erent re-
+
+Categories and Subject Descriptors
+H.2.8 [Database Management]: Database applications—
+Data mining
+
+General Terms
+Measurement; Experimentation
+
+Keywords
+ingredient networks, recipe recommendation
+ネットに落ちてる大量のレシピデータベースを使って
+ある食材がそのレシピに必須かどうか調べた。
+二つの解析用ネットワークを作った。
+１つは食材共起によるネットワークで、これは
+デザートとそれ以外のサブネットワークが認められた。
+もう一つはユーザのコメント（レシピの改変に対するサジェスション）
+によるネットワークで、これは３つ以上のネットワークが認められた。
+これらによってレシピの評価が予測できることを示す。
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+Copyright 20XX ACM X-XXXXX-XX-X/XX/XX ...$10.00.
+
+INTRODUCTION
+
+ウェブのレシピのレーティングはレシピがうまくいくか、どうやったらうまくいくかの情報がかいてある
+
+lationships between ingredients, in order to capture users’
+knowledge about how to combine ingredients. The complement network captures which ingredients tend to co-occur
+frequently, and is composed of two large communities: one
+savory, the other sweet. The substitute network, derived
+from user generated suggestions for modifications, can be
+decomposed into many communities of functionally equivalent ingredients, and captures users’ preference for healthier
+variants a recipe. Our experiments reveal that recipe ratings
+can be well predicted by features derived from combinations
+of ingredient networks and nutrition information (with accuracy .792), while most of the prediction power comes from
+the ingredient networks (84%).
+The rest of the paper is organized as follows. Section 2 reviews the related work. Section 3 describes the dataset and
+section 4 provides descriptive analysis of the data. Section 5
+discusses the extraction of ingredient complement network
+and the characteristics of this network. Section 6 presents
+the extraction of recipe modification information, as well as
+the construction and characteristics of the ingredient substitute network. Section 7 presents our experiments on recipe
+recommendation and section 8 concludes.
+
+2.
+
+RELATED WORK
+
+Recipe recommendation has been the subject of much
+prior work. Typically the goal has been to suggest recipes to
+users based on their past recipe ratings [5][15][3] or browsing/cooking history [16]. The algorithms then find similar recipes based on overlapping ingredients, either treating
+each ingredient equally [4] or according to the focus of the
+recipe [20]. For example, for “grilled chicken with basil
+dressing”, chicken is assigned a higher weight than basil. Instead of modeling recipes using ingredients, Wang et al. [17]
+represent the recipes as graphs which are built on ingredients and cooking directions, and they demonstrate that
+graph representations can be used to easily aggregate Chinese dishes by the flow of cooking steps and the sequence of
+added ingredients. However, their approach only models the
+occurrence of ingredients or cooking methods, and doesn’t
+take into account the relationships between ingredients. In
+contrast, in this paper we incorporate the likelihood of ingredients to co-occur, as well as the potential of one ingredient
+to act as a substitute for another.
+Another branch of research has focused on recommending recipes based on desired nutritional intake or promoting
+healthy food choices. Geleijnse et al. [8] designed a prototype of a personalized recipe advice system, which suggests
+recipes to users based on their past food selections and nutrition intake. In addition to nutrition information, Kamieth et
+al. [10] built a personalized recipe recommendation system
+based on availability of ingredients and personal nutritional
+needs. Shidochi et al. [14] proposed an algorithm to extract
+replaceable ingredients from recipes in order to satisfy users’
+various demands, such as calorie constraints and food availability. Their method identifies substitutable ingredients by
+matching the cooking actions that correspond to ingredient
+names. However, their assumption that substitutable ingredients are subject to the same processing methods is less direct and specific than extracting substitutions directly from
+user-contributed suggestions. In the present paper, we use
+a data-driven approach to construct a substitute ingredient network, and derive clusters of substitutable ingredients
+from this network.
+
+3.
+
+DATASET
+
+Allrecipes is one of the most popular recipe-sharing websites, where novice and expert cooks alike can upload and
+rate cooking recipes. Since its launch in 1997, it has received more than 535 milliion annual visits from over 5 million members. It hosts 16 customized international sites
+for users to share their recipes in their native languages.
+Recipes uploaded to the site contain specific instructions
+on how to prepare a dish: the list of ingredients, preparation steps, preparation and cook time, the number of servings produced, nutrition information, serving directions, and
+photos of the prepared dish. The uploaded recipes are enriched with user ratings and reviews, which comment on
+the quality of the recipe, and suggest changes and improvements. In addition to rating and commenting on recipes,
+users are able to save them as favorites or recommend them
+to others through a forum.
+We downloaded 46,337 recipes including all information
+listed from allrecipes.com, including several classifications,
+such as a region (e.g. the midwest region of US or Europe), the course or meal the dish is appropriate for (e.g.:
+appetizers or breakfast), and any holidays the dish may be
+associated with. In order to understand users’ recipe preferences, we crawled 1,976,920 reviews which include reviewers’
+ratings, review text, and the number of users who voted the
+review as useful. We further downloaded information on the
+530,609 users who reviewed and rated recipes. This information includes links to users’ pages, their interests, the date
+they joined the site, their cooking experience level, home
+town, and current city they live in.
+
+3.1
+
+Data preprocessing
+
+The first step in processing the recipes is identifying the
+ingredients listed. Matching on predefined lists of ingredients often missed or misidentified ingredients commonly
+supplied by users. We therefore derived the list of ingredients from the recipes themselves through the following procedure. We removed quantifiers, such as e.g. “1 lb” or “2
+cups”, words referring to consistency or temperature, e.g.
+chopped or cold, along with a few other heuristics, such as
+removing content in parentheses. For example “1 (28 ounce)
+can baked beans (such as Bush’s Original R )” is identified as
+“baked beans”. We erred on the side of not conflating potentially identical or highly similar ingredients, e.g. “cheddar
+cheese”, used in 2450 recipes, was considered di↵erent from
+“sharp cheddar cheese”, occurring in 394 recipes.
+We then generated an ingredient list sorted by frequency
+of ingredient occurrence and selected the top 1000 common
+ingredient names as our finalized ingredient list. Each of the
+top 1000 ingredients occurred in 23 or more recipes, with
+plain salt making an appearance in 21,916 recipes. These
+ingredients also accounted for 94.9% of ingredient entries in
+the recipe dataset. The remaining ingredients were missed
+either because of high specificity (e.g. yolk-free egg noodle),
+referencing brand names (e.g. Planters almonds), rarity (e.g.
+serviceberry), misspellings, or not being a food (e.g. “nylon
+netting”).
+The remaining processing task involved identifying cooking processes from the directions. We first identified all heating methods using a listing in the Wikipedia entry on cooking [18]. For example, baking, boiling, and steaming are
+all ways of heating the food. We then identified mechanical
+ways of processing the food such as chopping and grinding,
+
+and other chemical techniques such as marinating and brining.
+
+DESCRIPTIVE ANALYSIS
+
+One of the interesting aspects about this dataset is that
+it allows us to obtain a large-scale view of cooking methods.
+Here we discuss how di↵erent cooking methods vary with
+user and regional preference.
+
+4.1
+
+grill
+roast
+fry
+
+Why we cook
+
+bake
+
+It has been suggested that cooking played a significant role
+in human evolution by allowing us to extract more energy
+value from food [19]. An experiment measuring energy expended by the Burmese python in digesting meat has shown
+that processing the meat by grinding and cooking individually reduces the digestive cost to the snake, and combining both processing methods reduces energy cost more than
+each method individually [1]. Interestingly, it appears that
+average recipe ratings correlate with the ability of the processing method to reduce digestive cost. Table 4.1 shows
+that recipes that call for cooking food have higher ratings
+than ones that merely break it down mechanically, which in
+turn are rated more highly than ones that simply “mix” or
+“toss” ingredients together. Furthermore, we observe that
+recipes with additional chemical processing, e.g. fermenting and marinating, tend to receive higher ratings than ones
+preparing the food with only heating and mechanical methods. However, perhaps due to the additional time and planning they require, they occur in only about 8% of the recipes
+in the dataset.
+料理は消化効率のために生まれた
+調理方法が難しいとレーティングが低くなる
+
+Table 1: Occurrence and average ratings of cooking
+methods
+Mechanical methods
+Heating methods
+Chemical methods
+
+occurrence
+34759
+40238
+3686
+
+average rating
+3.60
+4.11
+4.14
+
+The preference for multiple food processing methods might
+at first be interpreted as a reflection of the sophistication
+of the recipe, with more complex recipes rated more highly.
+However, in general we find no correlation between the number of steps or the number of ingredients and the average
+rating a recipe receives, making it more likely that the digestibility of the prepared food is a factor in how highly
+rated it is.
+調理のステップ数とレーティングは関係しない
+
+4.2
+
+west-coast
+south
+northeast
+mountain
+midwest
+
+marinate
+method
+
+4.
+
+boil
+simmer
+
+Regional preferences
+
+While cooking methods that make food more digestible
+tend to be preferred, choosing one method over another
+appears to be a question of regional taste. About 5.8%
+(n=2693) of recipes were classified into one of 5 US regions:
+Midwest, Northeast, South, West Coast (including Alaska
+and Hawaii), and Mountain. Figure 1 shows significantly
+( 2 test p-value < 0.001) varying preferences in the di↵erent US regions among 6 of the most popular cooking methods. Boiling and simmering, both involving heating food in
+hot liquids, are more common in the South and Midwest.
+Marinating and grilling are relatively more popular in the
+West and Mountain regions, but in the West more grilling
+recipes involve seafood (18/42 = 42%) relative to other re-
+
+0
+
+10
+
+20
+
+30
+
+40
+
+% in recipes
+
+Figure 1: The percentage of recipes by region that
+apply a specific cooking recipe.
+gions combined (7/106 = 6%). Frying is popular in the
+South and Northeast. Baking is a universally popular and
+versatile technique, which is often used for both sweet and
+savory dishes, and is slightly more popular in the Northeast
+and Midwest. Examination of individual recipes reflecting
+these frequencies shows that these di↵erences can be tied
+to di↵erences in demographics, immigrant culture and availability of local ingredients, e.g. seafood.
+
+5.
+
+INGREDIENT COMPLEMENT NETWORK
+
+Can we learn how to combine ingredients from the data?
+Here we employ the occurrences of ingredients across recipes
+to learn users’ knowledge about combinations of ingredients.
+We constructed an ingredient complement network based
+on pointwise mutual information (PMI) defined on pairs of
+ingredients (a, b):
+pmi(a; b) = log
+where
+
+PMI = 自己相互情報量
+
+p(a, b) =
+
+p(a, b)
+,
+p(a)p(b)
+
+２項の共起しやすさ（正なら共起しやすく負なら共起しにくい）
+
+# of recipes containing a and b
+,
+# of recipes
+
+p(a) =
+
+# of recipes containing a
+,
+# of recipes
+
+p(b) =
+
+# of recipes containing b
+.
+# of recipes
+
+The PMI gives the probability that two ingredients occur
+together against the probability that they occur separately.
+Complementary ingredients tend to occur together far more
+often than would be expected by chance.
+Figure 2 shows a visualization of ingredient complementarity. Two distinct subcommunities of recipes are immediately apparent: one corresponding to savory dishes, the
+other to sweet ones. Some central ingredients, e.g. egg and
+salt, actually are pushed to the periphery of the network.
+They are so ubiquitous, that although they have many edges,
+they are all weak, since they don’t show particular complementarity with any single group of ingredients.
+We further probed the structure of the complementarity
+network by applying a network clustering algorithm. The
+algorithm confirmed the existence of two main clusters containing the vast majority of the ingredients. An interesting
+satellite cluster is that of ingredients for mixed drinks, which
+
+tiger prawn
+
+lobster tail
+
+sea salt black pepper
+
+artichoke
+
+greek yogurt
+
+kosher salt black pepper
+root beer
+
+white mushroom
+
+haddock
+
+button mushroom
+goat cheese
+
+salt black pepper
+
+port wine
+
+watercres
+
+sea scallop
+
+triple sec
+
+sour mix
+
+sweet
+
+white rum
+
+club soda
+
+butter
+
+cranberry juice
+
+ice
+
+pomegranate juice
+
+pink lemonade
+
+banana liqueur
+
+shallot
+
+juiced
+
+tequila
+
+smoked ham
+
+chocolate ice cream
+
+asparagus
+
+brie cheese
+
+watermelon
+
+hazelnut
+
+orange juice
+
+eggnog
+
+maraschino cherry juice
+
+lemon juice
+
+juice
+
+angel food cake mix
+
+superfine sugar
+
+plum
+
+white chocolate
+
+artificial sweetener
+
+semisweet chocolate
+
+chocolate coffee
+
+cake flour
+raspberry jam
+
+hazelnut liqueur
+
+cocoa powder
+almond paste
+
+creme de menthe liqueur
+
+milk chocolate
+
+vanilla wafer
+
+peach
+
+cantaloupe
+
+pie shell
+
+pistachio nut
+
+bourbon whiskey
+
+vanilla yogurt
+
+blackberry
+
+fig
+
+golden syrup
+
+kiwi
+
+banana
+
+pear
+
+prune
+
+chocolate wafer
+
+candied cherry
+
+red candied cherry
+
+apricot jam
+
+apple juice
+
+raspberry gelatin mix
+
+currant
+
+orange gelatin
+
+strawberry gelatin mix
+
+tapioca
+
+confectioners' sugar walnut coconut raisin
+whipped topping
+peppermint candy
+
+turbinado sugar
+
+pie crust
+
+cream of tartar
+
+german chocolate
+
+flour
+baking soda
+
+strawberry preserve
+
+yellow food coloring
+
+green candied cherry
+
+pistachio pudding mix
+candied pineapple
+
+coffee powder
+
+vanilla
+extract
+semisweet chocolate chip
+
+maple extract
+
+white chip
+
+chocolate chip
+
+devil's food cake mix
+
+vanilla frosting
+
+low fat peanut butter
+
+chocolate cookie crust
+
+lemon gelatin mix
+
+crisp rice cereal
+
+marshmallow
+
+fruit
+
+brownie mix
+
+unpie crust
+
+unbleached flour
+
+applesauce
+
+solid pack pumpkin
+
+flax seed
+
+sugar free vanilla pudding mix
+
+oat bran
+
+butterscotch pudding mix
+
+spice cake mix
+
+skim milk
+
+orange gelatin mix
+
+teriyaki sauce
+
+yeast
+
+coleslaw mix
+
+distilled white vinegar
+
+sunflower kernel
+
+matzo meal
+
+pie filling
+
+barley nugget cereal
+
+wheat
+
+cream cheese
+wheat bran
+beaten egg
+
+sourdough starter
+
+non fat milk powder
+
+neufchatel cheese
+
+pretzel
+
+chocolate pudding
+
+baker's semisweet chocolate
+
+decorating gel
+
+cook
+
+low fat margarine
+
+brick cream cheese
+
+cornflakes cereal
+
+cornmeal
+
+crescent dinner roll
+
+pancake mix
+
+white rice pork
+imitation crab meat
+
+beer
+
+vegetable
+
+low fat cheddar cheese
+
+ranch dressing
+
+corn
+
+green bean
+spiral pasta
+
+salt
+
+italian dressing mix
+
+whole wheat bread
+
+cornflake
+
+olive
+kidney bean
+white corn
+
+vinegar
+
+biscuit baking mix
+
+ketchup
+pickle relish
+
+crescent roll
+butter cooking spray
+
+potato chip
+
+dill pickle
+
+bean
+
+barbeque sauce
+
+rye bread
+
+butter cracker
+
+green chile
+
+baby pea
+
+chili seasoning mix
+
+spicy pork sausage
+
+sausage
+
+brown mustard
+
+colby monterey jack cheese
+
+stuffing
+
+picante sauce
+
+turkey gravy
+
+cheese
+
+lean beef
+
+ranch bean
+
+macaroni
+
+taco seasoning
+
+taco sauce
+
+elbow macaroni
+
+kernel corn
+
+catalina dressing
+
+ham
+
+onion
+whole wheat tortilla
+
+tomato vegetable juice cocktail
+corn tortilla chip
+
+green chily
+mexican cheese blend
+butter bean
+
+stuffed olive
+
+egg noodle
+mild cheddar cheese
+
+colby cheese
+
+beef gravy
+
+cream of mushroom soup
+
+corn bread mix
+
+sour cream
+
+vidalia onion
+
+taco seasoning mix
+
+french onion soup
+
+processed cheese
+
+stuffing mix
+
+barbecue sauce
+cream corn
+
+biscuit mix
+
+bread stuffing mix
+
+buttermilk biscuit
+
+onion salt
+
+cream of chicken soup
+
+sourdough bread
+
+chili without bean
+
+tuna
+
+curd cottage cheese
+
+monterey jack cheese
+
+refried bean
+
+enchilada sauce
+
+lima bean
+
+garlic salt
+
+steak sauce
+
+yellow mustard
+
+mustard
+
+pimento pepper
+
+ranch dressing mix
+
+french dressing
+
+dill pickle relish
+
+sauerkraut
+
+corned beef
+
+thousand island dressing
+
+vegetable combination
+
+corn chip
+
+tortilla chip
+
+pickled jalapeno pepper
+
+guacamole
+
+beef chuck
+
+powder
+
+chunk chicken breast
+
+pepperjack cheese
+
+kaiser roll
+
+pimento
+pickle
+
+bacon grease
+
+hoagie roll
+
+corkscrew shaped pasta
+
+tomato juice
+
+flour tortilla salsa
+
+english muffin
+
+blue cheese dressing
+
+pepperoni sausage
+
+pizza sauce
+
+chili bean
+
+mixed vegetable
+
+onion flake
+
+seasoning salt
+
+pimiento
+
+onion soup mix
+
+pepper
+pizza crust
+
+bread dough
+
+chuck roast
+
+wax bean
+
+roast beef
+
+beef consomme
+
+wild rice mix
+
+corn tortilla
+
+brown gravy mix
+
+cream of potato soup
+
+dill pickle juice
+
+saltine cracker
+
+biscuit
+
+bratwurst
+
+round steak
+
+golden mushroom soup
+
+sandwich roll
+
+white bread
+
+apple jelly
+
+baking mix
+
+black olive
+
+beef bouillon
+
+pinto bean
+
+parsley flake
+
+meat tenderizer
+
+vegetable soup mix
+
+crescent roll dough
+
+dressing
+
+marinara sauce
+
+spaghetti sauce
+
+salami
+
+pepperoni
+
+tomato sauce
+potato
+green bell pepper
+
+venison
+
+broccoli floweret
+
+cottage cheese
+
+liquid smoke
+
+cracker
+
+zesty italian dressing
+
+red kidney bean
+
+smoked sausage
+
+worcestershire
+sauce
+chicken
+spicy brown mustard
+
+part skim ricotta cheese
+
+lasagna noodle
+
+spaghetti
+
+salt free seasoning blend
+
+polish sausage
+
+swiss cheese
+
+provolone cheese
+
+seashell pasta
+
+bacon dripping
+
+steak
+
+onion separated
+
+vegetable cooking spray
+
+seasoning
+
+horseradish
+
+pork chop
+
+buttery round cracker
+
+italian bread
+
+italian salad dressing
+
+toothpick
+
+saltine
+
+adobo seasoning
+
+noodle
+
+great northern bean
+
+long grain
+
+salad green
+
+part skim mozzarella cheese
+
+louisiana hot sauce
+
+black bean
+
+navy bean
+
+cornbread
+
+beef brisket
+
+mexican corn
+
+pasta sauce
+basil sauce
+
+manicotti shell
+
+red bean
+
+seafood seasoning
+browning sauce
+
+chicken bouillon
+
+iceberg lettuce
+
+italian sauce
+
+ziti pasta
+
+meatless spaghetti sauce
+
+turkey breast
+
+lean turkey
+
+lettucechili sauce
+
+pizza crust dough
+
+cheese ravioli
+
+tomato
+mozzarella cheese
+
+white hominy
+
+baby carrot
+barley
+
+beef broth
+
+green pea
+
+poultry seasoning
+
+kielbasa sausage
+
+monosodium glutamate
+
+chile sauce
+
+alfredo sauce
+
+mild italian sausage
+
+pasta shell
+
+tube pasta
+
+tomato paste
+
+fajita seasoning
+
+beef stew meat
+
+paprika chili powder
+garlic
+turkey
+hot pepper sauce
+broccoli
+mayonnaise
+bacon bread
+old bay seasoning tm
+
+mustard powder
+
+country pork rib
+
+pasta
+
+alfredo pasta sauce
+
+italian sausage
+
+white potato
+
+nutritional yeast
+
+rump roast
+
+black eyed pea
+veal
+
+beef chuck roast
+
+long grain rice
+
+lean pork
+
+beef round steak
+
+sugar based curing mixture
+
+crouton
+
+dill seed
+
+bagel
+
+grape jelly
+
+creole seasoning
+
+okra
+
+red potato
+
+smoked paprika
+
+pepper jack cheese
+
+celery salt
+
+mixed nut
+
+buttermilk baking mix
+
+celery
+
+romano cheese
+
+rotini pasta
+
+banana pepper
+
+pimento stuffed green olive
+honey mustard
+
+cabbage
+
+cocktail rye bread
+
+herb stuffing mix
+
+popped popcorn
+
+pork shoulder roast
+
+chicken soup base
+
+lump crab meat
+
+hot sauce
+
+onion powder
+
+celery seed
+
+herb bread stuffing mix
+
+yellow summer squash
+
+caesar dressing
+
+lentil
+
+marjoram
+
+beef sirloin
+
+bacon bit
+
+cocktail sauce
+
+fat free sour cream
+
+pork sparerib
+
+miracle whip ‚Ñ
+
+potato flake
+
+yellow cornmeal
+
+milk
+margarine
+cereal
+
+egg
+candy
+
+dill
+
+ditalini pasta
+
+rigatoni pasta
+
+ricotta cheese
+
+pearl barley
+
+ham hock
+
+green salsa
+
+chive
+
+steak seasoning
+
+cider vinegar
+
+caraway seed
+
+chow mein noodle
+
+bread flour
+
+crab meat
+
+broiler fryer chicken up
+
+herb stuffing
+
+savory
+
+meatball
+
+jalapeno pepper
+
+cauliflower
+
+sirloin steak
+
+low fat sour cream
+
+oil
+
+flat iron steak
+
+pearl onion
+
+chicken leg quarter
+
+cod
+
+cauliflower floret
+
+lemon pepper seasoning
+
+oyster
+
+wild rice
+
+catfish
+
+apple cider vinegar
+
+white vinegar
+
+unpie shell
+
+lemon pepper
+
+pork loin chop
+
+water chestnut
+
+pickling spice
+
+yellow squash
+
+chorizo sausage
+
+fat free italian dressing
+
+beef stock
+
+cajun seasoning
+
+puff pastry shell
+
+fat free mayonnaise
+
+egg substitute
+
+non fat yogurt
+
+cooking spray
+
+rapid rise yeast
+
+vegetable bouillon
+
+hungarian paprika
+
+french bread
+
+parmesan cheese
+
+spinach
+
+artichoke heart
+
+russet potato
+
+flounder
+
+caulifloweret
+
+pork loin roast
+
+molasse
+
+yellow onion
+
+yellow pepper
+
+poblano pepper
+
+crawfish tail
+
+radishe
+
+low fat mayonnaise
+
+fat free cream cheese
+
+vital wheat gluten
+
+italian cheese blend
+
+cannellini bean
+
+burgundy wine
+
+pork shoulder
+
+broccoli floret
+
+beet
+
+green beans snapped
+
+chicken liver
+
+white onion
+
+beef sirloin steak
+
+green chile pepper
+
+cheese tortellini
+
+fusilli pasta
+
+fat free chicken broth
+
+marinated artichoke heart
+
+andouille sausage
+
+white cheddar cheese
+
+chicken wing
+
+giblet
+
+chicken bouillon powder
+
+white wine vinegar
+
+romaine
+
+beef short rib
+
+cumin
+cayenne pepper sage
+
+cooking oil
+
+mustard seed
+
+salmon steak
+
+pumpkin seed
+
+rye flour
+
+bread machine yeast
+
+oatmeal
+
+nilla wafer
+
+vanilla
+
+blue cheese
+
+half and half
+
+unpastry shell
+
+topping
+
+garlic paste
+
+egg roll wrapper
+
+sunflower seed
+
+whole wheat flour
+powdered milk
+
+sugar cookie mix
+
+food coloring
+
+ramen noodle
+
+fat free evaporated milk
+
+chutney
+
+black pepper
+french baguette
+
+white bean
+
+chicken breastmushroom
+
+scallion
+
+chicken thigh
+
+sesame seed
+
+cashew
+
+softened butter
+
+cherry gelatin
+
+milk powder
+
+brown sugar
+
+crispy rice cereal
+
+low fat yogurt
+
+red grape
+
+fat free yogurt
+
+basil pesto
+
+pre pizza crust
+
+oregano
+chicken broth
+italian seasoning
+
+bay
+
+tomatillo
+
+avocado
+
+low fat
+
+canola oil
+dijon mustard
+
+acorn squash
+
+whole milk
+
+red apple
+
+pineapple chip
+
+peanut poppy seed
+
+lime gelatin mix
+
+wheat germ
+
+lemon gelatin
+
+baking apple
+
+peanut butter
+vanilla pudding
+
+german chocolate cake mix
+
+maple syrup
+
+tart apple
+
+anise seed
+
+turmeric
+garam masala
+
+lobster
+
+tapioca flour
+
+butterscotch chip
+
+firmly brown sugar
+
+ginger paste
+
+chicken ramen noodle
+
+pumpkin pie spice
+
+caramel
+
+chocolate mix
+
+butter shortening
+
+honey
+
+asafoetida powder
+
+green tomato
+
+mixed fruit
+
+caramel ice cream topping
+
+candy coated milk chocolate
+
+milk chocolate chip
+
+mango chutney
+
+pita bread
+
+chipotle pepper
+
+cucumber
+
+pesto
+
+escarole
+
+white kidney bean
+
+kale
+
+clam
+
+poblano chile pepper
+
+clam juice
+
+red pepper
+
+brown rice
+
+white pepper
+
+ginger garlic paste
+
+wonton wrapper
+
+serrano pepper
+
+green lettuce
+
+baby corn
+
+salad shrimp
+
+curry powder
+
+fruit gelatin mix
+apple pie spice
+
+whipped topping mix
+
+marshmallow creme
+
+orange marmalade
+
+low fat cream cheese
+cranberry sauce
+
+lite whipped topping
+
+low fat whipped topping
+
+jellied cranberry sauce
+
+individually wrapped caramel
+
+candy coated chocolate
+
+apple pie filling
+
+maple flavoring
+
+mixed berry
+
+rice flour
+
+lime gelatin
+
+recipe pastry
+
+whole wheat pastry flour
+
+chocolate cake mix
+
+cream of shrimp soup
+
+green grape
+
+ring
+
+pastry
+
+apple
+
+peppercorn
+
+green apple
+
+apricot preserve
+
+soy milk
+
+potato starch
+
+lemon cake mix
+
+lemon pudding mix
+
+nut
+
+lard
+peanut butter chip
+
+vegetable shortening
+toffee baking bit
+
+lemon peel
+
+lemon yogurt
+
+berry cranberry sauce
+
+sour milk
+
+pumpkin
+
+1% buttermilk
+
+evaporated milk
+baking cocoa
+corn syrup
+
+apple butter
+
+milk chocolate candy kisse
+
+powdered fruit pectin
+
+cornstarch
+
+cinnamon water
+vegetable oil
+oat sugar
+persimmon pulp
+
+blueberry pie filling
+
+raspberry preserve
+
+cinnamon sugar
+
+raspberry gelatin
+
+allspice
+
+mace
+
+gingersnap cooky
+
+strawberry gelatin
+
+white cake mix
+
+cherry pie filling
+
+strawberry jam
+
+any fruit jam
+
+black walnut
+
+coconut extract
+
+shortening
+pecan
+
+anise extract
+
+orange peel
+
+yellow cake mix
+
+butterchocolate
+extract cookie
+
+bourbon
+
+baking chocolate
+
+rhubarb
+
+self rising flour
+
+graham cracker
+
+buttermilk
+
+date
+
+powdered non dairy creamer
+
+white chocolate chip
+
+chocolate pudding
+mix
+chocolate frosting
+
+candied citron
+
+fruit cocktail
+
+cinnamon
+red candy
+chocolate sandwich
+cooky
+
+lemon extract
+
+golden delicious apple
+
+chicken drum
+
+red lentil
+
+panko bread
+
+habanero pepper
+
+snow pea
+
+bamboo shoot
+
+low sodium soy sauce
+
+cumin seed
+
+fenugreek seed
+
+curry
+
+cooking sherry
+
+romaine lettuce
+
+fennel seed
+
+oyster sauce
+
+ghee
+
+spaghetti squash
+
+eggplant
+
+bow tie pasta
+
+plum tomato
+
+bell pepper
+
+thyme
+
+garbanzo bean
+
+farfalle pasta
+brown lentil
+
+bay scallop
+
+carrot
+
+gingerroot
+
+coriander seed
+
+bean sprout
+smoked salmon
+
+basmati rice
+
+anchovy
+
+angel hair pasta
+
+green olive
+
+chicken breast half
+
+chickpea
+
+rutabaga
+
+cream cheese spread
+
+vegetable stock
+
+parsley
+
+red wine
+
+red wine vinegar
+muenster cheese
+
+red snapper
+saffron thread
+
+herb
+
+prosciutto
+
+collard green
+
+green cabbage
+
+fish stock
+
+round
+
+fontina cheese
+
+basil
+zucchini
+vermicelli pasta
+
+asiago cheese
+
+linguine
+
+low sodium beef broth
+
+vegetable broth
+
+shrimp
+
+low sodium chicken broth
+
+pork loin
+
+beef flank steak
+
+hoisin sauce
+
+yogurt
+
+soy sauce
+
+cardamom
+
+fettuccini pasta
+
+parsnip
+
+pita bread round
+
+tarragon vinegar
+
+turnip
+
+cilantro
+
+coriander
+
+black peppercorn
+
+red chile pepper
+
+allspice berry
+
+sugar pumpkin
+
+cardamom pod
+
+splenda
+
+clove
+
+mandarin orange
+
+silken tofu
+
+peppermint extract
+hot
+
+red lettuce
+
+jalapeno chile pepper
+
+adobo sauce
+
+brussels sprout
+
+seed
+
+linguini pasta
+
+orzo pasta
+
+penne pasta
+
+roma tomato
+caper
+cherry tomato
+
+leek
+
+phyllo dough
+
+ears corn
+
+halibut
+sugar snap pea
+chipotle chile powder
+
+bok choy
+chinese five spice powder
+
+ginger
+
+grape
+
+walnut oil
+
+granny smith apple
+
+red delicious apple
+
+candied mixed fruit peel
+
+pastry shell
+
+salt pepper
+
+tofu
+
+napa cabbage
+
+rice wine vinegar
+stuffed green olive
+
+tarragon
+
+red pepper flake
+
+red cabbage
+
+sherry
+
+rice wine
+
+short grain rice
+
+raspberry vinegar
+
+sweet potato
+
+crystallized ginger
+
+apricot nectar
+
+golden raisin
+
+mixed spice
+
+food cake
+orangeangel
+extract
+
+rum extract
+
+mixed salad green
+
+apple cider
+
+apricot
+
+egg white pineapplecranberry
+
+vanilla pudding mix
+
+miso paste
+
+asian sesame oil
+
+rice vinegar
+
+white grape juice
+rose water
+
+balsamic vinaigrette dressing
+
+chicken stock
+
+pork tenderloin
+
+sesame oil
+fish sauce
+
+beef tenderloin
+
+saffron
+
+flank steak
+
+curry paste
+
+jasmine rice
+
+chile paste
+
+rice noodle
+
+grapefruit
+
+low fat milk
+
+orange zest
+nectarine
+
+pound cake
+
+gruyere cheese
+serrano chile pepper
+low fat cottage cheese
+
+red curry paste
+
+lemon gras
+
+peanut oil
+
+fettuccine pasta
+
+swiss chard
+
+creme fraiche
+
+pancetta bacon
+
+debearded
+
+squid
+
+lamb
+
+chile pepper
+
+pork roast
+
+kaffir lime
+
+butternut squash
+
+mirin
+
+ginger root
+
+coconut milk
+
+tahini
+
+spanish onion
+
+scallop
+
+mussel
+
+arborio rice
+
+rosemary
+
+red onion
+
+bulgur
+
+salmon
+
+portobello mushroom
+
+new potato
+
+red bell pepper
+linguine pasta
+
+tamari
+
+sake
+
+kalamata olive
+
+feta cheese
+
+asparagu
+marsala wine
+
+quinoa
+
+corn oil
+
+chili oil
+
+whipping cream
+
+graham cracker crust
+almond
+extract
+
+macadamia nut
+
+puff pastry
+
+cream
+lime peel
+
+baking powder nutmeg almond
+cocoa
+
+red food coloring
+
+green food coloring
+
+lime zest
+
+whiskey
+
+star anise pod
+
+strawberry
+
+mandarin orange segment
+
+cherry
+
+blueberry
+
+yam
+
+tea bag
+
+semolina flour
+
+raspberry
+
+key lime juice
+
+lemon zest brandy
+
+orange sherbet
+
+cola carbonated beverage
+
+heavy whipping cream
+
+gelatin
+
+grape juice
+
+cream of coconut
+
+amaretto liqueur
+
+vanilla ice cream
+
+chocolate syrup
+
+coffee liqueur
+
+ladyfinger
+
+lime juice
+
+mango
+
+skewer
+wooden skewer
+
+chicken leg
+
+portobello mushroom cap
+
+crimushroom
+
+yukon gold potato
+
+cracked black pepper
+shiitake mushroom
+jicama
+
+couscou
+
+heavy cream
+
+honeydew melon
+
+orange liqueur
+
+vanilla bean
+
+white sugar
+mascarpone cheese
+
+pine nut
+
+tilapia
+cornish game hen
+
+kosher salt
+
+papaya
+
+zested
+
+orange
+
+greek seasoning
+
+english cucumber
+
+coconut oil
+
+malt vinegar
+
+brandy based orange liqueur
+
+pineapple ring
+
+coconut cream
+
+egg yolk
+
+chocolate hazelnut spread
+
+irish cream liqueur
+
+bittersweet chocolate
+
+balsamic vinegar
+
+orange roughy
+
+lime mint
+
+sauce
+
+lemon lime carbonated beverage
+
+champagne
+
+sour cherry
+
+garlic
+
+gorgonzola cheese
+
+sea salt
+
+baby spinach
+
+grapefruit juice
+
+vodka
+
+lemonade
+
+pineapple juice
+
+spiced rum
+
+rum
+maraschino cherry
+
+vanilla vodka
+
+lemon
+
+simple syrup
+
+carbonated water
+
+fat free half and half
+
+white balsamic vinegar
+
+fennel
+
+irish stout beer
+
+italian parsley
+
+tuna steak
+
+vermouth
+
+gin
+
+limeade
+triple sec liqueur
+
+ginger ale
+
+butterscotch schnapp
+
+olive oil
+grape tomato
+
+chestnut
+
+leg of lamb
+
+melon liqueur
+
+coconut rum
+
+grenadine syrup
+lemon lime soda
+peach schnapp
+
+arugula
+
+white wine
+
+trout
+
+process cheese sauce
+
+cream of celery soup
+hamburger bun
+
+processed cheese food
+
+baking potato
+
+process american cheese
+
+pork sausage
+creamed corn
+
+canadian bacon
+
+chili
+
+sharp cheddar cheese
+
+french green bean
+
+cheddar cheese soup
+
+beef
+
+tomato soup
+
+processed american cheese
+
+cheddar cheese
+biscuit dough
+
+process cheese
+
+american cheese
+
+hash brown potato
+
+chunk chicken
+
+corn muffin mix
+
+tomato based chili sauce
+
+hot dog
+
+tater tot
+
+grit
+
+hot dog bun
+dinner roll
+
+Figure 2: Ingredient complement network. Two ingredients share an edge if they occur together more than
+would be expected by chance and if their pointwise mutual information exceeds a threshold.
+
+6.
+
+高PMI食材を含むレシピが高レーティング、という直感に反し、全然相関しない
+
+RECIPE MODIFICATIONS
+
+Co-occurrence of ingredients aggregated over individual
+recipes reveals the structure of cooking, but tells us little
+about how flexible the ingredient proportions are, or whether
+some ingredients could easily be left out or substituted. An
+experienced cook may know that apple sauce is a low-fat alternative to oil, or may know that nutmeg is often optional,
+but a novice cook may implement recipes literally, afraid
+that deviating from the instructions may produce poor results. While a traditional hardcopy cookbook would provide
+few such hints, they are plentiful in the reviews submitted
+by users who implemented the recipes, e.g. “This is a great
+recipe, but using fresh tomatoes only adds a few minutes to
+the prep time and makes it taste so much better”, or another
+comment about the same salsa recipe “This is by far the best
+recipe we have ever come across. We did however change it
+just a little bit by adding extra onion.”
+As the examples illustrate, modifications are reported even
+when the user likes the recipe. In fact, we found that 60.1%
+of recipe reviews contain words signaling modification, such
+as “add”,“omit”,“instead”,“extra” and 14 others. Further-
+
+0.6
+0.1
+
+0.2
+
+0.3
+
+0.4
+
+0.5
+
+no modification
+with modification
+
+0.0
+
+evident as a constellation of small nodes located near the
+top of the sweet cluster in the visualization of Figure 2. The
+cluster includes the following ingredients: lime, rum, ice,
+orange, pineapple juice, vodka, cranberry juice, lemonade,
+tequila, etc.
+For each recipe we examined the minimum, average, and
+maximum pairwise pointwise mutual information between
+ingredients. The intuition is that complementary ingredients would yield higher ratings, while ingredients that don’t
+go together would lower the average rating. We found that
+while the average and minimum pointwise mutual information between ingredients is uncorrelated with ratings, the
+maximum is very slightly positively correlated with the average rating for the recipe (⇢ = 0.09, p-value < 10 10 ). This
+suggests that having at least two complementary ingredients
+very slightly boosts a recipe’s prospects, but having clashing
+or unrelated ingredients does not seem to do harm.
+
+proportion of reviews with given rating
+
+luncheon meat
+
+1
+
+2
+
+3
+
+4
+
+5
+
+rating
+
+Figure 3: The modifiability of ingredients. The line
+represents equal number of occurrences where the
+reviews suggested to increase as opposed to increase
+the amount of the ingredient in the dish.
+more, it is the reviews that include changes that have a
+statistically higher average rating (4.49 vs. 4.39, t-test pvalue < 10 10 ), and lower rating variance (0.82 vs. 1.05,
+Bartlett test p-value < 10 10 ), as is evident in the distribution of ratings, shown in Fig. 3. This suggests that flexibility
+in recipes is not necessarily a bad thing, and that reviewers
+who don’t mention modifications are more likely to think of
+the recipe as perfect, or to dislike it entirely.
+In the following, we describe the recipe modifications extracted from user reviews, including adjustment, deletion
+and addition. We then present how we constructed an ingredient substitute network based on the extracted information.
+
+6.1
+
+Adjustments
+
+Some modifications involve increasing or decreasing the
+
+1.00
+
+soy sauce
+
+0.20
+
+chicken breast
+milk
+carrot
+sour cream
+tomato
+flour
+brown sugar
+basil
+butterwhite sugar
+onionnutmeg water
+celery
+mayonnaise
+sugar
+oregano
+cs’. sugar black pepper
+egg
+salt
+walnut
+baking powder
+pepper
+olive oil
+green bell pepper
+baking soda
+
+0.02
+
+0.05
+
+0.10
+
+vanilla extract
+pecan
+
+parsley
+
+shortening
+
+vegetable oil
+
+0.01
+
+(# reviews adjusting up)/(# recipes)
+
+0.50
+
+garlic
+chicken broth
+cheddar cinnamon
+bacon
+chocolate chip honey
+mushroom
+parmesan cornstarch cream cheese
+worcestershire s.
+potato
+lemon juice
+garlic powder
+
+margarine
+
+0.01
+
+0.02
+
+0.05
+
+0.10
+
+0.20
+
+0.50
+
+1.00
+
+(# reviews adjusting down)/(# recipes)
+
+Figure 4: Modifications to the 50 most common ingredients, derived from recipe reviews. The line
+denotes equal numbers of suggested increases and
+decreasess.
+amount of an ingredient in the recipe. In this and the following analyses, we split the review on punctuation such
+as commas and periods. We used simple heuristics to detect when a review suggested a modification: adding/using
+more/less of an ingredient counted as an increase/decrease.
+Doubling or increasing counted as an increase, while reducing, cutting, or decreasing counted as a decrease. While it is
+likely that there are other expressions signaling the adjustment of ingredient quantities, using this set of terms allowed
+us to compare the relative rate of modification, as well as
+the frequency of increase vs. decrease between ingredients.
+The ingredients themselves were extracted by performing a
+maximal character match within a window following an adjustment term.
+Figure 4 shows the ratios of the number of reviews suggesting modifications, either increases or decreases, to the
+number of recipes that contain the ingredient. Two patterns
+are immediately apparent. Ingredients that may be perceived as being unhealthy, such as fats and sugars, are, with
+the exception of vegetable oil and margarine, more likely
+to be modified, and to be decreased. On the other hand,
+flavor enhancers such as soy sauce, lemon juice, cinnamon,
+Worcestershire sauce, and toppings such as cheeses, bacon
+and mushrooms, are also likely to be modified; however, they
+tend to be added in greater, rather than lesser quantities.
+Combined, the patterns suggest that good-tasting but “unhealthy” ingredients can be reduced, if desired, while spices,
+extracts, and toppings can be increased to taste.
+
+6.2
+
+不健康な食材はアレンジで取り除かれる場合が多い
+
+Deletions and additions
+
+Recipes are also frequently modified such that ingredients
+are omitted entirely. We looked for words indicating that
+the reviewer did not have an ingredient (and hence did not
+use it), e.g. “had no” and “didn’t have”. We further used
+“omit/left out/left o↵/bother with” as indication that the
+reviewer had omitted the ingredients, potentially for other
+reasons. Because reviewers often used simplified terms, e.g.
+“vanilla” instead of “vanilla extract”, we compared words in
+proximity to the action words by constructing 4-character-
+
+grams and calculating the cosine similarity between the ngrams in the review and the list of ingredients for the recipe.
+To identify additions, we simply looked for the word “add”,
+but omitted possible substitutions. For example, we would
+use “added cucumber”, but not “added cucumber instead of
+green pepper”, the latter of which we analyze in the following section. We then compared the addition to the list of
+ingredients in the recipe, consider the addition valid only if
+the ingredient does not already belong in the recipe.
+Table 6.2 shows the correlation of the ingredient modifications. As might be expected, the more frequently an ingredient occurs in a recipe, the more times its quantity has the
+opportunity to be modified, as is evident in the strong correlation between the recipe frequency and both increases and
+decreases recommended in reviews. However, if we take the
+proportion of modifications to the number of recipes the ingredient appears in, these are typically negatively correlated
+with the frequency of the ingredient, e.g. deletions/recipe
+with ⇢ = 0.22, additions ⇢ = 0.25, increases ⇢ = 0.26.
+For example, salt is so essential, appearing in over 21,000
+recipes, that we detected only 18 reviews where it was explicitly dropped. In contrast, Worcheshire sauce, appearing
+in 1,542 recipes, is dropped explicitly in 148 reviews.
+As might also be expected, additions are positively correlated with increases, and deletions with decreases. However,
+additions and deletions are very weakly negatively correlated, indicating that an ingredient that is added frequently
+is not necessarily omitted more frequently as well.
+Table 2: Correlations between ingredient modifications
+recipes
+addition
+deletion
+increase
+
+6.3
+
+addition
+0.41
+
+deletion
+0.22
+-0.15
+
+increase
+0.61
+0.79
+0.09
+
+decrease
+0.68
+0.11
+0.58
+0.39
+
+Ingredient substitute network
+
+Replacement relationships show whether one ingredient
+is preferable to another. The preference could be based
+on taste, availability, or price. Some ingredient substitution tables can be found online 1 , but are neither extensive
+nor contain information about relative frequencies of each
+substitutuion. Thus, we found an alternative source for extracting replacement relationships – users’ comments, e.g.
+“I replaced the butter in the frosting by sour cream, just to
+soothe my conscience about all the fatty calories”.
+To extract such knowledge, we first parsed the reviews
+as follows: we considered several phrases to signal replacement relationships: “replace a with b”, “substitute a with
+b”, “a instead of b”, etc, and matched a and b to our list of
+ingredients.
+We constructed an ingredient substitute network to capture users’ knowledge about ingredient replacement. This
+weighted, directed network consists of ingredients as nodes.
+We thresholded and eliminated any suggested substitutions
+that occurred fewer than 5 times. We then determined the
+weight of each edge by p(b|a), the proportion of substitu1
+e.g.,
+http://allrecipes.com/HowTo/common-ingredientsubstitutions/detail.aspx
+
+食材の代替可能性をネットワークにした図。例えば「砂糖」が「甘味料」に代替するよう
+なコメントが砂糖が使われているレシピの８割あったらその間の代替可能性は0.8
+「コメントから抽出した代替可能性グラフ」
+
+Table 3: Clusters of ingredients that can be substituted for one another. A maximum of 5 additional
+ingredients for each cluster are listed, ordered by
+PageRank.
+main
+chicken
+olive oil
+sweet
+potato
+baking
+powder
+almond
+apple
+egg
+tilapia
+spinach
+italian
+seasoning
+cabbage
+Figure 5: The network of ingredient substitution.
+Nodes are sized according to the number of times
+they have been recommended as a substitute for another ingredient in reviews, and colored according to
+their indegree.
+
+other ingredients
+turkey, beef, sausage, chicken breast, bacon
+butter, apple sauce, oil, banana, margarine
+yam, potato, pumpkin, butternut squash,
+parsnip
+baking soda, cream of tartar
+pecan, walnut, cashew, peanut, sunflower s.
+peach, pineapple, pear, mango, pie filling
+egg white, egg substitute, egg yolk
+cod, catfish, flounder, halibut, orange roughy
+mushroom, broccoli, kale, carrot, zucchini
+basil, cilantro, oregano, parsley, dill
+coleslaw mix, sauerkraut, bok choy
+napa cabbage
+
+vegetable shortening,..
+pumpkin seed,..
+lemon cake mix,..
+baking powder,..
+dijon mustard,..
+black olive,..
+golden syrup,..
+lemonade,..
+graham cracker,..
+coconut milk,..
+almond extract,..
+vanilla,..
+peach schnapp,..
+cranberry,..
+strawberry,..
+almond,..
+milk,..
+lemon juice,..
+cinnamon,..
+apple juice,..
+bread,..
+corn chip,..
+chocolate chip,..
+olive oil,..
+apple,..
+sour cream,..
+white wine,.. champagne,..
+flour,..
+cottage cheese,..
+egg,..
+chicken broth,..
+garlic,.. sauce,..
+
+hoagie roll,..
+
+tions of ingredient a that suggest ingredient b. For example,
+68% of substitutions for white sugar were to splenda, an
+artificial sweetener, and hence the assigned weight for the
+sugar ! splenda edge is 0.68. The resulting network is
+shown in Figure 5.
+The substitution network shown in Fig. 5 exhibits strong
+clustering. We examined this structure by applying the map
+generator tool by Rosvall et al. [13], which uses a random
+walk approach to identify clusters in weighted, directed networks. The resulting clusters, and their relationships to one
+another, are shown in Fig. 6. The derived clusters could be
+used when following a relatively new recipe which may not
+have many reviews, and therefore many suggestions for ingredient substitutions. If one does not have all ingredients
+at hand, one could examine the content of one’s fridge and
+panty and match it with other ingredients found in the same
+cluster as the ingredient called for by the recipe. Table 6.3
+lists the contents of a few such sample ingredient clusters,
+and Fig. 7 shows two example clusters extracted from the
+substitute network.
+Finally, we examined whether the substitution network
+encodes preferences for one ingredient over another, as evidenced by the relative ratings of similar recipes, one which
+contains an original ingredient, and another which implements a substitution. To test this hypothesis, we construct
+a “preference network”, where one ingredient is preferred to
+another in terms of received ratings, and is constructed by
+creating an edge (a, b) between a pair of ingredients, where
+a and b are listed in two recipes X and Y respectively, if
+recipe ratings RX > RY . For example, if recipe X includes
+beef, ketchup and cheese, and recipe Y contains beef and
+pickles, then this recipe pair contributes to two edges: one
+from pickles to ketchup, and the other from pickles to cheese.
+The aggregate edge weights are defined based on PMI. Because PMI is a symmetric quantity (pmi(a; b) = pmi(b; a)),
+代替前レシピと代替後レシピのレーティングをみて食材の優劣を測ろうとした。
+代替前レシピと代替後レシピは似ているがそれぞれ食材の１つが代替された。
+
+honey,..
+pie crust,..
+
+sweet potato,..
+onion,..
+tomato,..
+brown rice,..
+celery,..
+pepper,..
+spaghetti sauce,..
+hot,..
+cheese,.. chicken,..
+spinach,..
+seasoning,..
+black bean,..
+red potato,..
+italian seasoning,..
+cream of mushroom soup,..
+sugar snap pea,..iceberg lettuce,.. curry powder,..
+imitation crab meat,..
+pickle,..
+quinoa,..
+tilapia,.. cabbage,..sea scallop,.. smoked paprika,..
+「レシピから抽出した代替可能性グラフ」
+
+Figure 6: Ingredient substitution clusters. Nodes
+represent clusters and edges indicate the presence of
+recommended substitutions that span clusters. Each
+cluster represents a set of related ingredients which
+are frequently substituted for one another
+we introduce a directed PMI measure to cope with the directionality of the preference network:
+pmi(a ! b) = log
+
+p(a ! b)
+,
+p(a)p(b)
+
+where
+p(a ! b) =
+
+# of recipe pairs f rom a to b
+,
+# of recipe pairs
+
+and p(a), p(b) are defined as in the previous section.
+Comparing the substitution network with this preference
+network, we found high correlations between the two net方向のあるPMIを定義した：p(a -> b) =（aからbへ代替されたレシピの数）/（全てのレシピペア）
+として、上の式。これは代替され率を食材の頻度で調整した式といえる。一言で言えば「aからbへ
+の代替され率」
+「レシピから抽出した代替可能性グラフ」
+
+ユーザによるレーティングの偏りを吸収する。
+「２つのレシピにレーティングの差がある」とは
+最低１０人がa > bとしている場合。
+
+ginger root
+whipping cream
+
+evaporated milk
+
+half and half
+cream
+buttermilk
+
+heavy cream
+
+cardamom
+
+pumpkin pie spice
+
+cinnamon
+
+heavy whipping cream
+
+milk
+
+clove
+
+whole milk
+
+soy milk
+
+ginger
+
+nutmeg
+
+skim milk
+
+allspice
+
+mace
+
+(a) milk substitutes
+
+(b) cinammon substitutes
+
+Figure 7: Relationships between ingredients located
+within two of the clusters from Fig. 6.
+works (⇢ = 0.72, p < 0.001). This observation suggests that
+the substitute network encodes users’ ingredient preference,
+which we will use in the recipe prediction task described in
+the next section.
+コメントから抽出した代替可能性グラフとレシピから抽出した
+代替可能性グラフが相関したのでこのモデルはユーザの好みを
+反映していると言える。
+
+7.
+
+RECIPE RECOMMENDATION
+
+We use the above insights to uncover novel recommendation algorithms suitable for recipe recommendations. We
+use ingredients and the relationships encoded between them
+in ingredient networks as our main feature sets to predict
+recipe ratings, and compare them against features encoding nutrition information, as well as other baseline features
+such as cooking methods, and preparation and cook time.
+Then we apply a discriminative machine learning method,
+stochastic gradient boosting tree [7], to predict recipe ratings.
+In the experiments, we seek to answer three questions useful for recipe recommendation: (1) Can we predict users’
+preference for a new recipe given the information present in
+the recipe? (2) What are the key aspects that determine
+users’ preference? (3) Does the structure of ingredient networks help in recipe recommendation, and how?
+We shall answer these questions through a prediction task.
+
+7.1
+
+Recipe Pair Prediction
+
+The goal of our prediction task is: given a pair of similar
+recipes, determine which one has higher average rating than
+the other. This task is designed particularly to help users
+with a specific dish or meal in mind, and who are trying to
+decide between several recipe options for that dish.
+Recipe pair data. The data for this prediction task
+consists of pairs of similar recipes. The reason for selecting similar recipes, with high ingredient overlap, is that
+while apples may be quite comparable to oranges in the
+context of recipes, especially if one is evaluating salads or
+desserts, lasagna may not be comparable to a mixed drink.
+To derive pairs of related recipes, we computed similarity
+with a cosine similarity between the ingredient lists for the
+two recipes, weighted by the inverse document frequency,
+log(# of recipes/# of recipes containing the ingredient).
+We considered only those pairs of recipes whose cosine similarity exceeded 0.2. The weighting is intended to identify
+higher similarity among recipes sharing more distinguishing
+ingredients, such as Brussels sprouts, as opposed to recipes
+sharing very common ones, such as butter.
+A further challenge to obtaining reliable relative rankings
+of recipes is variance introduced by having di↵erent users
+choose to rate di↵erent recipes. In addition, some users
+might not have a sufficient number of reviews under their
+サラダとミックスジュースのレーティングを比較しても仕方ないので似たレシピだけを比較する。
+レシピの近似度はinverse document frenquencyのcosine similiarityを使った。
+
+belt to have calibrated their own rating scheme. To control for variation introduced by users, we examined recipe
+pairs where the same users are rating both recipes and are
+collectively expressing a preference for one recipe over another. Specifically, we generated 62,031 recipe pairs (a, b)
+where (ratingi (a) > ratingi (b), for at least 10 users i, and
+over 50% of users who rated both recipe a and recipe b. Furthermore, each user i should be an active enough reviewer
+to have rated at least 8 other recipes.
+Features. In the prediction dataset, each observation
+consists of a set of predictor variables or features that represent information about two recipes, and the response variable is a binary indicator of which gets the higher rating on
+average. To study the key aspects of recipe information, we
+constructed di↵erent set of features, including:
+• Baseline: This includes cooking methods, such as chopping, marinating, or grilling, and cooking e↵ort descriptors, such as preparation time in minutes, as well
+as the number of servings produced, etc. These features are considered as primary information about a
+recipe and will be included in all other feature sets
+described below.
+• Full ingredients: We selected up to 1000 popular ingredients to build a “full ingredient list”. In this feature
+set, each observed recipe pair contains a vector with
+entries indicating whether an ingredient in the full list
+is present in either recipe in the pair.
+• Nutrition: This feature set does not include any ingredients but only nutrition information such the total
+caloric content, as well as amount of fats, carbohydrates, etc.
+• Ingredient networks: In this set, we replaced the full
+ingredient list by structural information extracted from
+di↵erent ingredient networks, as described in section 5
+and 6.3. Co-occurrence is treated separately as a raw
+count, and a complementarity, captured by the PMI.
+• Combined set: Finally, a combined feature set is constructed to test the performance of a combination of
+features, including baseline, nutrition and ingredient
+networks.
+To build the ingredient network feature set, we extracted
+the following two types of structural information from the
+co-occurrence and substitution networks, as well as the complement network derived from the co-occurrence information:
+Network positions are calculated to represent how a recipe’s
+ingredients occupy positions within the networks. Such position measures are likely to inform if a recipe contains any
+“popular” or “unusual” ingredients. To calculate the position measures, we first calculated various network centrality
+measures, including degree centrality, betweenness centrality, etc., from the ingredient networks. A centrality measure
+can be represented as a vector ~g where each entry indicates
+the centrality of an ingredient. The network position of a
+recipe, with its full ingredient list represented as a binary
+vector f~, can be summarized by ~g T · f~, i.e., an aggregated
+centrality measure based on the centrality of its ingredients.
+Network communities provide information about which
+ingredient is more likely to co-occur with a group of other
+ingredients in the network. A recipe consisting of ingredients
+that are frequently used with, complemented by or substituted by certain groups may be predictive of the ratings
+
+network positions: よく使われている食材が使われているかどうか
+network communities: 食材の他のレシピへの寄与度。浮気度？
+
+どの食材を選ぶかでレシピの評価を８割弱予測できる。一方で「ペアにすると美味しくなる」という
+現象はマクロ的にはおこらない＝PMIは評価に寄与しない。
+
+network
+0.7
+
+combined
+
+substitution (39.8%)
+co−occurrence (30.9%)
+
+0.6
+
+complement (29.2%)
+
+ing. networks
+importance
+
+0.5
+
+nutrition
+full ingredients
+
+0.4
+0.3
+0.2
+
+baseline
+
+0.1
+
+0.80
+
+0.75
+
+0.70
+
+0.65
+
+0.60
+
+0.0
+
+Accuracy
+
+Figure 8: Prediction performance. The nutrition
+information and ingredient networks are more effective features than full ingredients. The ingredient network features lead to impressive performance
+close to the best performance, indicating the power
+of network structures in recipe recommendation.
+
+40
+
+60
+
+80
+
+100
+
+feature
+
+Figure 10: Relative importance of features represented the network structure. The substitution network has stronger contribution (39.8%) to the total
+importance of ingredient network features than the
+other two networks, and it also has more influential features in the top 100 list, which suggests the
+information about substitution network is complementary to other features.
+
+group
+
+1.0
+
+nutrition (6.5%)
+cook effort (5.0%)
+0.8
+
+ing. networks (84%)
+cook methods (3.9%)
+
+importance
+
+20
+
+0.6
+
+0.4
+
+0.2
+
+0.0
+20
+
+40
+
+60
+
+80
+
+100
+
+feature
+
+Figure 9: Relative importance of features in the
+combined set. The individual items from nutrition information are very indicative in di↵erentiating high-rated recipes, while most of the prediction
+power comes from ingredient networks.
+the recipe will receive. To obtain the network community
+information, we applied latent semantic analysis (LSA) on
+recipes. We first factorized each ingredient network, represented by matrix W , using singular value decomposition
+(SVD). In the matrix W , each entry Wij indicated whether
+ingredient i co-occurrs, complements or substitues ingredient j.
+Suppose Wk = Uk ⌃k VkT is a rank-k approximation of W ,
+we can then transform each recipe’s full ingredient list using
+the low-dimensional representation, ⌃k 1 VkT f~, as community
+information within a network. These low-dimensional vectors, together with the vectors of network positions, constitute the ingredient network features.
+Learning method. We applied discriminative machine
+learning methods such as support vector machines (SVM) [2]
+and stochastic gradient boosting trees [6] to our prediction
+problem. Here we report and discuss the detailed results
+based on the gradient boosting tree model. Like SVM, the
+gradient boosting tree model seeks a parameterized classifier, but unlike SVM that considers all the features at one
+
+time, the boosting tree model considers a set of features
+at a time and iteratively combines them according to their
+empirical errors. In practice, it not only has competitive
+performance comparable to SVM, but can serve as a feature
+ranking procedure [11].
+In this work, we fitted a stochastic gradient boosting tree
+model with 8 terminal nodes under an exponential loss function. The dataset is roughly balanced in terms of which
+recipe is the higher-rated one within a pair. We randomly
+divided the dataset into a training set (2/3) and a testing
+set (1/3). The prediction performance is evaluated based on
+accuracy, and the feature performance is evaluated in terms
+of relative importance [9]. For each single decision tree, one
+of the input variables, xj , is used to partition the region associated with that node into two subregions in order to fit
+to the response values. The squared relative importance of
+variable xj is the sum of such squared improvements over
+all internal nodes for which it was chosen as the splitting
+variable, as:
+X 2
+imp(j) =
+îk I(splits on xj )
+k
+
+where î2k is the empirical improvement by the k-th node
+splitting on xj at that point.
+
+7.2
+
+Results
+
+The overall prediction performance is shown in Fig. 8.
+Surprisingly, even with a full list of ingredients, the prediction accuracy is only improved from .712 (baseline) to
+.746. In contrast, the nutrition information and ingredient
+networks are more e↵ective (with accuracy .753 and .786, respectively). Both of them have much lower dimensions (from
+tens to several hundreds), compared with the full ingredients
+that are represented by more than 2000 dimensions (1000
+ingredients per recipe in the pair). The ingredient network
+features lead to impressive performance close to the best
+performance given by the combined set (.792), indicating
+the power of network structures in recipe recommendation.
+Figure 9 shows the influence of di↵erent features in the
+
+0.80
+1.0
+
+nutrition
+carbs (20.9%)
+cholesterol (17.7%)
+
+0.8
+
+calories (19.7%)
+
+●
+
+fiber (12.3%)
+
+●
+
+fat (12.4%)
+
+●
+
+0.4
+
+0.2
+
+0.0
+2
+
+4
+
+6
+
+8
+
+10
+
+●
+
+0.79
+
+Accuracy
+
+importance
+
+sodium (16.8%)
+0.6
+
+0.78
+
+●
+
+●
+
+●
+
+12
+
+feature
+
+Figure 11: Relative importance of features from nutrition information. The carbs item is the most influential feature in predicting higher-rated recipes.
+
+network
+
+0.77
+
+● combined
+substitution
+complement
+
+高評価のレシピでは健康的な食材を選ぶかどうかで評価が分かれる
+（がそれでもやはり食材の選び方が強い）
+
+0.76
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+70
+
+Dimensions
+
+Figure 12: Prediction performance over reduced dimensionality. The dimensionality of network features can be determined by cross-validation. The
+best performance is given by reduced dimension
+k = 50 when combining all three networks. In addition, using the information about the complement
+network alone is more e↵ective in prediction than
+using other two networks.
+
+82
+−0.5
+
+433
+
+0.5
+
+Value
+
+splenda
+olive oil
+applesauce
+honey
+butter
+brown sugar
+milk
+half and half
+chicken broth
+buttermilk
+sour cream
+evaporated milk
+vanilla extract
+vanilla
+kale
+almond
+beef
+cream of chicken soup
+almond extract
+chocolate pudding
+lemon extract
+lime juice
+walnut
+coconut extract
+turkey
+chicken
+sausage
+italian sausage
+pork
+chicken breast
+
+194
+65
+
+6
+
+19
+
+43
+
+8
+
+4
+
+Figure 13: Influential substitution communities.
+The matrix shows the most influential feature dimensions extracted from the substitution network.
+For each dimension, the six representative ingredients with the highest intensity values in the decomposed matrix are shown, with colors indicating their
+intensity. These features suggest that the communities of ingredient substitutes, such as the sweet and
+oil in the first dimension, are particularly informative in prediction.
+In Fig. 13 we show the most representative ingredients in
+the decomposed matrix derived from the substitution network. We display the top five influential dimensions, evaluated based on the relative importance, from the SVD resultant matrix Vk , and in each of these dimensions we extracted
+six representative ingredients based on their intensities in
+
+Color Key
+
+Color Key
+
+−0.5
+
+ingredient
+41
+
+Value
+
+共起可能性より代替可能性の方がレシピの評価への強いシグナルになるがほとんど同じくらい
+
+splenda
+olive oil
+applesauce
+honey
+butter
+brown sugar
+milk
+half and half
+chicken broth
+buttermilk
+sour cream
+evaporated milk
+vanilla extract
+vanilla
+kale
+almond
+beef
+cream of chicken soup
+almond extract
+chocolate pudding
+lemon extract
+lime juice
+walnut
+coconut extract
+turkey
+chicken
+sausage
+italian sausage
+pork
+chicken breast
+
+炭水化物が抜かれると評価が高くなる。また、栄養を考慮せず食材ネットワークだけで機械学習した方が
+予測精度が高いことから、食材ネットワークが栄養に関する情報を含んでいる可能性がある。
+
+co−occurrence
+
+svd dimension
+
+combined feature set. Up to 100 features with the highest
+relative importance are shown. The importance of a feature
+group is summarized by how much the total importance is
+contributed by all features in the set. For example, the baseline consisting of cooking e↵ort and cooking methods have
+contributed 8.9% to the overall performance. The individual items from nutrition information are very indicative in
+di↵erentiating highly-rated recipes, while most of the prediction power comes from ingredient networks (84%).
+Figure 10 shows the top 100 features from the three networks. In terms of the total importance of ingredient network features, the substitution network has slightly stronger
+contribution (39.8%) than the other two networks, and it
+also has more influential features in the top 100 list. This
+suggests that the structural information extracted from the
+substitution network is not only important but also complementary to information from other aspects.
+Looking into the nutrition information (Fig. 11), we found
+that carbohydrates are the most influential feature in predicting higher-rated recipes. Since carbohydrates comprise
+around 50% or more of total calories, the high importance
+of this feature interestingly suggests that a recipe’s rating
+can be influenced by users’ concerns about nutrition and
+diet. Another interesting observation is that, while individual nutrition items are powerful predictors, a higher prediction accuracy can be reached by using ingredient networks
+alone, as shown in Fig. 8. This implies the information
+about nutrition may have been encoded in the ingredient
+network structure, e.g. substitutions of less healthful ingredients with “healthier” alternatives.
+Constructing the ingredient network feature involves reducing high-dimensional network information through SVD,
+as described in the previous section. The dimensionality can
+be determined by cross-validation. As shown in Fig. 12, features with a very large dimension tend to overfit the training
+data. Hence we chose k = 50 for the reduced dimension of
+all three networks. The figure also shows that using the
+information about the complement network alone is more
+e↵ective in prediction than using other the co-occurrence
+and substitute networks, even in the case of low dimensions.
+However, as shown in terms of relative importance (Fig. 10),
+the substitution network alone is not the most e↵ective, but
+it provides more complementary information in the combined feature set.
+
+甘味料や油において代替物があると評価が高くなる
+
+the dimension (the squared entry values). These reprsentative ingredients suggest that the communities of ingredient
+substitutes, such as the sweet and oil substitutes in the first
+dimension or the milk substitutes in the second dimesion
+(which is similar to the cluster shown in Fig. 6), are particularly informative in predicting recipe ratings.
+To summarize our observations from the experiments, we
+found we were able to e↵ectively predict users’ preference for
+a recipe, but the prediction is not through using a full list
+of ingredients. Instead, by using the structural information
+extracted from the relationships among ingredients, we can
+better uncover users’ preference about recipes.
+
+8.
+
+CONCLUSION
+
+Recipes are little more than instructions for combining
+and processing sets of ingredients. Individual cookbooks,
+even the most expansive ones, contain single recipes for each
+dish. The web, however, permits collaborative recipe generation and modification, with tens of thousands of recipes
+contributed in individual websites. We have shown how this
+data can be used to glean insights about regional preferences
+and modifiability of individual ingredients, and also how it
+can be used to construct two kinds of networks, one of ingredient complements, the other of ingredient substitutes.
+These networks encode which ingredients go well together,
+and which can be substituted to obtain superior results, and
+permit one to predict, given a pair of related recipes, which
+one will be more highly rated by users.
+In future work, we plan to extend ingredient networks to
+incorporate the cooking methods as well. It would also be
+of interest to generate region-specific and diet-specific ratings, depending on the users’ background and preferences.
+A whole host of user-interface features could be added for
+users who are interacting with recipes, whether the recipe
+is newly submitted, and hence unrated, or whether they are
+browsing a cookbook. In addition to automatically predicting a rating for the recipe, one could flag ingredients that
+can be omitted, ones whose quantity could be tweaked, as
+well as suggested additions and substitutions.
+
+9.
+
+ACKNOWLEDGMENTS
+
+This work was supported by MURI award FA9550-08-10265 from the Air Force Office of Scientific Research. The
+methodology used in this paper was developed with support from funding from the Army Research Office, MultiUniversity Research Initiative on Measuring, Understanding, and Responding to Covert Social Networks: Passive
+and Active Tomography.
+
+10.
+
+REFERENCES
+
+[1] S. M. Boback, C. L. Cox, B. D. Ott, R. Carmody,
+R. W. Wrangham, and S. M. Secor. Cooking and
+grinding reduces the cost of meat digestion.
+Comparative Biochemistry and Physiology - Part A:
+Molecular and Integrative Physiology, 148(3):651 –
+656, 2007.
+[2] C. Cortes and V. Vapnik. Support-vector networks.
+Machine learning, 20(3):273–297, 1995.
+[3] P. Forbes and M. Zhu. Content-boosted matrix
+factorization for recommender systems: Experiments
+with recipe recommendation. Proceedings of
+Recommender Systems, 2011.
+
+[4] J. Freyne and S. Berkovsky. Intelligent food planning:
+personalized recipe recommendation. In IUI, pages
+321–324. ACM, 2010.
+[5] J. Freyne and S. Berkovsky. Recommending food:
+Reasoning on recipes and ingredients. User Modeling,
+Adaptation, and Personalization, pages 381–386, 2010.
+[6] J. Friedman. Stochastic gradient boosting.
+Computational Statistics & Data Analysis,
+38(4):367–378, 2002.
+[7] J. Friedman, T. Hastie, and R. Tibshirani. Additive
+logistic regression: a statistical view of boosting.
+Annals of Statistics, 28:2000, 1998.
+[8] G. Geleijnse, P. Nachtigall, P. van Kaam, and
+L. Wijgergangs. A personalized recipe advice system
+to promote healthful choices. In IUI, pages 437–438.
+ACM, 2011.
+[9] T. Hastie, R. Tibshirani, J. Friedman, and J. Franklin.
+The elements of statistical learning: data mining,
+inference and prediction. The Mathematical
+Intelligencer, 27(2), 2005.
+[10] F. Kamieth, A. Braun, and C. Schlehuber. Adaptive
+implicit interaction for healthy nutrition and food
+intake supervision. Human-Computer Interaction.
+Towards Mobile and Intelligent Interaction
+Environments, pages 205–212, 2011.
+[11] Y. Lu, F. Peng, X. Li, and N. Ahmed. Coupling
+feature selection and machine learning methods for
+navigational query identification. In CIKM, pages
+682–689. ACM, 2006.
+[12] I. Rombauer, M. Becker, E. Becker, and L. Maestro.
+Joy of cooking. Scribner Book Company, 1997.
+[13] M. Rosvall and C. Bergstrom. Maps of random walks
+on complex networks reveal community structure.
+PNAS, 105(4):1118, 2008.
+[14] Y. Shidochi, T. Takahashi, I. Ide, and H. Murase.
+Finding replaceable materials in cooking recipe texts
+considering characteristic cooking actions. In Proc. of
+the ACM multimedia 2009 workshop on Multimedia for
+cooking and eating activities, pages 9–14. ACM, 2009.
+[15] M. Svensson, K. Höök, and R. Cöster. Designing and
+evaluating kalas: A social navigation system for food
+recipes. ACM Transactions on Computer-Human
+Interaction (TOCHI), 12(3):374–400, 2005.
+[16] M. Ueda, M. Takahata, and S. Nakajima. User’s food
+preference extraction for personalized cooking recipe
+recommendation. Proc. of the Second Workshop on
+Semantic Personalized Information Management:
+Retrieval and Recommendation, 2011.
+[17] L. Wang, Q. Li, N. Li, G. Dong, and Y. Yang.
+Substructure similarity measurement in chinese
+recipes. In WWW, pages 979–988. ACM, 2008.
+[18] Wikipedia. Outline of food preparation, 2011. [Online;
+accessed 22-Oct-2011].
+[19] R. Wrangham. Catching fire: how cooking made us
+human. Profile Books, 2010.
+[20] Q. Zhang, R. Hu, B. Mac Namee, and S. Delany. Back
+to the future: Knowledge light case base cookery. In
+Proc. of The 9th European Conference on Case-Based
+Reasoning Workshop, page 15, 2008.
+
+

@@ -1,0 +1,4274 @@
+Practice
+
+and
+
+Experience
+
+The Active Badge Location System
+ROY WANT,
+Olivetti
+
+A
+
+novel
+
+wear
+
+system
+
+badges
+
+location
+
+transmit
+
+service,
+
+VERONICA
+
+systems
+
+of people
+
+issues
+
+raise
+
+in an office
+
+providing
+
+a network
+
+design
+
+FALC~Oand
+
+JONATHAN
+
+GIBBONS
+
+England
+
+signals
+
+through
+
+system
+
+Location
+
+HOPPER,
+
+Ltd. (ORL),
+
+for the location
+
+that
+
+techniques,
+ing.
+
+ANDY
+
+Research
+
+of sensors.
+
+and
+
+concerns
+
+The
+
+applications,
+about
+
+environment
+
+information
+
+is described.
+
+about
+
+paper
+
+also
+
+particularly
+
+the privacy
+
+their
+
+Members
+
+location
+
+examines
+relating
+
+alternative
+
+location
+
+to telephone
+
+of an individual,
+
+of staff
+
+to a centralized
+
+and these
+
+call
+
+issues
+
+rout-
+
+are also
+
+addressed.
+Categories
+and Subject
+Descriptors:
+B.4. 1 [Input/Output
+and Data Communications]:
+Data
+H.4. 1 [Information
+Communications Devices–reeei~ers (e.g., voice, data, image), transmitters;
+time m,unagement,
+(e.g., calendars,
+Systems Applications]:
+Office Automation–equipment,
+schedules);
+
+General
+
+[Information
+
+H.4.3
+
+[Management
+
+Systems
+
+of Computing
+
+Applications]:
+
+and Information
+
+Terms: Design, Experimentation,
+
+Additional
+
+Key
+
+tagging
+
+Words
+
+and
+
+Phrases:
+
+Communications
+
+Systems]:
+
+Human
+Active
+
+Security
+
+Applications;
+
+K.6.5
+
+and Protection
+
+Factors
+
+badges,
+
+location
+
+systems,
+
+PBX,
+
+privacy
+
+issues,
+
+systems
+
+1. INTRODUCTION
+Efficient
+
+location
+
+and
+
+coordination
+
+difficult
+and recurring
+date information
+about
+
+medical
+emergencies
+arise.
+responsible
+for determining
+tions,
+
+public-address
+
+ployees
+
+but,
+
+locations
+
+Authors’
+
+more
+
+at which
+
+addresses:
+
+CB2
+
+lQA,
+
+England.
+
+Charleston
+
+Rd.,
+
+Microsystems
+
+systems
+the
+
+A.
+
+in
+
+any
+
+large
+
+are provided
+
+Xerox
+
+email:
+
+person
+
+PARC,
+
+View,
+
+Laboratories
+
+Inc.,
+
+CA
+2550
+
+might
+
+V.
+
+Hill
+Ltd.,
+
+Falc50,
+
+email:
+
+Garcia
+
+be found.
+
+Coyote
+
+Research
+
+94043.
+
+a receptionist
+
+is used to (contact
+
+3333
+
+Olivetti
+
+ah@cam-orl.co.uk;
+
+Mountain
+
+to help
+
+a telephone
+
+required
+
+Hopper,
+
+organization
+
+is a
+
+may require
+particularly
+
+up-towhen
+
+In an office building,
+a receptionist
+is usually
+the location
+of staff memlbers;
+in some organiza-
+
+frequently,
+
+R. Want,
+
+want.parc@xerox.tom;
+
+of staff
+
+problem,
+Hospitals,
+for example,
+the location
+of staff and patients,
+
+Ave.,
+
+Rd.,
+24a
+
+locate
+
+all the
+
+These
+
+Palo
+
+solutions
+
+Alto,
+
+CA
+
+Trumpington
+
+Metaphor
+
+Computer
+
+can
+
+email:
+
+Cambridge
+
+Systems,
+J.
+
+View,
+
+94304.
+
+St.,
+
+falcao@met,aphor.tom;
+Mountain
+
+em-
+
+possible
+
+1965
+
+Gibbons,
+
+Sun
+
+CA
+
+94043.
+
+email:
+
+that
+
+the copies
+
+jjg@eng.sun.com.
+Permission
+not made
+
+to copy without
+or distributed
+
+fee all or part
+
+for direct
+
+of the publication
+and its date appear,
+Association
+for Computing
+Machinery.
+specific
+
+of this
+
+commercial
+
+material
+
+advantage,
+
+is granted
+the ACM
+
+provided
+copyright
+
+and notice is given that copying
+To copy otherwise,
+or to republish,
+
+notice
+
+are
+
+and the title
+
+is by permission
+of the
+requires
+a fee andjor
+
+permission.
+
+@ 1992 ACM
+
+0734-2047/92/0100-091
+ACM
+
+Transactions
+
+$1.50
+on Information
+
+Systems,
+
+Vol.
+
+10, No. 1, January
+
+1992, Pages 91-102.
+
+92
+
+R. Want et al.
+
+.
+
+cause a great deal of irritation
+and disruption
+to other employees;
+a solution
+that provides
+direct location
+information
+is more desirable.
+Location
+information
+for office
+staff
+that
+is available
+in a computerreadable
+telephone
+
+format
+can also be used to improve
+the operation
+of the office
+system. Integration
+of telephone
+systems with computer
+systems is
+
+also important
+
+in the
+
+development
+
+already
+been undertaken
+single
+network
+[4], but
+improving
+the telephone
+sophisticated,
+The features
+“call
+
+they
+most
+
+forward”.
+
+automated
+clients.
+
+are cryptic
+commonly
+
+In
+
+2. EXISTING
+
+order
+
+addresses
+back.
+
+it may
+
+(Some systems
+
+number.)
+
+It
+
+the
+
+execution
+
+is difficult
+are “call
+
+of
+
+about
+
+used for personnel
+a signal
+
+receiver
+display
+allow
+
+is then
+
+Much
+
+work
+
+has
+
+these
+
+to remember.
+transfer”
+and
+
+features
+
+the current
+
+could
+
+location
+
+be
+
+of its
+
+SYSTEMS
+
+someone,
+
+a particular
+
+In addition,
+
+office.
+
+and their
+operation
+used by PBX clients
+
+cases
+
+solution
+
+to locate
+
+automated
+
+if it had information
+
+LOCATION
+
+The conventional
+In
+
+most
+
+by the PBX
+
+of the
+
+integrating
+digital
+voice and computer
+data into a
+there
+has been less commercial
+effort
+invested
+in
+interface.
+Although
+these interfaces
+are functionally
+
+unit
+
+(beeper)
+
+a number
+a vocal
+
+up to the
+
+location
+
+is sent
+
+out
+
+recipient
+
+a central
+
+and produces
+
+to which
+
+message
+
+is the “pager
+
+by
+
+the called
+
+signal.
+
+should
+
+about
+
+conventional
+
+”
+
+that
+
+an audible
+party
+
+to be conveyed
+to use the
+
+system.
+
+facility
+
+phone
+
+the call-back
+telephone
+
+system to call back confirming
+the signal
+and to determine
+the required
+action. Although
+useful, in practice
+there are still circumstances
+where it is
+not ideal, For instance,
+if the called party does not reply, the controller
+has
+no idea whether
+they are in an area where the signal
+does not penetrate,
+have
+reply
+
+been completely
+out of the area for some time, have
+or have misheard
+or misread
+the call-back
+number.
+
+case
+
+where
+
+situation,
+
+there
+
+are
+
+a number
+
+it is not known
+
+the most suitable
+An alternative
+
+which
+
+of people
+
+who
+
+one is the nearest
+
+to contact.
+approach
+is to “tag”
+
+a person
+
+could
+
+been too busy to
+Moreover,
+in the
+
+respond
+
+to the crisis
+
+and try
+
+to locate
+
+to
+
+a crisis
+
+and therefore
+the tag.
+
+The
+
+main application
+of personal
+tags has been in the area of access control
+and
+logging
+[2]. In many
+high-security
+installations,
+card-key
+systems
+restrict
+access to various
+parts of the installation.
+If there are enough access-control
+zones, the same mechanism
+can also provide
+location
+information
+on a
+per-zone
+
+basis.
+
+For
+
+this
+
+kind
+
+of system,
+
+the
+
+information
+
+is positive
+
+and
+
+directly
+available
+to be acted on. However,
+it is inappropriate
+for most
+organizations
+to use access-control
+techniques
+to derive location
+information
+because of the inconvenience
+experienced
+by personnel.
+There are additional
+problems
+arising
+from groups of people obtaining
+access to adjoining
+zones
+with
+
+only
+
+one card-key,
+
+3. AN ACTIVE
+A solution
+individual
+ACM
+
+BADGE
+
+which
+
+is a hard
+
+problem
+
+to solve.
+
+DESIGN
+
+to the problem
+of automatically
+determining
+the location
+has been to design a tag in the form of an Active Badge that
+
+Transactions
+
+on Information
+
+Systems,
+
+Vol.
+
+10, No. 1, January
+
+1992
+
+of an
+emits
+
+The Active Badge Location System
+I
+
+.
+
+93
+
+1
+
+UNIQUE
+m SIGNAL
+
+Fig.
+
+a unique
+
+code for
+
+1.
+
+The ORL
+
+approximately
+
+Active
+
+a tenth
+
+Badge
+
+of a second
+
+every
+
+beacon). These periodic
+signals are picked up by a network
+around
+the host building.
+A master
+station,
+also connected
+polls the sensors for badge “sightings,”
+available
+to clients
+that may display
+was designed
+in a package
+roughly
+comfortable
+40 grams (Figure
+1).
+Pulse-width
+modulated
+infrared
+
+15 seconds
+
+processes the d[ata, and then makes it
+it in a useful visual
+form. The badge
+and weighs
+a
+55 x 55 x 7 millimeters
+
+(IR) signals
+
+are used for signaling
+
+the badge and sensor [61 mainly
+because IR solid-state
+emitters
+can be made very small
+and very cheaply
+(unlike
+ultrasonic
+they
+
+can be made
+
+to operate
+
+with
+
+(a
+
+of sensors placed
+to the network,
+
+a 6 meters
+
+range,
+
+and
+
+between
+
+and detectors
+transducers);
+the
+
+signals
+
+are
+
+reflected
+by partitions
+and therefore
+are not directional
+when used inside a
+small room. Moreover,
+the signals will not travel through
+walls, unlike
+radio
+signals that can penetrate
+the partitions
+found in office buildings.
+Infrared
+communication
+has been used in a number
+of commercial
+applications
+ranging from the remote
+control
+of domestic
+appliances
+to data backup
+links for
+programmable
+been
+
+used
+
+calculators
+as the
+
+and personal
+
+basis
+
+for
+
+organizers
+
+wireless
+
+local
+
+area
+
+[111.More
+
+recently,
+
+networks
+
+[3].
+
+lR has
+
+Because
+
+IR
+
+technology
+has already
+been exploited
+commercially,
+it is inexpensive
+and
+readily
+available
+for developing
+new applications
+such as the Active Badge.
+An active signaling
+unit consumes
+power; therefore,
+the signaling
+rate is
+an important
+the
+
+mean
+
+design
+current
+
+issue.
+
+First,
+
+consumption
+
+can
+
+“badge-sized”
+batteries
+will last
+ment that several people in the
+Because
+
+the
+
+approximately
+
+signals
+
+have
+
+a 2/150
+
+by only
+
+be very
+
+a signal
+small,
+
+every
+
+with
+
+the
+
+for about one year. Second,
+same locality
+be detectable
+
+a duration
+
+chance
+
+emitting
+
+that
+
+of only
+two
+
+15 seconds,
+result
+
+one-tenth
+
+of a second,
+
+will
+
+when
+
+signals
+
+collide
+
+that
+
+it is a requireby the system.
+there
+
+is
+
+two badges
+
+are placed in the same location.
+For a small number
+c}f people, there is a good
+probability
+they will all be detected.
+Even so, in order to improve
+this chance,
+the beacon oscillator
+has been deliberately
+designed
+around
+low-tolerance
+components.
+The components
+used for the beacon
+oscillator
+have a 10%
+tolerance
+rating;
+for two badges to remain
+in synchronization
+for even a
+single
+
+15-second
+
+beacon
+
+period,
+
+the
+
+components
+
+would
+
+have
+
+to be matched
+
+ACM Transactions on Information Systems,Vol. 10, No. 1, January 1992.
+
+94
+
+R Want et al
+
+.
+
+better
+than 1.4%. It is very likely
+that two badges, which
+at some instant
+may be synchronized,
+will have slightly
+differing
+frequencies
+and thus lose
+synchronization
+within
+a few beacon periods. In practice,
+synchronization
+has
+not been a problem.
+The Active
+Badge
+
+also
+
+incorporates
+
+a light-dependent
+
+when dark, turns the badge off to conserve battery
+increases the period of the beacon signal to a time
+ambient
+
+lighting
+
+conditions
+
+period, but it is another
+synchronized
+very long.
+
+in a room,
+
+this
+
+component
+
+that,
+
+life. Reduced lighting
+also
+greater than 15 seconds. In
+
+effect
+
+only
+
+slightly
+
+modifies
+
+the
+
+factor that ensures synchronized
+badges will not stay
+If the badge is placed in a drawer out of office hours,
+
+on weekends
+and during
+vacation,
+the effective
+lifetime
+of the batteries
+is
+increased
+by a factor of 4. Note that the more obvious solution
+of a manual
+switch
+forget
+switch
+
+was considered
+a bad idea as it was likely
+that a badge user would
+to turn it on. Other options for switching
+the device on included
+a tilt
+and an accelerometer,
+although
+the size limitation
+of a badge pre -
+
+eluded
+
+using
+
+them
+
+A disadvantage
+of a badge
+because
+building,
+
+in the initial
+
+experimental
+
+of an infrequent
+
+is only
+
+known,
+
+signal
+
+at best,
+
+in general
+a person
+tends
+the information
+the Active
+
+system.
+
+from
+
+the badge
+
+to a 15-second
+
+time
+
+is that
+window.
+
+the location
+However,
+
+to move relatively
+slowly
+in an office
+Badge system provides
+is very accurate.
+
+An Active Badge signal is transmitted
+to a sensor through
+an optical path.
+This path may be found indirectly
+through
+a surface reflection,
+for example,
+from
+
+a wall.
+
+A badge
+
+must
+
+be worn
+
+on the outside
+
+of clothing,
+
+so an essential
+
+part of the badge case design was the clip allowing
+it to be easily attached
+to
+a shirt or a blouse. Most commonly,
+the badge was worn at the breast pocket
+position;
+however,
+some people preferred
+a belt or waist position.
+The belt
+position
+was not as good when the wearer was seated at a desk but typically
+the system still detected enough signals to locate the badge.
+
+4. BADGE
+
+SENSOR
+
+To detect Active
+provide
+thorough
+
+AND TELEMETRY-NETWORK
+
+DESIGN
+
+Badges in transit
+through
+a building,
+a sensor network
+must
+coverage
+through
+adequate
+placement
+and density
+of sen-
+
+sors. (Because the unit
+prohibitively
+expensive).
+
+cost of the sensors is low, thorough
+Sensors
+need to be placed
+high
+
+coverage
+is not
+up on walls
+or
+
+ceiling
+tiles of offices and on the entrances
+and exits of corridors
+and other
+public
+areas. An ideal system would
+take advantage
+of existing
+computer
+networks
+as a means of gathering
+badge sightings
+and relaying
+the data back
+to a central
+server for processing.
+The problem
+is that many buildings
+do not
+have a computer
+network,
+and second, if a sensor were to be interfaced
+directly
+to a modern-day
+network,
+the cost of the device would
+be significantly increased.
+A design
+was conceived
+that
+would
+allow
+an independent
+network
+to
+support
+up to 128 sensors, controlled
+from the RS232 port of any standard
+workstation.
+This approach
+allowed
+a network
+of workstations,
+joined by an
+Ethernet,
+to support multiple
+badge networks,
+the data being relayed back to
+one master
+server
+by conventional
+network
+protocols.
+The workstations
+ACM
+
+Transactions
+
+on Information
+
+Systems,
+
+Vol.
+
+10, No
+
+1, January
+
+1992,
+
+The Active Badge Location System
+
+.
+
+95
+
+Ill SIGNAL
+RECEIVED
+
+T
+4-WIRE
+
+$
+
+NETWORK
+
+m
+
+W&,4
+
+fy$ld
+
+FIFO
+
+I
+
+ADDRESS
+
+Fig.2.
+
+Badge sensor andtelernetr
+
+ynetwork
+
+provided
+a simple
+connection
+between
+each of the
+main computer
+network.
+However,
+a badge network
+supported
+by a single network
+A prerequisite
+for the badge
+areas
+
+of any building
+
+through
+tributed
+
+with
+
+the network
+in too many
+
+controller.
+network
+
+a~ arbitrary
+
+was that
+
+it should
+
+topology.
+
+Power
+
+be able to link
+
+would
+
+carries
+the
+to nominate
+
+serial
+addressing
+information
+a station,
+and the remaining
+
+allowing
+wire carries
+
+telephone
+twisted
+pairs
+of any spare telephone
+
+a building.
+
+networked
+
+Although,
+a large
+
+need to be fed
+
+network
+has been designed
+as a
+carry the network
+power-supply,
+
+the network
+controller.
+Conventional
+means it is possible to take advantage
+avoidably
+
+all
+
+because the sensors would
+be too numerous
+and disremote places for them to be supplied
+by power locally.
+
+Given these constraints,
+the badge-sensor
+4-wire system (Figure
+2). TWO of these wires
+the third
+controller
+
+badge networks
+and the
+can also exist on its own
+
+as with
+
+fraction
+
+most
+
+of the system
+
+using standard
+telephone
+the same as RS232, but
+
+twisted-pairs.
+the network
+
+syst,ems,
+
+the
+
+the network
+data back to
+
+are used, which
+cable already in
+cabling
+
+is un-
+
+cost, the cost has been minimized
+
+by
+
+The data-transfer
+format
+is logically
+is physically
+al wired-OR
+system.
+The
+
+consequence
+is that by using a simple level-shifting
+interface-box,
+any computer with an RS232 port can be used as the network
+master.
+In order that the network
+master does not have to poll the sensors at high
+speed to avoid
+short
+
+delay
+
+capable
+
+data
+
+loss (e. g., if two badges
+
+between
+
+them),
+
+of buffering
+
+multiplex
+and making
+
+its
+
+time
+
+20
+
+a FIFO
+
+badge
+
+between
+
+the data
+
+available
+
+sightings.
+
+polling
+
+in one rmm
+
+has been designec[
+the
+
+This
+
+allows
+
+network,
+
+signaled
+
+with
+
+into
+
+each sensor
+
+the
+
+network
+
+manipulating
+
+a very
+that
+
+master
+
+badge
+
+is
+to
+
+data
+
+to clients.
+
+ACM Transactions on Information Systems,Vol. 10, No. 1, January 1992.
+
+96
+
+.
+
+R. Want et al.
+
+ORIJSTL Active
+
+Badge Project
+
+Name
+
+Location
+
+Prob.
+
+Name
+
+Lodon
+
+P Ainsworth
+T Blackie
+M Chopping
+
+X343 Aces
+X222 DVI Rm.
+
+100%
+80%
+
+J Martin
+O Mason
+
+X310Mc Rm
+
+100%
+
+X307 Lab
+
+77%
+
+X410 R302
+X316 R321
+
+TUE.
+10:30
+
+DMilway
+B Miners
+
+X3O7Drill
+X202 DVI Rm.
+
+AWAY
+
+D Clarke
+V Falcao
+D Gamett
+J Gibbons
+D Greaves
+A Hopper
+A Jackson
+A Jones
+T King
+D Lioupis
+
+X21 8 R435
+X232 R31 O
+XO Rec.
+X304 F3
+X4% AH
+X30S AJ
+XX O Coffee
+X309 Meet. Rm.
+X304 R311
+
+AWAY
+100%
+AWAY
+MON.
+100%
+90%
+100”/.
+11:20
+100%
+
+P Mifal
+J Porter
+B Robertson
+C Turner
+R Want
+M Wilkes
+I Wilson
+S Wray
+K Zlelinski
+
+X213 PM
+x398 Lib.
+X307 M
+X307 Lab.
+X309 hleet. Rm.
+X3OO MW
+X307 M.
+X204 Sw
+X402 Coffee
+
+12.00 1st January
+
+Fig
+
+5. AN ACTIVE
+The initial
+
+3
+
+A typical
+
+BADGE
+
+display
+
+showing
+
+areas
+
+application
+
+where
+
+people
+
+a table
+
+10:40
+11:20
+100%
+100%
+MON.
+77%
+100%
+100%
+11:20
+100%
+
+1990
+
+the location
+
+of people
+
+at ORL.
+
+APPLICATION
+of this
+
+system
+
+intended
+to be an aid for a telephone
+the offices, common areas and major
+provides
+
+Prob.
+
+expect
+
+to
+
+of names
+
+(the demonstration
+
+be free
+
+against
+
+system
+
+at ORL)
+
+was
+
+receptionist.
+Sensors were mounted
+in
+corridors;
+of course, there are also some
+from
+
+being
+
+a dynamically
+
+monitored!
+updating
+
+The
+field
+
+system
+
+containing
+
+the nearest
+telephone
+extension
+and a description
+of that
+location.
+The
+format
+fits onto a standard
+PC display
+and is shown in more detail in Figure
+3. A third field shows the likelihood
+of finding
+somebody
+at that location
+in
+the form of a percentage.
+If it is below 100%, that indicates
+the person is
+moving
+around,
+and if they have not been sighted
+for 5 minutes,
+the field
+contains
+
+the
+
+last
+
+time
+
+and
+
+location
+
+at which
+
+they
+
+were
+
+sighted.
+
+The
+
+last
+
+sighted
+location
+is still
+the best clue a receptionist
+may have to locate
+somebody
+and indeed there may be other work colleagues
+in that area who
+will know why that person is no longer there, Beyond 24 hours, the last day a
+badge is sighted
+is shown in abbreviation;
+for a week or more, the person is indicated
+
+if there are no sightings
+detected
+to be “AWAY”.
+This format
+was
+
+found
+to be useful
+and
+did not
+overload
+the
+information
+In addition
+to the display,
+a command
+interpreter
+tions
+
+to be performed
+
+are listed
+ACM
+
+on the system.
+
+on the following
+
+TransactIons
+
+on Information
+
+The commands
+
+display
+allows
+found
+
+page.
+Systems,
+
+Vol.
+
+10, No
+
+1, January
+
+1992
+
+with
+simple
+
+too
+
+much
+
+investiga-
+
+to be of most
+
+use
+
+The Active Badge’Location
+–FIND
+(name). Provides
+the current
+location
+has recently
+moved, a list of all the locations
+last five
+
+minutes
+
+along
+
+with
+
+the likelihood
+
+to be made
+
+of time.
+
+Another
+
+useful
+
+nism.
+
+This
+
+feature
+
+command
+
+for locating
+
+information
+badge.
+
+that generates
+sighted
+after
+
+a colleague
+
+has also been built
+
+into
+
+about
+that
+
+are
+
+an audible
+indicaexecuting
+the comto deliver
+an urgent
+on business for long
+
+is a location
+
+the ORL
+
+and, if it
+at in the
+
+of the badges
+
+mand. “NOTIFY”
+is particularly
+useful when trying
+message to a member
+of staff who is out of the office
+periods
+
+97
+
+it at each.
+
+— WITH
+(name).
+Locates
+a named
+badge and provides
+other badges that are in the immediate
+locality
+of that
+
+—NOTIFY
+(name). An alarm
+mechanism
+tion of when the named badge is next
+
+.
+
+of the named badge
+it hi~s been sighted
+of finding
+
+—LOOK
+(location).
+Allows
+an investigation
+currently
+near the specified
+location.
+
+System
+
+history
+
+demonstration
+
+mechasystem.
+
+—HISTOR
+Y (name), Generates
+a condensed report of the location
+history
+for
+the named badge during
+a one-hour
+period.
+The system intentionally
+does
+not record any location
+data on a permanent
+storage
+medium,
+to dispel
+concern about long-term
+monitoring
+of an employee’s
+movements.
+The most
+
+common
+
+use of the system
+
+used it when forwarding
+receptionist
+would
+look
+telephone
+use, the
+
+call to the
+receptionist
+
+was by the receptionist
+
+telephone
+calls from the
+at the display
+of locations
+
+correct location
+was so reliant
+
+in the standard
+on the system
+
+main
+and
+
+who routinely
+
+switchboard.
+then redirect
+
+way. After
+that it was
+
+a month
+of
+hard to do
+
+without
+it on the rare occasions when the system was not available.
+A low-level
+interface
+was built
+to allow
+certain
+types of PBX
+telephone
+calls
+proof of concept
+nature
+
+automatically.
+for a more
+
+of PBXS,
+
+without
+business,
+connecting
+
+the
+
+it
+
+help
+
+was
+and
+
+and that
+
+not
+
+possible
+
+consent
+
+of
+
+proved
+
+computer
+
+The combination
+automatic
+system,
+
+difficult
+
+equipment
+
+to
+
+to obtain.
+to the
+
+a comprehensive
+in
+
+There
+
+telephone
+
+to route
+
+of these systems
+showed
+but due to the proprietary
+
+design
+
+a company
+
+The
+the
+
+the
+
+solution
+
+telecommunications
+
+are strict
+network
+
+regulations
+in
+
+the
+
+UK
+
+for
+and
+
+there was a regrettable
+lack of interest
+from UK companies
+to put in the
+software
+effort required
+to modify
+the on-site PBX a.t ORL for the purpose of
+PBX’S such as the Redcom
+PBX [4], which
+is
+this experiment.
+However,
+approved
+tegrated
+
+for use in the US, have a digital
+interface
+designed for computer-intelephony,
+so this would be the most suitable
+candidate
+for integra-
+
+tion with the Active Badge
+Staff wearing
+the badges
+directed
+
+to their
+
+current
+
+system if the research
+continues
+found it useful to have telephone
+location
+
+but
+
+wanted
+
+to be able
+
+in the US.
+calls accurately
+to express
+
+more
+
+control over when calls were forwarded
+to them. Where you are, who you are
+with and what time it is could all be taken into account.
+For example,
+most
+people would prefer not to take unexpected
+telephone
+calls when they have
+just been called into their boss’s office; others might
+not want to receive calls
+if they are in the lunch room between
+12 and 1 plm; similarly,
+a group of
+ACM Transactions on Information Systems,Vol. 10, No. 1, January 1992
+
+98
+
+R. Want et al,
+
+.
+
+people holding
+an unscheduled
+meeting
+in a conference
+room may not wish to
+be disturbed,
+A future
+application
+might
+allow these kinds of conditions
+to be
+specified
+
+6.
+
+by the user.
+
+LOCATION
+
+SERVER
+
+DESIGN
+
+The work at ORL has shown
+as a four-layer
+system.
+
+that
+
+a location
+
+server
+
+can usefully
+
+be thought
+
+of
+
+–Network
+control.
+The network
+controller
+is responsible
+for polling
+all
+sensors on the network.
+It can be designed to adopt a polling
+strategy
+that
+is biased towards
+testing
+sensors that are known
+to have recently
+seen
+badges
+format
+
+more
+should
+
+frequently
+than
+those that
+have not. Errors
+in badge-ID
+also be picked up in this layer and erroneous
+data removed.
+
+–Representation.
+Once
+must be time-stamped
+of the badge
+
+that
+
+has been
+
+obtain
+information
+representation
+can
+triples
+
+in time
+
+sighted,
+
+location
+
+and time
+
+(a triple),
+
+about the recent
+activities
+of a badge,
+be obtained
+by building
+a linked
+list
+
+order
+
+experimentation).
+of badges
+
+valid
+data has been extracted
+from the network,
+it
+and entered into a data structure
+that relates the ID
+
+up to a maximum
+
+time
+
+For some applications,
+
+(five
+
+to
+
+a convenient
+of these data
+
+minutes
+
+it is also useful
+
+In order
+
+was
+
+used
+
+to maintain
+
+for
+
+a list
+
+seen at each location.
+
+—Data processing.
+An Active Badge network
+can soon collect a large amount
+of data. It is necessary
+to process this data to reflect
+only the changes in
+badge locations
+or provide
+compressed
+summaries
+of the recent history
+of a
+badge.
+
+If a location
+
+system
+
+with
+
+work
+than
+
+the
+
+server
+
+were
+
+applications
+
+going
+
+running
+
+interface
+can be most effectively
+at the Network
+Control
+Layer.
+
+to be built
+
+as part
+
+on remote
+
+machines,
+
+of a distributed
+an RPC
+
+net-
+
+designed
+on top of this layer rather
+Some care needs to be put into the
+
+server design to compress
+the location
+not cause excessive network
+traffic.
+
+information
+
+into
+
+a form
+
+that
+
+does
+
+—Display
+interface.
+The Active Badge demonstration-system
+display uses the
+location
+information
+extracted
+from the previous
+three layers as the input
+for a display
+function
+showing
+textual
+information
+about the changing
+positions
+of badges. Alternative
+implementations
+may choose a graphical
+display
+moving
+
+to show
+icons.
+
+the
+
+Further
+
+enhancements
+
+position
+
+to the
+
+of badges
+
+system
+
+could
+
+on
+
+a building
+
+be considered
+
+floor
+
+plan
+
+if the server
+
+using
+
+had
+
+a component
+that knew about the layout of a building
+and the sensors within
+it. Such a system might
+be able to make simple
+predictions.
+For instance,
+given the time and the previous
+locations
+at which a badge has been detected,
+it may be possible for the system to predict
+the final destination
+of a person
+who is moving
+about the monitored
+area and so provide
+more useful display
+information.
+Another
+enhancement
+might
+also be to take
+advantage
+of
+information
+found in on-line diaries
+allowing
+the display to show the purpose
+and duration
+of meetings
+in progress.
+ACM
+
+Transactions
+
+on Information
+
+Systems,
+
+Vol.
+
+10, No. 1, January
+
+1992
+
+The Active Badge l_ocation System
+7. THE INITIAL SYSTEM
+A location
+
+system
+
+.
+
+99
+
+TRIAL
+
+has many
+
+advantages,
+
+but
+
+it also raises
+
+many
+
+social
+
+fears.
+
+When most people learn that a personnel
+location
+system maybe
+installed
+in
+their
+workplace,
+their
+immediate
+reaction
+is one of horror.
+Putting
+such a
+device into the workplace
+violates
+personal
+freedom
+trial
+period
+at OItL,
+the
+laboratory
+
+containing
+
+32 staff,
+
+There
+
+is one Laboratory
+
+contractors.
+remainder
+badges
+
+are
+
+engineers.
+
+for a trial
+
+optional.
+reaching
+longer
+
+is viewed
+unfavorably
+on the grounds
+that
+it
+and individual
+privacy
+rights.
+Before the initial
+reaction
+was one of concern.
+ORL is a research
+three
+
+of whom
+
+Management
+
+period
+
+of two
+
+weeks,
+
+a continuous
+
+stream
+
+and six are
+
+and a Laboratory
+
+requested
+
+In the initial
+10 workdays,
+the correct
+person dropped
+received
+
+are administrators
+
+Director
+and
+
+from
+
+Manager;
+
+that
+
+everybody
+
+then
+
+on it was
+
+the
+
+wear
+
+the
+
+considered
+
+the incidence
+of telephone
+calls
+substantially;
+the main laboratory
+of disruptive
+
+enquiry
+
+calls,
+
+not
+no
+
+whereas
+
+the
+
+main laboratory
+had previously
+been the default
+place to check for anybody if
+they were not in their own office. ORL’S receptionist
+had a much easier time
+and was able to avoid many wasted trips, up and (down corridors,
+trying
+to
+find
+
+members
+
+of staff.
+
+Also the perception
+
+of clients
+
+of good organization
+since the receptionist
+tainty
+where somebody
+was or when they
+that
+
+they
+
+informed
+
+by
+
+expecting
+printer
+
+had just
+the
+
+taken
+staff.
+
+a telephone
+room
+
+a lunch
+It
+
+break,
+
+also
+
+call
+
+gave
+
+they
+
+or the coffee room
+
+with
+
+all without
+employees
+
+could
+
+telephoning
+
+was able
+were last
+
+confidence
+
+great cerlikelihood
+
+the need to be explicitly
+the
+
+wander
+
+ORL was one
+
+to say with
+seen or the
+advantage
+
+around
+that
+
+the
+
+that
+
+when
+
+laboratory,
+
+the call would
+
+still
+
+the
+reach
+
+them successfully.
+Groups of people who regularly
+wanted
+to hold meetings
+could find each other easily with very little notice since they could also access
+the location
+information.
+Other advantages
+from a security
+and convenience
+point
+ORL.
+initial
+
+of view were that visitors
+could easily
+Finally,
+in the friendly
+environment
+fears the staff had about management
+
+be unfounded.
+people
+
+For all of these
+
+continued
+
+to wear
+
+8. THE CURRENT
+The prototype
+
+their
+
+CAMBRIDGE
+
+system
+
+was first
+
+reasons,
+badge
+
+be located during
+their visits to
+of a research
+laboratory,
+any
+abuse of the system proved to
+
+the two-week
+quite
+
+willingly
+
+trial
+
+was a success,
+
+after
+
+this
+
+and
+
+period.
+
+UK INSTALLATION
+installed
+
+in February
+
+1990,
+
+and now consists
+
+of over 100 badges, 200 sensors and 5 badge networks
+in use at four sites in
+Cambridge,
+England.
+Although
+some badges have had to have their batteries
+replaced,
+others are still operating
+after 16 months
+in service. The system is
+in use at two organizations:
+All the sites are within
+members
+and ORL staff
+Badge
+
+location
+
+system
+
+ORL and the University
+Computer
+a few minutes’
+walk
+of each other,
+frequently
+move between
+buildings.
+
+spans all four
+
+sites, and information
+
+about
+
+Laboratory.
+and faculty
+The Active
+any person’s
+
+whereabouts
+is potentially
+available
+from any terminal
+on the network.
+This
+includes
+local telephone
+extension
+numbers
+or external
+numbers
+where
+needed. Access to the data is restricted:
+for example,
+undergraduate
+students
+cannot
+
+see the location
+
+of arbitrary
+
+Olivetti
+
+staff
+
+mlembers,
+
+and the way
+
+the
+
+ACM Transactions on Information Systems,Vol. 10, No. 1, January 1992.
+
+100
+
+data
+
+R. Want et al
+
+.
+
+is protected
+
+popular
+locations
+
+9. PRIVACY
+Despite
+first
+
+has
+
+proved
+
+that there
+are often
+within
+the University.
+
+acceptable
+requests
+
+most
+
+users.
+the
+
+It
+
+is
+
+system
+
+sufficiently
+
+to cover
+
+more
+
+ISSUES
+
+the success of the Cambridge
+
+learn
+
+to
+
+to extend
+
+about
+
+the system
+
+installation,
+
+are not convinced
+
+the majority
+it is something
+
+of people
+they
+
+who
+
+would
+
+like
+
+in their own work situation.
+The privacy
+issues are clearly
+very important.
+An observation
+made at ORL is that the system has to be worked with for a
+period
+of time before it can be judged
+with
+a clear understanding
+of the
+issues. The following
+observations
+should be made.
+First, there will always be some days when for whatever
+reason somebody
+does not
+
+wish
+
+to be located.
+
+people. Anybody
+wearing
+Active Badge system will
+that
+
+has been chosen
+
+an undesirable
+
+for this
+
+system
+
+The
+
+location
+
+system
+
+tracks
+
+deception,
+
+feature
+
+and
+
+This
+
+may
+
+kind
+
+information
+misused.
+
+NOT
+
+factor
+
+at
+
+ORL
+
+is not
+
+in making
+this
+
+was
+
+not
+
+that is often the main
+system to be devised
+
+person to specify who may locate them
+and in addition
+about who has tried to locate them and how often. If this
+
+is valid,
+Such
+
+and
+
+of escape mechanism
+
+be an important
+
+this system acceptable
+for common
+use, In practice,
+known to be a common use of the system.
+Second, it is the way location
+data is used or logged
+concern for badge wearers.
+It is possible
+for a locator
+that
+allows
+each
+provide information
+
+badges
+
+a badge can remove it and leave it on a desk. The
+then be misled into locating
+that person in an area
+
+it would
+
+privilege
+
+soon become
+
+systems
+
+are
+
+clear
+
+well
+
+when
+
+understood
+
+the
+and
+
+system
+are
+
+was being
+in
+
+common
+
+usage to protect computer
+filing
+systems. It may be that despite knowing
+the
+system can be made secure, there will always be a fear that a secret logging
+system
+has
+management
+
+been installed
+by management.
+policy can, of course, make life
+
+A company
+that
+has a bad
+unpleasant
+for employees
+with
+
+or without
+a badge system, and this is a different
+kind of problem.
+Simple
+examples
+of other potential
+location
+devices already
+in place in the office that
+are open to abuse are the network
+computer
+which
+can keep track of login
+times and keystrokes
+per minute,
+PBX’S which can be used to monitor
+call
+set up and provide
+location
+information
+about time spent at your desk, and
+card-key
+systems
+which
+give away location
+information
+about movements
+within
+controlled
+areas. In practice,
+it is rare that these techniques
+are used
+against employees,
+but it is true that each of these systems potentially
+makes
+it easier for a misguided
+management
+to abuse the day-to-day
+privacy
+we all
+expect.
+The problem
+is that technology
+in itself is rarely
+inherently
+bad; it is just
+that it can be used for good or bad purposes.
+We are living
+at a time when it
+is feasible
+to build
+an effective
+location
+system at low cost, and we should
+work to ensure
+that this kind
+of technology
+is used to the advantage
+of
+employees,
+rather
+than
+to compromise
+their
+privacy.
+If it turns
+out that
+location
+systems
+in our society
+at large
+are abused,
+then
+the rights
+of
+individuals
+must be protected.
+In this case legislation
+must be drawn up to
+ACM ‘11-ansact,ons
+on Information Systems,VO1.10, No, 1, January 1992,
+
+The Active Badge Location System
+ensure a location
+system
+the benefits
+it brings.
+insisting
+being
+
+that
+
+cannot be misused,
+while still
+Such legislation
+may prevent
+
+employees
+
+used as the basis
+
+wear
+
+locators
+
+and
+
+for productivity
+
+prevent
+
+assessment
+
+.
+
+101
+
+allowing
+us to enjoy
+an employer
+from
+
+location-data
+or as the only
+
+logs from
+grounds
+
+for
+
+dismissal.
+
+10.
+
+CONCLUSIONS
+
+The Active
+
+AND FUTURE
+
+Badge
+
+system
+
+DIRECTIONS
+
+at ORL
+
+has been widely
+
+accepted
+
+by the members
+
+of staff and is used on a daily basis for either locating
+people for meetings
+or
+for transferring
+telephone
+calls to the correct
+person.
+Observation
+of the
+system
+option
+
+shows
+
+that
+
+for human
+
+staff.
+
+There
+
+at Olivetti
+
+have
+STL,
+
+a PBX
+
+directly
+
+would
+
+now been four
+Xerox
+
+Invariably,
+they
+it has generally
+
+controlled
+
+intervention
+
+additional
+
+EuroPARC,
+
+MIT
+
+have all had initial
+been the case that
+
+by the
+
+badge
+
+be of considerable
+installaticms
+Media
+
+concerns
+employees
+
+system
+
+with
+
+support
+
+of the badge
+
+system:
+
+and Xerox
+
+PARC.
+
+Laboratory
+
+about privacy;
+however,
+while
+are very concerned
+about the
+
+system at the time of installation,
+the concern considerably
+diminishes
+they have used the badges for a short period of time. In practice,
+most
+find
+
+the system
+
+system
+The
+
+has many
+
+is not abused
+Active
+Badge
+
+enabling
+designed
+
+benefits
+
+in these
+system
+
+and that
+
+the information
+
+environments.
+is a technology-driven
+
+technology
+has been small
+low-cost
+for the remote
+control
+requirements
+
+televisions.
+
+The
+
+most
+
+important
+
+result
+
+the
+
+use to office
+
+of this
+
+provided
+
+research
+
+IR emitters
+of consumer
+work
+
+is not,
+
+after
+users
+by the
+
+project.
+
+The
+
+and control
+logic
+products
+such as
+“Can
+
+location
+system?”,
+but “Do we want to be a part of a location
+is a danger that in the future this technology
+will be abused
+
+we build
+
+a
+
+system?”
+There
+by unscrupulous
+
+employers.
+If it is, then legislation
+must be used to protect us from this kind
+of technology
+abuse. However,
+it is our conclusion
+that amongst
+professional
+people responsible
+for their own work time, it is a very useful and welcome
+office
+
+system.
+
+The current
+tion,
+
+but
+
+technology
+
+with
+
+badge
+the
+
+is a device
+use
+
+or low-power
+
+Two-way
+
+communication
+
+a display
+
+and can receive
+
+that
+
+of more
+
+is limited
+
+complex
+
+microcontrollers,
+
+a great
+
+is one way to extend
+data
+
+to providing
+
+miniature
+
+can also operate
+
+location
+
+devices
+
+deal more
+
+functionality.
+as a pager.
+
+such
+
+informaas ASIC
+
+can be achieved.
+A badge
+An Active
+
+that
+
+has
+
+Badge
+
+in combination
+with a pager provides
+the best of both location
+techniques.
+A transponding
+badge can also be used as a key, authenticating
+itself on
+entering
+a secure area. The problem
+with a remotely
+operated
+key is that the
+signals it sends can be recorded
+and played back later to masquerade
+as the
+same key. By using
+a randomized
+challenge/response
+protocol
+from
+the
+secure area to the key, good protection
+can be given against
+this kind of
+forgery.
+The unforgeable
+key can of course be stolen, but so can a conventional
+key; yet a badge offers additional
+advantages.
+The basic locator-badge
+without
+additional
+features
+can also be used in cclmbination
+with
+conventional
+security
+systems
+such as motion
+detectors.
+Motion
+detectors
+warn
+about all movement
+that occurs in a building,
+but the badge system allows a
+ACM
+
+Transactions
+
+on Information
+
+Systems,
+
+Vol.
+
+10, No. 1, January
+
+1992.
+
+102
+
+R. Want et al,
+
+Q
+
+refinement
+Movement
+
+indicating
+where
+without
+detecting
+
+to a suspicious
+situation.
+A future
+badge may
+instance:
+
+a location
+
+there is movement
+accompanied
+by a badge ID.
+an Active
+Badge could alert security
+personnel
+
+also
+
+be able
+
+to
+
+code, a battery-low
+
+signal
+
+several
+
+different
+
+buttons
+on its case. The button
+codes may signal
+special
+controller
+that modify its behavior.
+In the case of telephone
+button-press
+warded
+meeting
+example
+
+received
+
+a meeting
+
+room
+
+may
+
+stop
+
+for
+
+by pressing
+
+commands
+to the
+call-forwarding
+a
+
+calls
+
+from
+
+being
+
+for-
+
+there.
+However,
+if the badge
+is seen in another
+room
+(i. e., the
+has finished),
+the command
+is now cancelled
+automatically.
+This
+illustrates
+an important
+aspect of badge technology:
+a signal
+pro-
+
+duced by an Active
+the network.
+Where the Active
+system,
+tions
+
+from
+
+codes,
+
+code and codes generated
+
+it may
+such
+
+Badge
+
+can have
+
+Badge
+
+concept
+
+be combined
+
+as: fire
+
+different
+
+at different
+
+is used and becomes
+
+with
+
+alarms,
+
+effects
+
+other
+
+security,
+
+building
+
+locations
+
+accepted
+
+management
+
+heating,
+
+on
+
+as an office
+control
+
+airconditioning
+
+and
+
+control.
+The Active
+Badge extends
+the concept of an integrated
+take into account the location
+of personnel
+in that environment.
+
+func-
+
+lighting
+
+building
+
+to
+
+ACKNOWLEDGMENTS
+
+The authors
+wish to thank
+Carl Dellar
+for supporting
+the project in its early
+phase, Roger Needham
+and David
+Wheeler
+for their
+valuable
+advice,
+and
+Martin
+Simmons
+and Pradeep
+Mital
+for their
+help prototyping
+the original
+Active Badge demonstration
+system.
+
+REFERENCES
+1
+
+S. L., WORSLEY, R. L., AND STEPHENS, B. A.
+
+HARPER,
+
+tors
+
+and printers.
+
+2. HEW~JN,
+
+P..
+
+Hewlett-Packard
+
+Smart
+
+J. (Oct.
+
+Tags–The
+
+1987)
+
+An
+
+infrared
+
+link
+
+for low-cost
+
+calcula-
+
+16-23.
+
+distributed
+
+memory
+
+JAIWP, R,,
+
+FREEMAN,
+
+revolution.
+
+IEEE
+
+Reu.
+
+(June
+
+1989),
+
+203-206
+3. PAEPCKE,
+optical
+4
+
+A,,
+
+Holland,
+
+Comput.
+B.
+
+D,,
+
+ISDN
+A user
+
+and
+
+Syst.
+
+workstations.
+
+15 (1988)
+
+C. A.,
+
+Elsevier
+
+AND LEE,
+
+Science
+
+F.
+
+J,
+
+Publishers
+
+Chipnet:
+B, V,,
+
+An
+
+North-
+
+203-215.
+
+programmable
+
+telephone
+
+switch.
+
+In
+
+EUUG
+
+Conference,
+
+(Helsinki,
+
+1987),
+
+5. RONAYNE,
+
+J.
+
+Publishing,
+Satellite,
+
+Received
+
+E.
+
+R.
+
+of terminals
+
+REDMAN,
+May
+
+6
+
+CRAWFORD,
+
+network
+
+The Integrated
+London
+
+Cable
+
+October
+
+ACM Transactions
+
+UK,
+
+Seruices
+
+Digital
+
+and TV IC Handbook,
+
+1991;
+
+Network:
+
+j+om
+
+Concept
+
+to Application.
+
+Pitman
+
+1987.
+
+revised
+
+on Information
+
+July
+
+In
+
+1991;
+
+Systems,
+
+Plesse.y Semiconductors
+
+accepted
+
+Vol.
+
+August
+
+1991
+
+10, No, 1, January
+
+1992
+
+(1988)
+
+pp. 64, 67, 124,
+
+

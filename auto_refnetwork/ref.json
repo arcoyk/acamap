@@ -1,0 +1,87 @@
+{"nodes":[
+{
+"node_name":"creativity_support_tools",
+"link_to":["conversation_clock","conversation_clusters"],
+"attributes":["HCI"]
+},
+{
+"node_name":"Interface is a Face",
+"link_to":["conversation_clock","conversation_clusters","creative sense-making","creativity_support_tools","dynamo","dypers","flavor_network","food-bridging","idea expander","inspiration_wall"],
+"attributes":["HCI"]
+},
+{
+"node_name":"dynamo",
+"link_to":["conversation_clock","conversation_clusters","creative sense-making","crowdboard"],
+"attributes":["HCI"]
+},
+{
+"node_name":"wespace",
+"link_to":["conversation_clock","conversation_clusters","dynamo","dypers","idea expander","Interface is a Face","people_garden","peoplegarden","Productivity-Loss-In-Brainstorming_Toward-the-Solution-of-a-Riddle","Sukiyaki in French style"],
+"attributes":["HCI"]
+},
+{
+"node_name":"when_interface_is_a_face",
+"link_to":["conversation_clock","conversation_clusters","creative sense-making","creativity_support_tools","dynamo","dypers","flavor_network","food-bridging","idea expander","inspiration_wall","Interface is a Face","people_garden","peoplegarden","Productivity-Loss-In-Brainstorming_Toward-the-Solution-of-a-Riddle","recipe","rememerance_agent","Sukiyaki in French style","visualizing_conversation","wespace"],
+"attributes":["HCI"]
+},
+{
+"node_name":"peoplegarden",
+"link_to":["conversation_clock","conversation_clusters","idea expander"],
+"attributes":["HCI"]
+},
+{
+"node_name":"recipe",
+"link_to":["conversation_clock","food-bridging","idea expander","Interface is a Face"],
+"attributes":["HCI"]
+},
+{
+"node_name":"conversation_clusters",
+"link_to":["conversation_clock"],
+"attributes":["HCI"]
+},
+{
+"node_name":"Designing for collaborative creative problem solving",
+"link_to":["activebadge","conversation_clock","conversation_clusters","creative sense-making","creativity_support_tools","crowdboard"],
+"attributes":["HCI"]
+},
+{
+"node_name":"intentstreams",
+"link_to":["conversation_clock","conversation_clusters","crowdboard","flavor_network","food-bridging","foreget-me-not","inspiration_wall"],
+"attributes":["HCI"]
+},
+{
+"node_name":"people_garden",
+"link_to":["conversation_clock","conversation_clusters","idea expander"],
+"attributes":["HCI"]
+},
+{
+"node_name":"ideawall",
+"link_to":["conversation_clock","creative sense-making","creativity_support_tools","crowdboard","Designing for collaborative creative problem solving","dynamo","foreget-me-not","idea expander"],
+"attributes":["HCI"]
+},
+{
+"node_name":"foreget-me-not",
+"link_to":["conversation_clock","crowdboard","flavor_network"],
+"attributes":["HCI"]
+},
+{
+"node_name":"inspiration_wall",
+"link_to":["conversation_clock","conversation_clusters","creativity_support_tools","Designing for collaborative creative problem solving","dynamo","idea expander"],
+"attributes":["HCI"]
+},
+{
+"node_name":"idea expander",
+"link_to":["flavor_network"],
+"attributes":["HCI"]
+},
+{
+"node_name":"crowdboard",
+"link_to":["conversation_clock","creative sense-making"],
+"attributes":["HCI"]
+},
+{
+"node_name":"creative sense-making",
+"link_to":["conversation_clock"],
+"attributes":["HCI"]
+},
+]}

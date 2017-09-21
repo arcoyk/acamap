@@ -1,0 +1,1073 @@
+Dynamo: A public interactive surface supporting the
+cooperative sharing and exchange of media
+Shahram Izadi1, Harry Brignull2, Tom Rodden1, Yvonne Rogers2, Mia Underwood2
+2
+
+1
+
+The Mixed Reality Lab
+University of Nottingham
+Nottingham, UK NG8 1BB
+{sxi, tar}@cs.nott.ac.uk
+
+The Interact Lab, COGS
+University of Sussex
+Sussex, UK
+{harrybr, yvonner, miau}@cogs.susx.ac.uk
+media. With digital media, there is no longer an emphasis
+on the shared surfaces within the space but rather a shift
+towards the more private display surfaces associated with
+the personal devices (such as laptops) brought to the space.
+When larger electronic surfaces (such as electronic
+whiteboards or PCs connected to projectors) are available
+they can only be used in restrictive ways that limit the
+sharing (for example, allowing only one person to take over
+the entire surface in order to present a prepared talk).
+Without shared surfaces, users regularly find that they can
+only share media by transferring it from one personal
+device to another (for example copying a file from one
+laptop to another), which can be awkward when sharing
+between large groups of people.
+
+ABSTRACT
+
+In this paper we propose a novel way of supporting
+occasional meetings that take place in unfamiliar public
+places, which promotes lightweight, visible and fluid
+collaboration. Our central idea is that the sharing and
+exchange of information occurs across public surfaces that
+users can easily access and interact with. To this end, we
+designed and implemented Dynamo, a communal multiuser interactive surface. The surface supports the
+cooperative sharing and exchange of a wide range of media
+that can be brought to the surface by users that are remote
+from their familiar organizational settings.
+Keywords
+
+Large interactive surfaces, multi-user interfaces, sharing,
+exchange, collaboration
+
+In this paper we propose a novel way of supporting
+occasional meetings that take place in unfamiliar public
+settings. Our central idea is that the sharing and exchange
+of digital information should occur across public
+interactive surfaces that all users have access to and can
+easily interact with. Our goal is to allow people meeting in
+public spaces to use these surfaces as an extension of their
+physical setting, where documents, video, images, and
+other digital information can be accessed, shared, viewed,
+annotated or copied in a seamless fashion.
+
+INTRODUCTION
+
+Occasional meetings, where colleagues and friends gather
+to undertake a process of catch-up, exchange and
+coordination, are a common part of many people’s lives.
+These meetings range from being ad-hoc in nature to those
+that underpin more structured longer-term cooperation. The
+importance of these meetings is reflected in the availability
+of meeting rooms at airports, common areas in public
+buildings and in the provision of meeting spaces at
+conferences and tradeshows.
+
+The deployment of these surfaces within public places
+requires us to reconsider the interactive facilities provided
+by large displays. Within these settings, users often seek to
+exploit the display in an ad-hoc (or opportunistic) manner,
+interactions may be highly transient or long-lived, and a
+wide range of activities will need to be supported (both
+concurrently and asynchronously). The display is no longer
+a single-purpose meeting tool (such as an interactive
+whiteboard or shared drawing/editing/writing application)
+but rather a communal surface used for different tasks by
+an open-ended community of users. This communal aspect
+suggests that the facilities provided for users to appropriate
+the surface and manage its shared use are as important as
+the mechanisms for sharing and exchanging the digital
+information itself.
+
+When people meet up in these public spaces they often
+carry a range of physical and digital information that they
+wish to share and exchange with others. There is a level of
+spontaneity and fluidity when we consider the sharing and
+exchange of physical media brought to these spaces. For
+example, users can display information using overhead
+projectors and flipcharts, place the physical media on tables
+for others to take, and use wall space to organize items. In
+essence, the communal physical surfaces (flipcharts, tables,
+boards, walls etc) within the space become the focal point
+in the sharing and exchange of the physical information.
+The highly familiar and lightweight experience afforded by
+physical media is somewhat in contrast to that of digital
+LEAVE BLANK THE LAST 2.5 cm (1”) OF THE LEFT
+COLUMN ON THE FIRST PAGE FOR THE
+Permission to make digital or hard copies of all or part of this work
+COPYRIGHT NOTICE.
+for personal or classroom use is granted without fee provided that
+copies are not SHOULD
+made or distributed
+profitPAGE!
+or commercial
+BE ON for
+FIRST
+advantage, and that copies bear this notice and the full citation on the
+first page. To copy otherwise, to republish, to post on servers or to
+redistribute to lists, requires prior specific permission and/or a fee.
+UIST ’03 Vancouver, BC, Canada
+© 2003 ACM 1-58113-636-6/03/0010 $5.00
+
+To explore these issues, we designed and implemented
+Dynamo a communal multi-user interactive surface. The
+surface supports the cooperative sharing and exchange of a
+wide range of media that can be brought to the surface by
+users outside from their familiar organizational settings.
+
+159
+
+The surface has been designed to promote lightweight,
+visible and fluid interactions that are readily understandable
+by users, based on familiar actions that are easy to
+accomplish and do not require technical expertise. In the
+rest of this paper, we describe the Dynamo system and
+outline the key interactive features that enable the shared
+surface to be communally available to peripatetic people,
+meeting in public places. We also present some findings
+from our initial evaluation of the Dynamo system used in
+two different settings.
+RELATED WORK
+
+Nowadays, many organizations are equipped with some
+kind of large display, be it interactive whiteboards,
+projection screens or plasma screens. This trend has led to
+the increased growth of large display systems that serve a
+range of purposes within organizational and more public
+settings. Below, we give a brief overview of the
+developments in this research area, classifying in terms of
+the types and functions of the displays that have evolved.
+The categories identified are not mutually exclusive and
+some of the display systems fall into several categories.
+Electronic whiteboards represent the starting point for
+much of the work on large displays. Systems such as Tivoli
+[19] provided an interactive display that supported freehand
+pen input, enabling a single user to draw on screen and
+share their drawings with others in a meeting. These
+systems initially mimicked many of the familiar features of
+existing whiteboards. More recent work on electronic
+whiteboards such as Flatland [16] has significantly
+enhanced their computational features.
+Community noticeboards take as their starting point the
+noticeboards and bulletin boards found in communal areas,
+halls and foyers of organizations rather than the
+whiteboards found in meeting rooms. Systems such as
+Plasma Poster [3] and Community Wall [7] allow people to
+post information onto a large display that is available to a
+community of users.
+With such systems material can often be posted to the
+display remotely, for example when users are at the
+desktop. Passers-by in the vicinity of the display are also
+provided with interaction capabilities enabling them to
+annotate and add material to the display.
+Shared awareness systems exploit large displays to make
+information conveying the activity of others available
+across a community of users. The Notification Collage [8]
+augments features associated with community noticeboards
+with an aggregated overview of the activities of a
+community of users. Kimura [12] makes a user’s current
+and past activities available to others. The system uses
+large peripheral displays to provide background awareness
+of activities that users have performed.
+Single display groupware was developed to support
+shoulder-to-shoulder collaboration on a large display with
+multiple input points. Such systems allow multiple users to
+simultaneously interact with shared applications. Early
+
+examples include Cognoter [6] and MMM [2]. More
+recently, the Pebbles system [15] has explored how PDAs
+can provide concurrent input to a shared display. Similarly,
+Kidpad [1] supports multi-mice input with a view to
+promoting collaboration within the classroom.
+Multi-screen systems extend the capabilities of large
+screens by considering how other displays can be
+incorporated into the set up. Speakeasy [17] and iRoom
+[10] provide users with interfaces to quickly discover,
+configure and connect up multiple networked displays
+(including large screens) for use in tandem. Researchers
+have also explored a range of techniques for moving
+information and control between multiple displays [11, 20].
+A considerable number of such systems have been
+developed in the context of purpose built environments that
+contain a number of embedded large displays.
+Situated displays are large screens that are built into an
+environment to support groups of users. The iRoom at
+Stanford [10] and iLand at GMD [24] are two
+environments that have a suite of touchscreen situated
+displays. A number of novel pen and gesture based
+techniques have been developed to interact with these
+displays [9, 24]. Researchers have also explored techniques
+for making these types of touchscreen displays support
+simultaneous input from multiple users [5, 13, 21].
+Other notable work includes research into augmented
+tabletop displays [22, 25], which seek to mix physical and
+virtual objects to support forms of tangible interaction.
+‘Walk up and use’ interactive boards explore how to
+design large displays that support lightweight walk up and
+use interactions. Examples include Blueboard [23], which
+allows identified users at the board to quickly display
+personal information (such as personal calendar and
+messages) held on the network, and share this with others
+via mediums such as email. These systems are often reliant
+on a network for access and transfer of information. They
+typically provide a single point of interaction either through
+a touch screen or a single pointing device.
+We wish to extend the existing work on large displays by
+considering them as public interactive surfaces. Existing
+research has shown that large electronic displays are
+integral in facilitating group collaboration in meeting
+rooms [10, 19, 24]. However, this research has primarily
+focused on formal and structured meetings held within
+private spaces inside organizations [10, 23, 24]. Public
+spaces such as conferences, airports, libraries and
+communal areas in buildings are becoming increasingly
+used for less formal (and sometimes completely
+impromptu) meetings. We seek to explore the interactive
+mechanisms that these surfaces will require and how these
+facilities can benefit users in more public settings.
+PUBLIC INTERACTIVE SURFACES
+
+Public spaces provide new challenges for supporting
+interaction with large displays. Within such spaces, any
+user can walk up and make opportunistic use of the display,
+
+160
+
+users may or may not know each other, and they may be
+working on different tasks simultaneously. Large displays
+need to be more general-purpose, supporting a wide range
+of activities (occurring concurrently or over a longer period
+of time). The inherent level of trust that exists in closed
+organizational spaces does not exist in public ones. In
+essence, the display is no longer a single-purpose meeting
+tool (such as an interactive whiteboard or shared
+drawing/editing/writing application) but rather a shared
+surface used for different tasks by an open-ended
+community of users.
+Much research on public displays has focused on
+information kiosks where users browse on-line information
+[4]. More recent work has explored novel interaction
+techniques to draw in and engage the public [14, 18]. We
+consider the development of public interactive surfaces that
+can be appropriated by groups of users for a period of time
+in a lightweight and flexible manner. These surfaces should
+be readily available and easily appropriated by users who
+are remote from familiar organizational settings.
+The need for these publicly accessible surfaces has been
+further highlighted by a number of researchers focusing on
+the development of small mobile devices such as the
+Personal Server [26]. These devices transport large
+amounts of state and connect to large displays for further
+interactive capabilities. Other more commercial devices
+that fall into a similar category include removable USB
+disks, MP3 players and digital cameras. These devices are
+small, lightweight, (increasingly cheaper to purchase and
+run) and can be easily connected to more powerful
+machines to rapidly exchange data. The emergence of such
+technologies has resulted in users carrying a large amount
+of digital media when they travel.
+We aim to provide interactive capabilities that are sensitive
+to the needs of this class of device, while also supporting
+more powerful devices such as laptops and PDAs. We are
+particularly interested in the scenarios where users may
+wish to share and exchange the media they are carrying on
+such devices. Our aim is to exploit the advantages provided
+by large screen systems in facilitating sharing between
+groups of users, while also exploiting the ubiquitous nature
+of these media storage devices.
+
+supporting impromptu meetings where the surface is
+exploited in an ad-hoc (or opportunistic) manner.
+-
+
+The surface offers a place of display and exchange
+that allows media to be left for a period of time and for
+users to exploit the surface as a place to coordinate the
+exchange of media with others.
+
+-
+
+Users of the surface are remote from their normal
+network infrastructures. The combined effect of
+corporate network infrastructures, firewalls and
+bandwidth issues may result in users being unable to
+remotely access their resources, and so we need to
+allow users to bring information to the surface rather
+than presume remote access. Broader network access
+becomes a useful facility for users rather than a
+prerequisite for interaction.
+
+Dynamo: A communal resource for public interaction
+
+The Dynamo system has been designed as a large publicly
+accessible interactive surface that allows people to gather
+around, share, display and exchange media with others. The
+interactive surface is composed of one or more displays
+that can be tiled both horizontally and vertically. Two
+common arrangements for the surface are shown in figure
+1. On the left a dual projected horizontally tiled
+arrangement is shown and on the right a vertically tiled
+wall and tabletop configuration.
+
+Figure 1. Two Dynamo surface arrangements
+Dynamo promotes shoulder-to-shoulder collaboration by
+allowing multiple users to interact simultaneously on the
+same surface. Users can attach multiple USB mice and
+keyboards to the surface and also connect remotely via
+laptops and desktops. Once connected, the Dynamo surface
+allows users to:
+
+Providing public interactive surfaces for users to achieve
+this form of sharing and exchange requires us to consider
+what interactive features are needed for such a surface. The
+main requirements are that:
+
+-
+
+Manage the surface as a communal resource by
+claiming areas of the surfaces for use.
+
+-
+
+Easily place information on the surface and take
+information from the surface.
+
+-
+
+-
+
+Display information for extended periods of time and
+leave items for others.
+
+-
+
+The surface is communal and available to an openended community of users. The surface needs to
+support multiple users (working concurrently and
+asynchronously) and provide facilities to manage its
+shared use.
+The surface offers lightweight and familiar
+interactions that do not detract from the spontaneity of
+the collaboration. This is particularly important in
+
+Each user interacts with the surface through an interaction
+point. An interaction point comprises of input devices
+capable of delivering mouse, text and media input to the
+system. Two broad forms of interaction points are
+provided:
+-
+
+161
+
+Base interaction points normally consist of a wireless
+keyboard, mouse and USB slots for attaching media
+
+Figure 2. The main Dynamo interaction surface with a selection of media, a public palette (located at the top of the display),
+personal palettes (located at bottom) and two carve regions
+sources such as removable USB disks, digital cameras,
+MP3 players and web cameras.
+-
+
+Mobile interaction points can allow laptops and PDAs
+to act as interaction points as each of these has the
+capabilities to provide mouse input (through stylus or
+touch pads) and text input (through soft or hard
+keyboards) and deliver media from their internal disks.
+
+The system is generally deployed with a number of base
+interaction points that can be extended as users attach new
+input devices or connect remotely to the surface.
+An example of a Dynamo surface is shown in Figure 2. The
+surface provides a multi cursor environment with each
+interaction point being represented by a color-coded
+telepointer. Users take control of these telepointers to
+interact with the surface. Associated with each telepointer
+is a personal palette (each marked using the same colorcoding as its related telepointer). A palette consists of a
+number of distinct items (represented by an icon to the
+user) that can act as media sources and media sinks. For
+example, the files on a removable USB disk would be
+represented as media sources. A media source can be
+dragged off the palette and displayed on the main surface.
+Similarly, the user can drop media onto a media sink icon
+within the palette for processing. For example, dropping a
+video clip onto the USB disk icon located upon the palette
+results in the media being copied onto the associated
+removable USB storage device.
+
+A public palette is also associated with the surface. This
+provides access to the key features of the system described
+in the next sections. This palette also provides access to
+publicly available devices (such as attached printers and
+webcams) that can be utilized through the surface.
+Palettes facilitate the flow of information to and from the
+surface. They form the main point for exchange and sharing
+of media at the surface. As such, they utilize familiar drag
+and drop metaphors to rapidly pull media up onto the
+surface and transfer media over to other endpoints (such as
+a connected device).
+The Dynamo system has been designed to work within
+public spaces where networking may be unavailable or
+limited. Therefore rather than relying on remote access to
+user configuration information, the system allows users to
+bring this information with them to the surface. This can be
+carried on small lightweight devices such as removable
+USB disks or on more powerful devices such as laptops.
+One typical example is for individuals to carry a profile on
+their USB disks, which identifies them and holds the
+various user-specific configurations such as name, email
+address, and on screen icon. Profiles are created and
+maintained either at the surface or (if a network is present)
+remotely via a web interface.
+Users are not required to identify themselves before using
+the system. Unidentified users are given a guest profile that
+provides access to public services and areas of the screen.
+
+162
+
+However, identification provides users with additional
+features of the system including the ability to manage the
+surface as a communal resource.
+Managing the surface as a communal resource
+
+The Dynamo surface provides interactive mechanisms to
+allow users to manage the shared use of the surface. It does
+this by allowing identified users to “carve off” part of the
+large public surface providing them with a workspace that
+they can use to arrange and share media and where they can
+manage access to the region. Users mark an area of the
+screen by holding down the mouse and dragging to indicate
+the extent of a workspace. On release, interaction with the
+marked portion of the overall surface is restricted to the
+creator of the carved off region. Figure 3 shows two carved
+regions on a portion of the surface. On the right we see a
+green telepointer passing through a carve region that it
+cannot interact with - this is indicated to the user by the
+semi-transparent circle surrounding the telepointer.
+
+the future. Archived regions are shown in an iconified form
+and may be moved off the surface or stored on the surface
+for use later. Once opened, the archived region restores all
+media contained within it and arranges them according to
+the previous spatial arrangement. This ability to persist an
+entire region with its associated media and access
+permissions allows structured longer-term collaboration to
+occur between users. For example, the outcomes of a
+monthly meeting could be stored in a carve region,
+archived on the surface and revisited or amended in future
+meetings.
+Bringing media to the surface and taking it away
+
+Users may bring media to the surface from a variety of
+sources using the interaction points offered by the Dynamo
+system. In the case of base interaction points users can
+exploit the USB connections available to access media on
+their personal devices. Users can drag this media onto the
+surface (through their associated palette) to interact with it
+or make it available to others.
+
+Figure 3. Two carved regions on the surface
+The creator of a carved region can invite others into the
+space by dragging a key icon (located at the top right hand
+corner of the region) onto the palette of the desired user.
+Access is indicated by displaying an icon associated with
+the user in the top left corner of the region. Region creators
+can drag these icons outside of the region to revoke access
+for the associated user. Figure 4 shows an example of
+controlling access to a carve region. Access may also be
+granted to users who are not currently available by leaving
+the key within a media parcel that can be opened at a later
+date. The notion of media parcels is described in detail later
+in this paper.
+
+Figure 5. Displaying and controlling a presentation
+The Dynamo surface allows a wide range of media to be
+displayed and exchanged, including web documents (such
+as HTML and PDF), MS Office documents (Word,
+PowerPoint and Excel), common image, video and audio
+formats, and streaming video and audio. Each of these files
+formats can be displayed and shared using the system. The
+system also provides simple control over each of these
+media formats once they are displayed (for example,
+controls to navigate forwards and backwards through a
+document or fill in a web form).
+
+Figure 4. Controlling access to carve regions
+Regions may be short lived for informal ad-hoc meetings or
+long lived, so that they can be archived and referred to in
+
+Figure 5 shows a PowerPoint presentation that has been
+dragged onto the surface from a personal USB disk. In this
+example, the surface allows users to view each slide and
+
+163
+
+navigate through the presentation. Each accessible media
+item on the surface can be downloaded and taken away by
+the user. In order to download a media item the user carries
+out a drag and drop action from the window displaying the
+media down to the device icon on the desired palette. For
+example, dragging the PowerPoint slides on display onto
+the USB icon (of a palette) will result in the slides being
+copied onto the associated USB disk. Users can also use
+this metaphor to give copies of their own media to others.
+Users can display and share media directly on the publicly
+accessible areas of the surface or inside carve regions that
+they have access to – once placed on screen, the media
+window inherits the access permissions associated with the
+region surrounding it. These alternative modes of display
+and sharing can be used interchangeably dependent upon
+the collaborative task at hand. For example, one scenario
+could be an impromptu meeting at the surface where users
+have not first registered with the system. In this case, the
+overhead of user registration can have an adverse effect on
+the spontaneity of the collaboration, and so users may
+choose to share the media directly on the publicly
+accessible areas of the surface rather than first carving a
+region. If this scenario did evolve into a more structured
+meeting (for example, if the participants agreed to return to
+the space at a later date and revisit the work) then they can
+register with the system, create a shared carved workspace,
+and move the media (and other outcomes of the meeting)
+over for archiving.
+Users can also transfer media to the surface through mobile
+interaction points. These interaction points allow more
+powerful devices such as laptops to connect to a shared
+Dynamo surface. Once connected, the surface is treated as
+a secondary peripheral display. This allows media to be
+dragged from the mobile device’s desktop onto the shared
+Dynamo surface (see figure 6). Similarly media may be
+dragged from the Dynamo surface onto the mobile display.
+This feature allows users to quickly download media items,
+such as word documents, from the surface for editing on a
+more personal device (using familiar desktop applications),
+which they can later transfer back over to the large surface
+for sharing.
+
+multiple media items. Parcels can be directed to one or
+more users of the system. This allows parcels to be posted
+up on the Dynamo surface and picked up and opened up in
+the future by recipients. Parcels provide a mechanism for
+asynchronous sharing of media rich information between
+users. After being created, a parcel can be sealed on the
+surface so that it is not publicly viewable. The user can
+specify different permissions for opening up and accessing
+the contents of a parcel. An example of a user opening a
+media parcel is shown in figure 7.
+In addition, to providing wrappers for a wide range of
+standard media, the Dynamo surface introduces a Note
+media type. A note is a simple XML based document
+containing an author, an optional title, and a message body.
+Notes can be edited (as well as viewed) on the surface.
+They provide a quick and easy way to allow users to
+annotate the media items on the surface. Users can also
+choose to reply to notes that are on surface. This allows for
+simple messaging between users of the surface, in a similar
+way to a notice board. Figure 8 shows a number of notes
+and parcels left on a Dynamo surface.
+
+Figure 7. Opening a media parcel for a user called Mia
+(left); a sealed parcel for a user called Bob (right)
+Users wishing to open a parcel need to identify themselves
+to the system before the information is displayed to them.
+In the case of users who access the surface through the base
+interaction points, the contents of the parcel are displayed
+on the screen. If users have access through a mobile
+interaction point, then the parcel can also be opened up on
+the display associated with the mobile device.
+
+Figure 6 Moving media between a laptop and the surface
+Leaving things for others
+
+The Dynamo system also allows media to be packaged up
+into media parcels that can be left for others. Media parcels
+can be thought of as containers that can encapsulate
+
+Figure 8. Notes and packages left on the surface
+This section has described some of the main features of the
+Dynamo system. In the next section, we describe the
+
+164
+
+underpinning system architecture
+implementation strategies.
+
+and
+
+discuss
+
+our
+
+The supporting architecture
+
+The overall system architecture is shown in figure 9. The
+main functionality for the Dynamo System is made
+available through a number of managers. The Input
+manager captures local mouse and keyboard data and also
+receives input data relayed over the network. The
+Telepointer manager controls creating, destroying and
+moving telepointers. The Window manager takes care of
+creating the various window types on screen and destroying
+and freeing resources associated with these windows. It
+also maintains windows information such as Z-ordering
+and ownership. The Palette manager handles the creation
+and placement of system palettes. It allows new userspecific personal palettes to be created, and allows existing
+palettes to be populated with data.
+
+Figure 9. The overall system architecture
+Finally, a Service manager locates new services that can be
+utilized by the system. The term service is used to describe
+a software component that can deliver media to the system,
+receive media from the system or both. Examples include
+wrappers for hardware devices such as web cams or
+printers, as well as, files on a file system such as those
+found on a USB disk. In the current implementation the
+Service manager listens for notifications when local
+devices are connected to the surface, which are in turn
+relayed to the main Dynamo application. Our plan is to
+extend this model in the future so that networked services
+can also be located and utilized by the system.
+At the heart of the system lies the Display Server. The
+server acts as the main point of the control within the
+system. Its main job is to receive incoming data from the
+input clients and services (via the respective managers),
+process this data and render the output on screen.
+The majority of the Dynamo system has been written in
+Java and C++. The core rendering and Input APIs have
+been written in C++ for win32 platforms. We use
+Microsoft’s drawing library GDI+ for rendering, the Raw
+Input API (Windows XP only) for local multiple mouse
+and keyboard capture, DirectShow for audio and video
+rendering. Viewing of MS Office, Web, and PDF content is
+
+supported through ActiveX, OLE and COM technologies.
+For performance reasons, network communication is
+handled through raw TCP and UDP connections.
+INFORMING THE DESIGN OF DYNAMO
+
+The Dynamo system has been developed in a highly
+iterative manner with a series of ongoing evaluation
+sessions informing system development. During each of
+these sessions intermediate versions of the system were
+exposed to users as a means of checking emergent features
+and in outlining new facilities. The previous sections
+described the current features of the Dynamo system. In
+this section we wish to provide a very brief overview of the
+studies that shaped these features and also discuss some
+initial results from our recent assessments of these
+facilities.
+Our initial formative evaluations focused on the placement
+of the surface in public spaces. In one instance, people
+congregating at a workshop held in a hotel were asked to
+use the system and provide feedback on its functionality. In
+particular, we were interested in how they took to the novel
+interaction techniques for sharing information across the
+public surface. These initial studies were significant in
+forming many of the mechanisms presented in this paper.
+Our ongoing studies look more specifically at how the
+developed features may be used in practice. The study
+illustrated here focuses on the cooperative activities that
+enable the group to share, exchange and build information
+together using the surface. For this study, small groups of
+participants brought information to the public surface and
+worked together to create a poster assembled from a range
+of sources.
+Obviously, space restrictions in this paper mean that we
+have to be illustrative rather than exhaustive in describing
+these studies. We therefore focus on the emergence of the
+carving and access control features associated with
+managing the surface as a communal resource.
+Study 1: Public Feedback
+
+This initial study sought to collect feedback from a group
+of people from different locations attending a workshop
+held at hotel conference center. The setting was akin to an
+ad-hoc meeting, where small groups might get together to
+share ideas. About 65 people were at the meeting. The
+Dynamo system was placed in the foyer, which was used
+for group breakouts and coffee breaks. We were interested
+in finding out what passers-by’s perceptions were of the
+system; whether they found it easy to understand and use,
+and whether the physical configuration could support adhoc collaborative activities involving showing media to
+each other, and exchanging information.
+The system was configured using a single SXGA projector
+providing a vertical public surface (approx 2.5m wide by
+2m tall, positioned approx 1 meter above ground), with two
+interaction points supporting wireless keyboards, mice, and
+slots for USB disks. Laptops providing a mobile interaction
+point were placed on a couple of tables. Helpers were on
+
+165
+
+hand to give instructions and explain how the system
+worked.
+The study was based on an early version of the system. The
+surface did not support an access control model, and users
+were free to carry out any interactions. The metaphor of
+carving was also used differently. Users would first need to
+carve an area of the surface and then display media within
+this area. In the next sections, we describe the key findings
+associated with carving and access control, and discuss
+how these initial metaphors were evolved to provide an
+effective means of managing the communal surface.
+Findings
+
+In total, 40 of the 65 delegates showed an interest in the
+system, of which about 30 interacted with it, some as
+individuals and others as small groups. The others watched
+on. Participants were observed interacting with the system,
+and then interviewed afterwards.
+• Carve and drag interaction needs explicit instruction
+When initially using the Dynamo surface, most of the
+participants clicked and double clicked on the icons in the
+palettes to try and activate them. This is a well-known user
+interface technique, thus for them to interact with the
+surface required us to explain and demonstrate the carve
+and drag concepts. When the reason for placing media onto
+the surface in this manner was explained it was readily
+understood. After a short while all the participants were
+able to master the new interaction technique.
+• Simultaneous interaction and the problem of overlap
+Participants all considered the ability to simultaneously
+interact on the public surface as being beneficial for
+collaboration. For example, one participant said “it’s much
+more sociable than using laptops around a table”. Another
+said“... you can just give something to someone by just
+dragging”. However, others voiced concerns that the
+freedom for any user to manipulate any window could
+invite malpractice, like stealing copies of other people’s
+work without their permission, or closing their windows.
+
+groupware systems. We could implement a strict policy of
+control for the surface (possibly reducing the level of
+sharing and exchange) or, we could let the users decide
+their own social protocols for how to coordinate with one
+another. We did not see these options as the antithesis of
+each other. Rather, the issue for us was seeking a midway
+point between removing overlaps entirely and providing the
+flexibility needed for fluid coordination. The aim is not to
+provide a mechanism that restricts interaction but rather
+one that reduces overlaps to a manageable level and allows
+social protocols to be used between people (known to each
+other) to coordinate the sharing.
+This lead us to develop our hybrid approach whereby users
+may mark areas of the surface as regions and then open
+these to others. Within regions overlaps may still occur but
+they do so at a more manageable level that can be mitigated
+by the surrounding coordination activities. The following
+study illustrates some of the social protocols that emerged
+within the groups, enabling them to work out for
+themselves how to share media within regions and handle
+these overlaps.
+Study 2: Group working using the surface
+
+A collaborative task was designed requiring shared usage
+of the surface. The task was open-ended, requiring group
+discussion. It involved creating an interactive poster on the
+Dynamo surface, by browsing and choosing media from a
+mixed selection of sources, which included USB disks and
+web sites. Three groups of four people were asked to select
+and spatially arrange the content from USB disks (slides,
+documents, images, and video) on the Dynamo surface to
+create a poster, with the option of creating text in notes and
+displaying web pages if they wished. The surface set up
+included two interaction points supporting wireless
+keyboards, mice, and slots for USB disks. A laptop
+providing a mobile interaction point was also available to
+the group. Two tables arranged in a wide ‘V’ shape in front
+of the surface were provided with chairs to sit on. This was
+to allow users to both easily look at each other and at the
+surface (see figure 10).
+
+Refining carving and access control
+
+This initial study suggested that a communal surface to
+support the display and transfer of different media enabled
+information to be readily shared and exchanged. Different
+media (for example, video, images, web pages, PowerPoint
+slideshows) were rapidly selected from an individual’s
+palette and placed on the Dynamo surface. Once opened the
+media was then available to be moved, controlled and
+copied to others.
+However, this first study also showed providing a
+completely free-for-all surface can have its downside. In
+particular, users can metaphorically tread on each other’s
+toes, by intruding or taking over someone’s use of the
+space – especially when there is a multitude of concurrent
+activity on the surface.
+This problem of overlaps, where one user’s interactions
+interferes with another’s, is a common problem in most
+
+Figure 10. A photo of the set-up used for second study
+(taken from above the Dynamo surface)
+
+166
+
+As with the earlier evaluation, the participants had little
+problem learning the new interaction techniques, and
+readily understood the need to carve spaces and drag media
+from the palettes in order to be able to share them.
+
+for one of the users to propose a plan of action, which the
+others followed by creating various carve regions, placing
+media into them and positioning and resizing the items
+appropriately. For example:
+
+Over a period of time the groups developed their own
+social protocol of how to collaborate and coordinate their
+activities on the Dynamo surface. To begin, many
+participants had difficulties in knowing what the etiquette
+was of using the public surface. Most members of the
+group were very polite and asked out loud to the others in
+the group before they opened any media on the surface.
+Only one person went ahead and populated the surface with
+their media, without taking into account what the others
+were doing or wanted to do.
+
+J: I would like that, that box just to be the size of the
+picture, and then have that in the center, and then have
+all the things on the periphery.
+
+After a short while, the users began to look at the materials
+they were given. They did this by sifting through them and
+then selecting those they wanted to use in the poster. The
+surface provided a resource for organizing media across the
+group. Typically, the materials were organized on the
+surface in roughly ordered lists (ranging from ‘definitely
+keep’ to ‘maybe’). Illustrated by the following excerpt:
+M carves a region and opens a history.doc
+C: One for the parents there
+R: yes... might be interesting for some people
+C: Stick it down in the bottom corner somewhere
+R: Yeah.
+As the group members began to create the poster they often
+helped each other out by speaking aloud. For example:
+L: Can anybody move this one? (has trouble grabbing
+title bar) I’m trying to get the old lady to the front.
+(takes hand off mouse momentarily)
+P grabs an occluding window and moves it out of the
+way
+R then grabs another occluding window and moves it
+out of the way leaving L with space on the surface.
+Other times they would ask each other to carve spaces to
+put media in:
+R: Can someone else carve me a space and I’ll put
+something in it
+M very quickly carves a space: there’s a space
+C: I’ll carve you the space and you can come and drop
+it in
+However, there were also times when users in the same
+carved region unwittingly got in each other’s way:
+J makes some space for his new window by closing one
+in its way.
+R: Oh, you closed my Events!
+J: Oh Sorry, Did I?
+R: That was mine that was!
+J: Oops! I do beg your pardon!
+Towards the end of the task, the various group members
+started to arrange the different shaped and sized media on
+the surface to construct the poster. A common strategy was
+
+R resizes a window to be smaller and positions it on the
+periphery of the region, and then does the same with
+another
+A also resizes a window small, and drags it next to Rs
+Much coordination between the group members when
+working together was evident. At certain times, overlaps
+would occur but these were less frequent and therefore
+more manageable than the first study. When overlaps did
+occur people would often speak aloud to make others aware
+of the overlap or to apologize for their own actions. In
+general, we found that these social protocols were
+established quickly and allowed issues associated with
+overlaps to be resolved easily.
+CONCLUSIONS AND FUTURE WORK
+
+In this paper we presented the development and design of a
+multi-user public interactive surface. The Dynamo system
+exploits one or more large screens to allow a number of
+users to simultaneously interact. The surface is designed for
+the sharing and exchange of media carried by users on
+mobile devices. To support this we have developed a
+number of key interaction mechanisms:
+•
+
+Carve regions allow users to appropriate portions of
+the surface and manage it as a communal resource.
+
+•
+
+Interaction points and palettes are provided to allow
+users to easily transfer media to and from the surface.
+
+•
+
+Media parcels and notes allow users to leave media on
+the display for extended periods of time, annotate
+media, and collaborate asynchronously with others.
+
+These features have evolved from and been informed by a
+number of user studies – some of which have been
+described in this paper.
+Our work is ongoing and we are currently looking at
+different ways of extending the Dynamo system to support
+other kinds of collaborative activities, especially those that
+happen away from the surface. One such feature is the
+provision for users to take copies of the media on the
+surface, disconnect from the system for a period of time
+and then reconnect to the surface remotely to maintain
+updates. We are also exploring mechanisms to allow
+remote Dynamo surfaces to be linked together, allowing
+carved regions on one Dynamo surface to be made
+remotely available to others. Our aim is to provide remote
+and co-located workspaces that support fluid access and
+sharing of information.
+As in the case of the development of our current set of
+facilities, these new features will have a significant impact
+
+167
+
+on the way people collaborate. In particular, we are
+interested in the ways in which remote users (who are not
+shoulder with those at the Dynamo surface) will view their
+interactions, and share and exchange media with the remote
+group.
+REFERENCES
+
+1.
+
+2.
+
+Benford, S., et al. Designing Storytelling Technologies
+to Encourage Collaboration Between Young Children.
+In Proc. of Human Factors in Computing Systems
+(CHI 2000). ACM Press. 2000: p. 556-564.
+Bier, E.A., Freeman, S. MMM: a user interface
+architecture for shared editors on a single screen. In
+Proc. User Interface Software and Technology
+(UIST’91). ACM Press. 1991: p. 79-86.
+
+3.
+
+Churchill, E.F., Nelson, L., Denoue, L. Supporting
+Informal Communication across Local and Distributed
+Communities. Workshop on Public, Community and
+Situated Displays at CSCW 2002.
+
+4.
+
+Christian, A.D., Brian L.A. Digital Smart Kiosk
+project. In Proc. of Human Factors in Computing
+Systems (CHI’98). ACM Press. 1998: p. 155-162.
+
+5.
+
+Dietz, P., Leigh, D. DiamondTouch: A Multi-user
+Touch Technology. In Proc. User Interface Software
+and Technology (UIST’01). 2001: p. 219-226.
+
+6.
+
+Foster, G., Stefik, M. Cognoter, Theory and practice of
+a Colab-orative tool. In Proc. of the Conference on
+Computer-Supported Cooperative Work (CSCW’86).
+ACM Press. 1986: p. 7-15.
+
+7.
+
+8.
+
+9.
+
+Grasso,
+A.,
+Roulland,
+F.,
+Snowdow,
+D.,
+Muehlenbrock, M. Designing Digital Bulletin Boards
+for Social Networking. Workshop on Public,
+Community and Situated Displays at CSCW 2002.
+Greenberg, S, Rounding, M. The Notification Collage:
+Posting Information to Public and Personal Displays.
+in CHI Letters. ACM Press. 3(1): p. 515-521.
+Guimbretire, F. Stone, M., Winograd, T. Fluid
+Interaction with High-resolution Wall-size Displays. In
+Proc. User Interface Software and Technology (UIST
+2001). ACM Press. 2001: p. 21-30.
+
+10. Johanson, B., Fox, A., Winograd, T. The Interactive
+Workspaces Project: Experiences with Ubiquitous
+Computing Rooms. IEEE Pervasive Computing
+Magazine. 1(2). 2002.
+11. Johanson, B., Hutchins, G., Winograd, T., Stone, M.
+PointRight: Experience with Flexible Input Redirection
+in Interactive Workspaces. In Proc. User Interface
+Software and Technology (UIST02). ACM Press. 2002.
+12. MacIntyre, B., et al., Support for multitasking and
+background awareness using interactive peripheral
+displays. In Proc. User Interface Software and
+Technology (UIST 2001). ACM Press. 2001: p. 41-50.
+13. Matsushita, N., Rekimoto, J. HoloWall: Designing a
+Finger, Hand, Body, and Object Sensitive Wall. In
+
+Proc. User Interface Software and Technology (UIST
+1997). ACM Press. 1997.
+14. Minneman, S. Sunset Boulevard. Visual Proceedings:
+SIGGRAPH '97: p. 102.
+15. Myers, B.A., Stiel, H., Gargiulo, R. Collaboration
+Using Multiple PDAs Connected to a PC. in Proc. on
+Computer-Supported Cooperative Work (CSCW’98).
+ACM Press. 1998: p. 285-294.
+16. Mynatt, E., Igarashi, T., Edwards, W.K., LaMarca, A.
+Flatland: New Dimensions in Office Whiteboards. In
+Proc. of Human Factors in Computing Systems
+(CHI’97). ACM Press. 1997: p. 346-353.
+17. Newman, M. W., Izadi, S., Edwards, W. K., Sedivy, J.
+Z., Smith., T. F. Users Interfaces Where and When
+They Are Needed: An Infrastructure for Recombinant
+Computing, In Proc. User Interface Software and
+Technology (UIST 2002). ACM Press. 2002.
+18. Paradiso, J, Leo, C K, Checka, N, Hsiao, K. Passive
+Acoustic Knock Tracking for Interactive Windows. In
+Proc. of Human Factors in Computing Systems. ACM
+Press. Ext. Abstracts: p. 732-733
+19. Pedersen, E., McCall, K., Moran, T., Halasz F. Tivoli:
+an electronic whiteboard for informal workgroup
+meetings. In Proc. Human Factors in Computing
+Systems (CHI). ACM Press. 1993: p. 391-398.
+20. Rekimoto, J. Pick-and-Drop: A Direct Manipulation
+Technique for Multiple Computer Environments. In
+Proc. User Interface Software and Technology (UIST
+2001). ACM Press. 1997: p. 31-39.
+21. Rekimoto, J., SmartSkin: An Infrastructure for
+Freehand Manipulation on Interactive Surfaces In
+Proc. Human Factors in Computing Systems (CHI).
+ACM Press. 2002.
+22. Rekimoto, J., Saitoh, M. Augmented Surfaces: A
+Spatially Continuous Workspace for Hybrid
+Computing Environments, In Proc. Human Factors in
+Computing Systems (CHI). ACM Press. 1999.
+23. Russell, D. Large interactive public displays: Use
+patterns, support patterns, community patterns
+Workshop on Public, Community and Situated
+Displays at CSCW 2002
+24. Streitz, N.A., et al. i-LAND: An interactive Landscape
+for Creativity and Innovation. In Proc. Human Factors
+in Computing Systems (CHI '99). ACM Press. 1999: p.
+120-127.
+25. Ullmer, B., Ishii, H. The metaDESK: Models and
+Prototypes for Tangible User Interfaces. In Proc. User
+Interface Software Technology (UIST '97). ACM
+Press. 1997: p. 223-232.
+26. Want, R., et al. The Personal Server: changing the way
+we think about ubiquitous computing. In Proc. of
+Ubicomp 2002. Springer. 2002: p194-209.
+
+168
+
+
