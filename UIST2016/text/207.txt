@@ -1,0 +1,217 @@
+Peripersonal Space in Virtual Reality: Navigating 3D Space
+with Different Perspectives
+Jooyeon Lee, Manri Cheon, Seong-Eun Moon, Jong-Seok Lee
+School of Integrated Technology & Yonsei Institute of Convergence Technology
+Yonsei University, Korea
+{jooyeonlee, manri.cheon, se.moon, jong-seok.lee}@yonsei.ac.kr
+ABSTRACT  
+
+We introduce the concept of “peripersonal space” of an
+avatar in 3D virtual reality and discuss how it plays an
+important role on 3D navigation with different perspectives.
+By analyzing the eye-gaze data of avatar-based navigation
+with first-person perspective and third-person perspective,
+we examine the effects of an avatar’s peripersonal space on
+the users’ perceptual scopes within 3D virtual
+environments. We propose that manipulating peripersonal
+space of an avatar with various perspectives has the
+immediate effects on the users’ scopes of perception as well
+as the patterns of attentional capture. This study provides a
+helpful guideline for designing more effective navigation
+system with an avatar in 3D virtual environment.
+
+Figure 1. Peripersonal Space of an Avatar.
+decision-making process [6]. This may cause unfortunate
+results when people need to make quick decisions or take
+necessary actions according to the information given in the
+3D virtual environments. Therefore, it is crucial to develop
+a system or tool that ameliorates information overload when
+working with 3D user interface.
+
+Author  Keywords  
+
+Navigation; Virtual Space; Peripersonal Space; Perspective;
+Human Perception and Cognition; Eye-tracking; Gaze
+Analysis.
+
+To reduce information overload, we should (1) develop an
+effective navigation system well-suited for a specific task in
+3D space and (2) design an efficient 3D environment which
+keeps the balance between the amount of information
+presented and the level of cognitive capacity of the users.
+Since the sense of place with spatial contextual cues
+provide the most powerful mental guideline for the users to
+comprehend the 3D environment from the vantage point,
+there has been much research on the role of spatial
+characteristics such as routes, landmarks, and maps in
+navigation to support users’ cognitive process in 3D
+environments [5]. However, the role of an avatar in the
+context of cognitive aid is unexplored, considered as a
+supplementary option.
+
+ACM  Classification  Keywords  
+
+H.1.2. User/Machine Systems: Human Factors; H.5.1
+Multimedia Information Systems: Artificial, Augmented,
+and Virtual Realities
+INTRODUCTION  
+
+With the emergence of virtual reality, there have been
+numerous 3D applications developed from games to driving
+simulators. 3D user interface enables us to inspect dynamic
+and complex information in depth, helping us understand
+complicated relations which 2D user interface cannot
+illustrate. However, the richer contexts and elements in 3D
+virtual space often make people feel overwhelmed with the
+excessive amount of information presented in higher
+dimension [2]. This phenomenon, called information
+overload, overburdens their cognitive systems and worsens
+the task performance by hindering information retrieval and
+
+GAZE  ANALYSIS  ON  AVATAR-­BASED  NAVIGATION  
+
+In our previous gaze-analysis study [4], we prepared eight
+sequences of video clips to study what effects on the visual
+perception are caused by the avatar in various perspectives.
+We collected eye-gaze data from five volunteers with
+normal visual acuity (two males and three females; age=2024 years; M=21.5 years; SD=1.48). The eight sequences
+shown to the subjects were: (a) a first person perspective
+(1PP) sequence with no avatar on a road, (b) a third person
+perspective (3PP) sequence with a car closer to the
+viewpoint of the subjects, (c) a 3PP sequence with a car
+farther from the viewpoint of the subjects, (d) a 1PP
+sequence with no avatar in an art gallery, (e) a 1PP
+sequence with a tool (gun) as the extended part of subjects’
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author. Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984772
+
+207
+
+virtual arms, (f) a 3PP sequence with a human avatar, (g) a
+3PP sequence with a robot avatar closer to the viewpoint of
+the subjects, and lastly (h) a 3PP sequence with a robot
+avatar farther from the viewpoint of the subjects. Heat maps
+and gaze plots were obtained for each sequence with the
+eye-tracking data, compared with each sequence’s overall
+frequency of ranges of saccades and fixation for all of the
+subjects.
+
+CONCLUSION  AND  FUTURE  WORK  
+
+In this experiment, we observed the changes in the scope of
+visual perception in 3D navigation with respect to the
+perspectives and peripheral spaces, or namely peripersonal
+space [3], of the avatars. If a sequence had 1PP, where the
+users navigated without an avatar, the scope of visual
+perception were relatively large; the gaze plots were
+dispersed and displayed the arbitrary saccadic movements
+that seemed to scan the whole 3D environment. If a
+sequence had 3PP, however, the scopes of visual perception
+were relatively small, concentrated to both on the avatars’
+position and the peripheral space.
+
+In this paper we proposed that the different perspectives
+and peripersonal spaces of avatars help users to adjust their
+scopes of the visual perception within 3D environments.
+Thus, it would be possible to effectively manipulate the
+perceptual scope of users by adjusting the presence and
+locations of avatars in 3D virtual space. This can be useful
+in designing 3D virtual space with particular purposes in
+applications such as a situation where users search for the
+nearest target from an avatar or work on a certain task with
+distractions from the background. For instance, when it is
+required to narrow the perceptual area to unburden users’
+cognitive load, it would be helpful to use 3PP with an
+avatar. And if it is required to navigate the environment
+without constraint, it would be better to use 1PP, though the
+scope of the perceptual area can be limited by using a
+pointing device (gun in our case) in 1PP as well. In our
+future study we will develop a personalized user interface
+system that helps adjust and predict the users’ attention
+scopes in virtual space for educational purpose.
+
+PERIPERSONAL  SPACE  AS  A  CONTEXTUAL  CUE  
+
+ACKNOWLEDGMENTS  
+
+There are two types of mechanisms involved in controlling
+the scope of visual perception: bottom-up process is driven
+by the perceived stimuli and top-down process is caused by
+the demands of attention [6]. Feedbacks from the two
+mechanisms are used to determine where to give more
+attention selectively, in order to economically utilize the
+limited cognitive ability. Although salient features often
+capture attentions (bottom-up process), people are prone to
+focus more on the task-relevant features (top-down process)
+to increase computational advantages [7]. The contextual
+cues from the components of 3D virtual environments such
+as spaces, objects, and events give hints about where those
+task-relevant features may be and help the users narrow
+down the scope of visual perception within perceptually
+manageable area [1].
+
+This research was supported by the MSIP (Ministry of
+Science, ICT and Future Planning), Korea, under the “IT
+Consilience Creative Program” (IITP-2015-R0346-151008) supervised by the IITP (Institute for Information &
+Communications Technology Promotion).
+REFERENCES  
+
+1.   Marvin M. Chun. 2000. Contextual cueing of visual
+attention. Trends in Cognitive Sciences 4, 5: 170–178.
+2.   Andy Cockburn and Bruce Mckenzie. 2002. Evaluating
+the effectiveness of spatial memory in 2D and 3D
+physical and virtual environments. In Proceedings of the
+SIGCHI Conference on Human Factors in Computing
+Systems (CHI '02).
+3.   Elisabetta Làdavas. 2002. Functional and dynamic
+properties of visual peripersonal space. Trends in
+Cognitive Sciences 6, 1: 17–22.
+
+In the 3D navigation experiment, the avatars seemed to
+works as contextual cues as well. As the avatars somehow
+displayed strong visual saliencies, the avatars themselves
+attracted the subjects’ attentions at first, but once the
+subjects became familiar to the presence of the avatars,
+subjects seemed to use the avatars as contextual cues. Using
+the position of the avatars as a frame of reference, the
+subjects navigated the virtual environments focusing on the
+avatars’ peripersonal spaces where the interaction between
+the avatars and the environments are possible. On the other
+hand, subjects tended to ignore the visual stimuli outside of
+the avatars’ peripersonal spaces in which the avatars cannot
+interact, thereby irrelevant informational space. In case of
+1PP with extended part of the avatar or tool shown, gaze
+points displayed capricious saccadic movements similar to
+the saccades of 1PP with some constraint. However, the
+extended part of the avatar in 1PP rather worked as a visual
+barrier or a contextual cue that limited the subjects’ scope
+of visual perception and redirected the subjects’ attention to
+the peripheral space of the extended part.
+
+4.   Jooyeon Lee, Manri Cheon, Seong-Eun Moon, and
+Jong-Seok Lee. 2015. Gaze analysis of avatar-based
+navigation with different perspectives in 3D virtual
+space. In Proceedings of the 3rd International
+Conference on Human-Agent Interaction (HAI ‘15),
+223-226.
+5.   Avi Parush and Dafna Berman. 2004. Navigation and
+orientation in 3D user interfaces: the impact of
+navigation aids and landmarks. International Journal of
+Human-Computer Studies 61, 3: 375–395.
+6.   Claudia Roda. 2011. Human Attention in Digital
+Environments, Cambridge University Press, Cambridge,
+UK.
+7.   Daniel J. Simons. 2000. Attentional capture and
+inattentional blindness. Trends in Cognitive Sciences 4,
+4: 147–155.
+
+208
+
+

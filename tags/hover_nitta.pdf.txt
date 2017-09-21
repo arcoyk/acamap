@@ -1,0 +1,431 @@
+HoverBall: Augmented Sports with a Flying Ball
+Kei Nitta
+The University of Tokyo
+keinitta74@gmail.com
+
+Keita Higuchi
+The University of Tokyo
+The Japan Society for the
+Promotion of Science
+khiguchi@acm.org
+
+Jun Rekimoto
+The University of Tokyo
+Sony Computer Science
+Laboratory
+rekimoto@acm.org
+
+ABSTRACT
+
+Balls are the most popular equipment for sports. To play
+with balls, certain physical methods, or “vocabularies,”
+such as throwing, hitting, spinning, or kicking have been
+developed by reflecting the fact that balls obey physical
+dynamics. This feature forms the foundation of ball-based
+sports; however, we consider that it limits the possibility of
+such sports. For instance, the speed of balls could be
+considerably fast for small children, senior people, or
+people with physical disabilities. In this paper, we propose
+a flying ball based on quadcopter technology. This ball has
+the ability hover and to change its location and behavior
+based on the context of the sport or game. With this
+technology, the physical dynamics of a ball can be reprogrammed by sports designers, and new ball-playing
+vocabularies, such as hovering, anti-gravity, proximity, or
+remote manipulation, can be introduced to extend the
+method in which people interact with balls. In this paper,
+we introduce this concept as a method of augmenting sports,
+and present our initial flying ball system that consists of a
+grid shell that comprises a micro quadcopter, and
+demonstrates new sports interactions with the ball.
+Author Keywords
+
+Augmented Sports; Interaction device; Ball; Unmanned
+Aerial Vehicle
+ACM Classification Keywords
+
+H.5.2. Information interfaces and presentation: User
+Interfaces: Interaction styles.
+INTRODUCTION
+
+Information technology and electronics are used in the field
+of sports, such as instant replay and electronic referee.
+Conventionally, there has been much effort to introduce
+technology to sports watching, training, and judging
+(refereeing), but not to sports themselves From late 1990s,
+some researchers have proposed extended sports by
+augmenting field and sports equipment using information
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for
+components of this work owned by others than ACM must be honored.
+Abstracting with credit is permitted. To copy otherwise, or republish, to
+post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from Permissions@acm.org.
+AH '14, March 07 - 09 2014, Kobe, Japan
+Copyright 2014 ACM 978-1-4503-2761-9/14/03…$15.00.
+http://dx.doi.org/10.1145/2582051.2582064
+
+Figure 1: Playing with a HoverBall
+technologies and electronic devices [6]. The augmentation
+of sports is intended to intervene actively in the game itself
+using information technology and electronics, with the goal
+of contributing to the realization of a new method of
+enjoying sports. For example, in table tennis, adding visual
+images and sound effects when the ball bounces on the
+table has allowed for the realization of highly entertainment
+games. In our research, we call these sports “augmented
+sports.” For types of sports that use digital technology,
+electronic sports (e-sports) in video games are already
+known. In some games, such as action games, the ability to
+manipulate precise reflexes and high quality physical
+abilities similar to that of the sport is required during play.
+On the other hand, augmented sports are an extension to the
+base of conventional sports.
+In the field of augmented sports, there are many studies that
+have focused on the advancement of the ball. Balls are the
+most widespread sports equipment and are also used in
+many entertainment activities, such as juggling. With
+technological improvements in the digital field, many
+studies have been conducted to enhance balls. For instance,
+balls with visual effects [7] and acoustic effects [6] have
+been developed. In addition, a ball with multiple cameras
+was developed for capturing sports scenes from the
+viewpoint of the ball [10]. However, these balls still obey
+physical dynamics, and the actual behavior of the balls
+remains unchanged. For instance, a part of the body must
+remain in contact with a ball in order to control it, and it is
+not possible for players to interfere in the motion when they
+move their hands away. Therefore, non-skilled players
+frequently have difficulty controlling the ball accurately.
+Moreover, it is difficult to institute a handicap to adjust the
+game balance when a match is performed between nonskilled and skilled players.
+
+To address these problems, we propose a new ball device
+with flying ability based on quadcopter technology. This
+ball can hover and stay in the air, change its location, and
+change its trajectory and behavior during play. We consider
+that these features can be used to extend the possibility of
+ball games. Mueller et al. indicated that the framework of
+sports can be divided into a “four lens view” [8], where the
+four lenses are The Responding Body, The Moving Body,
+The Sensing Body, and The Relating Body. The
+Responding Body is a view of the body’s internal state
+changes, such as heart rate. The Moving Body focuses on
+the players’ muscular repositioning of body parts. The
+Sensing Body is how the body senses and experiences the
+world. Finally, The Relating Body encompasses the ways in
+which bodies and people relate to one another for social
+facilitation. In this framework, our research changes The
+Sensing Body to The Affecting Body by adding technology
+to a ball (Figure 2). Traditional ball games have been
+developed based on the fact that the ball obeys physical
+dynamics, and have used interaction methods (or interaction
+“vocabularies”) such as throwing, hitting, or kicking. In
+contrast, sports games with our ball might not be restricted
+to physical dynamics, and can introduce other types of
+interaction vocabularies, such as hovering, proximity, weak
+or anti-gravity, and (remote) pushing or towing.
+The Relating Body
+The Sensing Body
+The Affecting Body
+The Moving Body
+The Responding Body
+
+Figure 2: Four-lens view of sports
+As a result, we expect that we could design new types of
+sports where non-expert or physically disabled players can
+interact with balls. We might also be able to realize new
+types of competitions where novice and expert players can
+compete seriously, because the ball behavior compensates
+the difference in abilities.
+A BALL WITH FLYING ABILITY
+
+There are many types of sports in the world. Among them,
+there are many sports that use the ball in particular and are
+enjoyed by a large number of people. However, there are
+several problems with such sports, as follows:
+•
+
+It is difficult to establish an even game among players
+with vast differences in skill.
+
+•
+
+The cost for learning to control a ball precisely is high.
+
+To solve these problems, HoverBall extends the area where
+players can interfere with the trajectory and speed. The
+trajectories of conventional balls are determined by
+aerodynamics and gravity. By providing autonomous
+
+mobility to the ball itself, it is possible to program and add
+new artificial physical laws; we refer to such laws as
+“imaginary dynamics.” Augugliaro et al. indicated that
+admittance control allows users to define the apparent
+inertia, damping, and stiffness of robots, thus providing an
+intuitive way to physically interact with robots [1]. We aim
+to develop a ball with flying ability by adding imaginary
+dynamics. By introducing this ball, our goal is to create a
+new sport with a HoveBall, and set an ideal handicap match
+between unskilled and skilled players by augmentation of
+player skill. There are several considerable advantages of
+using floating balls.
+To facilitate ball control
+
+In sports such as baseball, a skilled player can throw a
+trajectory-changing curve ball by rotating a ball. The
+existence of a breaking ball will be closely related to the
+results of the competition, because tactics are required to
+detect quickly the type of breaking ball in order to identify
+the trajectory of the opponent. However, to master a
+breaking ball is extremely difficult. When a non-expert and
+an expert player engage in a match, it becomes necessary to
+appropriately adjust the score, or a physical altercation
+might ensue, with the result that the game might be
+interrupted and not reach a climax, which is an extremely
+important element in enjoying sport games. The ball
+invented by us allows for an improvement in the
+weaknesses of players’ abilities by adjusting the velocity of
+the pitch and correcting the trajectory of the ball. As a result,
+each player can perform at his best, and an exciting game is
+realized.
+Designing new sports
+
+Sports and training using a floating ball often appear in the
+world of science fiction (SF) and fantasy, for example, Star
+Wars, filmed by George Lucas, and the Harry Potter series,
+written by J. K. Rowling. As these examples demonstrate,
+by unleashing the trajectory of the ball from the
+conventional physical laws, the manner in which players
+and balls interact becomes rich, and more strategic games
+can be designed. For example, a ball can float and slide in
+the air similar to the hockey puck on ice, dodge an object
+and another player, and return to the player who throws it
+(Figure 3). These functions allow a player to pass the ball to
+a team member positioned far away in order to avoid an
+opposing player. Such functions could be set up to be
+limited, or only available for non-expert players. Moreover,
+these functions realize the tactics of The Affecting Body
+space. If the ability of HoverBall to auto-tune skills can
+result in sport games that are more independent from the
+players’ physical strength, the strategic component of these
+games can become more important. Therefore, anyone from
+children to the elderly could participate in games equally,
+thus allowing more and varied participants to enjoy games
+as lifelong sports. In addition, it can be used as a tool for
+the rehabilitation of people with disabilities. Moreover,
+HoverBall can be used to support the exercise of children
+and the elderly by “traction” and “proximity.”
+
+Gliding
+Dodging
+
+hover. Baudisch et al. invented the imaginary Reality
+gaming [2]. This is a ball game similar to basketball, but
+without a ball. Players engage in the game with voice
+feedback, such as “who has the imaginary ball,” “judgment
+of the goal,” “which is the state of the imaginary ball, inside
+or outside of the game field.” This game is executed upon
+common understanding. Therefore, it is difficult to import
+the game to imaginary dynamics that were never seen.
+Interaction with UAVs
+
+Boomerang
+Proximity
+
+Figure 3: Interaction example with HoverBall
+RELATED WORK
+
+In many new sports, tools are added to the tool used in the
+conventional sports. For example, bossaball is similar to
+volleyball, but bossaball uses an inflatable court with
+integrated trampolines on each side of the net, allowing
+players to bounce sufficiently high to spike the ball and add
+great spectacularity. Bubble football is a soccer game in
+which players compete inside giant bubbles. The game has
+14 players encased in a zorb-like inflatable bubble; the
+players are encouraged to bounce into each other as they
+fight for possession of the ball.
+Augmented ball sports
+
+Some people engage in augmented sports with the use of
+projectors, acceleration sensors, and so on. Ishii et al.
+developed PingPongPlus [6], which is an athletic-tangible
+interface. The interface is a Ping-Pong table that includes
+eight microphones and a video projector; the player can
+enjoy dynamic graphics and audio generated by soundbased ball tracking technology. Shootball, an original sport
+developed by Sugano et al., is a goal-based ball game
+played in a field surrounded by four screens linked to each
+other [11]. The ball used in this sport contains an embedded
+wireless shock sensor. The player throws the ball to a goal
+area projected on the screen in order to earn points. Mueller
+et al. developed a game that enables communication and
+play between multiple players in different locations. Using
+a wall screen, camera, and projector, players break blocks
+projected onto a screen, either cooperating with other
+players, or competing for the highest score [9]. The game
+uses a wall screen, a camera and a projector, and players
+break blocks that are projected on the screen in concert with
+other players, or compete for score. Izuta et al. created a
+ball for augmented sports, called Bouncing Star [7].
+Because the ball has a wireless module, acceleration sensor,
+sound sensor, infrared LEDs, and is observed by a camera,
+this system can recognize the ball’s motion and track its
+position. When the ball bounces or rolls on the field, the
+projected computer graphics, color LEDs inside the ball,
+and responsive sounds are all synchronized with the ball’s
+state of motion. Ichikwa et al. invented a ball-type motion
+control device [5]. It is composed of a ball and an airpressure tank to change its vector using gas ejection. This
+device is able to reappear a breaking ball, however, cannot
+
+Some researchers use unmanned aerial vehicles (UAVs) in
+entertainment, sports training, and so on. Higuchi et al.
+developed a sports training system using UAVs [4]. In this
+system, the UAV which mounted a camera tracks a user,
+and represents his external vision through a head mounted
+display. Graether et al. developed a jogging support system
+called joggobot [3]. The system accompanies a runner in
+order to motivate his exertion activities. These systems
+support players in recognizing and correcting their
+technique.
+PROTOTYPE
+
+The prototype system introduces a ball shaped microquadcopter and a motion capture system. The system uses
+Crazyflie Nano Quadcopter, which is the hand-size
+quadcopter (Table 1). We make a Styrofoam grid shell (16
+cm) as a spherical exterior component, and put the
+quadcopter into its central part. The motion capture system
+measures three-dimensional position (x, y, and z) and
+orientation (pitch, roll, and yaw) to an accuracy of 1mm.
+Optitrack S250e as a motion capture camera can track
+retroreflection makers in 120 fps. We attach three makers
+on the exterior component. If we use a sufficient number of
+cameras, the system can measure the size of a tennis court.
+The player’s position is also perceived; therefore, the
+trajectory of the ball is programmable, depending on the
+position between the players and the ball.
+Size:
+Flight Time:
+
+90 * 90 mm
+
+Payload:
+
+10g
+
+5min
+
+Sensor:
+
+3-axis gyro +
+3axis accelerometer
+
+Table 1: Specifications of the Crazyflie Nano Quadcopter
+
+Figure 4: An overview and prototype of HoverBall
+Figure 4 shows the experimental environment and the ballshaped quadcopter At first, we tested the stability of
+hovering. The method for controlling the quadcopter uses a
+proportional-integral-derivative (PID) controller that
+responds to position data from the motion capture cameras.
+Figure 5 is a graph of altitude data.
+
+REFERENCES
+
+1. Augugliaro, F., D’Andrea, R. Admittance Control for
+Physical Human-Quadrocopter Interaction. Published
+in: Control Conference (ECC), European (2013) 18051810
+Figure 5: HoverBall altitude
+Finally, we developed some basic interactions, such as
+“Hover & Glide” and “Boomerang.” In these interactions,
+hand gesture is used to control the HoverBall, and a user
+can manipulate it once it is in the air. (Figure 6)
+
+Hover & Glide
+
+Boomerang
+Figure 6: Image of Hover and Glide / Boomerang. When
+a player raises a hand, the ball floats up. When a player
+beckons, the ball returns to the player.
+CONCLUSION AND FUTURE WORK
+
+In this paper, we presented a flying ball device for
+augmenting sports. This device adopts imaginary dynamics
+to ball sports. The device makes interaction possible
+between a ball and a distant body. By extending the area in
+which a player can affect the ball, controlling the ball
+becomes easier, and the possibility for designing a new
+sport is realized. We developed a prototype system with a
+micro quadcopter surrounded by a spherical grid, and
+showed new interactions with players.
+In our current implementation, we used Crazyflie Nano
+Quadcopter because of its small size, which can be
+embedded in a ball. However, the ball’s payload is
+considerably limited, and it is difficult to support a
+spherical grid with sufficient strength to be used in sports.
+Thus, with the current implementation, we mainly explore
+non-contact interactions, such as maintaining proximity or
+remote manipulation. However, for use in sports, we expect
+the ball to frequently receive a strong impact by being hit
+and kicked. In order to design a ball with enough durability
+against such physical impact, more research is required.
+One possibility is to use a helicopter with a higher payload
+to support a stronger spherical surface. Another possibility
+is to use a more flexible material that can recover its shape
+after receiving an impact. The device also requires more
+power and a higher response control system. When players
+throw, this ball rotates severely. To control altitude, the ball
+requires higher thrust power. We plan to introduce powerful
+rotors. Second, because most radio control helicopters have
+no large capacity battery to fly for a long time, the
+helicopters should switch their thrusters to standby mode to
+save battery when a player is holding it.
+
+2. Baudisch, P., Henning, P., Reinicke, S., Wittmers, E.,
+Lühne, P., Knaust, M., Köhler, S., Schmidt, P. and
+Holz,. Imaginary reality gaming: ball games without a
+ball. Proceeding UIST '13 Proceedings of the 26th
+annual ACM symposium on User interface software and
+technology, 405-410.
+3. Graether, E., Mueller, F. Joggobot: a flying robot as
+jogging companion. In Proceedings of the 2012 ACM
+annual conference extended abstracts on Human
+Factors in Computing Systems Extended Abstracts,
+CHIEA’12, (2012), 1063-1066.
+4. Higuchi, K., Shimada, T. and J. Rekimoto. Flying sports
+assistant: external visual imagery representation for
+sports training. In Proceedings of the 2nd Augmented
+Human International Conference, page 7. ACM, 2011.
+5. Ichikawa, T., Nojima, T. Development of the motioncontrollable ball. Adjunct proceedings of the 23nd
+annual ACM symposium on User interface software and
+technology, (2010), 425-426.
+6. Ishii, H., Wisneski, C., Orbanes, J., Chun, B., Paradiso,
+J. PingPongPlus: design of an athletic-tangible interface
+for computer-supported cooperative play. Proceedings
+of the SIGCHI conference on Human Factors in
+Computing Systems (1999), 394-401.
+7. Izuta, O., Sato, T., Kodama, S., Koike, H. Bouncing Star
+project: design and development of augmented sports
+application using a ball including electronic and wireless
+modules. Proceedings of the 1st Augmented Human
+International Conference (2010), Article No.22.
+8. Mueller, F., Edge, D., Vetere, F., Gibbs, M.,
+Agamanolis, S., Bongers, B., Sheridan, J. Designing
+Sports: A Framework for Exertion Games. CHI '11
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems Pages 2651-2660
+9. Mueller, F., Gibbs M. Evaluating a distributed physical
+leisure game for three players. Proceedings of the 19th
+Australasian conference on Computer-Human
+Interaction: Entertaining User Interfaces (2007), 143150.
+10. Pfeil, J., Hildebrand, K., Gremzow, C., Bickel, B.,
+Alexa, M. Throwable panoramic ball camera.
+Proceeding SA '11 SIGGRAPH Asia 2011 Emerging
+Technologies (2011), Article No. 4
+11. Sugano, Y., Mochizuki, Y., Usui, T., Okude, N.
+Shootball: the ball sport using dynamic goals.
+Proceedings of the international conference on
+Advances in computer entertainment technology (2007),
+262-263.
+
+

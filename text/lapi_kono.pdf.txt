@@ -1,0 +1,713 @@
+lapillus bug: Creature-like Behaving Particles
+Based on Interactive Mid-Air Acoustic Manipulation
+Michinari Kono
+Keio University
+5322, Endo, Fujisawa
+mkono@sfc.keio.ac.jp
+
+Takayuki Hoshi
+Nagoya Institute of Technology
+Gokiso-cho, Showa-ku, Nagoya
+star@nitech.ac.jp
+
+ABSTRACT
+
+Modern technology development has made the border
+between life and matter more ambiguous. Studies that find
+creature-like behavior from inorganic materials are carried
+out in the field of art and entertainment. On the other hand,
+it is an important issue to manipulate objects without
+implanting any actuators directly inside.
+In this research, we aim to extract and express creature-like
+behavior from inanimate objects by usage of external force.
+By generating a standing wave with focused ultrasound, a
+phenomenon known as acoustic levitation enables a
+physical particle to float in mid-air. The particle is trapped
+in the ultrasonic focal point and follows its position. We
+have developed a system so that users can interact with the
+floating particle that looks and behaves as though it is a
+small hovering bug. We have received many reactions and
+opinions from attendees at exhibitions. In this paper, we
+describe the system overview, concept, design,
+implementation, and feedback from the exhibitions.
+Author Keywords
+
+Focused Ultrasound; Phased Array; Acoustic Levitation;
+Interaction; Actuation; Creature-like Expressions
+ACM Classification Keywords
+
+H.5.m. Information interfaces and presentation (e.g., HCI):
+Miscellaneous.
+INTRODUCTION
+
+When considering the interaction between computers and
+humans, the limitation of screens has always existed. A
+common interaction method is to use interfaces outside the
+screen, to manipulate information inside the screen;
+however, there are an increasing number of approaches that
+aim to remove this limitation [1, 2]. Generally, information
+inside screens tends to be dynamic, but objects existing in
+
+Yasuaki Kakehi
+Keio University
+5322, Endo, Fujisawa
+ykakehi@sfc.keio.ac.jp
+
+the real world are static. Approaches such as projection
+mapping, that enables inanimate matter to appear as though
+it is dynamic, are now popular. On the other hand, it is an
+important issue to provide information and feedback
+directly to users regarding the manipulation of objects [3, 4].
+When we consider manipulating objects, there are two
+types of general approaches. One approach is to implant
+mechanical actuators directly into the object (direct
+actuation). In this method, it may be easy to manipulate and
+control the object, but we sometimes find it difficult to
+implant the actuators because of their size and shape. There
+are also limitations in moving the objects, due to physical
+connections, wires, and substrates. Another approach is to
+use external forces to affect the object (indirect actuation).
+In this approach, actuators are not implanted in the object
+itself; therefore, the object retains its original features. This
+approach enables us to manipulate simple objects that do
+not have any complex components.
+Using the indirect actuation process, the author previously
+created a system that manipulates objects by utilizing the
+features with interaction [5]. However, the object remained
+stuck on the ground because of the unavoidable force,
+gravity. In this paper, we propose a method of manipulating
+objects in mid-air by indirect actuation. Additionally, we
+aim to develop methods for interaction with the levitated
+objects.
+Specifically, we used an ultrasonic phased array and a
+phenomenon known as acoustic levitation to manipulate the
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for
+components of this work owned by others than ACM must be honored.
+Abstracting with credit is permitted. To copy otherwise, or republish, to
+post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from Permissions@acm.org.
+ACE '14, November 11 - 14 2014, Funchal, Portugal
+Copyright 2014 ACM 978-1-4503-2945-3/14/11…$15.00
+http://dx.doi.org/10.1145/2663806.2663850
+
+Figure 1. lapillus bug
+
+particle in mid-air. We have focused on a unique feature
+that the particle trembles in mid-air and exhibits creaturelike behavior, similar to a fruit fly. In the following sections,
+we describe the technology and implementation of our
+system, and an interactive installation named “lapillus bug”
+(Figure 1), which has a particle flying about, behaving like
+a type of bug, and interacting with humans.
+RELATED WORK
+Actuating Objects
+
+There are studies that make it possible to move objects
+without implanting actuators directly inside them. Actuated
+Workbench [6] and Madgets [7] are typical examples of
+this approach. They use an array of electromagnets to move
+the object on a flat surface. ZeroN [8] uses magnetic
+levitation to manipulate a single object in mid-air. By
+placing objects in mid-air, resistance such as friction, which
+occurs for objects set on a surface, does not occur. These
+studies use specially modified objects that have magnets
+implanted, and do not make use of the intrinsic material
+properties.
+Ultra-Tangibles [9] is a system that enables contactless
+manipulation of objects using ultrasound. This approach
+does not require any special manufacturing for the object.
+However, the workspace is limited by the surrounding
+ultrasonic devices and object manipulation is limited to two
+dimensions.
+Acoustic Levitation
+
+There is another method for manipulating objects in mid-air
+that uses a phenomenon known as acoustic levitation.
+Acoustic levitation is a procedure by which objects are
+trapped in the nodes of standing waves produced by
+ultrasound (Figure 2). Researchers have accomplished
+levitation and manipulation of particles [10, 11]. Kozuka et
+al. [11] placed two ultrasonic transducers 18 mm to 26 mm
+away from each other. The sound waves interfered with
+each other, and by controlling the phase difference, the
+levitated object was manipulated in one dimension,
+
+vertically. Foresti et al. [12] described a method for
+manipulating levitated particles horizontally by transferring
+them over multiple piezoelectric transducers. Xie et al. [13]
+demonstrated a method for levitating small animals. Using
+a single transducer and a reflector, living animals, such as
+ladybirds, were levitated in the nodes of the standing wave.
+The procedures mentioned above are all achieved in small
+areas, where a human would have difficulty inserting hands
+and interacting with the levitated objects.
+In this research, we use travelling waves produced from
+ultrasonic transducers and reflected waves to generate
+standing waves to levitate objects (Figure 2). A portable
+ultrasonic phased array system is used, in which ultrasonic
+transducers are arranged. This device was originally
+developed to provide non-contact tactile sensations or
+interactions [14]. Focusing ultrasound carries strong
+ultrasound in the distance and thus enables the levitation of
+objects in a large area where humans can interact intuitively.
+Ochiai et al. [15] also uses focused ultrasound. Four
+ultrasound devices, which are surrounding the workspace,
+manipulate particles three-dimensionally. In our system, the
+ultrasound device is hung from the ceiling, facing
+downwards; therefore, users can gain access from all sides.
+Moreover, the system does not require multiple ultrasound
+devices arranged face-to-face, but uses reflection from the
+floor. Therefore, we can use this system in everyday
+situations, such as tabletops with reflections from the table
+or plates.
+Inorganic Matter and Creature Imitation
+
+In this research, we attempt to create an installation that
+focuses on the “creature-like” behavior that occurs when
+objects undergo indirect actuation. The relationship
+between life and matter is believed to be very close [16].
+Studies that found and expressed creature-like behavior
+from inorganic materials were carried out in the field of art
+and entertainment. For example, “New creatures” [17] is a
+video in which stop-motion animation is used to apply
+creature-like movements to inanimate objects from our
+daily lives. Studies attempting to demonstrate such behavior
+in the real world have been also carried out. Meter Crawler
+[18] is a robotic snail with implanted motors. Species Series
+[19] is a robot that was made by implanting actuators inside
+garbage. However, this present study uses real world
+materials without implanting or attaching anything.
+We previously developed “tamable looper” [5]; a cluster of
+magnets that moves like a creature and humans can interact
+with and tame the “creature”. However, this present
+research utilizes more common materials. The objects do
+not remain attached to surfaces and expressions are created
+in mid-air.
+SYSTEM DESIGN OF THE LAPILLUS BUG
+
+Figure 2. Basic Principle of Acoustic Levitation
+
+The technology is based on an ultrasonic phased array. This
+device was originally designed for contactless haptic
+interaction, stimulated by acoustic radiation pressure at the
+
+focal point of the ultrasound array [14]. This ultrasonic
+phased array can be focused to a single point, by applying
+appropriate phase delays to the transducers. The particle
+follows the focal point, since it is trapped inside the
+standing wave. Therefore, controlling the position of the
+focal point enables the levitated object to move horizontally.
+We utilize the principle mentioned above to levitate and
+manipulate an object in a three-dimensional real space,
+without any modification to the original material.
+Furthermore, users can freely manipulate and interact with
+this floating particle. We associated this small particle with
+a kind of bug to accomplish the interaction between humans
+and a “creature”.
+Hardware Design
+
+Figure 3 presents the system overview of the lapillus bug.
+In this system, we hang the ultrasonic phased array device
+facing downwards, using the surface of the table, or any
+other solid flat object, as a reflection plate, placed at a
+distance of 200 to 300 mm.
+We levitate the particles by placing them inside the nodes
+of the standing waves produced by the focused ultrasound.
+The focal point of the ultrasound is movable, which enables
+the particle to move two-dimensionally and to exhibit
+creature-like features. The levitation is started by using
+fingers or tools, such as tweezers, and placing the particle at
+a given height. When the particle is released, it is absorbed
+into the nearest node of the standing wave.
+The size of ultrasonic phased array device is: 250 mm (W)
+× 250 mm (D) × 60 mm (H), with 285 ultrasound
+transducers arranged in a rectangular area. The array
+produces ultrasound with a frequency of 40 kHz, and an 8.5
+mm wavelength. Therefore, the nodes of the standing waves,
+where particles can levitate, are produced at 4.25 mm
+intervals.
+We also installed a camera, for image processing to enable
+interaction, and four small DC fans for device cooling and
+temperature stability.
+
+Software Design
+
+The software is based on openframeworks, a framework for
+C++. The refresh rate of the device is 1 kHz, so we
+developed the program to run faster than 1000 fps, for
+maximum performance. However, the frame rate of the
+image processing is limited by the camera to 30 fps.
+Therefore, the manipulation of ultrasound and image
+processing are carried out in separate threads.
+The manipulation of the ultrasound focus is based on an
+algorithm that calculates the appropriate phase differences
+for the ultrasound output. The levitated particle is trapped
+and fixed over the focal point and follows the position of
+that point. The resolution of that position is approximately
+0.27 mm, which can be updated every millisecond.
+Image processing is used to recognize the users’
+manipulations. We will describe the details of the
+interaction in the installation section. The camera captures
+images of objects or the light spots from laser pointers that
+are used for users’ inputs. For example, when we use a red
+laser pointer for input manipulation, we recognize the color,
+brightness, and the size of the feature, to distinguish the
+laser spots from the levitated particle. The threshold for
+discrimination depends on the environment, such as lighting
+and distance from the surface to the device. Therefore, we
+first determine the location of the camera with respect to the
+ultrasound position and calibrate the threshold with the
+color information obtained under the operating environment.
+TECHNICAL EVALUATION
+
+We have experimented with some elements of our system
+to evaluate its stability and possibilities. In the following
+experiments, we located the device 200 mm above the
+surface, the focal distance was set to 220 mm, we used a 2
+mm particle, levitated the particle at a height of
+approximately 20 mm, and moved the particle at 250 mm/s.
+Specifically, we examined the appearance of the particle
+depending on speed, number of particles, generation power,
+and number of transducers. We examined the stability by
+recording the average number of times the particle moved
+back and forth. Details of these movements will be
+mentioned in the following sections.
+The distance between the system and the reflecting surface
+is adjustable, but it is thought that a larger distance will
+make the particle unstable, due to the attenuation of the
+ultrasound with the propagation distances and the diameter
+of the focal point. According to Hoshi et al. [20], the
+attenuation of ultrasound travelling through air is small
+enough to ignore. However, influence of the distance on the
+diameter of the focal point, w, can be described as Equation
+(1) [14].
+(1)
+Here, λ [m] is the wavelength of the ultrasound, R [m] is the
+focal distance, and D [m] is the length of the side of the
+
+Figure 3. Overview of System
+
+square array. We can tell from the equation that w is
+proportional to R, therefore, when the distance to the device
+and the reflection surface becomes larger, w increases as
+well. The energy density at the focal point decreases when
+this occurs, thus, using this system at a large distance
+produces instability. Additionally, it was determined
+experimentally that adjusting the focal distance to 20 mm
+longer than the distance between the ultrasound system and
+the reflection surface, resulted in more stable levitation.
+The antinode of the standing wave is located on the
+reflecting surface, as the surface is considered to be a free
+edge against the acoustic pressure. The wavelength of the
+ultrasound is 8.5 mm; therefore, the closest node to the
+surface is at a height of 2.125 mm. In the following
+measurements, we decided to use the fifth node from the
+bottom (i.e., at a height of 19.125 mm) to levitate a particle
+(Figure 4). There is a small difference between the
+measured height and that prediction from theory. This error
+may occur because of the differences between the incident
+wave and the reflection waves.
+Moreover, we operated the device for more than 30 minutes
+before the measurements, since the performance of the
+device may be affected by its temperature. Additionally, the
+results may differ depending on the shape of the particle.
+Therefore, we have to treat the particle with care during
+experiments.
+
+faster than 350 mm/s, it was difficult even to levitate the
+particle. Furthermore, when we moved the particle faster
+than 300 mm/s, the particle deformation, due to pinching,
+appeared to increase. Therefore, we recommend using this
+system at speeds lower than 300 mm/s.
+
+Figure 5. Speed and Stability
+Particle Size and Material
+
+In this system, there is a wider range of materials available
+than for approaches using magnetic actuators. We used 1
+mm, 2 mm, and 3 mm diameter polystyrene particles and
+carried out measurements under the same conditions as
+discussed in the “Particle Speed” section. However, we did
+not observe any noticeable difference.
+Materials such as sand grains, cotton, and water drops were
+also levitated. In addition, objects that have specific shapes,
+e.g., capacitors and microchips, were also levitated.
+As mentioned earlier in the technical evaluation section,
+shapes of objects affect the stability of levitation. The
+movement and stability is also affected by parameters such
+as size, mass and so on. A detailed examination of these
+effects will be carried out in the future.
+Multiple
+Particles
+Simultaneously
+
+Figure 4. Particles Levitating in the Nodes
+Particle Speed
+
+We examined the stability depending on the particle’s speed
+by using the parameters described above.
+We counted how many times the particle can move backand-forth in an area 60 mm wide, by changing the speed
+with 10 mm/s steps. The maximum number of counts was
+set to 100, and if the particle fell during the back and forth
+movement, we reduced the count.
+Figure 5 describes the average number of the back-andforth movements, which we measured five times for each
+speed. As a result, the particle was stable at speeds up to
+310 mm/s, but became unstable at higher speeds. At speeds
+
+Levitated
+
+and
+
+Manipulated
+
+Not only one but multiple particles can be levitated,
+simultaneously, with individual manipulation. Since the
+ultrasonic phased array only produces a single focal point at
+a time, we need to rapidly switch the focal point between
+two locations. We attempted to levitate three particles,
+simultaneously, by switching three focal points at 333 Hz.
+This was possible but difficult to obtain sufficient stability.
+However, two particles were successfully levitated by
+switching two focal points at 500 Hz (Figure 6).
+According to the theory of acoustic levitation, particles are
+trapped in the nodes and multiple nodes exist in the
+standing wave. Therefore, multiple particles can levitate
+vertically along the standing wave. We attempted to put
+particles in the nodes, sequentially from the bottom. As a
+result, Figure 7 shows that 26 particles were levitated.
+However, the stability of the particles levitating at the high
+
+positions was low. The upper part of the line of particles
+had a warp. If the number of particles were limited to
+twelve from the bottom, the objects were successfully
+moved at up to 100 mm/s. In this way, we can see that
+multiple particles are able to be manipulated, with a tradeoff between the number of particles and stability.
+
+Figure 6. Individual Manipulation of Plural Particles
+
+Angle between the System and Reflection Surface
+
+The ultrasonic phased array is set parallel to the reflection
+surface. In order to consider the influence of tilts, possibly
+occur during setting up the system and to consider further
+applications, we examined the maximum tilt angle, θ,
+where the origin is at the center of the lower part of the
+device (Figure 8). The tilt angle was increased with 1° steps.
+When we moved the particle along the x-axis, θ was
+measured to be 9° and 6°, when the particle was moved
+along the z-axis.
+
+Figure 8. Angle between the System and Surface
+Vibration of Particle
+
+In the first section, we mentioned the unique behavior: the
+particle trembling slightly in mid-air. Particles are trapped
+as they are attracted to the lower level (trough) of the
+acoustic potential field [21]. When this occurs, the particle
+does not remain at the bottom of the trough. The restoring
+force towards the bottom of the potential field produces
+simple harmonic motion. This motion is considered to be
+the cause of the trembling phenomenon. However, the
+trembling movement changes, depending on environmental
+conditions and particle shapes. Therefore, controlling them
+intentionally would be difficult.
+Figure 7. Particles Levitating Over a Single Focal Point
+Number of Transducers
+
+There are 285 ultrasonic transducers, arranged in a 17 × 17
+array (four transducers were removed from the corners).
+We can select the number of active transducers: 285, 225,
+169, 121, 81, 49, 25, or 9. If the particles can be levitated
+with fewer transducers, we can consider making the device
+smaller or manipulating more particles by dividing the array.
+Therefore, we examined how the particles behave when
+levitated by fewer transducers (Table 1). The table shows
+that the system is sufficiently stable with 225 transducers.
+Using the system with fewer transducers is difficult and it is
+difficult to even levitate a particle with 49 or less
+transducers. Therefore, it is not plausible to reduce the size
+of the current prototype system or divide the array.
+
+Table 1. Number of Transducers and Stability
+
+Besides, it was possible to reduce the size of the trembling
+motion by decreasing the intensity of the ultrasound. In this
+system, the intensity could be adjusted by PWM controls
+[20], represented by integral numbers from 0 to 623. With a
+24 V supply, the maximum output had an acoustic pressure
+of 16 mN. We carried out measurements under the same
+conditions as discussed in the section, “Particle Speed” and
+changed the output force with 10% steps, to determine how
+the particle behaves with varying output intensity (Figure 9).
+The output force is not proportional to the output intensity,
+p, but sin2(πp/1248). As a result, if the output force was
+larger than 50% of the maximum, no disturbance was
+observed. However, the particle was unstable and easily
+dropped with 30% to 40% of the maximum output. It was
+possible to levitate a particle with 10% to 20% of the
+maximum output, but it was not possible to move it stably.
+Decreasing the output intensity will reduce the vibration of
+the particle; however, it also reduces the stability of the
+levitation. Therefore, we can conclude there is a trade-off
+between the stability and the magnitude of the vibration
+caused by the output intensity. The vibration of the particle
+
+that occurred in our system could be controlled from 50%
+to 100% of the maximum output force.
+
+Figure 10. Interaction Using Tabletop Objects
+
+Figure 9. Output Force and Stability
+INSTALLATION OF LEVITATING PARTICLES
+
+In this system, we levitate objects and present creature-like
+features to develop applications in the fields of art and
+entertainment.
+Overview of the Installation
+
+A levitated particle that trembles rapidly may exhibit
+creature-like behavior, similar to a fruit fly. Therefore, we
+developed an installation where users observe and interact
+with an artificial “bug,” i.e., an inorganic piece of material
+behaving as if it is alive. They may also experience an
+unusual event: taming a wild creature that is generally
+untamable.
+In this installation, a fruit-fly-like black particle floats
+above a plate with leftovers from breakfast. When there is
+no input from the user, the particle floats about irregularly.
+The movement is designed to move in arcs and freely.
+While it’s moving, the speed of the bug changes time to
+time with acceleration. We designed the speed and
+acceleration to change under the range based on the particle
+speed section. The computer-generated behavior may be
+more examined by referencing principles such as ``12 basic
+principles of animation’’ [22]. However, when an input is
+provided, the particle moves as intended.
+We have prepared two kinds of methods for the users to
+interact with the particle. One is to move a red tomato
+placed on the plate (Figure 10) and the other is to project a
+light spot on the plate with a laser pointer (Figure 11). We
+developed the interaction method by referencing the instinct
+of fruit flies that they are attracted and gather to fruits and
+lightings.
+The interaction is implemented by using a web camera
+placed next to the ultrasonic phased array. By recognizing
+the size of the red object (a tomato) with the web camera,
+we enable the particle to float around the tomato. We
+directed the particle not to stay near the tomato all the time,
+
+Figure 11. Interaction by a Laser Pointer
+
+but to float about randomly and then return to the tomato.
+With this interactivity, users can take part in the ecology of
+the “bug”.
+Moreover, we make use of the color and brightness
+information from the image acquired by the web camera.
+When using a laser pointer, the particle can be directed to
+continuously follow the laser spot. The focal point holding
+the particle is moved towards the position illuminated by
+the laser pointer. The users can play with the “bug” in real
+time.
+Exhibitions and Discussions
+
+Up to now, the authors have demonstrated the system
+through exhibitions, e.g. ACM SIGGRAPH Asia 2013 Art
+Gallery (20-23 November, 2013) and the exhibition of the
+award winning works of The Japan Media Arts Festival (516 February, 2014, Figure 12). At these exhibitions, we
+placed breads, tomatoes and leafy vegetables on a plate.
+The levitated 2 mm sized black polystyrene particle flies
+about interacting with laser pointers. We designed the stage
+with leftovers to enhance the context. A black polystyrene
+grain is used in order to maintain the stability as mentioned
+in the technical evaluation section, and to enable attendees
+to realize it as a flying fruit fly.
+In these exhibitions, we explained the abstract of the
+installation with demonstrations and asked the attendees
+
+one but multiple particles, pieces of bread, or the skin of the
+tomato. It is significant that attendees found it an interesting
+experience levitating objects with their hands and making
+inorganic matters come alive.
+In this installation, we decorated the space with leftovers.
+At the meantime, it may be difficult to discuss the creaturelike behaviors separately, which results from the decoration
+and from the acoustic levitation. Therefore, we plan to
+develop different types of our installation to discuss the
+effect.
+CONCLUSION AND FUTURE WORKS
+Figure 12. Exhibition of lapillus bug
+
+whether they perceived more features than the inorganic
+polystyrene grain originally possessed. Comments generally
+mentioned to real creatures as follows: “It looks as if it’s
+alive.”; “I thought that there was a real fly.”; and “There’s
+something flying.” Furthermore, comments specifically
+mentioned the trembling: “The way how it trembles is
+nice.” and “The vibration is interesting.” It was significant
+that the trembling behavior, which we have focused on in
+this study, led to this creature-like behavior and gathered
+the interest of people.
+The attendees gathered around the work and some of them
+observed the bug closely and from different angles. This
+seemed to be occurred since we used a plate as a reflection
+surface, and so that there weren’t anything disturbing the
+access. Some attendees noticed the device but some thought
+that the implementation was included in the plate or in the
+table. Additionally, some attendees thought that the particle
+was created by projection. We can consider that the simple
+device composition did not disturb the direction of the work
+by not making the existence and the relationship of the
+device clearly noticeable.
+Attendees who experienced the interaction tried to lead the
+bug towards the leftovers scattered about or moved the laser
+pointer back and forth rapidly and enjoyed the creature-like
+behavior. They mentioned: “It’s trying hard to follow the
+light.” and “It’s cute.”; when they saw the delay in the
+particle following the laser pointer.
+However, many attendees were interested in the principle of
+levitation. Comments such as “Seeing things levitated is
+just so interesting.” were provided. The attendees were also
+fascinated by the situation in which matter was freed from
+gravity and was levitated in the real world.
+When there was no explanation to the attendee, some of
+them did not realize the way to interact with the particle and
+dropped the particle with their hands. This means that we
+have room to reconsider the interaction method. Moreover,
+the attendees did not just want to interact by using laser
+pointers, but they wanted to insert particles into the acoustic
+standing wave by themselves. In fact, they inserted not only
+
+In this work, a particle was levitated by acoustic levitation.
+The particle could be moved and interacted with in mid-air.
+We used an ultrasonic phased array for manipulating the
+particle and a camera for recognizing the users’ inputs. The
+creature-like behavior of the particle when it was levitated
+and moved was also observed.
+Furthermore, we designed an installation named “lapillus
+bug”, in which a user can interact with a “bug”, and tame it
+paying attention to the creature-like features that the
+levitated particle exhibits. In fact, many attendees at the
+exhibitions perceived and enjoyed creature-like features
+associated with the levitated particle.
+Our future plan includes the following topics. We will carry
+out further examination of the limitations and possibilities
+related to particle size, shape, material, and numbers. It is
+predicted that we will be able to levitate heavier materials
+by enhancing the output of the ultrasound. If so, we may
+levitate objects that have more detailed shapes, such as
+small puppets, which could be used to create animated
+stories. Not only one but multiple particles were levitated
+and we have discussed the possibilities in this paper. We
+plan to develop further applications utilizing this property.
+At present, we only levitate solid matter but using other
+types of materials, such as liquids, may lead to new spatial
+expressions.
+In the system we have developed, the particle remains at a
+constant height. We will consider enabling vertical
+manipulation
+for
+three-dimensional
+movement.
+Additionally, tweezers were used for the initial placement
+of the particle, but we are now developing a system that
+starts the levitation by adjusting the focal point for a
+particle located on the floor or a stand. Through the
+exhibitions, the attendees performed interactions that we
+did not intend. This means that there is a room for
+improvement in the current interaction scenario. We will
+consider gestures or tangible inputs to interact with the
+particle.
+Proposals for practical applications are also an important
+issue. For example, there may be applications in fields
+where contactless manipulation is required, such as
+handling small electronic parts for micro-machine
+technologies.
+
+We will refine the worldview of the artwork “lapillus bug”
+and attempt to make the border between life and matter
+more ambiguous.
+REFERENCES
+
+11. Kozuka, T., Yasui, K., Tuziuti, T., Towata, A., Iida, Y.:
+``Noncontact Acoustic Manipulation in Air,’’ Japanese
+Journal of Applied Physics, Vol.46, No.7B, pp.49484950, 2007.
+
+1. Ishii, H., Lakatos, D., Bonanni, L., Labrune, J.:
+``Radical Atoms: Beyond Tangible Bits, Toward
+Transformable Materials,’’ ACM interactions 2012, Vol.
+XIX.1, January + February 2012, pp. 37- 51, 2012.
+
+12. Foresti, D., Nabavi, M., Klingauf, M., Ferrari, A.,
+Poulikkakos, D.,``Acoutophoretic contactless transport
+and handling of matter in air,’’ PNAS 2013, vol.110
+no.31, 12549-12554，2013．
+
+2. Vertegaal, R., Poupyrev, I.: ``Organic User Interfaces,’’
+Communications of the ACM, Vol. 51, No. 6, pp. 26-30,
+2008.
+
+13. Xie, W., Cao, C., Lu, Y., Hong, Z., Wei, B.: ``Acoustic
+method for levitation of small living animals,’’ Applied
+Physics Letters 89, 214102, 2006.
+
+3. Poupyrev, I., Nashida, T., Okabe, M.: ``Actuation and
+Tangible User Interfaces: the Vaucanson Duck, Robots,
+and Shape Displays,’’ ACM TEI 2007, pp.205-212,
+2007.
+
+14. Hoshi, T.: ``Compact Ultrasound Device for Noncontact
+Interaction,’’ ACM ACE 2012, pp.502-505, 2012.
+
+4. Ishii, H.: ``The Tangible User Interface and its
+Evolution,’’ Communications of the ACM, Vol. 51, No.
+6, pp. 32-36, 2008.
+5. Kono, M., Kakehi, Y.: ``tamable looper: creature-like
+expressions and interactions by movement and
+deformation of clusters of sphere magnets,’’ ACM
+SIGGRAPH 2012 Posters, No. 25, 2012.
+6. Pangaro, G., Maynes-Aminzade, D., Ishii, H.: ``The
+Actuated Workbench: Computer-Controlled Actuation
+in Tabletop Tangible Interfaces,’’ ACM UIST 2002,
+pp.181-190, 2002.
+7. Weiss, M., Schwarz, F., Jakubowski, S., Borchers, J.:
+``Madgets: Actuating widgets on interactive tabletops,’’
+ACM UIST 2010, pp. 293–302, 2010.
+8. Lee, J., Post, R., Ishii, H.: ``ZeroN: Mid-Air Tangible
+Interaction Enabled by Computer Controlled Magnetic
+Levitation,’’ ACM UIST 2011, pp.327-336, 2011.
+9. Marshall, M., Carter, T., Alexander, J., Subramanian, S.:
+``Ultra-Tangibles: Creating Movable Tangible Object on
+Intreactive Tables,’’ ACM CHI 2012, pp.2185-2188,
+2012.
+10. Kozuka, T., Yasui, K., Tuziuti, T., Towata, A., Iida, Y.:
+``Acoustic Standing-Wave Field for Manipulation in
+Air,’’ Japanese Journal of Applied Physics, Vol.47,
+No.5, pp.4336-4338, 2008.
+
+15.Ochiai, Y., Hoshi, T., Rekimoto, J.: ``Three-dimensional
+Mid-air Acoustic Manipulation by Ultrasonic Phased
+Arrays,’’ arXiv, 1312.4006, 2013.
+16. Hesse, M., B.: “Forces and Fields,” Philosophical
+Library, pp.35-38, 1962.
+17. Euphrates: `` New creatures (living in your house) | Jury
+Selections | Entertainment Division | 2012 [16th] | Japan
+Media Arts Festival Archive,’’ http://archive.jmediaarts.jp/en/festival/2012/entertainment/works/16ej1
+_New_creatures/
+18. Takahashi, K.: ``Meter Crawler- Ars Electronica
+Center,’’ http://www.aec.at/center/en/2013/09/06/metercrawler/
+19. Yang, W.: ``Species series,’’ ACM SIGGRAPH Asia
+2012 Art Gallery, No. 13, 2012.
+20. Hoshi, T., Takahashi, M., Iwamoto, T., Shinoda, H.:
+``Noncontact Tactile Display Based on Radiation
+Pressure of Airborne Ultrasound,’’ IEEE Transactions
+on Haptics, Vol.3, No.3, pp. 155-165, 2010.
+21. M. Barmatz, M., Collas, P.: ``Acoustic radiation
+potential on a sphere in plane, cylindrical, and spherical
+standing wave fields’’, The Journal of the Acoustical
+Society of America, Vol.77, pp.928-945, 1985.
+22. Johnston, O., Thomas, F.: ``The Illusion of Life: Disney
+Animation,'' Hyperion, pp.47-69, 1981.
+
+

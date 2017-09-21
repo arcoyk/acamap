@@ -1,0 +1,197 @@
+Synesthesia Suit
+Yukari Konishi1 , Nobuhisa Hanamitsu1 , Benjamin Outram1
+Kouta Minamizawa1 , Ayahiko Sato2 , Tetsuya Mizuguchi1,3
+1
+Keio University Graduate School of Media Design,
+2
+Rhizomatiks Co. Ltd. 3 enhance games, inc.
+4-1-1 Hiyoshi Kohoku-ku Yokohama-city Kanagawa, Japan 223-8526
+{y.konishi, hanamitsu, ben, kouta}@kmd.keio.ac.jp, ayahiko@rhizomatiks.com, t@mzgc.net
+Author Keywords
+
+Haptic Design; Haptic Suit; Virtual Reality; TECHTILE;
+ACM Classification Keywords
+
+H.5.2. User Interfaces: Haptic I/O
+INTRODUCTION
+
+Synesthesia Suit provides immersive experiences for whole
+body by using haptic sensation. The system includes a suit,
+a haptic controller and designed tactile waves. Instead of vibration feedback which are used such as conventional game
+controller or smart phone, we designed haptic effects as well
+as designing sound effects. We developed this for the game
+“Rez Infinite” that will be released for PlayStationVR.
+
+Figure 1. Suit Overview
+
+Figure 2. Synesthesia Engine and
+hardware connection
+
+HAPTIC CONTENT DESIGN
+
+Our concept in haptic design was to make the users feel as if
+they dived in the world of Rez. Using PlayStationVR HeadMounted-Display, the user can experience visually immersed
+world of the game. In addition to that we designed the whole
+body haptic experience to be united with the avatar in the
+game. Through a lot of discussions, we drew out the imaginative haptic feeling of the game from the game creator, and
+then converted into each vibrotactile signal on various part of
+the body. Not only the synesthetic haptic textures caused by
+the background music, we also designed the haptics for the
+interaction like shooting, hitting, and warping.
+
+RELATED RESEARCH
+
+There are some researches using multi-channel tactile feedback for a gaming environment.Surround Haptics[1] proposed moving tactile strokes using multiple separate vibrators for a gaming chair, and they also proposed Mango[3],
+which was a editor for multi-channel tactile feedback system. In these researches, they focused on designing the spacial dynamics of the vibration patterns, however, in this paper
+we aimed to design haptic effects based on TECHTILE[2]
+method so as to create the embodied immersive experience
+for the user.
+
+ACKNOWLEDGMENTS
+
+This research was funded by JST-ACCEL Embodied Media
+project. Technically supported by Mr. 2bit ISHII(buffer Renaiss) and Rhizomatiks team. The costume was designed by
+Mr. Toshihiko Sakurai(SQUNABICONA).
+
+PROPOSED SYSTEM
+
+Synesthesia Suit: As shown in figure 1, Synesthesia Suit has
+24ch tactile actuators and it was designed to be easy-to-wear
+and variable for various size of the body. The actuators are
+put on positions; shoulder, arm, back of the hand, hip, thigh,
+knee, shin, instep, stomach and back.
+
+REFERENCES
+
+1. Israr, A., Kim, S.-C., Stec, J., and Poupyrev, I. Surround
+haptics: Tactile feedback for immersive gaming
+experiences. In Proc. CHI ’12 Extended Abstracts on
+Human Factors in Computing Systems, ACM (2012),
+1087–1090.
+
+Synesthesia Engine: We developed the control software as
+shown in Fig 2. It controls 24ch tactile signals and render
+tactile signals to any positions in real time by using the library
+of designed haptic effects.
+
+2. Minamizawa, K., Kakehi, Y., Nakatani, M., Mihara, S.,
+and Tachi, S. Techtile toolkit: A prototyping tool for
+designing haptic media. In Proc. SIGGRAPH 2012
+Emerging Technologies, ACM (2012), 22:1.
+
+Permission
+to
+make
+digital
+orfor
+hard
+copies
+of of
+allPublication
+or part
+this
+work
+for personal
+or
+c the
+2016
+Copyright
+held
+by the
+owner/author(s).
+rights
+licensed
+tothan
+ACM.
+on
+page.
+Copyrights
+components
+this
+workofowned
+by
+others
+the
+and/or
+afirst
+fee.
+Request
+permissions
+from
+permissions@acm.org.
+UIST’16
+Adjunct
+October
+16-19,
+2016,
+Tokyo,
+Japan
+for
+profit
+or
+commercial
+advantage
+and
+that
+copies
+bear
+thisare
+notice
+and
+full
+citation
+classroom
+use
+is on
+granted
+without
+fee
+provided
+that
+copies
+not
+made
+orpermission
+distributed
+ISBN
+978-1-4503-4531-6/16/10.
+republish,
+to
+post
+servers
+or
+to redistribute
+to lists,
+requires
+prior
+author(s)
+must
+be
+honored.
+Abstracting
+with
+credit
+is
+permitted.
+Tospecific
+copythe
+otherwise,
+or
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+UIST’16 Adjunct October 16-19, 2016, Tokyo, Japan
+© 2016 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-4531-6/16/10.
+DOI: http://dx.doi.org/10.1145/2984751.2985739
+
+3. Oliver, S, S., Israr, A., and Karon, E, M. Tactile animation
+by direct manipulation of grid displays. In Proc. ACM
+Symposium on User Interface Software and Technology
+(ACM UIST) 2015, ACM (2015).
+
+149
+
+

@@ -1,0 +1,181 @@
+Friend*Chip: A Bracelet with Digital Pet
+for Socially Inclusive Games for Children
+Eleuda Nunez∗, Francesco Visentin∗
+Dept. of Intelligent Interaction Technologies
+University of Tsukuba, Japan
+{eleuda, francesco}@ai.iit.tsukuba.ac.jp
+
+Kenji Suzuki
+Faculty of Engineering, Information and Systems
+University of Tsukuba, Japan
+kenji@ieee.org
+the group, and finally analyzing children interaction by paying special attention to those children who might be excluded
+from the group.
+
+ABSTRACT
+
+Learning in groups have different potential benefits for children. They have the opportunity to solve problems together,
+to share experiences and to develop social skills. However,
+from teachers point of view, creating a safe and inclusive positive environment for children is not an simple task since each
+child has differences that represent a challenge for implementing effectively group dynamics. The focus of this work
+is the design of a system that motivates children to approach
+to others and create opportunities of social interaction. The
+system creates a fun and enjoyable situation that is always
+supervised by the teacher, who can monitor and change the
+group dynamics at any moment during the activity.
+
+Persuasive technologies are those designed to motivate and
+influence users. In this research field, different studies are
+spending effort in designing technologies to encourage positive social behaviours [2, 4]. Moreover, technology have
+the potential not only to encourage children, but also to measure children behaviours, which represents valuable tools for
+teachers to better assess children performance. Persuasive sociometric technologies have showed the potential to encourage and measure children behaviours in real-time [3]. This
+sets the motivation of this project, which tries to design a system that engage children to interact with others.
+
+Author Keywords
+
+The purpose of this research is to design and develop a system with two main requirements: 1) To engage children in
+activities in groups and 2) To provide teachers with data related to children performance during the activity, allowing to
+supervise and modify the group dynamics. To achieve this,
+we aim to create a fun and enjoyable environment, considering that children show more positive disposition on playful
+and unconstrained situations. Moreover, we intend to reduce
+as much as possible the teacher’s intervention and create situation where children naturally involve in the activity. The
+growing interest of children in computer and video games
+makes reasonable to implement a device as motivational element. In this paper we introduce the concept and framework
+of a novel wearable device, and discuss future challenges to
+address.
+
+Wearable device; persuasive technologies; group dynamics
+INTRODUCTION
+
+There are different benefits when children learn in groups.
+They can learn practical skills and put them in practice together, not only by doing but also by observing others. In
+groups, children have the opportunity to solve problems together, to share experiences, and to develop social skills.
+Teachers in elementary school face different challenges when
+trying to create safe and inclusive environment for children.
+In fact, children have different needs, personalities, and interests especially in developing ages. They exhibit different
+attention spans, intellectual maturity and social skills. Moreover, children might have different ethnic, religious, socioeconomic and cultural backgrounds. These differences represent a challenge for implementing effectively group dynamics
+that actively involve all the children [1].
+
+PROPOSED APPROACH
+
+The term “group dynamics” refers to the way groups of people are formed. In the case of children, it requires an active
+effort from the teacher to manage a healthy interaction in the
+groups. These interventions include planning engaging activities to keep children interest, supervising the dynamic of
+∗
+
+In order to tackle the problem we propose Friend*Chip (FC),
+a wearable device designed to motivate children to approach
+to others and create opportunity of social interaction. FC
+uses a combination of colored lights, and vibration patterns
+to make its user aware of other devices, and thus people. In
+addition, the device uses avatars – representing digital pets
+– that grow only by social interaction. This means that the
+more the child interacts with his/her peers, the more the pet
+will grow.
+
+These two authors contributed equally.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the owner/author(s). Copyright is held by the author/owner(s).
+UIST’16 Adjunct, October 16–19, 2016, Tokyo, Japan.
+ACM ISBN 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984775
+
+Device overview
+
+Friend*Chip is an in-house developed wearable device that
+uses different interaction modalities to communicate with the
+user and other similar devices. The main way FC mediates
+
+213
+
+people interaction is by the use of RGB LEDs (Wurth Elektronik 150141M173100) in combination with a vibration motor (ANDA-B1020). In addition to these simple visual cues,
+we embedded in FC a 16bit, 1.27” OLED screen (Adafruit
+OLED Breakout Board) used to show information of the virtual pet and to suggest interaction topics or activities when
+the users physically interact. In the current version, the interaction start-end detection is triggered by a pair of IR sensors
+(LITE-ON LTR-301, LTR-302). The main program is loaded
+on a micro-controller (Particle Photon) that also manages the
+communication, since it already embeds a Wi-Fi module. An
+overview of the inner components of FC is presented in Figure 1.
+
+Figure 2. Possible application scenario. In a controlled environment,
+the system randomly creates groups of children that interact within each
+others. The supervisor can keep track of the group dynamics and modify
+them in case of need.
+
+are small and light, and result visually attractive when lighted
+up. We also tested the device performance and communication and they worked fine for this application.
+The main limitation is the lack of interaction information. In
+fact, the device can detect the initial and the final handshake
+that enclose the interaction, but there is no information about
+what is happening between those events. Children might only
+perform the handshakes and then do nothing until the time
+ends. For the device, these actions count as social interaction
+even if it was not. However, we expect that the collaborative nature of this game, will suffice to motivate children to
+engage in each of the proposed activities. Even if children
+might be focused on raising the pets, it does not change the
+experience of playing and enjoying with others. We expect
+that by creating opportunities for everyone to play together,
+those walls made by their differences will be reduced. Future
+work involve collecting insights and opinions from a group
+of elementary school teachers in order to improve the interaction scenarios using FC. After this, we plan to design an
+experiment that helps to understand the effect of the system
+on children interaction. In addition, we are working on a more
+advance pairing algorithm to promote more diverse grouping
+and actively help children to interact more.
+
+Figure 1. Inside Friend*Chip (FC). In the image the main components
+of FC are shown. In the current version, the device contains an OLED
+screen, RGB LEDs, IR sensors, a vibration motor, and uses a Photon as
+controller board.
+
+The Playground with Friend*Chip
+
+Each children in the group will wear one device, and they will
+start the activity with the pet avatar in level one. The group information will be displayed by a projector, showing the name
+of each participant and their respective avatar. The connection server randomly groups the devices, and the users can
+visualize this with colored lights (Figure 2). Once the groups
+are formed, children are asked by the pet to do a handshake
+with the other members in the group. Then, the pets suggest children to do one activity together (e.g. playing with
+the ball, drawing something specific, or assembling a puzzle). According to the activity, the device sets a random time
+between 3 and 10 minutes. When the time is up, a visual cues
+(blinking lights) will indicate the participants to look again
+to the screens in the device. Children will receive more instructions from the pet to do a goodbye handshake, and after
+that the pets level will increase. Only by completing all the
+steps in the activity, the pet will grow. The whole situation is
+monitored by the teacher that, assisted by the data collected
+by the devices, supervises the group dynamics. This data display how children were grouped, and if they finished or not
+the interaction steps in the game. The goal of the game is
+shared by all the participants, creating a collaborative situation where it is only possible to finish the game once all the
+pets grow to the maximum level.
+
+REFERENCES
+
+1. Huang, S.-Y. Group dynamics in working with children.
+Scholarly Journal of Education 2, 6 (November 2013),
+77–83.
+2. Lyra, O., Karapanos, E., Gouveia, R., Barreto, M., Nisi,
+V., Nunes, N. J., Zimmerman, J., and Forlizzi, J. Towards
+persuasive sociometric technologies for inclusive
+educational settings. In Proceedings of the Biannual
+Conference of the Italian Chapter of SIGCHI, CHItaly
+’13, ACM (New York, NY, USA, 2013), 10:1–10:9.
+3. Mintz, J., and Aagaard, M. The Application of Persuasive
+Technology to educational settings: Some theoretical
+from the HANDS Project. Oulu University Press, 6 2010.
+4. Suzuki, K., Hachisu, T., and Iida, K. Enhancedtouch: A
+smart bracelet for enhancing human-human physical
+touch. In Proceedings of the 2016 CHI Conference on
+Human Factors in Computing Systems, CHI ’16, ACM
+(New York, NY, USA, 2016), 1282–1293.
+
+CONCLUSIONS AND FUTURE WORK
+
+In this paper we proposed a digital pet that grow with social
+interaction. After implementing this first prototype we observed some strong points as well as limitations. The devices
+
+214
+
+

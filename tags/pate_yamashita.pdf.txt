@@ -1,0 +1,381 @@
+Work-in-Progress
+
+CHI 2015, Crossings, Seoul, Korea
+
+Palette: Enhancing E-Commerce
+Product Description by Leveraging
+Spectrophotometry to Represent
+Garment Color and Airiness
+Shogo Yamashita
+Rakuten Institute of Technology, Rakuten Inc.
+The University of Tokyo, Tokyo, Japan
+qq146419@iii.u-tokyo.ac.jp
+Adiyan Mujibiya
+Rakuten Institute of Technology, Rakuten Inc.
+4-13-9 Higashi-Shinagawa, Shinagawa-Ku, Tokyo, Japan
+adiyan@acm.org
+
+Figure 1. We propose Palette, a method to quantize
+material color and airiness (i.e. clothing ventilation) to
+provide objective representation of a product.
+
+Abstract
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that
+copies bear this notice and the full citation on the first page. Copyrights
+for third-party components of this work must be honored. For all other
+uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+CHI'15 Extended Abstracts, Apr 18-23, 2015, Seoul, Republic of Korea
+ACM 978-1-4503-3146-3/15/04.
+http://dx.doi.org/10.1145/2702613.2732860
+
+We present Palette, a method to objectively quantize
+material color and airiness to provide representative
+description of a product in online shopping scenarios.
+Photos and keywords are often used to describe color,
+texture, and airiness of products. However consumer
+photos are usually taken under uncontrolled realistic
+imaging conditions, whereas keywords are fuzzy and
+highly subjective. Palette leverages active
+spectrophotometry approach that involves synchronized
+illumination to measure the reflection and transmission
+properties of a material as a function of wavelength.
+
+1597
+
+Work-in-Progress
+
+CHI 2015, Crossings, Seoul, Korea
+
+We use a Charge-Coupled Device (CCD) sensor
+equipped camera to capture visible light and nearinfrared light intensity. We show that by analyzing the
+obtained light spectrum, we are able to provide a
+metric to represent material color and airiness. In this
+paper, we describe the details in principle of operation
+and proof-of-concept prototype implementation, as well
+as reporting results of our analysis using 4 types of
+garments. To the best of our knowledge, Palette is the
+first work to exploit spectrophotometry to represent
+garment color, texture, and airiness; as an effort to
+enrich user experience in online shopping.
+
+Author Keywords
+Material color, texture, and airiness;
+spectrophotometry; active illumination; product
+description; e-commerce.
+
+ACM Classification Keywords
+H.5.2. Information Interfaces and Presentation (e.g.
+HCI): User Interfaces.
+
+Introduction
+Material color and texture effects are highly relevant
+aesthetic features of garment and textiles, which have
+strong impact on costumers’ perceived quality of a
+product. To the best of our knowledge, there is no wellestablished method that offers an objective, reliable,
+lightweight, and mobile solution to quantitatively
+represent a combination of color and texture for
+garments. This issue poses serious challenges
+especially in related e-commerce industry such as
+clothing, fashion, furniture, and so on. In common
+practice, human operatives perform the identification of
+color and texture by means of visual and/or touch
+inspection. As a consequence, the inspection is
+
+performed in a qualitative and unreliable way; thereby
+the definition of a method for the automatic and
+objective inspection is necessary. Also, the lack of
+objective metrics to represent textures causes
+extensive usages of subjective words and phrases in
+product descriptions, e.g. soft and transparent, suedelike, toweling, etc. Costumer often become confused by
+these descriptions and hesitated on buying clothes
+online. Moreover, misleading product descriptions
+potentially cause costumer to return the delivered
+merchandise due to mismatched expectations. Overall,
+this may cause bad user experience and pose negative
+marketing for merchants, as well as increase
+operational costs.
+We introduce Palette, a method to objectively quantize
+material color and airiness to provide representative
+description of a product in online shopping scenarios.
+On the basis of the state of the art in
+spectrophotometry, the present work aims to describe
+a computer-based approach for objective inspection of
+color and texture effects on garments, resulting in
+robust color matching that mitigates effects of ambient
+lighting, and classification of garments into pre-trained
+classes of textures. Actual usage of Palette is depicted
+in Figure 1. The devised apparatus is composed by
+hardware part that implements active illumination
+based spectrophotometry using a camera with CCD
+sensor, and a series of software implementation for
+spectrum analysis. Palette is able to determine the
+definitive color of a material by observing light intensity
+of a range of wavelength, which varies as a function of
+reflections or transmission properties of a material.
+These signals form a material entropy curve that serves
+as basic for our color matching and airiness analysis.
+
+1598
+
+Work-in-Progress
+
+CHI 2015, Crossings, Seoul, Korea
+
+In this paper, we contribute to Human-Computer
+Interaction (HCI) and Ubiquitous Computing (UbiComp)
+community by presenting Palette’s principle of
+operation, prototype design and implementation, as
+well as proof-of-concept applications and evaluation.
+We also discuss limitations, and share our plan for
+future iteration of this work.
+
+Related work
+To the best of our knowledge, there is no previous work
+that explicitly explores usage of spectrophotometry for
+material color and texture inspection purposes.
+However, a number of research and commercial
+products have been proposed to provide partial
+solutions of the issues we have presented in previous
+section. Computer Vision (CV) based methods for color
+matching from parts of an image captured using
+camera are among the popular [1,2,3]. Our approach
+share common motivation in providing lightweight
+solution, and furthermore seeks to extend robustness
+to environmental illumination by incorporating not only
+visible light spectrum but also near infrared through
+CCD sensor. Exploitation in deeper semantics of color
+description keywords for online clothing search has
+been proposed [4]. Although proven to be feasible,
+Natural Language Processing approaches still pose
+limitations when exposed to different language or
+culture. Realizing this issue, an effort to build a large
+dataset based on Mechanical Turk for texture
+identification has been conducted [5]. This work
+encourages us to provide objective metrics for texture
+database.
+Hardware based approaches such as surface texture
+estimation based on friction has also been proposed [6].
+This approach leverage distributed strain gauges and
+
+Figure 2. Palette is a system based on spectrophotometry
+with active illumination, constructed of a diffraction grating
+and IR-filter stripped USB camera, packed in a 3D print case.
+
+polyvinylidene fluoride (PVDF) films embedded in
+silicone-made surface contact. Different textures induce
+different intensities of vibrations, and consequently,
+textures can be distinguished by the presence of
+different frequencies in the signal. Unfortunately, bulky
+settings and requirement to obtain optimum
+synchronization of scan distance and its’ vibration
+signal pose challenges in end-user applications.
+Nevertheless, approaches that incorporate hardware
+solutions encourage us to explore new features that can
+help to distinguish color and texture more robustly.
+
+Palette Implementation
+Palette consists of two main components, which are
+diffraction grating for spectroscopy and CCD sensor for
+detecting light intensity of each wavelength. These
+parts are placed in a 3D printed case depicted in Figure
+2. In our prototype design, we utilized a CCD sensor
+based USB camera as the light spectrum sensor. We
+adjusted the lens to make parallel lights so that the
+optical structure resembles configuration depicted in
+Figure 3. We capture image from the camera, and to
+capture the light intensity for a range of wavelength we
+utilized ImageJ [7], which is an open source image
+processing program designed for scientific
+multidimensional images.
+
+1599
+
+Work-in-Progress
+
+CHI 2015, Crossings, Seoul, Korea
+
+Figure 3. Diffraction grating diffracts incident light, and lens
+refracts light in parallel manner so that it becomes easier to
+align on the surface of the CCD sensor.
+
+Figure 4. Exemplary spectrum from a cotton towel.
+
+Figure 4 is an exemplary image capture of a spectrum
+from cotton towel. From end to end, the spectrum is
+160 pixels and we measured the intensity of each
+frequency of light using plot profile function. The
+function converts the points on the spectrum image
+(indicated as white line) to gray scale, and lists the
+intensity of each point as value of 0 to 255. The
+spectrum must be normalized by directly emitting white
+LED to spectrometer and adjust software to make all
+wavelength’s intensity in the same initial value. This
+step is important to mitigate hardware-related
+differences between various types of LED and CCD.
+
+Results
+Color Recognition
+Materials absorb specific frequency (or wavelength) of
+lights depending on the color. Therefore, reflected light
+from material has information on color. Our framework
+is able to measure each wavelength’s light intensity.
+Therefore, definitive color of the material can be
+measured and thus, represented in an objective metric.
+
+Figure 5. Garment samples used for color matching evaluation
+with their respective reflected light spectrums.
+
+Figure 5 shows garment samples used for color
+matching evaluation. We utilized white color LED to
+obtain correct spectrum of reflected light, due to white
+LED’s wide frequency range. The garment is
+simultaneously illuminated during the spectrum
+capturing. It is important to note that the distance
+between spectrometer and the garment is fixed in our
+prototype’s case design, in order to provide correct
+measurement of the reflected light’s spectrum. These
+tested garments are fixed at a same position on top of
+the case, which was made using a 3D printer with black
+plastic filament. In the experiment, the angle of light
+source was determined to maximize reflection light
+from fabric. Figure 5 also shows result on the
+experiment for recognizing the color on 3 different
+
+1600
+
+Work-in-Progress
+
+CHI 2015, Crossings, Seoul, Korea
+
+fabrics: a) is original spectrum of the white LED
+measured by directly emitting the light to the
+spectrometer; b), c), and d) are spectrums of reflected
+light from white, blue, and green fabric, respectively.
+White fabric refracts wide-range of light frequency.
+Therefore, the spectrum indicates similar characteristic
+to illumination’s white LED’s spectrum. On the other
+hand, the characteristics of spectrums on blue and
+green fabric are different from the original illumination.
+Blue fabric reflects specific frequency for blue (380 to
+495nm). Green fabric reflects frequency for blue and
+green (455 to 630 nm). Hence, this information can be
+used to accurately recognize color.
+Indicator of Airiness
+Material texture consists of complex information such
+as thickness, airiness, and way of fabric knitting pattern.
+In this subsection, we show that spectrum of reflected
+right from a fabric can be an indicator to revel texture
+information. Figure 6 depicts materials used for airiness
+analysis, which are parts of fabrics that are cut out
+from socks, towel, and handkerchief. We used the same
+hardware setup as previous experiment. Figure 6 also
+shows the result on experiment for analyzing the
+airiness of fabrics. The amplitude difference on certain
+range of wavelength depicts the difference of airiness
+or thickness of the fabric. Hence, provide a key finding
+to identify fabrics’ airiness or thickness.
+
+Figure 6. Garment samples used for airiness analysis with
+their respective reflected light spectrums.
+
+that depends on the air passed through the fabric from
+a fan that was set to constant rotation-per-minutes
+(RPM) and we measured the thickness by a measuring
+instrument. Observable in our result, the spectrum’s
+amplitude was highly correlated with airiness. For
+instance, even if t-shirt is thicker than the handkerchief,
+the value of airiness is higher and the mean of
+amplitude is lower.
+
+Evaluation of Airiness
+
+Discussion
+
+To evaluate the effectiveness of our approach, we
+analyze the correlations between thickness and airiness
+of each garment, respective to the spectrum’s mean
+amplitude. Figure 7 depicts our experimental setup and
+results. To measure ratio of each samples’ airiness, we
+made a simple indicator based on angular difference
+
+In this paper, we only describe features on spectrums
+in visible light. However, spectrums in the range of
+near-IR have considerable amount of information on
+texture. For example, polyethylene used for cloth
+absorbs 2.3µm and 3.4µm of light significantly. By
+incorporating these kinds of characteristic, we can
+
+1601
+
+Work-in-Progress
+
+CHI 2015, Crossings, Seoul, Korea
+
+Conclusion and Future Work
+We presented Palette, a method to objectively quantize
+material color and texture for providing representative
+description of a product in online shopping scenarios.
+We described theory of operations, demonstrated
+technical feasibility by prototype implementation, and
+reported our evaluations on color and airiness for
+different garments. For future iteration of this work, we
+plan to improve hardware design as well as expand
+spectrum analysis in time-space domain using wavelets.
+We believe this will be useful to aggregate richer
+features to reliably distinguish material textures.
+
+References
+[1]
+
+Adobe Color CC. Online at: https://color.adobe.com.
+
+[2] Wang, X. and Zhang, T. Clothes search in
+consumer photos via color matching and attribute
+learning. In Proc. of MM'11, pp. 1353–1356.
+Figure 7. Correlation between thickness, airiness, and the
+amplitude mean of aggregated spectrums for each samples.
+
+obtain spectral parameters of a garment material.
+Furthermore, by analyzing light spectrum and
+aggregating contextual features, we will be able to
+represent material color and texture in separate
+nominal classes using supervised training based
+machine learning. Current design of Palette can
+combine color and texture recognition, however, cannot
+recognize each of these simultaneously. Additional
+reference fabrics are necessary to achieve usability
+level for e-commerce scenario. Also, a hardware design
+leveraging smartphone-mounted spectrometer is
+advisable for better mobility and end-user affordance.
+Several generations of IPhone don’t have IR-filter in its
+front camera. Therefore, we can make similar Palette
+configuration in much simpler way while solving
+hardware issues, e.g. power source for illumination.
+
+[3] Yingli T. and Shuai Y. Clothes matching for blind
+and color blind people. In Proc. of International
+Conference on Computers Helping People with special
+needs (ICCHP'10), pp. 324–331.
+[4] Zhu, H., Zhang, H., and Yu, Y. Deeper semantics
+goes a long way: fuzzified representation and matching
+of color descriptions for online clothing search. In Proc.
+of International Conference on Web Information
+Systems (WISE'06), pp. 423–435.
+[5] Jamali, N., Sammut, C. Majority voting: material
+classification by tactile sensing using surface texture. In
+Trans. Rob. 27, 3 (June 2011), pp. 508– 521.
+[6] Bell, S., Upchurch, P., Snavely, N., and Bala, K.
+OpenSurfaces: a richly annotated catalog of surface
+appearance. In ACM Trans. Graph. 32, 4, Article 111
+(July 2013), 17 pages.
+[7] Schneider, C.A., Rasband, W.S., Eliceiri, K.W. NIH
+Image to ImageJ: 25 years of image analysis. In
+Nature Methods 9, pp. 671-675, 2012.
+
+1602
+
+

@@ -1,0 +1,379 @@
+Physiological Signal-Driven Virtual Reality
+in Social Spaces
+Yun Suen Pai
+Graduate School of Media Design,
+Keio University, Yokohama, Japan.
+yspai1412@kmd.keio.ac.jp
+ABSTRACT
+
+sensing contains data of an individual’s cognitive load and
+state of mind, and visualizing them in an immersive VR
+space opens new possibilities. Besides visualization,
+another important use of these data are for implicit
+feedback to directly affect the virtual environment. For my
+first year, I am concentrating on eye tracking methods in
+HMDs. Eye tracking lets us know the user’s point of
+attention, stress level and their attention. I am looking into
+new calibration methods for accurate eye tracking in a VR
+environment as well as having full 3D gaze detection as
+opposed to 2D eye tracking in most commercially available
+eye trackers. VR applications extend widely into many
+fields like engineering, medicine, sports, military and so on.
+Furthermore, seeing as this year is where VR has reached
+its peak of popularity, there is no better time for further
+research and development in the field of VR. The
+immersion that VR offers together with physiological
+sensing can provide users with potentially new forms of
+application as well, for example experiencing a VR
+environment that changes our state of mind for the rest of
+the day.
+
+Virtual and augmented reality are becoming the new
+medium that transcend the way we interact with virtual
+content, paving the way for many immersive and interactive
+forms of applications. The main purpose of my research is
+to create a seamless combination of physiological sensing
+with virtual reality to provide users with a new layer of
+input modality or as a form of implicit feedback. To
+achieve this, my research focuses in novel augmented
+reality (AR) and virtual reality (VR) based application for a
+multi-user, multi-view, multi-modal system augmented by
+physiological sensing methods towards an increased public
+and social acceptance.
+Author Keywords
+
+Virtual Reality; Augmented Reality; Physiological Sensing
+ACM Classification Keywords
+
+H.5.1. [Information interfaces and presentation]:
+Multimedia Information Systems – Artificial, augmented,
+and virtual realities.
+INTRODUCTION
+
+PREVIOUS WORK
+
+At this point of writing, I am still in my first year of PhD
+research, and most of my research plans are related to my
+PhD direction for the next 3 years. My current research
+plans are related to physiological signals in virtual reality
+(VR) applications. Specifically, my primary goal is to
+create a seamless combination of physiological sensing
+with virtual reality to provide users with a new layer of
+input modality or as a form of implicit feedback. This
+means obtaining data from external devices like eye
+trackers, heart rate monitors, or even brain sensing to be
+used as VR interaction mechanic. I am also currently
+exploring new interaction methods in VR such as new
+locomotion methods, collaborative platforms, and learning
+tools and would love to use these sensing methods to
+provide users with a new layer of interaction. Physiological
+
+Most of the previously conducted research focuses on AR
+development for use of manufacturing and machining
+simulations. I developed a factory layout planning tool that
+allows the user to conduct a table-top planning on the
+placement of machines to minimize the material travel time
+which can save millions of dollars in the long run. The
+system also calculates the optimum placement of workers
+based on several well-known layouts while simultaneously
+determining the total area occupied. I also worked on
+kinematic modeling of a robotic arm for offline robot
+programming in AR [1]. By reproducing the arm’s
+movement virtually, engineers will be able to train it more
+effectively with correct visualization as opposed to online
+programming which can be dangerous. This system was
+able to generate the path for the robot’s end effector and
+visualize it in AR while also generating a file for these
+coordinates to be used for the physical robot arm. To
+interact with the AR content, another work based on speech
+recognition was developed so that a seamless form of input
+can be used for the AR system. For example, during a
+machining simulation, the user needs to pay full attention
+on the screen and cannot shift it towards the keyboard.
+Speech recognition bridges this gap to allow full
+concentration on the machining process. This was found
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984787
+
+25
+
+during a computer numerical control (CNC) machining
+simulation process that recreates milling in AR with all the
+necessary parameters for the generation of G-codes. The
+CNC machining module was combined with the layout
+planning and robot arm module to create a fully functioning
+AR system that educates and teaches the user on a complete
+manufacturing phase[2].
+
+an egocentric point of view. Since this is a shared
+environment achieved through Photon Networking, other
+users may join the scene and observe the changes made, as
+well as perform changes themselves. Figure 2 shows
+multiple users in the same design space.
+
+CURRENT AND FUTURE WORK
+Real Time AR ToolKit
+
+My first work is related to AR development where I am
+developing a toolkit that visualizes augmented reality
+models in real time. The Real Time Augmented Reality
+Toolkit (RealArt) is a system that reads the models vertices
+and meshes directly and reproduces its AR counterpart.
+This is usually not possible unless the modeling software is
+hacked, or if the AR tool collaborates with the modeling
+tool [3]. Typically for most AR applications, users are
+required to create a 3D model, then export it as a supported
+file type such as OBJ, STL, and so on. The next step would
+then be to launch the AR program and import that model.
+Due to these cumbersome steps, product designers do not
+always prefer to use AR modelling. RealArt solves this
+issue by providing them a method to create and change a
+3D model that is immediately reflected on the AR model. A
+haptic surrogate was also used to provide the designer with
+haptic feedback. Figure 1 illustrates a user using RealArt to
+modify the design of a mug and observing the changes on
+the overlaid AR model on the haptic mug surrogate.
+
+Figure 2. CleaVR system illustrating direct hand
+manipulation and collaborative design space.
+Another work that is currently in development aims to
+understand how the sense of scale and perspective can
+prove beneficial in a VR environment, especially if the said
+environment is dynamic or constantly changing. The
+Humanoid Titan is a project idea that studies this approach
+as a method of educating others of the human anatomy. To
+achieve this, the Kinect sensor is used to capture the user’s
+full body movement. However, the user does not observe
+the VR environment through the eye of the avatar, but
+through a scaled-down insect-like creature on the avatar
+itself. This allows the user to physically explore his or her
+own body by making the body itself as the actual terrain.
+The main implication of this study is that providing a
+different perspective to a user under an environment that
+constantly changes leads to a better understanding of the
+situation.
+
+Figure 3. The Humanoid Titan System, where the left
+monitor shows the user’s view of being on his arm, and
+the right monitor showing the avatar.
+
+Figure 1. A user using RealArt to design a mug
+VR for Multi-User, Multi-View
+
+Since VR is becoming more mainstream, my primary
+research focus is on the development of various novel
+interaction methods. One of the main focus is on the social
+acceptability and collaborative nature that can be nurtured
+in a VR environment [4]. The collaborative layout
+evaluation and assessment in VR (CleaVR) system aims to
+achieve this by creating a shared VR environment that
+allows interior designers, engineers, and architects to
+discuss and generate a layout plan. To achieve this, an
+Oculus Rift HMD is equipped with a Leap Motion sensor to
+provide the user with direct hand manipulation for a more
+intuitive interaction. The user is able to pick and place
+furniture around in an environment by viewing it externally
+through orbital exocentric camera. With a swipe gesture,
+the user then switches into an internal view of the layout for
+
+For example, a maintenance engineer is undergoing training
+to dissemble delicate machinery. By providing him with a
+scaled down perspective of being in a specific part of the
+machine, he can observe how this current modification
+affect the system internally. Figure 3 illustrates how the
+view of the user differs from the avatar.
+Social VR Locomotion
+
+Several other ongoing projects are investigations on new
+methods of navigating a VR environment. As of this
+moment, there is still no clearly defined best method for
+locomotion in VR, as it has always been a balance between
+motion sickness and immersion. There are currently two
+research ideas that aim to tackle this issue. AnyOrbit is a
+collaborative project that uses eye tracking to perform an
+
+26
+
+orbital-like movement [5], similar to the one used in
+CleaVR. The navigation system is based on a torus, with
+the center point of rotation being the point of which the user
+is looking at. Head angle is then used for the actual orbital
+movement. This allows the user to always orbit around the
+point of interest, which can be useful for story telling in VR
+or 3D model inspection where we know the user’s point of
+interest. Figure 4 shows a user orbiting around the desired
+point of focus.
+Figure 5. The installed Pupil eye trackers in the Oculus
+Rift.
+Simple machine learning algorithm is then used to estimate
+the depth of focus. Transparent Reality is a research idea
+that uses the calculated depth as a novel input modality in
+VR. Since the system is able to recognize the depth of gaze,
+layers of information can be placed on different depths that
+can be activated based on the user’s focus depth. Some of
+the potential application include creating a heads up display
+(HUD) as a front semi-transparent layer so that the user’s
+focus will always be in the main scene and can view the
+HUD by changing the focus as shown in Figure 6.
+
+Figure 4. AnyOrbit navigation where the user’s gaze
+point is shown as the red ball. The user can select to orbit
+between cubes depending on the gaze point.
+The other research idea is to develop a navigation method
+which aims to create a more socially acceptable form of
+navigation for VR while striking a balance between motion
+sickness and immersion. As VR usage becomes
+mainstream, it could be just a matter of time before VR is
+used in public places like the subway or bus. In such cases,
+finding a method that allows us to navigate a VR
+environment without drawing too much attention becomes
+another issue. Most current research relies on the walking in
+place (WIP) method for locomotion as it is understandably
+more realistic and has proven to cause relatively less
+motion sickness [6]. However, WIP methods cannot be
+used for an extended period of time, and is not the most
+viable method to be used in public environments.
+
+Figure 6. Example of Transparent Reality for a sports
+scoreboard.
+Another application is also for creating a layer that shows
+the physical world. Transitioning between them thus
+becomes easier and more natural, which is suitable for
+discussions in VR space. The second project that stem from
+this implementation is GazeSim [8], that simulates foveated
+rendering, which is an interesting implementation for VR,
+seeing as how VR is synonymous with the requirement of
+powerful hardware. Foveated rendering is able to reduce
+these requirements by only rendering the specific virtual
+scenes with high fidelity while keeping the rest of the scene
+blurred. Furthermore, traditional foveated rendering is
+achieved with blurring out a 2D scene, but recognizing the
+user’s focus depth allows for a more natural depth of field
+effect. GazeSim is demonstrated using a gear assembly test
+scene that allows the user to focus close to inspect specific
+gears of the assembled model based on gaze depth. The
+gear that is being inspected will then be moved to a front
+layer, whereas the remaining assembly is blurred from the
+user’s view as shown in Figure 7.
+
+Physiological Sensing in VR
+
+Physiological sensing includes a wide array of sensing
+methods such as electrooculography (EOG), heart rate,
+blood pressure and many more. For the current VR
+research, my focus is on eye tracking and its connection
+with the VR environment. Most of the current usage of
+physiological sensing is more towards monitoring changes,
+and rarely used as an actual input modality or implicit
+feedback. Eye tracking in particular, is the natural evolution
+of VR and will most likely be incorporated in future
+generations of VR HMDs. However, one of the main
+limitations with current eye tracking is that the system is
+only able to track 2D eye movement [7]. Eye tracking
+systems provides the position of our gaze for the x-axis and
+y-axis, but depth of focus remains an unexplored area. To
+achieve eye tracking in VR, a custom prototype was built
+that incorporates Pupil Labs trackers into the cavity of the
+Oculus Rift as shown in Figure 5.
+
+Figure 7. Example of GazeSim for a gear assembly.
+
+27
+
+Figure 8: Gantt Chart for future works
+Mechanical Engineers, Part B: Journal of Engineering
+Manufacture, 2015. 229(6): p. 1029-1045.
+2. Pai, Y.S., et al., Virtual Planning, Control, and
+Machining for a Modular-Based Automated Factory
+Operation in an Augmented Reality Environment.
+Nature Publishing Group. Scientific Reports, 2016. 6: p.
+27380.
+3. 黒木帝聡, et al., 2P1-N02 RhinoAR: AR
+
+Future Research
+
+The implementation of physiological sensing in VR
+research has plenty of rooms for further exploration.
+Furthermore, as VR becomes more and more socially
+acceptable, unique forms of interaction becomes a more of
+a necessity. VR systems being used in public environments
+could simply be a matter of time, and when that time
+arrives, it is difficult for users to interact with the virtual
+environment without having to also carry a controller
+around. Head position would be the only form of input,
+which is quite limiting and cannot be used for complex
+navigation or other forms of interaction. A subtler and more
+discreet form of interaction would be preferable. This is
+where physiological sensing methods becomes a viable
+alternative, as these signals are discrete and unobtrusive by
+nature and cannot be observed by others. However, one of
+the main hurdles would be determining the right sensing
+methods where the user can directly manipulate. For
+example, eye tracking is a method where we can naturally
+control, however, heart rate is not a signal where we can
+control precisely. Nevertheless, these data can also be used
+to directly influence the virtual environment itself in a more
+implicit manner.
+
+技術を用いたモックアップ作製支援システムの開
+発 (VR とインタフェース).
+4.
+
+5.
+
+6.
+
+CONCLUSION
+
+The field of VR is still in its infancy despite existing for
+several decades, and has only recently emerged as a viable
+tool for consumers instead of constrained to research
+purposes. For that reason, developing new interaction
+methods to create a more socially acceptable VR experience
+will soon become a necessity.
+
+7.
+
+REFERENCES
+
+8.
+
+1. Pai, Y.S., H.J. Yap, and R. Singh, Augmented reality–
+based programming, planning and simulation of a
+robotic work cell. Proceedings of the Institution of
+
+28
+
+ロボティクス・メカトロニクス講演会講演概要集,
+2012. 2012.
+Ibayashi, H., et al. Dollhouse VR: a multi-view, multiuser collaborative design workspace with VR
+technology. in SIGGRAPH Asia 2015 Emerging
+Technologies. 2015. ACM.
+Ortega, M., W. Stuerzlinger, and D. Scheurich.
+SHOCam: A 3D Orbiting Algorithm. in Proceedings of
+the 28th Annual ACM Symposium on User Interface
+Software & Technology. 2015. ACM.
+Tregillus, S. and E. Folmer, VR-STEP: Walking-inPlace using Inertial Sensing for Hands Free Navigation
+in Mobile VR Environments, in Proceedings of the 2016
+CHI Conference on Human Factors in Computing
+Systems. 2016, ACM: Santa Clara, California, USA. p.
+1250-1255.
+Drewes, H., A. De Luca, and A. Schmidt. Eye-gaze
+interaction for mobile phones. in Proceedings of the 4th
+international conference on mobile technology,
+applications, and systems and the 1st international
+symposium on Computer human interaction in mobile
+technology. 2007. ACM.
+Pai, Y.S., et al. GazeSim: Simulating Foveated
+Rendering Using Depth in Eye Gaze for VR. in Siggraph
+2016. ACM.
+
+

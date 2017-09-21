@@ -1,0 +1,241 @@
+Fluxa: Body movements as a social display
+Xin LIU1, Katia Vega1, Jing Qian1,2, Joe Paradiso1, Pattie Maes1
+1
+2
+MIT Media Lab
+Brown University
+xxxxxxin, katiav, joep,
+jing_qian@brown.edu
+pattie@mit.edu
+
+Figure 1: Fluxa: a POV display that foster social, physical interactions. (a. long-distance communication: “HELLO” text scrolling,
+b. overlaying display of an equation answer, c. image display in hand, d. showing biological data while running )
+ABSTRACT
+
+ACM Classification Keywords
+
+This paper presents Fluxa, a compact wearable device that
+exploits body movements, as well as the visual effects of
+persistence of vision (POV), to generate mid-air displays on
+and around the body. When the user moves his/her limb,
+Fluxa displays a pattern that, due to retinal afterimage, can
+be perceived by the surrounding people. We envision Fluxa
+as a wearable display to foster social interactions. It can be
+used to enhance existing social gestures such as handwaving to get attention, as a communicative tool that
+displays the speed and distance covered by joggers, and as a
+self-expression device that generates images while dancing.
+We discuss the advantages of Fluxa: a display size that
+could be much larger than the device itself, a semitransparent display that allows users and others to see
+though it and promotes social interaction.
+
+H.5.m. Information interfaces and presentation (e.g., HCI):
+Miscellaneous.
+INTRODUCTION
+
+To satisfy high demands for information accessibility and
+communication, a number of wearable displays have been
+developed to present information on and around users
+bodies [5]. The size of on-body displays is often limited by
+body shape, body motions and device weight. For example,
+smart watches [1, 12] and arm projections [6, 11] cannot
+exceed the width of the wrist. The use of wearable displays
+for social interactions has been touched upon by previous
+work. We can distinguish different social intentions: 1.
+notification and information display in public [8, 12, 14]; 2.
+enriching the dynamics of social interactions [7, 9, 10]; and
+3. aesthetics and self-expression [3, 13].
+
+Author Keywords
+
+A persistence-of-vision (POV) display utilizes movements
+to create an ephemeral display. POV displays have been
+popular among artists, hobbyists and even in the
+marketplace. People use POV for social entertainment and
+self expression, such as in the wheels of bicycles at night
+[4] and visual effects of performers their body extremities
+[2]. However, there are very few examples of POV
+wearable displays in an HCI context. Our aim is to explore
+the use of body movements as 1) a canvas for displaying
+information, 2) actuators that make the display appear and
+disappear, and 3) a scalable display that depends on the
+length of the movement trajectory.
+
+Wearables; persistence of vision; body movement; display;
+spatial-temporal interfaces; social display.
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985741
+
+155
+
+IMPLEMENTATION
+
+Other applications are done when coupling the interaction
+of Fluxa with real-life objects. A POV display essentially
+results from retinal afterimages, and is therefore able to
+show overlapping information on top of an object. In this
+way, Fluxa could reveal who is in a closed room when
+waving in that direction. Also Fluxa could be paired with a
+blackboard in teaching. When the teacher writes certain
+information on the board, for instance, a mathematical
+equation, he may use Fluxa to reveal the answer or
+supportive information that is not written yet.
+
+The implementation supports four technical features: a
+flexible display area, translucency, malleable duration and
+full-color content. The hardware consists of three parts: 1.
+an LED strip of 16 full-color programmable LEDs
+(APA102); 2. a PCB consisting of a microcontroller
+(ATmega328), a 9 DOF sensor (LSM9DS0), an EEPROM
+(24LC256) and a Bluetooth LE board; 3. a 3D-printed
+container with magnets and Velcro on the back of the LED
+strip to attach the device onto clothing at various body
+locations.
+
+CONCLUSIONS AND FUTURE WORK
+
+The display can show both text and images. It consists of 16
+rows (16 LEDs) by 21 columns, which displays a maximum
+of three letters of 7 columns each. We create different
+animation modes that can display the text and images in
+different ways. The information can be shown in the whole
+display (16 pixels/column) or scaled to a smaller size (8
+pixels/column) with two lines of letters. We also have a
+scrolling animation that pushes text forward and backward,
+as well as a refresh animation with 10 sweeping movements
+each frame. We have also developed a mobile app that
+program and communicate with Fluxa through Bluetooth
+LE. The user can type in a message, choose different
+animation modes and customize the color, brightness and
+display duration of the information.
+
+The wearable displays proposed so far are mainly used for
+displaying information privately to the wearer. However,
+creating public wearable displays provides new possibilities
+to foster and enrich social interactions. In this paper, we
+presented the Fluxa POV wearable display which has been
+proven useful for several social interactions such as
+activities monitoring and sharing, group coordination,
+warnings in the public and superimposing information onto
+physical objects. In this way, this device promotes social
+interactions, informs and attracts people’s attention in a
+playful fashion.
+Unlike other wearable displays that only use the stationary
+body as the substrate, our system explores the use of body
+movements as 1) a canvas for displaying information, 2)
+actuators that make the display appear and disappear, and 3)
+a scalable display that depends on the length of the
+movement trajectory. Moreover, Fluxa offers unique
+advantages in that the display is semi-transparent and as
+such allows for augmenting physical objects. It creates
+ephemeral user interfaces that plot pixels in the air. In this
+way, information could be augmented onto someone’s own
+body or onto surrounding objects. Another important
+advantage is that the device is much smaller than the
+display size it can produce, which makes it more usable in a
+mobile context.
+
+Figure 2. Fluxa Hardware
+
+Potential applications were presented as a proof of concept
+of this technology. Future work will explore
+communication among multiple devices to support social
+interaction such as gamification and group activities. We
+are also interested in the use of several Fluxa devices on
+different parts of the body. Other sensors such as infrared
+and RFID readers could be embedded for automatically
+recognizing and overlaying information onto physical
+objects.
+
+DEMO APPLICATIONS
+
+A possible application for Fluxa is to visualize biological
+signals or other sensor data during activities. We have
+created a scenario in which users are able to see the
+distance traveled and users heart rate updated and streamed
+through our mobile terminal to Fluxa in real-time.
+Another application is to embed visual information on top
+of user gestures to broadcast information in scenarios such
+as weaving hands towards a friend to call for attention, and
+long distance communication in the same physical space.
+The message generated by Fluxa is especially useful and
+readable for noisy or dark environments.
+
+156
+
+8. Kleinman, L., Hirsch, T., and Yurdana, M. Exploring
+mobile devices as personal public displays. In
+Proceedings of the 17th International Conference on
+Human-Computer Interaction with Mobile Devices and
+Services, ACM (2015), 233–243.
+
+REFERENCES
+
+1. Apple Watch apple. http://www.apple.com/watch.
+Accessed: 2016-04-10.
+2. Boddy Graffiti younghui kim.
+https://absurdee.com/hearwear-gallery/bodygraffiti/.
+Accessed: 2016-04-23.
+
+9. Laibowitz, M., Gips, J., Aylward, R., Pentland, A., and
+Paradiso, J. A. A sensor network for social dynamics. In
+Proceedings of the 5th international conference on
+Information processing in sensor networks, ACM
+(2006), 483–491.
+
+3. The Twitter Dress cutecircuit.http://cutecircuit.com/thetwitter-dress/. Accessed: 2016-04-10.
+4. Chen, M.-C., Ciou, J.-Y., Jhang, G.-S., and Liang, Y.-S.
+Led image display system with mobile app control.
+Computers & Electrical Engineering 52 (2016), 1–11.
+
+10. Mauriello, M., Gubbels, M., and Froehlich, J. E. Social
+fabric fitness: the design and evaluation of wearable etextile displays to support group running. In
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems, ACM (2014), 2833–
+2842.
+
+5. Grubert, J., Kranz, M., and Quigley, A. Design and
+technology challenges for body proximate display
+ecosystems. In Proceedings of the 17th International
+Conference on Human-Computer Interaction with
+Mobile Devices and Services Adjunct, ACM (2015),
+951–954.
+
+11. Mistry, P., and Maes, P. Sixthsense: a wearable gestural
+interface. In ACM SIGGRAPH ASIA 2009 Sketches,
+ACM (2009), 11.
+
+6. Harrison, C., Benko, H., and Wilson, A. D. Omnitouch:
+wearable multitouch interaction everywhere. In
+Proceedings of the 24th annual ACM symposium on
+User interface software and technology, ACM (2011),
+441–450.
+
+12. Pearson, J., Robinson, S., and Jones, M. It’s about time:
+Smartwatches as public displays. In Proceedings of the
+33rd Annual ACM Conference on Human Factors in
+Computing Systems, ACM (2015), 1257–1266.
+
+7. Kan, V., Fujii, K., Amores, J., Zhu Jin, C. L., Maes, P.,
+and Ishii, H. Social textiles: Social affordances and
+icebreaking interactions through wearable social
+messaging. In Proceedings of the Ninth International
+Conference on Tangible, Embedded, and Embodied
+Interaction, ACM (2015), 619–624.
+
+13. Small, S. M., and Roseway, A. The printing dress: You
+are what you tweet.
+14. Walmink, W., Chatham, A., and Mueller, F. Interaction
+opportunities around helmet design. In CHI’14 Extended
+Abstracts on Human Factors in Computing Systems,
+ACM (2014), 367–370.
+
+157
+
+

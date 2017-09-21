@@ -1,0 +1,954 @@
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+Cross-Field Aerial Haptics: Rendering Haptic Feedback
+in Air with Light and Acoustic Fields
+Yoichi Ochiai1*, Kota Kumagai2*, Takayuki Hoshi3, Satoshi Hasegawa2 and Yoshio Hayasaki2
+1
+2
+3
+University of Tsukuba
+Utsunomiya University
+Nagoya Institute of
+Ibaraki, Japan
+Tochigi, Japan
+Technology
+wizard@slis.tsukuba.ac.jp
+{kumagai_k, hasegawa_s,
+Aichi, Japan
+hayasaki}@opt.utsunomiya-u.ac.jp
+star@nitech.ac.jp
+research laboratories to commercial use by individual
+consumers. However, a missing and desired function in
+these immersive technologies is aerial haptic feedback.
+
+ABSTRACT
+
+We present a new method of rendering aerial haptic images
+that uses femtosecond-laser light fields and ultrasonic
+acoustic fields. In conventional research, a single physical
+quantity has been used to render aerial haptic images. In
+contrast, our method combines multiple fields (light and
+acoustic fields) at the same time. While these fields have no
+direct interference, combining them provides benefits such
+as multi-resolution haptic images and a synergistic effect on
+haptic perception. We conducted user studies with laser
+haptics and ultrasonic haptics separately and tested their
+superposition. The results showed that the acoustic field
+affects the tactile perception of the laser haptics. We
+explored augmented reality/virtual reality (AR/VR)
+applications such as providing haptic feedback of the
+combination of these two methods. We believe that the
+results of this study contribute to the exploration of laser
+haptic displays and expand the expression of aerial haptic
+displays based on other principles.
+
+Aerial haptic display has several advantages: it projects a
+force from a distance without physical contact or wearable
+devices, and it has high programmability. In other words, it
+can be set and rearranged at an arbitrary position in a 3D
+space because it does not require physical actuators.
+Efforts are continuously being made to render aerial haptic
+images, and there are now several methods available to do
+so in a noncontact manner. The fundamental principles of
+noncontact forces were thoroughly discussed by Brandt [4].
+Although he focused on levitation, his work is also
+applicable to our purpose. There are seven types of
+noncontact forces: aerodynamic, acoustic, optical, electric,
+magnetic,
+radio-frequency,
+and
+superconducting
+technologies. Among them, aerodynamic, acoustic, and
+optical technologies are potentially available in our daily
+lives for aerial haptic feedback (Figure 2).
+
+Author Keywords
+
+Haptic feedback; focused ultrasound; femtosecond laser;
+laser plasma; aerial interaction.
+
+Recently, several studies have focused on the computational
+design of fields of physical quantities that use graphical
+and/or holographic approaches, such as acoustic [5] and
+optical [6] fields. These studies focused on a single physical
+quantity. In the present study, we focused on methods that
+combine multiple fields to explore the synergistic effects.
+
+ACM Classification Keywords
+
+H.5.2. [Information Interfaces and Presentation: User
+Interfaces];
+INTRODUCTION
+
+This paper is organized as follows. First, we describe the
+design of our aerial haptic system (Figure 1). We present
+the details of the light part (femtosecond laser with a spatial
+light modulator (SLM) and a galvano mirror) and acoustic
+part (ultrasonic phased array). Next, we describe the
+specifications of our system, including the spatial resolution
+and response time. After that, we report the results of user
+studies testing the individual and conjugated performances
+of the light and acoustic fields. Finally, we discuss the
+applications and user tests. Although we used light and
+acoustic fields, our results suggest that this approach can
+also be used to combine multiple other fields.
+
+Aerial haptic feedback is a popular topic in research fields
+on real-world-oriented interaction, augmented reality (AR),
+and virtual reality (VR). Various methods such as air jets
+[1], ultrasound [2], and air vortices [3] have been proposed
+for this purpose. In the context of visual displays, virtual
+reality headsets for immersive content and depth cameras
+for gesture input are being rapidly developed to move from
+*
+
+Joint first authors.
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for
+components of this work owned by others than ACM must be honored.
+Abstracting with credit is permitted. To copy otherwise, or republish, to
+post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from
+Permissions@acm.org.
+CHI'16, May 07-12, 2016, San Jose, CA, USA
+© 2016 ACM. ISBN 978-1-4503-3362-7/16/05…$15.00
+DOI: http://dx.doi.org/10.1145/2858036.2858489
+
+RELATED WORK
+
+In this section, we review conventional studies on aerial
+haptic feedback and computational fields. We then point
+out unresolved issues and clarify the originality of our study.
+
+3238
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+Figure 1. Application images of aerial haptic feedback rendered by laser and ultrasound. (a) An augmented reality image of
+heart with haptic feedback. (b) Laser plasma. (c) Focused ultrasound visualized by dry ice. (d-e) Close-up.
+
+i.e., noncontact forces. The studies on aerial haptic
+feedback presented above are included in this category.
+Another purpose is the noncontact control of objects.
+Poppable Display [14] is a soap film driven by ultrasonic
+waves to reproduce BRDF. In [15], air jets were used to
+move objects on a 2D plane. UltraTangibles [16] produces a
+similar effect by radiation pressure of ultrasound. lapillus
+bug [17] suspends an object at a fixed height and moves it
+with an ultrasonic standing wave. Pixie Dust [5] also uses
+an ultrasonic standing wave to render graphics in midair
+with levitated particles. ZeroN [18] levitates a magnetic
+sphere and moves it with an XY stage. [19] and [6] have
+reported using laser plasma to render aerial images. The
+latter [6] has also reported that the rendered images can be
+touched with fingers and they utilized this phenomenon for
+user interaction. Note that each of these studies controlled
+the field of a single physical quantity. In other words, they
+focused on achieving their purpose based on a single
+principle.
+
+Figure 2: Methods of aerial haptic feedback.
+
+Figure 3: A map of related work (aerial haptic feedback).
+
+The novelty of our study is to employ two different fields
+simultaneously and explore not only the superposition but
+also synergetic effects. This is the first step to developing a
+new method to combine multiple fields when designing
+interactions.
+
+Aerial Haptic Feedback
+
+Various methods for aerial haptic feedback without
+physical contact or wearable devices have been proposed.
+In [1], virtual objects were represented by air jets from an
+array of nozzles. Air vortices have been used to provide
+impact in midair [3, 7]. These can be explained as
+aerodynamic methods. Ultrasonic haptic feedback [2, 8, 9]
+is highly programmable because of the use of ultrasonic
+phased arrays. FingerFlux [10] uses magnetic forces by
+attaching a small magnet to a user’s finger. Light is
+employed to provide a sensation on the hands when the user
+is suffering thermal radiation [11]. Nanosecond lasers
+applied on a skin evoke tactile sensation [12, 13]. Electric,
+radio-frequency, and superconducting forces have not been
+applied to aerial haptic feedback so far.
+
+Position of This Study
+
+In this study, we aimed to resolve issues with aerial haptic
+feedback by employing dual fields: light and sound. Our
+light source was a femtosecond laser with an SLM and
+galvano mirror, and our sound source was an ultrasonic
+phased array. As introduced above, touchable laser plasmas
+have recently been reported while ultrasonic haptic
+feedback has been closely studied for years. Examining the
+fundamental characteristics of touchable laser plasma of
+femtosecond laser is another purpose of this study.
+
+Computational Fields
+
+Ultrasonic haptic feedback has a relatively high spatial
+resolution compared to other aerial haptic feedback
+methods and is limited by the wavelength (8.5 mm for 40
+
+In some studies, interactions have been designed by
+computationally controlling fields of physical quantities,
+3239
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+Figure 4: Laser and ultrasonic systems.
+Laser Haptics
+
+The laser haptics is based on evaporation effect of
+femtosecond laser, which slightly dig the skin surface and
+generate a shock wave on the skin. This is a non-thermal
+effect of ultra-short pulse laser (we use 40-fs one in this
+paper), which is different from thermoelastic effect of
+nanosecond laser [12, 13]. The application time is limited
+up to a few seconds to save the skin from damage. The
+sensation is vivid, little bit painful, and similar to electric
+stimulation or rough sand paper.
+
+Figure 5: Diagram of control system.
+
+Figure 4 shows an overview of the femtosecond laser,
+which is followed by an SLM and galvano mirror.
+
+kHz ultrasound). Because of the absorption loss in air,
+higher-frequency ultrasound (i.e., shorter wavelengths) is
+not suitable for haptic feedback. Another limitation is the
+weakness of the stimulation, which is inadequate for
+reproducing impulses such as the instant of contact. The
+maximum force generated by an 18 × 18 array can be as
+low as 16 mN [2], and a larger array is required to obtain a
+larger force [20].
+
+Galvano mirror and lens: Here, we describe our scanning
+system in detail. We employ galvano mirrors to scan the
+lateral (X and Y) directions, while a varifocal lens can
+change its focal point in the beam axial (Z) direction.
+SLM: The use of SLMs is one method to render holograms.
+In general, an SLM has an array of computer-controlled
+pixels that modulate a laser beam’s intensity, phase, or both.
+A liquid crystal SLM (LCSLM) containing a nematic liquid
+crystal layer was used in this study. The molecule directions
+within this layer are controlled by electrodes (i.e., pixels),
+and the phase of the light ray reflected by each pixel is
+modulated according to the direction of the liquid crystal
+molecule. In other words, this device acts as an optical
+phased array.
+
+We expect that laser plasma may be able to compensate for
+the shortcomings of ultrasonic haptic feedback. We suppose
+that these two effects are physically independent of each
+other. Our motivation is to use these two effects
+complementarily. They can be applied at the same place
+and time, and mixed on the skin as elastic wave and/or in
+the neural system as nerve signals. For example, the laser
+simulates the encounter of the skin and a virtual object and,
+after that; the ultrasound produces continuous contact
+between them.
+
+The spatial phase control of light enables the focusing
+position to be controlled along both the lateral (X and Y)
+and axial (Z) directions. The complex amplitude (CA) of
+the reconstruction from the computer-generated hologram
+(CGH) Ur is given by the Fourier transform of the designed
+CGH pattern Uh:
+
+Combining two fields of different physical quantities would
+provide not only the superposition effect proposed above
+but also synergistic effects such as modification of the
+feeling. Figure 3 describes the focal area of this study.
+PRINCIPLES, SYSTEM, AND CONTROL
+
+In this section, we describe the principles of our optic and
+acoustic systems. First, the optical system, which is a
+femtosecond laser with an SLM and galvano mirror, is
+introduced. Next, the acoustic system, which is an
+ultrasonic phased array, is described. Finally, we describe
+the control system.
+
+𝑈𝑈𝑟𝑟 �𝜈𝜈𝑥𝑥 , 𝜈𝜈𝑦𝑦 � = � 𝑈𝑈ℎ (𝑥𝑥, 𝑦𝑦) exp�−𝑖𝑖2𝜋𝜋�𝑥𝑥𝜈𝜈𝑥𝑥 + 𝑦𝑦𝜈𝜈𝑦𝑦 �� 𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑
+= 𝑎𝑎𝑟𝑟 �𝜈𝜈𝑥𝑥 , 𝜈𝜈𝑦𝑦 � exp[𝑖𝑖𝜑𝜑𝑟𝑟 (𝜈𝜈𝑥𝑥 , 𝜈𝜈𝑦𝑦 )]
+
+𝑈𝑈ℎ (𝑥𝑥, 𝑦𝑦) = 𝑎𝑎ℎ (𝑥𝑥, 𝑦𝑦) exp[𝑖𝑖𝜑𝜑ℎ (𝑥𝑥, 𝑦𝑦)]
+3240
+
+(1)
+(2)
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+where ah and φh are the amplitude and phase of the
+hologram plane displayed on the SLM, respectively. In the
+experiment, ah is constant because the light irradiation on
+the CGH is considered to be plane wave with a uniform
+intensity distribution. φh is obtained by using the ORA
+algorithm, whereas ar and φr are the amplitude and phase of
+the reconstruction plane, respectively. The spatial intensity
+distribution of the reconstruction is actually observed as
+|Ur|2 = ar2.
+
+implies that there is a tradeoff between the spatial
+resolution and array size.
+Haptic Images: Haptic images are given by an acoustic
+phased array system. Haptic image Hi is the summation of
+the time series of the focal points, that is,
+𝐻𝐻𝑖𝑖 = ∑ 𝑓𝑓𝑝𝑝 (𝑥𝑥, 𝑦𝑦, 𝑧𝑧) × 𝑝𝑝 × 𝑡𝑡
+Control System
+
+Here we describe the pipe line for rendering the haptic
+image in the air using our system. Figure 5 shows our
+system diagram. The system is controlled using a Windows
+PC, with all programs coded in C++. The control system
+operates the acoustic phased array, SLM, galvano mirror,
+and varifocal lenses. To monitor the interaction, a USB
+camera is connected to the system. The phased array,
+Galvano mirror, and varifocal lenses run along different
+threads and are synchronized when new draw patterns are
+input. The user input is captured at 60 Hz, and the SLM is
+connected to the computer as an external display.
+
+Haptic Images: Haptic images are given by a combination
+of an SLM image and galvano mirror. Haptic image Hi is
+the summation of the time series of the focal points, that is,
+
+The laser side operation (setting coordinates and controlling
+the driving mirror, lens, and SLM) is completely performed
+by the PC. However, the phased array includes an FPGA
+that receives data, including the coordinate of the focal
+point and output force, from the PC. On receiving the data,
+the FPGA calculates adequate time delays for each
+transducer based on Eqs. (1) and (3), and generates the
+driving signals. The driving signals are sent to the
+transducers via the amplifiers. Modifying the time-delay
+calculation algorithm changes the distribution of the
+acoustic-potential field. The output force is varied through
+pulse width modulation (PWM) control of the driving
+signal.
+
+(3)
+
+where Ur represents the laser focal points given by (1), t is
+time duration, and p is laser intensity.
+Ultrasonic Haptics
+
+The ultrasonic haptics is based on acoustic radiation
+pressure, which is not vibrational and presses the skin
+surface. This can be applied on the skin for a long time but
+this is relatively weak (10-20 mN). The sensation is similar
+to a laminar air flow within a narrow area.
+Figure 4 shows an overview of the ultrasonic phased array,
+which has 285 ultrasonic transducers and controls them
+individually with adequate time (or phase) delays.
+
+Hardware Specifications
+
+Light Field: The setup that includes a femtosecond laser
+light source is described below. This femtosecond laser
+source (Coherent Co., Ltd.) has a center wavelength of 800
+nm, repetition frequency of 1 kHz, and pulse energy in the
+1- to 2-mJ range. The Galvano mirror scans the emission
+dot along the lateral directions (X- and Y-scanning), while
+the varifocal lens can vary its focal point in the axial
+direction (Z-scanning). The Fourier CGH is used for
+parallel optical access [21]. The CGH, designed with an
+optimal-rotation-angle (ORA) method [22], is displayed on
+the LCOS-SLM, which has a resolution of 768 × 768 pixels,
+pixel size of 20 × 20 μm2, and response time of 100 ms. We
+employ an Optotune EL-10-30 as the varifocal lens, which
+is connected via USB serial to a PC. These devices are
+operated by applications
+created using C++. The
+workspace is as large as 2 × 2 × 2 cm3, which is enlarged
+according to the diameter of the lens.
+
+The time delay Δtij for the (i, j)-th transducer is given by
+∆𝑡𝑡𝑖𝑖𝑖𝑖 =
+
+𝑙𝑙00 −𝑙𝑙𝑖𝑖𝑖𝑖
+𝑐𝑐
+
+(4)
+
+where l00 and lij are the distances from the focal point to the
+(0, 0)-th (reference) and (i, j)-th transducers, respectively. c
+is the speed of sound in air. The focal point can be moved
+by recalculating and setting the time delays for the next
+coordinates.
+It has been theoretically and experimentally shown that the
+spatial distribution of ultrasound generated from a
+rectangular transducer array is nearly shaped like a sinc
+function [2]. The width of the main lobe w parallel to the
+side of the rectangular array is written as
+𝑤𝑤 =
+
+2𝜆𝜆𝑅𝑅
+𝐷𝐷
+
+(6)
+
+where fp is the ultrasonic focal points generated based on
+(4), p is the acoustic pressure, and t is the time duration.
+
+To control the focusing position along the lateral (X and Y)
+direction, the CGH is designed based on a superposition of
+CAs of blazed gratings with a variety of azimuth angles. If
+the reconstruction has N-multiple focusing spots, the CGH
+includes N-blazed gratings. To control the focusing position
+along the axial (Z) direction, a phase Fresnel lens pattern
+φp(x, y) = k (x2+y2)/2f with a focal length f is simply added
+to φh, where k = 2π/λ is a wave number. In this case, the
+spatial resolution of the SLM determines the minimum
+focal length.
+
+𝐻𝐻𝑖𝑖 = ∑ 𝑈𝑈𝑟𝑟 (𝜈𝜈𝑥𝑥 , 𝜈𝜈𝑦𝑦 ) × 𝑝𝑝 × 𝑡𝑡
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+(5)
+
+where λ is the wavelength, R is the focal length, and D is
+the length of the side of the rectangular array. This equation
+
+Acoustic Field: We utilized an ultrasonic phased array
+(Figure 4) having a resonant frequency of 40 kHz. The
+3241
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+Figure 6: Experimental setup.
+
+position of the focal point is digitally controlled with a
+resolution of 1/16 of the wavelength (approximately 0.5
+mm for the 40-kHz ultrasound) and can be refreshed at 1
+kHz. The 40-kHz phased array consists of 285 transducers
+(10 mm in diameter, T4010A1, Nippon Ceramic Co., Ltd.)
+arranged in a 170 × 170 mm2 area. The sound pressure at
+the peak of the focal point is 2585 Pa RMS (measured)
+when the focal length R = 200 mm. The size and weight of
+a single phased array are 19 × 19 × 5 cm3 and 0.6 kg,
+respectively. It consists of two circuit boards: one is an
+array board of ultrasonic transducers and the other is a
+driving board, including an FPGA and push-pull amplifier
+ICs. These boards are connected to each other with pin
+connectors. The phased array is controlled by a single PC
+via USB. The control application is developed in C++ on
+Windows (Figure 5). The PC sends the data, including the
+coordinates of the focal point and output force, to the
+driving board. The driving board receives the data,
+calculates adequate time delays for each transducer based
+on Eqs. (1) and (3), and generates the driving signals. The
+workspace is as large as 30 × 30 × 30 cm3, which is
+enlarged according to the size of the phased array.
+
+Figure 7: Overview of experimental setup.
+
+tests. Each power condition was applied twice (two trials)
+and the number of trials was 8 per subject. The order of
+trials was randomized. In each trial, the subjects touched
+laser up to 10 times and asked whether they felt something
+on their forefingers or not. Visual information was shut off
+by a blindfold and auditory information was blocked off by
+headphones with white noise (Figure 7).
+The results are shown in Figure 8 (a). The perception rate is
+the ratio of the number of trials in which the subjects felt
+the stimulation to the number of trials of each laser power.
+The 90% threshold seems to be between 0.03 and 0.04 W.
+The subjects felt the stimulation confidently (i.e., more than
+90%) at 0.16W.
+Perceptual Threshold of Ultrasound
+
+We conducted this user study to evaluate the perceptual
+threshold for acoustic radiation pressure elicited by focused
+ultrasound. This is the first report on the perceptual
+threshold of ultrasonic noncontact haptic feedback as far as
+we know. The subjects were same as the previous section.
+The direct current output of ultrasound is too weak to be
+perceivable and hence vibrotactile stimulations (modulated
+by 200- and 50-Hz rectangular waves) were applied on the
+forefingers. These modulation frequencies were chosen to
+well stimulate different channels: PC (Pacinian corpuscles)
+and RA (Meissner corpuscles) [23]. Note that the diameter
+of ultrasonic focal point (20 mm) is larger than the width of
+forefinger and the force acting on forefingers is somewhat
+lower than the output force set by the control system. The
+output force was set at one of fourteen values around the
+thresholds that are estimated by the preliminary experiment.
+Each force condition was applied once (one trial) and the
+number of trials was 14 per subject. The order of trials was
+randomized. In each trial, the subjects touched ultrasound
+freely and asked whether they felt something on their
+forefingers or not. Visual information was shut off by a
+blindfold and auditory information was blocked off by
+headphones with white noise.
+
+The overlap area of workspace of these laser and ultrasonic
+haptics is 2 × 2 × 2 cm3, which is limited by the laser
+haptics. This can be enlarged in future by using a larger lens
+to enable a larger angle range of the galvano mirror.
+USER STUDY AND RESULTS
+
+In this section, we describe the user experiments for
+evaluating our haptic system. We first describe the
+evaluation of individual fields, and then describe the
+synergistic effects between them.
+Perceptual Threshold of Laser
+
+We conducted this user study to evaluate the perceptual
+threshold for shockwaves of laser plasma arisen on skin.
+Seven subjects participated in this user study (22.5 years
+old on average, five females and two males). The subjects
+touched the laser haptic stimulation on their right
+forefingers. It is difficult to measure the evaporation effect
+as force (N), and we measure it by the laser output power
+(W). The laser output power was set at 0.05, 0.10, 0.13, and
+0.16 W. The lowest power was limited by the specification
+and the highest power was determined by the preliminary
+
+3242
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+Figure 8: Experimental results.
+
+The results are shown in Figure 8 (b). The perception rate is
+the ratio of the number of trials in which the subjects felt
+the stimulation to the number of trials of each ultrasonic
+output force. The 50% thresholds for 200- and 50-Hz
+stimulations seem to be about 1.1 mN and 1.6 mN,
+respectively. The subjects felt the 200- and 50-Hz
+stimulations confidently (i.e., 90%) at about 1.6 mN and 2.4
+mN, respectively. It is well known in the research field of
+haptics that the tactile sensitivity is high against about 200Hz stimulation, and our results agree with this knowledge.
+
+Figure 9: Spatial patterns rendered with laser plasma (dot,
+line, and box).
+
+Spatial Patterns of Laser Plasma
+
+We conducted this user study to test the capability to
+discriminate the spatial patterns rendered with laser plasma.
+Figure 9 shows examples rendered by repetitive galvano
+scan of the laser plasma. In this experiment, two spatial
+patterns (dot and line) were used. The subjects were same
+as the previous section. Each pattern was applied four times
+(four trials) and the number of trials was 8 per subject. The
+order of trials was randomized. In each trial, the subjects
+touched laser up to 10 times and asked which pattern they
+felt on their forefingers. Visual information was shut off by
+a blindfold and auditory information was blocked off by
+headphones with white noise.
+
+Perceptual Threshold of Cross-Field
+
+We conducted this user study to evaluate the perceptual
+threshold for shockwaves of laser plasma under the preload
+of ultrasonic vibrotactile stimulation that is weaker than the
+perceptual threshold. There are two possible effects of
+ultrasound on the laser haptics. One is a masking effect that
+increases the perceptual threshold for laser plasma, and the
+other is a stochastic effect that decreases it.
+Nine subjects participated in this user study (21.6 years old
+on average, four females and five males). The subjects
+touched the laser haptic stimulation on their right
+forefingers. The laser power was set at 0.05, 0.10, and
+0.15W. The modulation frequency of ultrasound was 200
+Hz and 50 Hz to stimulate PC and RA channels,
+respectively. Each power and frequency condition was
+applied four times (four trials) and the number of trials was
+24 per subject. The order of trials was randomized. In each
+trial, the subjects touched laser up to 10 times and asked
+whether they felt something on their forefinger or not. The
+ultrasonic stimulation was tuned to be just under the
+perceivable force for each frequency and subject. Visual
+information was shut off by a blindfold and auditory
+
+The results are shown in Figure 8 (c). The merged result
+indicates that people can discriminate the two patterns but
+tend to answer inversely. The correct rate would become
+better once they recognize the patterns. It is to be noted that
+some of the subjects could discriminate the two patterns
+very well (“inverse” group) however the others could not at
+all. Furthermore, there were two types of tendency: one is
+an “ambiguous” group and the other is a “bias-to-line”
+group. There is a room for further investigation.
+
+3243
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+awareness by ultrasound and Braille alphabets by laser, and
+extension of ultrasonic haptics by laser.
+Multi-resolution haptics for VR
+
+In this application, roughly covered haptic image is
+generated by ultrasonic acoustic field. Adding to the
+acoustic field, high resolution haptic image by plasma is
+used for precise expression for pointing or inner structure of
+target 3D models. Figure 6 shows setup of our system. AR
+marker used for matching coordinates between camera view
+and 3D object. When participants put their fingers into the
+models, firstly they feel outer haptic image which
+corresponding to virtual models in AR. After that,
+participants feel the laser plasma haptics in the floating
+models.
+
+Figure 10: Audible sound radiated from contact point.
+
+information was blocked off by headphones with white
+noise. Figure 10 shows the audible sound from the laser and
+ultrasonic haptic stimulation.
+
+This plasma works as an indicator to a precise point (ex., a
+tumor in organs, pointer of 3D haptic map, etc.). This
+application extends conventional ultrasonic haptics in the
+resolution and the variety of tactile feedback patterns.
+
+The results are shown in Figure 8 (d), where “Laser only” is
+identical to Figure 8 (a). It is interesting that the ultrasound,
+weaker than the perceptual threshold, affects the perception
+of laser shock wave. The 50% perceptual threshold for the
+laser haptics with unperceivable ultrasonic preload (red and
+blue lines in Figure 8 (d)) is around 0.15W, which is nearly
+5 times larger than that of “Laser only” (green line).
+
+Aerial Braille Alphabet
+
+In this application we utilize our system’s advantage for
+aerial haptic image. Conventional braille alphabet display is
+made of pin actuator arrays or other contact type display. In
+conventional ultrasonic or air jet haptic display cannot
+create precise and high resolution haptic image. Our display
+can express tiny haptic image in the air and also we can
+generate arbitrary position in air. This is useful
+characteristic for braille alphabet display. It will change the
+interaction with Braille Alphabet from “touch” to “come”.
+To indicate the area for haptic image we utilize acoustic
+field. Then user find the haptic image area and insert their
+finger to it, they can feel plasma haptic feedback from it.
+
+The results support the masking effect. This means that the
+ultrasonic preload makes the laser haptics less surprising
+and less painful. The mechanism of this masking effect is
+included in future work.
+APPLICATION
+
+In this section, we discuss applications of the proposed
+method. First, we describe the characteristics of the method.
+We then outline the possible applications: haptic
+interactions based on the cross-field aerial haptic feedback.
+
+DISCUSSION
+
+In this section, we discuss the scalability, perception, and
+safety based on the user study and application design.
+
+Application Domain
+
+The characteristics of our cross-field aerial haptic method
+include
+
+Scalability
+
+The force of the ultrasound radiated from a single phased
+array increases according to the number of transducers.
+More transducers enable us to generate more powerful
+acoustic radiation pressure. Increasing the number of
+transducers results in other benefits. One such benefit is a
+larger workspace keeping the size of the focal point.
+Another is smaller dispersion of the phase delay
+characteristics of transducers, which leads to more accurate
+generation and control of the acoustic field.
+
+1. The ultrasonic phased array can produce haptic images
+roughly (spatial resolution is 16 mm, twice of the
+wavelength) however it can cover large areas (around 30
+cm) and radiation pressure is adequately strong (16 mN).
+2. The femtosecond laser system can produce haptic images
+precisely (spatial resolution 1 μm) however it can cover
+only small areas (up to 2 cm).
+3. The ultrasound represses the human sensitivity to the
+laser plasma as found in the experiment on the perceptual
+threshold of cross-field.
+
+The pulse duration is an important factor in the laser haptics.
+Shorter pulse duration gives higher peak power with the
+same time-averaged power. Shorter pulse duration also
+gives higher repetition frequency of laser pulses.
+
+In this paper, we employ the acoustic field for rough haptic
+images and awareness for laser haptic. On the other hand,
+we employ the light field for detailed haptic images. Then,
+we implemented haptic images for AR/VR applications
+which express an object surface (rough) by ultrasound and
+inner structure and/or indication (detailed) by laser,
+
+Resolution and Perception
+
+From the result of our study, acoustic radiation pressure can
+mask the sensation of laser haptic feedback. In this study
+we tested both light and acoustic fields. We have explored
+around the technologies in spatial factors that we
+investigated the 3D shape and 3D point of cross-field haptic
+3244
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+Figure 11: AR application of tumor in heart.
+
+Figure 12: Application of Braille dots.
+
+images. We have not explored the time domain factors.
+This will be the next topic of field-driven aerial haptic
+research.
+
+that cuts off this wavelength is an efficient way to ensure
+retina.
+
+Risk of Laser
+
+In this paper, we present a new method of rendering aerial
+haptic images using femtosecond-lasers light fields and
+ultrasonic acoustic fields. Compared to conventional
+methods, our method offers the advantage of
+simultaneously combining multiple fields (light and
+acoustic fields).
+
+CONCLUSION
+
+Damage to skin by femtosecond lasers was experimented
+using porcine skin in [24]. It was reported that the lesions
+by the 44-fs pulse laser whose pulse energy is less than 21
+mJ disappeared at 24 hours after exposure. The maximum
+pulse energy of our current system is up to 2 mJ, and hence
+we expect that the skin damage by our laser haptics is
+negligible.
+
+We implemented our system using an ultrasonic phased
+array and laser induced plasma. While these fields have no
+direct interference, their combination offers benefits such as
+multi-resolution haptic images and synergistic effects on
+haptic perception. Our results show that the acoustic field
+affects tactile perception of the laser haptics. The findings
+
+Damage to retina should be concerned when we apply our
+technologies to daily lives. The laser system should be
+carefully designed not to shoot users’ eyes directly. We
+employed infrared laser (800nm in wavelength) and a filter
+3245
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+are as follows; laser tactile sensation is repressed in an
+acoustic field; some users can differentiate spatial patterns
+rendered with laser plasma; users can detect the 3D position
+of the laser stimulation better than the ultrasonic stimulation.
+Then, we explored AR/VR applications in fields such as
+medicine to provide haptic feedback of the shape of an
+organ using acoustic radiation pressure and the especially
+indicated position using laser-excited shock waves. We
+built four applications to combine these two physical
+quantities.
+We believe that this study contributes to the exploration of
+haptic displays based on femtosecond lasers, which have
+not been well investigated, and to the expansion of the
+expression of aerial haptic displays based on other
+principles.
+Yuriko Suzuki and Minoru Kobayashi. 2005. Air jet
+driven force feedback in virtual reality. Computer
+Graphics and Applications, IEEE 25, 1 (Jan), 44-47.
+DOI: http://dx.doi.org/10.1109/MCG.2005.1
+
+2.
+
+Takayuki Hoshi, Masafumi Takahashi, Takayuki
+Iwamoto, and Hiroyuki Shinoda. 2010. Noncontact
+tactile display based on radiation pressure of airborne
+ultrasound. IEEE Transactions on Haptics 3, 3, 155165. DOI: http://dx.doi.org/10.1109/TOH.2010.4
+
+3.
+
+Rajinder Sodhi, Ivan Poupyrev, Matthew Glisson, and
+Ali Israr. 2013. Aireal: Interactive tactile experiences
+in free air. ACM Trans. Graph. 32, 4 (July), 134:1134:10. DOI:
+http://dx.doi.org/10.1145/2461912.2462007
+
+4.
+
+E.H. Brandt. 1989. Levitation in physics. Science 243,
+4889, 349-355. DOI:
+http://dx.doi.org/10.1126/science.243.4889.349
+
+5.
+
+Yoichi Ochiai, Takayuki Hoshi, and Jun Rekimoto.
+2014. Pixie dust: Graphics generated by levitated and
+animated objects in computational acoustic-potential
+field. ACM Trans. Graph. 33, 4 (July), 85:1-85:13.
+DOI: http://dx.doi.org/10.1145/2601097.2601118
+
+6.
+
+Yoichi Ochiai, Kota Kumagai, Takayuki Hoshi, Jun
+Rekimoto, Satoshi Hasegawa, and Yoshio Hayasaki.
+2015. Fairy lights in femtoseconds: Aerial and
+volumetric graphics rendered by focused femtosecond
+laser combined with computational holographic fields.
+In ACM SIGGRAPH 2015 Emerging Technologies,
+ACM, New York, NY, USA, SIGGRAPH ’15. DOI:
+http://dx.doi.org/10.1145/2782782.2792492
+
+7.
+
+8.
+
+Tom Carter, Sue Ann Seah, Benjamin Long, Bruce
+Drinkwater, and Sriram Subramanian. 2013.
+Ultrahaptics: Multi-point mid-air haptic feedback for
+touch surfaces. In Proceedings of the 26th Annual
+ACM Symposium on User Interface Software and
+Technology, ACM, New York, NY, USA, UIST ’13,
+505-514. DOI:
+http://dx.doi.org/10.1145/2501988.2502018
+
+9.
+
+Seki Inoue, Koseki J. Kobayashi-Kirschvink, Yasuaki
+Monnai, Keisuke Hasegawa, Yasutoshi Makino,
+Hiroyuki Shinoda. 2014. HORN: The hapt-optic
+reconstruction. In ACM SIGGRAPH 2014 Emerging
+Technologies, ACM, New York, NY, USA,
+SIGGRAPH ’14, 11:1. DOI:
+http://dx.doi.org/10.1145/2614066.2614092
+
+10. Malte Weiss, Chat Wacharamanotham, Simon Voelker,
+and Jan Borchers. 2011. Fingerflux: Near-surface
+haptic feedback on tabletops. In Proceedings of the
+24th Annual ACM Symposium on User Interface
+Software and Technology, ACM, New York, NY,
+USA, UIST ’11, 615-620. DOI:
+http://dx.doi.org/10.1145/2047196.2047277
+
+REFERENCES
+
+1.
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+11. Satoshi Saga. 2014. HeatHapt: Thermal-radiationbased haptic display. AsiaHaptics 2014.
+12. Jae-Hoon Jun, Jong-Rak Park, Sung-Phil Kim, Young
+Min Bae, Jang-Yeon Park, Hyung-Sik Kim,
+Seungmoon Choi, Sung Jun Jung, Seung Hwa Park,
+Dong-Il Yeom, Gu-In Jung, Ji-Sun Kim and SoonCheol Chung. 2015. Laser-induced thermoelastic
+effects can evoke tactile sensations. Scientific Reports
+5, 11016. DOI: http://dx.doi.org/10.1038/srep11016
+13. Hojin Lee, Ji-Sun Kim, Seungmoon Choi, Jae-Hoon
+Jun, Jong-Rak Park, A-Hee Kim, Han-Byeol Oh,
+Hyung-Sik Kim, and Soon-Cheol Chung. 2015. Midair tactile stimulation using laser-induced thermoelastic
+effects: The first study for indirect radiation. In World
+Haptics Conference (WHC), 2015, 374-380. DOI:
+http://dx.doi.org/10.1109/WHC.2015.7177741
+14. Yoichi Ochiai, Takayuki Hoshi, Alexis Oyama, and
+Jun Rekimoto. 2013. Poppable display: A display that
+enables popping, breaking, and tearing interactions
+with people. In Consumer Electronics (GCCE), 2013
+IEEE 2nd Global Conference on, 124-128. DOI:
+http://dx.doi.org/10.1109/GCCE.2013.6664771
+15. Satoshi Iwaki, Hiroshi Morimasa, Toshiro Noritsugu,
+and Minoru Kobayashi. 2011. Contactless
+manipulation of an object on a plane surface using
+multiple air jets. In ICRA, IEEE, 3257-3262. DOI:
+http://dx.doi.org/10.1109/ICRA.2011.5979879
+
+Sidhant Gupta, Dan Morris, Shwetak N. Patel, and
+Desney Tan. 2013. AirWave: Non-contact haptic
+feedback using air vortex rings. In Proceedings of the
+2013 ACM International Joint Conference on
+Pervasive and Ubiquitous Computing, ACM, New
+York, NY, USA, UbiComp ’13, 419-428. DOI:
+http://dx.doi.org/10.1145/2493432.2493463
+
+16. Mark Marshall, Thomas Carter, Jason Alexander, and
+Sriram Subramanian. 2012. Ultra-tangibles: Creating
+movable tangible objects on interactive tables. In
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems, ACM, New York, NY,
+3246
+
+Did you Feel the Vibration? Haptic Feedback Everywhere
+
+USA, CHI ’12, 2185-2188. DOI:
+http://dx.doi.org/10.1145/2207676.2208370
+
+#chi4good, CHI 2016, San Jose, CA, USA
+
+(WHC), 2013, 31-36. DOI:
+http://dx.doi.org/10.1109/WHC.2013.6548380
+
+17. Michinari Kono, Yasuaki Kakehi, and Takayuki Hoshi,
+2013. lapillus bug. SIGGRAPH Asia 2013 Art Gallery.
+
+21. Yoshio Hayasaki, Takashi Sugimoto, Akihiro Takita,
+and Nobuo Nishida. 2005. Variable holographic
+femtosecond laser processing by use of a spatial light
+modulator. Appl. Phys. Lett. 87, 031101. DOI:
+http://dx.doi.org/10.1063/1.1992668
+
+18. Jinha Lee, Rehmi Post, and Hiroshi Ishii. 2011. ZeroN:
+Mid-air tangible interaction enabled by computer
+controlled magnetic levitation. In Proceedings of the
+24th Annual ACM Symposium on User Interface
+Software and Technology, ACM, New York, NY,
+USA, UIST ’11, 327-336. DOI:
+http://dx.doi.org/10.1145/2047196.2047239
+
+22. Jörgen Bengtsson. 1994. Kinoform design with an
+optimal-rotationangle method. Appl. Opt. 33, 29 (Oct),
+6879-6884. DOI:
+http://dx.doi.org/10.1364/AO.33.006879
+
+19. Hidei Kimura, Taro Uchiyama, and Hiroyuki
+Yoshikawa. 2006. Laser produced 3D display in the
+air. In ACM SIGGRAPH 2006 Emerging
+Technologies, ACM, New York, NY, USA,
+SIGGRAPH ’06. DOI:
+http://dx.doi.org/10.1145/1179133.1179154
+
+23. S.J. Bolanowski, Jr., G.A. Gescheider, R.T. Verrillo,
+and C.M. Checkosky. 1968. Four channels mediate the
+mechanical aspects of touch. The Journal of the
+Acoustical Society of America. 84, 5, 1680-1694.
+24. Clarence P. Cain, William P. Roach, David J. Stolarski,
+Gary D. Noojin, Semih S. Kumru, Kevin L. Stockton,
+Justin J. Zohner, and Benjamin A. Rockwell. 2007.
+Infrared laser damage thresholds for skin at
+wavelengths from 0.810 to 1.54 microns for femto-tomicrosecond pulse durations. In Proc. SPIE. Vol. 6435.
+64350W. DOI: http://dx.doi.org/10.1117/12.715199
+
+20. Keisuke Hasegawa and Hiroyuki Shinoda. 2013. Aerial
+display of vibrotactile sensation with high spatialtemporal resolution using large-aperture airborne
+ultrasound phased array. In World Haptics Conference
+
+3247
+
+

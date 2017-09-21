@@ -1,0 +1,303 @@
+Wrap & Sense: Grasp Capture by a Band Sensor
+Natsuki Miyata1, Takehiro Honoki2, Yusuke Maeda2, Yui Endo1, Mitsunori Tada1, Yuta Sugiura3
+1
+
+National Institute of Advanced Industrial
+Science and Technology(AIST)
+Tokyo, JAPAN
+
+{n.miyata, y.endo, m.tada}@aist.go.jp
+
+2
+
+Yokohama National University
+Kanagawa, JAPAN
+
+honoki-takehiro-dk@ynu.jp
+maeda@ynu.ac.jp
+
+3
+
+Keio University
+Kanagawa, JAPAN
+
+sugiura@keio.jp
+
+ABSTRACT
+
+This paper proposes a bare hand grasp observation system
+named Wrap & Sense. We built a band type sensing
+equipment composed of infrared distance sensors placed in
+an array. The sensor band is attached to a target object with
+all sensors directed along the object surface and detects the
+hand side edge with respect to the object. Assuming type of
+grasp as “power grasp”, the whole hand posture can be
+determined according to the 3D shape of the object. Three
+types of application are shown as proof-of-concept.
+
+A
+
+B
+
+Author Keywords
+
+Digital hand model; grasping posture; a band type sensor
+ACM Classification Keywords
+
+H.5.m. Information interfaces and presentation (e.g., HCI):
+Miscellaneous.
+
+C
+
+D
+
+Figure 1. Wrap & Sense capturability and applications. A)
+grasp capture, B) grasp preference analysis, C) tennis grip
+instruction, D) navigation on riding
+
+INTRODUCTION
+
+The measurement of human hand grasping posture is
+required in many fields such as human-computer interaction,
+biomechanics, and ergonomics. The measured motion of
+how the hand uses daily objects can be analyzed and utilized
+to refine the design of products and services.
+
+Instead of capturing the whole hand completely, some
+studies (e.g., [1]) have tried to detect the hand partially and
+reconstruct the whole hand posture by estimation from
+considering mechanical conditions. This approach looks
+natural because, as grasp taxonomy suggests, the profile of
+grasping hand posture can almost be determined if the object
+to grasp and the style of grasp are given.
+
+In terms of precise measurement, an optical motion capture
+system that uses reflective markers attached to the hand is a
+precise tool. However, the unnatural sensations caused by the
+attached markers often lead to different behavior than usual.
+Although various devices including wrist-worn types have
+been developed to free the hand from such unnaturalness
+[4,5, 9,10], it is still challenging to capture bare hand in
+contact with objects because the hand is easily occluded by
+the objects. This occlusion problem can be combatted by
+directly attaching sensor devices to the target object, which
+limits direct touch of the object due to widely-spread sensors
+[2,3] or would limit capturable grasps to certain patterns due
+to complicated detection mechanism [7,8].
+
+In light of the above, we have developed a system Wrap &
+Sense (Fig. 1) to observe bare hand grasping posture by
+detecting a side edge of the hand by means of a band sensor
+attached to the end of an object. We discuss the principle and
+implementation of our system as well as showing
+applications for proof-of-concept.
+WRAP & SENSE PRINCIPLE AND IMPLEMENTATION
+
+Wrap & Sense aims to enable grasp capture of a target object
+by wrapping a band type sensing equipment around the
+object at the end of it. Assuming that we deal with a target
+object that can be roughly approximated as a cylinder, we
+propose to use a sensing equipment that is composed of
+distance sensors in which all the sensors are directed in the
+same direction along the surface of the object. If the object
+surface is not bumpy, each sensor can detect the distance
+between itself and the crossing point of the sensor direction
+with the contacting hand side edge, that is, the ulnar side of
+the thumb and radial side of the index finger.
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985713
+
+An overview of our observation system is given in Figure 2.
+Once the sensing equipment is attached to the target object,
+
+87
+
+Measurement
+
+Attach!
+
+A band sensor
+composed of
+distance sensors
+
+3D object model with
+Sensor configuration
+definition
+
+Hand model
+with feature points
+
+Edge Detection
+
+P1
+
+Posture
+Reconstruction
+
+P3
+
+Actual
+Object
+
+P2
+
+Actual
+hand
+
+Distances
+
+The points detected
+as likely to be on the
+hand edge
+
+Positions
+
+Displayed
+hand model
+
+Figure 2. System overview of Wrap & Sense
+
+measurement can be conducted. The equipment sends a set
+of distances to a computer and the computer converts each
+distance into relative coordinates on the object using a sensor
+configuration definition on a 3D object model. Considering
+the range of detected distance, we can find several adjacent
+points that are likely to correspond to the detected hand edge.
+A hand model is then aligned to these points so that the
+corresponding part overlaps. To define the whole hand
+posture with this alignment, we compensate for absent
+information about the part that was not directly detected by
+the sensor system on the basis of assumed grasp type. For
+example, when the hand is grasping an object in a power
+grasp style, the rest of the fingers (middle, ring, and little
+finger) are naturally aligned along the object surface and
+almost the entire area on the palmar side comes into contact
+with the object.
+
+Micro Controller
+Li-Po Battery
+XBee Module
+
+Infrared Distance Sensor
+Figure 3. Prototype implementation
+
+Grip instruction for tennis player: In addition to recording
+player’s grip on a court, typical grasping hand image (a
+certain kind of grip in tennis) can be presented as well as the
+player’s current hand posture (Fig. 1 C). This can help a selfschooling player to learn complicated grip techniques.
+
+We fabricated a prototype of the Wrap & Sense sensing
+equipment (Fig. 3) using eight to eleven infrared distance
+measuring sensor units (Sharp Corporation, GP2Y0A21YK)
+connected with a micro controller (Arduino SRL, Arduino
+Mega 2560/Arduino ProMini), to convert an analog signal
+into a digital one and to communicate with the software
+running on the computer. A radio module (Digi International,
+XBee 802.15.4 module) was installed to enable wireless
+connection. Each digital signal was converted into distance
+on the basis of calibration data collected at different
+distances to deal with the nonlinear responsiveness of the
+system.
+
+Navigation on a bicycle: Captured handle grasps are
+categorized into five groups according to the position of the
+metacarpophalangeal joint of the middle finger. The user can
+then control a map view without releasing the handle by
+using related navigation movements (eg., moving to east) of
+each group (Fig. 1 D).
+CONCLUSION
+
+In this paper, we proposed a grasp observation system, Wrap
+& Sense, for the bare hand. By means of attaching sensing
+equipment composed of infrared distance sensors formed as
+a band, the system detects the hand edge with respect to the
+grasped object and reconstruct the whole hand posture by
+aligning the hand model based on the detected edge location
+on the object model. The implementation of three
+applications demonstrates the potential of the proposed
+sensing and reconstructing system as a communication and
+interaction tool as well as measurement system.
+
+Hand model of an arbitrary user can be created by deforming
+a generic hand model derived from medical images to satisfy
+hand dimensions of the target user [6].
+APPLICATIONS
+
+The followings are applications that utilize capture of
+grasping postures by the proposed system as shown in Figure
+1 A).
+
+Current system is limited to detecting “power grasp” of a
+cylinder(-like) object by a single hand. Our future work will
+include extension to seamless detection of both hands for
+more natural interaction detection as well as brushing up the
+current algorithm in terms of its speed and stability.
+
+Preferred grasp location analysis for design assistance:
+The preferred grasping area on the object can be displayed in
+color map by analyzing the collected grasps. Figure 1 B)
+presents an example of different grasp preference for the
+same product at different locations.
+
+REFERENCES
+
+1. Achibet, M., Casiez, G., Lécuyer, A., Marchal, M.,
+THING: Introducing a Tablet-based Interaction
+
+88
+
+Technique for Controlling 3D Hand Models. In Proc.
+CHI15, ACM (2015), 317-326.
+
+Model with a Skeleton and a Surface Skin. International
+Journal of Human Factors Modelling and Simulation,
+Vol.3, No.2, Inderscience (2012), 147-168.
+
+2. Dementyev A., Kao H.L., Paradiso J.A., SensorTape:
+Modular and Programmable 3D-Aware Dense Sensor
+Network on a Tape. In Proc. UIST '15, ACM (2015),
+649-658.
+
+7. Ono M., Shizuki B., and Tanaka J., Touch & Activate:
+Adding Interactivity to Existing Objects using Active
+Acoustic Sensing. In Proc. UIST ’13, ACM (2013), 3140.
+
+3. Gong, N.W, Steimle, J., Olberding, S., Hodges, S.,
+Gillian, N., Kawahara, Y., and Paradiso, J.A.,
+PrintSense: A Versatile Sensing Technique to Support
+Multimodal Flexible Surface Interaction. In Proc.
+CHI’14, ACM (2014), 1407-1410.
+
+8. Sato, M. Poupyrev, I, and Harrison, C. Touché:
+Enhancing Touch Interaction on Humans, Screens,
+Liquids, and Everyday Objects. In Proc. CHI '12, ACM
+(2012) 483-492.
+
+4. Kim D., Hilliges O., Izadi S., Butler A., Chen J.,
+Oikonomidis I., Olivier P., 2012. Digits: Freehand 3D
+Interactions Anywhere Using a WristWorn Gloveless
+Sensor. In Proc UIST’12, ACM (2012), 167-176.
+
+9. Yoshimoto S., Kawaguchi J., Imura M., Oshiro O.,
+Finger motion capture from wrist-electrode contact
+resistance. In Proc. EMBC’15, 3185-3188.
+10. Zhang Y. and Harrison C., Tomo: Wearable, Low-Cost,
+Electrical Impedance Tomography for Hand Gesture
+Recognition. In Proc. UIST’15, ACM (2015), 167-173.
+
+5. LeapMotion,-HomePage. https://www.leapmotion.com/,
+Accessed: March 2016
+6. Miyata, N., Shimizu, Y., Motoki, Y., Maeda, Y.,
+Mochimaru, M., Hand MoCap Using an Individual
+
+89
+
+

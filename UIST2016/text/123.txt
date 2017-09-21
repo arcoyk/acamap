@@ -1,0 +1,285 @@
+Applications of Switchable Permanent Magnetic Actuators
+in Shape Change and Tactile Display
+Evan Strasnick
+Stanford University
+Stanford, CA
+estrasni@stanford.edu
+
+Sean Follmer
+Stanford University
+Stanford, CA
+sfollmer@stanford.edu
+
+Figure 1: Applications of a power-efficient switchable permanent magnetic actuator. From left to right: A 5 mm pitch linear
+tactile display; A self-actuated keyboard; A mobile device tactile display; A haptically augmented steering wheel.
+We explore the use of bi-stable permanent magnet actuators
+for tactile display. The switchable magnets are comprised of
+a low-corecivity permanent magnet surrounded by a solenoid
+coil. By briefly pulsing a high current through the wire, the
+low coercivity magnet can be permanently remagnetized in
+the opposite direciton. After power is disconnected, the magnet remains in the new state, making the actuator more power
+efficient than an equivalent electromagnet by orders of magnitude depending on the frequency of switching.
+
+ABSTRACT
+
+Systems realizing shape change and tactile display remain
+hindered by the power, cost, and size limitations of current
+actuation technology. We describe and evaluate a novel use of
+switchable permanent magnets as a bistable actuator for haptic feedback which draws power only when switching states.
+Because of their efficiency, low cost, and small size, these actuators show promise in realizing tactile display within mobile, wearable, and embedded systems. We present several
+applications demonstrating potential uses in the mobile, automotive, and desktop computing domains, and perform a technical evaluation of the actuators used in these systems.
+
+ACTUATOR DESIGN
+
+Permanent magnet actuators have been used across a range
+of configurations and domains [3, 4, 10, 11, 12, 13, 15, 18,
+17, 20, 19]. Our design places a strong NdFeB magnet coaxially above the AlNiCo switching magnet (see Figure 2). The
+switching magnet is anchored, while a pin connected to the
+top of the NdFeB magnet and threaded through a fixed surface constrains its motion to the axial dimension. A spacer
+sets a minimum separation between the two magnets, as the
+field from the NdFeB magnet increases the current required
+to coerce the AlNiCo magnet when in close proximity.
+
+Author Keywords
+
+tactile; display; haptic; shape change; low-power; low-cost;
+magnet; magnetic; actuator; low coercivity; mobile;
+ACM Classification Keywords
+
+H.5.2. Information Interfaces and Presentation: Haptic I/O
+INTRODUCTION
+
+Implementations of shape change and tactile display offer
+promising interactions in the mobile, wearable, and embedded domains. However, engineering such systems has remained a challenge due to the power consumption of existing
+actuation methods, such as motors [2, 7, 8], SMA’s [16], and
+pneumatics [5, 6]. Given a small, low-cost, low-power actuator, we could drastically expand the design possibilities for
+dynamic physical interactions across the variety of devices
+and form factors in use today.
+
+In this configuration, when the two magnets are aligned in
+the same direction along the axial dimension, the NdFeB is
+pulled down to the bottom layer. Similarly, when the magnets are aligned oppositely, the NdFeB magnet is repelled to
+the top layer, actuating the pin. The range of motion for the
+actuator was chosen to be 1.5mm, allowing for visible shape
+change while maintaining a relatively high output force in the
+actuated state (the static output force decreases as the NdFeB magnet travels further from the switching magnet). Prior
+psychophysiological results show that users can detect a protrusion as little as .2 mm in depth on their fingertips [9].
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the owner/author(s). Copyright is held by the author/owner(s).
+UIST’16 Adjunct, October 16–19, 2016, Tokyo, Japan.
+ACM ISBN 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985728
+
+The actuator has a simple drive circuit. A power MOSFET
+h-bridge, controlled by logic-level signals, regulates current
+flow through the coil. To prevent large current draws from
+a power supply, a large capacitor is charged to the supply
+
+123
+
+Switchable Permanent Magnet
+Power (W)
+Force (N) (Min Travel)
+Force (N) (Max Travel)
+Height (mm)
+
+.01f **
+.43 (Attraction), .16 (Repulsion)
+.10 (Attraction), .07 (Repulsion)
+13.08 (at max travel, not including pin)
+4
+1.59
+Bi-stable
+Yes
+140
+
+Diameter (mm)
+Maximum Travel (mm)
+Travel Type
+Back-drivability
+Maximum Switching
+Frequency (Hz)
+Cost (quantity = 1000)
+$3.49
+** f is the switching frequency
+
+Figure 2: The actuator in its attracting and repelling states.
+voltage and then discharged over the coil during a switching
+pulse, as described by Knaian [10]. A custom pcb was designed to drive an array of our actuators using 100 uF capacitors, MPQ8039 half-bridges, flyback diodes, bootstrap capacitors, and an Arduino Mega 2560 microcontroller.
+
+Table 1: Technical details for the implemented switchable
+permanent magnet actuator.
+can demonstrate corresponding keyboard shortcuts to assist
+in learning. Users can also ”set” keys down for command
+sequences or physically play back macros. Built-in forcesensing resistors enable the keyboard to recognize touch inputs on keys that are already clamped down.
+
+The physical dimensions of the actuator can be chosen based
+on the application. Larger permanent magnets can provide
+greater force output. The gauge of the wire used to wrap the
+AlNiCo magnet can be increased as well to reduce the operating voltage.
+
+Information Display in an Automobile
+
+Finally, the actuator is easily augmented with input capabilities. For recognition of simple taps, a pushbutton switch can
+be used as the spacer between the two magnets. We instead
+utilize force-sensing resistors for more sophisticated recognition, allowing us to detect even if the user is pressing down
+on the actuator in its clamped state.
+
+A Thrustmaster T80 RS controller was used to prototype a
+tactile display built into a car steering wheel. Actuators lining the sides of the wheel can haptically display speed, navigational instructions, etc., or form context-dependent buttons.
+This allows the driver to receive and respond to notifications
+without diverting their visual attention from the road.
+
+TECHNICAL EVALUATION
+
+Table 1 shows technical specifications of our implementation
+of the actuator. Forces were calculated using the FEMM finite
+element analysis package, then verified empirically [14].
+
+LIMITATIONS
+
+Despite its efficiency, the switchable permanent magnetic actuator has a number of trade-offs with conventional actuation methods in tactile display. Firstly, as a bi-stable actuator, it has only two discrete positional states. In addition, as
+multiple actuators in close proximity produce interference, a
+minimum separation between actuators on the order of centimeters is required for proper functionality, increasing the
+dimensions and/or limiting the resolution of a tactile display.
+Finally, because the magnetic field weakens with increasing
+distance, a longer travel equates to a weaker output force in
+the repelling state. As a result, designing systems with significant visual as well as tactile shape change becomes less
+feasible.
+
+APPLICATIONS
+
+We prototyped three example applications of the switchable
+permanent magnetic actuator, shown in Figure 1.
+Tactile Display on Mobile Devices
+
+Ten actuators were assembled on the side of a mobile device
+to replicate the interactions of Jang et al.’s Haptic Edge Display at a lower power consumption [9]. The display allows
+for information presentation and dynamic physical controls
+to enrich mobile interactions. The display has a pitch of 5
+mm and a travel of 1.5mm. Each actuator is individually
+addressable, allowing the creation of expressive waveforms,
+context-dependent buttons, rich haptic notifications, physical
+scrollbars, and other dynamic physical elements.
+
+CONCLUSION
+
+Switchable permanent magnet actuators can be used for lowcost, power efficient tactile display. Despite limitations in
+force, travel, and resolution compared to conventional methods, they have the potential to facilitate dynamic physical
+change in mobile, wearable, and embedded devices. It is our
+vision that utilizing such efficient actuators will aid us in realizing novel interactions throughout the physical world.
+
+Haptic Augmentations for Input Devices
+
+Actuators were added to the keys on a small keyboard, enabling keys to type themselves. As with Bailly et al.’s
+Métamorphe, the device has a number of uses as an instructional interface [1]. In an unfamiliar application, it
+
+124
+
+11. Knaian, A. N., Cheung, K. C., Lobovsky, M. B., Oines,
+A. J., Schmidt-Neilsen, P., and Gershenfeld, N. A. The
+Milli-Motein: A self-folding chain of programmable
+matter with a one centimeter module pitch. IEEE
+International Conference on Intelligent Robots and
+Systems (2012), 1447–1453.
+
+REFERENCES
+
+1. Bailly, G., Pietrzak, T., Deber, J., and Wigdor, D. J.
+Métamorphe: Augmenting hotkey usage with actuated
+keys. In Proceedings of the SIGCHI Conference on
+Human Factors in Computing Systems, CHI ’13, ACM
+(New York, NY, USA, 2013), 563–572.
+2. Dimitriadis, P., and Alexander, J. Evaluating the
+effectiveness of physical shape-change for in-pocket
+mobile device notifications. In Proceedings of the
+SIGCHI Conference on Human Factors in Computing
+Systems, CHI ’14, ACM (New York, NY, USA, 2014),
+2589–2592.
+3. Gilpin, K. W. Shape formation by self-disassembly in
+programmable matter systems. PhD thesis,
+Massachusetts Institute of Technology, 2012.
+4. Haghighat, B., Droz, E., and Martinoli, A. Lily: A
+miniature floating robotic platform for programmable
+stochastic self-assembly. 2015 IEEE International
+Conference on Robotics and Automation (ICRA) (2015),
+1941–1948.
+5. Harrison, C., and Hudson, S. E. Providing dynamically
+changeable physical buttons on a visual display. In
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems, CHI ’09, ACM (New
+York, NY, USA, 2009), 299–308.
+6. He, L., Xu, C., Xu, D., and Brill, R. Pneuhaptic:
+Delivering haptic cues with a pneumatic armband. In
+Proceedings of the 2015 ACM International Symposium
+on Wearable Computers, ISWC ’15, ACM (New York,
+NY, USA, 2015), 47–48.
+7. Hemmert, F., Hamann, S., Löwe, M., Zeipelt, J., and
+Joost, G. Shape-changing mobiles: Tapering in
+two-dimensional deformational displays in mobile
+phones. In CHI ’10 Extended Abstracts on Human
+Factors in Computing Systems, CHI EA ’10, ACM (New
+York, NY, USA, 2010), 3075–3080.
+8. Hemmert, F., Joost, G., Knörig, A., and Wettach, R.
+Dynamic knobs: Shape change as a means of interaction
+on a mobile phone. In CHI ’08 Extended Abstracts on
+Human Factors in Computing Systems, CHI EA ’08,
+ACM (New York, NY, USA, 2008), 2309–2314.
+9. Jang, S., Kim, L. H., Tanner, K., Ishii, H., and Follmer,
+S. Haptic edge display for mobile tactile interaction. In
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems, CHI ’16, ACM (New
+York, NY, USA, 2016).
+10. Knaian, A. N. Electropermanent magnetic connectors
+and actuators: devices and their application in
+programmable matter. PhD thesis, Massachusetts
+Institute of Technology, 2010.
+
+12. Marchese, A. D., Onal, C. D., and Rus, D. Soft robot
+actuators using energy-efficient valves controlled by
+electropermanent magnets. In 2011 IEEE/RSJ
+International Conference on Intelligent Robots and
+Systems (Sept 2011), 756–761.
+13. Marchese, A. D., Onal, C. D., and Rus, D. Towards a
+Self-contained Soft Robotic Fish: On-Board Pressure
+Generation and Embedded Electro-permanent Magnet
+Valves. Springer International Publishing, Heidelberg,
+2013, 41–54.
+14. Meeker, D. Finite element method magnetics, 2014.
+15. Ochoa-Cardenas, F., and Dodd, T. J. Design of an active
+magnetic wheel with a varying electro-permanent
+magnet adhesion mechanism. In Intelligent Robots and
+Systems (IROS), 2015 IEEE/RSJ International
+Conference on (Sept 2015), 3340–3345.
+16. Park, Y.-W., Park, J., and Nam, T.-J. Bendi:
+Shape-changing mobile device for a tactile-visual phone
+conversation. In Proceedings of the 33rd Annual ACM
+Conference Extended Abstracts on Human Factors in
+Computing Systems, CHI EA ’15, ACM (New York, NY,
+USA, 2015), 181–181.
+17. Tugwell, J., Brennan, P., OShea, C., ODonoghue, K.,
+Power, T., OShea, M., Griffiths, J., Cahill, R., and
+Cantillon-Murphy, P. Electropermanent magnetic
+anchoring for surgery and endoscopy. Biomedical
+Engineering, IEEE Transactions on 62, 3 (2015),
+842–848.
+18. Ward, P., and Liu, D. Design of a high capacity electro
+permanent magnetic adhesion for climbing robots. In
+Robotics and Biomimetics (ROBIO), 2012 IEEE
+International Conference on, IEEE (2012), 217–222.
+19. Yatchev, I., Hinov, K., and Gueorgiev, V. Dynamic
+characteristics of a bitable linear actuator with moving
+permanent magnet. Serbian journal of electrical
+engineering 1, 2 (2004), 207–214.
+20. Yatchev, I., Hinov, K., and Trifonov, N. Characteristics
+of a bistable permanent magnet linear actuator with soft
+magnetic mover. International Journal of Applied
+Electromagnetics and Mechanics 27, 1,2 (2008), 43 –
+52.
+
+125
+
+

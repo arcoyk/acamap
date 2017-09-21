@@ -1,0 +1,193 @@
+An Input Switching Interface Using Carbon Copy Metaphor
+Kaori Ikematsu
+Ochanomizu University
+2-1-1, Otsuka, Bunkyo-ku, Tokyo, Japan
+g0920502@gmail.com
+
+Itiro Siio
+Ochanomizu University
+2-1-1, Otsuka, Bunkyo-ku, Tokyo, Japan
+siio@acm.org
+
+ABSTRACT
+
+This paper proposes a novel input technique that aims to
+switch between relative and absolute coordinates input methods seamlessly based on the “carbon copy” metaphor for
+track-pads.
+Figure 1. Fingertip Positions when Handling a Carbon Paper.
+
+Author Keywords
+
+Input Techniques; Touch; Pointing; Gesture;
+utilizing touch inputs on a smartphone is discussed. It focuses on rapid movement across large distances. In [1], a pen
+device is used, and [3] uses motion capture sensors. Our proposed method achieves this by using a widespread touchpad
+without any special hardware or sensor. Inklet is a utility that
+also allows a common trackpad to emulate virtual absolute
+coordinates input area by using predefined shortcut keys. Our
+technique provides intuitive and explicit operations based on
+the carbon copy metaphor. It will be more understandable
+than using pre-defined shortcut keys.
+
+ACM Classification Keywords
+
+H.5.2 User Interfaces: input devices and strategies
+INTRODUCTION
+
+Owing to the widespread use of touch surfaces, such as in
+smartphones, tablets, and trackpads, touch inputs can be seen
+in everyday life. At present, two input methods are used for
+touch surfaces. that is, relative coordinates and absolute coordinates pointing. Particular input equipment such as a pen
+tablet is required when a user performs absolute coordinates
+pointing. It allows a user to hand-draw or paint easily by providing absolute coordinates input to devices based on the relative coordinate input method. In a large screen environment,
+precise operation becomes difficult because of size difference
+between the screen and trackpad. By providing a small area
+that corresponds directly to a trackpad on the screen and allowing a user to input absolute coordinates only in this area,
+the problem can be resolved. However, a user interface for
+moving the small area and setting it on the screen is required. However, relative coordinate input method is suitable
+for common GUI operation. Even small finger movement can
+be used for large cursor movement, and precise operations
+can be performed, as mentioned before. In this study, we
+propose a new interface method based on the “carbon copy”
+metaphor for seamless mode switching between the following two modes: (a) input mode for the area enabling absolute
+coordinates input and (b) moving mode for this input area.
+
+CARBON COPY METAPHOR
+
+Our proposed method allows users to absolute input for the
+limited area, and the area can be moved to any optional place.
+A trackpad represents a carbon paper; it seems like an operation to create a carbon copy below a paper by using a small
+carbon paper and drawing paper. Aiming to achieve absoluterelative hybrid input, we adopted the “carbon copy” metaphor
+similarly to using a carbon paper. Our proposed method allows general trackpad operations for users in a conventional
+manner. Conversely, a virtual “carbon paper” appears on the
+display when the users touch the trackpad with their non dominant hand. The virtual carbon paper on the computer display is a metaphor of the actual carbon paper. Our proposed
+method is based on this hand motion: a user can manipulate the virtual “carbon paper” using similar actions, which
+they would apply to a physical carbon paper (Fig.1). The
+movement operation can be performed by touching the carbon paper with one finger of each hand (dominant and non
+dominant), and the writing operation (absolute coordinate inputs) can be performed by touching the carbon paper with
+two fingers of the non dominant hand for holding it and then
+pressing with a finger of the dominant hand or a pen held by
+dominant hand.
+
+RELATED WORK
+
+Various methods combine relative and absolute coordinate inputs. In [2], the switching of two coordinates input mode by
+
+To design user actions on a touch surface of an interface
+based on the carbon copy metaphor, we conducted an observational study regarding the manipulation of a carbon paper
+in the real world. We assigned a drawing task to six participants (five right-handed, one left-handed, ages 2124). We
+used a drawing paper (500mm × 400mm), small carbon pa-
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the owner/author(s).
+Copyright is held by the au-thor/owner(s).
+UIST’16 Adjunct, October 16–19, 2016, Tokyo, Japan.
+ACM ISBN 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985715
+
+93
+
+Figure 4. Trackpad divided into two areasA case for a right-handed
+person
+
+ticipants on a carbon paper, we adopted “Pressing the edge
+of a carbon paper with two spreading fingers of the non dominant hand” as a condition for the writing operation. When
+a user uses two spreading fingers of the non dominant hand
+to press the edge of a trackpad while moving the cursor with
+one finger, a small working area with the same aspect ratio as
+a trackpad appears at the cursor location on the screen. This
+small working area (carbon copy area) is enabling absolute
+coordinates inputs. The absolute coordinates input mode is
+called the “carbon copy mode.” When the user removes the
+two non dominant fingers, the carbon copy area disappears,
+and the input mode switches to the conventional relative coordinates input mode. It provides seamless switching between
+the moving carbon copy area and carbon copy mode operations.
+
+Figure 2. Frequency of the number of fingers used to hold the carbon
+paper
+
+IMPLEMENTATION
+
+Figure 3. Frequency of drawing posture: drawing between or outside
+the fingers used for holding the paper
+
+To test the efficiency of our proposed method, we implemented a prototype, a painting application, in Objective-C for
+use on a Mac OS X 10.9 operating system. Touching the trigger area with one finger activates the carbon copy area (the
+black-edged area on the screen). When compared with the
+preliminary experiment, in the prototype, the entire desktop
+area corresponds to the drawing paper and the black-framed
+carbon copy area corresponds to the carbon paper. As Fig.4
+shows, we divided a trackpad into two parts (non dominant
+hand side: trigger area, dominant hand side: input area). Our
+prototype allows a user to display/fix the screen using two
+fingers of the non dominant hand touching the trigger area of
+the trackpad. The user can draw in the carbon copy area with
+one finger of the dominant hand touching the input area of
+the trackpad. The position coordinate of the carbon copy area
+corresponds directly to that of a trackpad and allows a user to
+input by absolute coordinates. When the user puts one finger
+on the trigger area and one finger on the input area, the location of the carbon copy area can be changed by manipulating
+relative coordinates inputs.
+
+per (130mm × 130mm), and ballpoint pen that ran out of
+ink. Participants sign their own name on the left half of the
+drawing paper and paint freely on the right half.
+We recorded this experiment and looked for patterns in which
+the fingers were used for handling a carbon paper. When participants carried out the task, to write or draw on the paper,
+they pressed the edge of the carbon paper with their non dominant hand. This indicates that the participants utilized a wide
+drawing area and prevented the carbon paper from floating
+or peeling off. Fig. 2 shows the ratio of the time the fingers
+touched the carbon paper to that taken for the execution of the
+entire task. There are significant differences in frequencies of
+pairs of three fingers and other touches.
+The t-test calculation showed that there are significant differences in frequencies of pairs of three fingers and other
+touches, such as between a three-finger touch and two-finger
+touch (t(5) = 4.028, p < 0.001), three-finger touch and fourfinger touch (t(5) = 3.007, p < 0.005) and three-finger touch
+and five-finger touch (t(5) = 3.466, p < 0.005). All the other
+pairs are not considered significant. As shown in Fig. 3, we
+found that the participants tended to open certain two fingers
+widely, which means the participants decisively used two fingers for holding a carbon paper. Conversely, various finger
+movements were observed when the participants moved the
+carbon copy paper.
+
+CONCLUSION AND FUTURE WORK
+
+In this paper, we proposed novel mode switching technique
+based on the carbon copy metaphor. It provides relative and
+absolute coordinates inputs by using a touch pad embedded
+in a laptop or a consumer trackpad. Based on the experiment,
+we implemented a desktop application available in a real GUI
+environment. We are planning to add a new function for virtual carbon paper, such as taking snapshots in the carbon copy
+area and sharing them to a smartphone. Furthermore, users
+can edit these snapshots in the smartphone. We will release
+our application as a GUI widget to allow the system to be
+used by a larger number of users.
+
+INTERFACE DESIGN
+
+We designed the interface based on the preliminary experiment as follows. Focusing on the writing behavior of the par-
+
+94
+
+REFERENCES
+1. Forlines, C., Vogel, D., and Balakrishnan, R. Hybridpointing: Fluid switching
+between absolute and relative pointing with a direct input device. In Proceedings of
+the 19th Annual ACM Symposium on User Interface Software and Technology,
+UIST ’06, ACM (New York, NY, USA, 2006), 211–220.
+
+3.
+
+2. McCallum, D. C., and Irani, P. Arc-pad: Absolute+relative cursor positioning for
+large displays with a mobile touchscreen. In Proceedings of the 22Nd Annual ACM
+Symposium on User Interface Software and Technology, UIST ’09, ACM (New
+York, NY, USA, 2009), 153–156.
+
+95
+
+Vogel, D., and Balakrishnan, R. Distant freehand pointing and clicking on very
+large, high resolution displays. In Proceedings of the 18th Annual ACM Symposium
+on User Interface Software and Technology, UIST ’05, ACM (New York, NY,
+USA, 2005), 33–42.
+
+

@@ -1,0 +1,274 @@
+Wolverine: A Wearable Haptic Interface for Grasping in VR
+Inrak Choi
+Stanford University
+Stanford, CA, USA
+irchoi@stanford.edu
+
+Sean Follmer
+Stanford University
+Stanford, CA, USA
+sfollmer@stanford.edu
+
+Figure 1. Wolverine, a new wearable haptic user interface for grasping in virtual reality, holding various geometric shapes.
+
+glove-style haptic interface, CyberGrasp [1], was launched
+commercially in 1990s. Since then, there have been other
+exoskeleton force-feedback gloves developed using different
+mechanisms [2, 5, 6, 7, 8, 10]. Other researchers have explored providing force directly between the fingers and the
+palm to simulate palm opposition type grasping, such as the
+Rutgers Master II [3]. Most related to our work are devices
+which provide forces directly between the fingers and thumb
+to simulate pad opposition type grips. Zhang et al. explored
+an electroactive polymer actuator (DESR) between the thumb
+and forefingers, however it has a limited range of motion [11].
+So far, researchers have focused on developing haptic gloves
+generating realistic stimuli of soft objects, as such they sacrificed wearability; Such systems are often large and cumbersome.
+
+ABSTRACT
+
+The Wolverine is a mobile, wearable haptic device designed
+for simulating the grasping of rigid objects in virtual environment. In contrast to prior work on force feedback gloves,
+we focus on creating a low cost, lightweight, and wireless
+device that renders a force directly between the thumb and
+three fingers to simulate objects held in pad opposition type
+grasps. Leveraging low-power brake-based locking sliders,
+the system can withstand over 100N of force between each
+finger and the thumb, and only consumes 2.78 Wh(10 mJ) for
+each braking interaction. Integrated sensors are used both for
+feedback control and user input: time-of-flight sensors provide the position of each finger and an IMU provides overall
+orientation tracking. This design enables us to use the device
+for roughly 6 hours with 5500 full fingered grasping events.
+The total weight is 55g including a 350 mAh battery.
+
+We present a device, termed the Wolverine system, that provides the sensation of grasping a rigid object by resisting relative motion between the fingers and thumb (Figure 1)[4].
+Our focus is on supporting a wide range of motion in a
+lightweight, low-cost package; however, we sacrifice active
+force feedback in order to achieve this goal.
+
+Author Keywords
+
+Wearable haptic interfaces; virtual reality; force feedback
+ACM Classification Keywords
+
+H.5.2. User Interfaces: Haptic I/O, Input devices and strategies, Interaction styles: Miscellaneous
+
+SYSTEM DESIGN
+
+INTRODUCTION
+
+Though Virtual Reality (VR) has been explored in research
+contexts since the late 1950s, recent advances in display technology have made consumer VR a reality. While new devices
+such as the Oculus Rift or HTC Vive provide high resolution
+visuals, the user input devices have been limited to traditional
+styles of gestural input. It is desirable to allow users to touch
+what they can see and physically manipulate virtual objects.
+Researchers have developed glove-style haptic interfaces to
+give users more degrees of freedom in motion. The first
+Figure 2. Wolverine system overview.
+
+The Wolverine is composed of a base, which mounts on the
+thumb, and three connected rods, each of which has a sliding
+mount for the tips of the index, middle, and ring fingers (Figure 2). Each sliding mount has an active brake that can lock
+onto the respective rod. Therefore, the three finger tips are
+physically connected to the thumb tip through an exoskeleton
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be
+honored. For all other uses, contact the owner/author(s). Copyright is held by the author/owner(s).
+UIST’16 Adjunct, October 16–19, 2016, Tokyo, Japan.
+ACM ISBN 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985725
+
+117
+
+Grasp Type
+Actuator Type
+Force Feedback
+Maximum Force
+Motion Range
+Power Source
+Weight
+
+Wolverine
+
+CyberGrasp [1]
+
+Rutgers Master II [3]
+
+DESR [11]
+
+pad opposition
+one-way brake
+constant stiffness
+106N
+20-160mm
+built-in battery
+55g
+
+pad, palm, side opposition
+dc motor with wire driven
+variable stiffness
+12N
+full hand closing
+external cable
+450g
+
+palm opposition
+pneumatic cylinder
+variable stiffness
+16N
+27mm stroke
+external cable
+185g
+
+pad opposition
+electroactive polymer
+variable stiffness
+7.2N
+5mm stroke
+external cable
+38g
+
+Table 1. Comparisons with other devices.
+
+structure that can generate precision grasping motions. The
+rods are connected to the base with ball joints (3 DOF each),
+and the sliding mounts are connected to the rods with cylindrical joints (2 DOF each). The supporting structures physically in contact with the three finger tips are connected to
+the sliding mounts with revolute joints (1 DOF each). Due to
+its many degrees of freedom and low friction and inertia, this
+structure allows the hand to move freely.
+
+finger and the end of the rod rather than between the finger
+and the thumb, the sensor does not interfere each other. A
+9-axis IMU (InvenSense MPU9250) is coupled to a thumb
+to measure orientation. With a single orientation sensor, we
+assume the thumb represents the orientation of the hand.
+PERFORMANCE
+
+We use a brake to render virtual objects in order to make the
+Wolverine compact and energy efficient. A brake system, in
+general, guarantees stable motions because it can only dissipate energy, and is more compact than active actuators of the
+same strength. However, brake systems can only resist motion, which could lead to an unnatural grasping sensation if
+there is any resistance when the user opens his or her hand.
+Figure 4. Force - displacement
+measurement of the brake.
+
+Figure 5. Position error compensation result with a forward
+model.
+
+The curve in Figure 4 shows the stiffness during braking is
+162N/mm. The maximum force before slipping is 106N,
+which is larger than the maximum forces generated from precision grasps; 77.4N for men and 51.0 N for women [9].
+Also, the device has reliable performance over a wide range
+of grasping speeds by adapting a forward model to compensate actuation, sensing and communication lags (Figure 5).
+Figure 3. One-way brake mechanism.
+
+Table 1 shows that the Wolverine can provide a large range
+of motion and high resistance forces, but all other systems
+provide variable stiffness. The trend toward mobile VR applications like the Samsung Galaxy VR makes the Wolverine device particularly interesting. The lightweight, batterypowered design could be consumer friendly, and the processing of binary output signals is computationally simple, making it feasible even on mobile processors.
+
+Therefore, we propose a mechanism for directional braking in
+haptic applications. As shown in Figure 3 (A), in the default
+state with the actuation off, the levers is in the “out” position.
+The hole in the lever through which the rod passes is coaxial
+with the rod, allowing the sliding mount to move freely along
+the rod. In order to lock the sliding mount, a 6mm diameter
+dc motor is turned ON and pulls a wire that rotates the lever
+counterclockwise. Now the hole through is no longer coaxial with the rod, and jamming occurs. As the user applies
+a force pulling the sliding mount toward the thumb, Tendon
+1 becomes taut, further rotating the lever counterclockwise.
+The controller then turns off the power, but the brake is still
+engaged. This stage can last as long as necessary to complete
+the desired task in virtual reality. Once the user finishes the
+task and opens his or her hand, the elastic Tendon 2 rotates
+the lever back clockwise. The user can freely move his or her
+finger away from the thumb.
+
+DEMONSTRATION
+
+In this demonstration, visitors will be able to use the Wolverine system to grasp a number of virtual, simple, 2D shapes,
+similar to those shown in Figure 1. However, the system
+will not be integrated with an VR headset. In addition, a
+video demonstrating the technical details and evaluation will
+be played.
+FUTURE WORK
+
+Future work will focus on building up the rest of the infrastructure for performing user studies to validate its use. For
+such studies, we would like to integrate the device with a
+consumer VR display. In order to do so, we need to know
+the position of all fingers and the thumb. Since finger position is measured locally with respect to the thumb, and the
+IMU provides the orientation of the thumb, all that is needed
+is the 3-axis global coordinates of the thumb. For this a simple motion tracking sensor would be adequate.
+
+It is important to note that the dc motors are only used for initiating braking (Figure 3 (B-C)), but not required to maintain
+braking once the user is applying a force that pulls the sliding
+mount toward the thumb (Figure 3 (D)).
+Sensors are integrated into the system in order to measure
+the position and orientation of the system. A Time-of-Flight
+(ToF) sensor (STMicroelectronics VL6180X) is mounted at
+the tip of each rod. Because we measure position between the
+
+118
+
+7. Lee, Y., and Ryu, D. Wearable haptic glove using micro
+hydraulic system for control of construction robot
+system with vr environment. In Multisensor Fusion and
+Integration for Intelligent Systems, 2008. MFI 2008.
+IEEE International Conference on, IEEE (2008),
+638–643.
+
+REFERENCES
+
+1. Cybergrasp, cyberglove systems inc.
+http://www.cyberglovesystems.com/cybergrasp/.
+
+Accessed: 2016-02-28.
+2. Blake, J., and Gurocak, H. B. Haptic glove with mr
+brakes for virtual reality. Mechatronics, IEEE/ASME
+Transactions on 14, 5 (2009), 606–615.
+
+8. Nam, Y., Park, M., and Yamane, R. Smart glove: hand
+master using magnetorheological fluid actuators. In
+International Workshop and Conference on Photonics
+and Nanotechnology 2007, International Society for
+Optics and Photonics (2007), 679434–679434.
+
+3. Bouzit, M., Burdea, G., Popescu, G., and Boian, R. The
+rutgers master ii-new design force-feedback glove.
+Mechatronics, IEEE/ASME Transactions on 7, 2 (2002),
+256–263.
+
+9. Swanson, A. B., Matev, I. B., and De Groot, G. The
+strength of the hand. Bull Prosthet Res 10, 14 (1970),
+145–153.
+
+4. Choi, I., Hawkes, E., Christensen, D., Ploch, C., and
+Follmer, S. Wolverine: A wearable haptic interface for
+grasping in virtual reality. 2016.
+
+10. Winter, S. H., and Bouzit, M. Use of
+magnetorheological fluid in a force feedback glove.
+Neural Systems and Rehabilitation Engineering, IEEE
+Transactions on 15, 1 (2007), 2–8.
+
+5. Koyama, T., Yamano, I., Takemura, K., and Maeno, T.
+Multi-fingered exoskeleton haptic device using passive
+force feedback for dexterous teleoperation. In Intelligent
+Robots and Systems, 2002. IEEE/RSJ International
+Conference on, vol. 3, IEEE (2002), 2905–2910.
+
+11. Zhang, R., Kunz, A., Lochmatter, P., and Kovacs, G.
+Dielectric elastomer spring roll actuators for a portable
+force feedback device. In Haptic Interfaces for Virtual
+Environment and Teleoperator Systems, 2006 14th
+Symposium on, IEEE (2006), 347–353.
+
+6. Koyanagi, K., Fujii, Y., and Furusho, J. Development of
+vr-stef system with force display glove system. In
+Proceedings of the 2005 international conference on
+Augmented tele-existence, ACM (2005), 91–97.
+
+119
+
+

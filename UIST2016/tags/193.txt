@@ -1,0 +1,180 @@
+OmniEyeball: Spherical Display Embedded With
+Omnidirectional Camera Using Dynamic Spherical Mapping
+Zhengqing Li, Shio Miyafuji, Toshiki Sato, Hideki Koike
+Tokyo Institute of Technology, 2-12-1 Ookayama, Meguro-ku, Tokyo, Japan
+{li.z.ah, miyafuji.s.aa}@m.titech.ac.jp, {toshiki, koike}@cs.titech.ac.jp
+ABSTRACT
+
+Recently, 360-degree panorama and spherical displays have received more and more attention due to their unique panoramic
+properties. Compared with existing works, we plan to utilize
+omnidirectional cameras in our spherical display system to
+enable omnidirectional panoramic image as input and output.
+In our work, we present a novel movable spherical display
+embedded with omnidirectional cameras. Our system can
+use embedded cameras to shoot 360-degree panoramic video
+and project the live stream from its cameras onto its spherical
+display in real time.
+In addition, we implemented an approach to achieve the dynamic spherical projection mapping in order to project to moving spherical devices. We have also been creating applications
+utilizing system’s features by using 360-degree panoramic
+image as input and output.
+Author Keywords
+
+Spherical display; omnidirectional camera; 360-degree
+panorama; projection mapping
+INTRODUCTION
+
+The sphere, as a typical geometric object, is used in lots of designs. In recent years, researchers started proposing spherical
+displays, such as Sphere [1] created by Benko et al., which is
+a system using spherical image as the output.
+However, the existing works haven’t tried to embed cameras
+inside their spherical devices. Camera is an important way to
+enable image input for interactive systems. Most of the current
+smart devices contains at least one camera in their bodies to
+create more features. For instance, Horita et al. [2] embedded
+a camera into a ball which made their device be able to provide
+point of view from the ball’s position.
+In addition, a special type of cameras is becoming increasingly
+popular. Within two years, more than ten kinds of omnidirectional cameras have been released, such as the Ricoh Theta
+S. They have been attracting many users depending on the
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+UIST’16 Adjunct October 16-19, 2016, Tokyo, Japan
+© 2016 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-4531-6/16/10.
+DOI: http://dx.doi.org/10.1145/2984751.2984765
+
+193
+
+Figure 1. Live streaming video captured by the embedded SP360 4K
+camera is projected on the spherical display.
+
+amazing 360-degree panorama. Compared with original 2D
+images, the omni-panorama can provide 360*360 degrees
+graphic information in one picture.
+Currently, there are many digital devices which are capable
+of both image input and output. For instance, people love to
+shoot and view pictures in their smartphone. However, there is
+still no similar device for 360-degree panoramic image. Due
+to the feature of spherical shape, spherical displays are the
+perfect matches for 360-degree panoramic image. Therefore,
+we decided to develop a new device which can both capture
+360-degree panoramic image as well as display it.
+In our work, we embedded panoramic cameras into the spherical display system. Our device can capture 360-degree
+panoramic images and also display spherical image. It’s able to
+do panoramic live stream through wireless connection and the
+real-time panoramic image can be seen directly projected onto
+the spherical display itself with dynamic spherical projection
+mapping. We believe this new I/O device for omnidirectional
+image will bring users more interactive ways in daily life.
+SYSTEM OVERVIEW
+
+Currently, our spherical device consists of one rubber ball
+embedded with one PIXPRO SP360 4K digital camera on
+the pole. The SP360 camera is equipped with a fisheye lens
+which can cover 360-degree in horizontal direction has a 235
+degrees field of view. Therefore, most of the surrounding
+environment of the spherical device can be covered by this
+SP360 camera with limited blind zone. Our proposed system
+streams live video to the PC, then integrates our dynamic
+spherical projection mapping technology and motion tracking
+
+Figure 3. Remote Panoramic Video Chat.
+
+Panoramic Selfie Camera
+
+Users are allowed to take 360-degree panoramic selfies by
+using the spherical device in this application. Users can use
+the live streaming display to check what is captured.
+
+Figure 2. Diagram of spherical projection mapping.
+
+Remote Panoramic Video Chat
+
+Figure 3 shows a practical application we are still working
+on. This application allows users in different places to do
+video chat with 360-degree panoramic image by arranging
+two spherical devices in different places, such as conference
+rooms. Each spherical device will use its embedded cameras
+to capture surrounding environment, and the image data will
+be projected onto the other spherical device by the system.
+
+system to project the live stream image onto its spherical
+display. Therefore, our device seems like a spherical mirror
+as shown in Figure 1 . The live stream we can receive from
+the SP360 4K camera has a 1280*720 resolution with 15fps
+when connected to the PC by WiFi. The format of the image
+is fisheye motionJPEG. In order to integrate the SP360 4K
+camera’s live stream into our system, we transfer raw image
+into equirectangular format by using a fragment shader in the
+graphic system. This shader will do camera calibration to
+convert fisheye image to square image with high quality and
+low cost.
+
+We believe that our proposed system can improve remote conference meetings due to its panoramic and movable features.
+It will be efficient that people can just carry our spherical device to view every detail in the other place and simultaneously
+show important information in their surrounding environment.
+
+DYNAMIC SPHERICAL MAPPING
+
+We proposed an approach to do 360-degree projection to moving balls in realtime. The positional relationship between the
+ball and projectors can be calculated by transforming projector
+positions in the real world to the camera coordinate system.
+We build a motion tracking system consisting of 6 motion
+tracking cameras to track the position of the moving ball. By
+combining three-dimensional ball positions from the motion
+tracking system, the system generates the projection images
+corresponding to each projector’s position.
+Figure 2 shows the diagram of spherical mapping. The different images in the virtual desktop are computed by the PC
+based on the position of the ball and projectors from the motion tracking system. Then, these images are projected by
+corresponding projectors from different directions to cover the
+whole area of the ball according to the ball’s position and orientation. To put real-time projection into practice, this system
+overlays images without optimizing the overlapping parts.
+
+DISCUSSION AND CONCLUSION
+
+Until now, we have built a spherical system which provides
+panoramic image as input and spherical display as output. We
+also discovered how to do spherical mapping on a sphere more
+accurately. Finally, several applications have been created to
+embody the entertainment and practicality.
+We are working on optimizing this system by embedding
+two PIXPRO SP360 4K digital cameras on the poles. In this
+case, the proposed system can capture the whole surrounding
+environment with only a tiny blind zone.
+Moreover, we plan to enable gesture recognition as another
+input using image processing. We also consider to replace the
+display technology from projection to OLED, or the position
+of the spherical device might be tracked by sensors such as a
+GPS sensor in the future. In this case, we can build a mobile
+I/O device of 360-degree panorama in the future, just like the
+camera feature of the smartphone.
+
+EXAMPLE APPLICATIONS
+
+We have been devoloping three applications utilizing the spherical and panoramic features of the system.
+360-degree Panorama Viewer
+
+In this application, we project the 360-degree panoramic image
+or video onto the spherical display. Compared with dragging
+the mouse to see the intended area, we believe that rotating a
+ball-shaped device is more intuitive.
+
+REFERENCES
+
+1. Hrvoje Benko, Andrew D Wilson, and Ravin
+Balakrishnan. 2008. Sphere: multi-touch interactions on a
+spherical display. In Proceedings of the 21st annual ACM
+symposium on User interface software and technology.
+ACM, 77–86.
+2. Kodai Horita, Hideki Sasaki, Hideki Koike, and Kris M
+Kitani. 2013. Experiencing the ball’s POV for ballistic
+sports. In Proceedings of the 4th Augmented Human
+International Conference. ACM, 128–133.
+
+194
+
+

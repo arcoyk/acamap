@@ -1,0 +1,218 @@
+LaserStroke: Mid-air Tactile Experiences
+on Contours Using Indirect Laser Radiation
+Hojin Lee
+Pohang University of Science
+and Technology (POSTECH)
+Pohang, South Korea
+hojini33@postech.ac.kr
+Seungmoon Choi
+Pohang University of Science
+and Technology (POSTECH)
+Pohang, South Korea
+choism@postech.ac.kr
+
+Hojun Cha
+Pohang University of Science
+and Technology (POSTECH)
+Pohang, South Korea
+hersammc@postech.ac.kr
+Hyung-Sik Kim
+Konkuk University
+Chungju, South Korea
+hskim98@kku.ac.kr
+
+Junsuk Park
+Pohang University of Science
+and Technology (POSTECH)
+Pohang, South Korea
+park64kr@postech.ac.kr
+Soon-Cheol Chung
+Konkuk University
+Chungju, South Korea
+scchung@kku.ac.kr
+
+ABSTRACT
+
+This demonstration presents a novel form of mid-air tactile
+display, LaserStroke, that makes use of a laser irradiated on
+the elastic medium attached to the skin. LaserStroke extends
+a laser device with an orientation control platform and a magnetic tracker so that it can elicit tapping and stroking sensations to a user’s palm from a distance. LaserStroke offers
+unique tactile experiences while a user freely moves his/her
+hand in midair.
+
+(a)
+
+(b)
+
+(c)
+
+Figure 1. (a) Direct skin stroke. (b) LaserStroke: 2D skin stroke by a
+laser in free air. (c) System diagram.
+
+Author Keywords
+
+Laser; Haptics; Mid-air; Tactile display; Touch interaction.
+
+ultrasound. Our research group first demonstrated that laserinduced thermoelastic effects can elicit a tactile sensation
+when a nanosecond laser is irradiated directly to the human
+skin [3]. However, we encountered large individual differences in the induced sensation, ranging from mechanical tap
+to pain, and it was due to the individual-dependent optomechanical properties of the skin. To address this problem, we
+suggested indirect laser radiation: a laser pulse is irradiated
+on the elastic medium attached to the skin [4]. This method
+can invoke a tapping-like tactile sensation with little individual variance. In parallel, Ochiai et al. presented a display utilizing a femtosecond laser to provide both visual holograms
+and tactile sensations focused in air [5].
+
+ACM Classification Keywords
+
+H.5.2. Information Interfaces and Presentation (e.g. HCI):
+User Interfaces - Haptic I/O
+INTRODUCTION
+
+Most haptic interfaces transfer the energy produced by actuators to the skin through solid channels. This requirement,
+however, may undermine the usability of haptic interfaces depending on applications. In such cases, mid-air haptic displays, e.g., those using air jets [6] and acoustic radiation via
+ultrasonic waves [2, 1], are promising alternatives transmitting stimulus energy through air. They also provide natural
+tactile sensations, but they share one fundamental problem
+that the energy travel distance is quite limited.
+
+In this demonstration, we present LaserStroke, a laser-based
+mid-air interactive tactile display system, extended from [4]
+in order to provide a sequence of moving tactile stimulations
+to the user’s palm (Figure 1). In LaserStroke, a laser device is
+mounted on a motorized platform that controls the laser radiation orientation, and the user’s hand is tracked by a magnetic
+tracker. By irradiating repeated laser shots to the user’s palm,
+we can elicit a sensation of smooth stroke on the palm following a given contour in midair. Details are described in the
+rest of this paper.
+
+Recently, a new alternative has emerged seeking the possibility of using lasers for mid-air tactile stimulation [3, 4, 5].
+A laser can travel a long distance with little energy attenuation, which is a clear advantage compared to air jets and
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).
+
+HARDWARE COMPOSITION
+
+Figure 2 shows an overview of LaserStroke. We use a QSwitched Nd:YAG laser device (M-NANO, Montfort Laser
+GmbH), which has a wavelength of 1064 nm and a pulse
+
+UIST’16 Adjunct October 16-19, 2016, Tokyo, Japan
+c 2016 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-4531-6/16/10. . . $15.00
+DOI: http://dx.doi.org/10.1145/2984751.2985708
+
+73
+
+Safety Glasses
+Magnetic Tracker Latex Glove
+
+Graphical
+User Interface
+
+Latex Glove
+
+Magnetic Tracker
+
+Laser (M-NANO)
+
+50 mm
+
+Laser Tactile
+Stimulation
+
+50 mm
+
+Motorized
+Gimbal Platform
+
+PVC-Tape
+Figure 3. Glove for 2D indirect laser radiation.
+
+Figure 2. Implmented System.
+
+hand accordingly in order to elicit continuous tactile sensations while allowing free movement of the user’s hand. Its use
+of laser gives advantages in terms of spatial resolution and
+energy travel distance compared to other alternatives. This
+demonstration presents two interactive scenarios using LaserStroke to validate the usefulness of laser-based mid-air tactile
+displays.
+
+length of 8 ns. The spot size of laser pulse is approximately
+5 mm, and the repetition rate of laser pulses is set to 30 Hz.
+The laser device is mounted on a commercial gimbal platform
+for cameras (CAME-Single, Came-TV), which supports rotational motion of the laser device in two degrees of freedom
+(yaw and pitch).
+To provide mid-air tactile sensations, we adapt the indirect
+laser radiation method presented in [4] as follows. A user
+wears a black latex glove that fits the hand tightly (Figure 3).
+This is to ensure a sufficient strength of tactile stimulation
+and also block unexpected heat transfer. Both are evoked by
+the absorption of a laser irradiated on a light-absorbing elastic medium attached to the glove. As for the elastic medium,
+the palm of the glove (50 mm × 50 mm) is coated with a black
+rubber-coated polyvinyl chloride (PVC) tape. This material is
+chosen for its high light-absorption rate and elasticity, which
+are crucial to invoke a thermoelastic expansion of the medium
+sufficient for tactile perception. The user also wears a wrist
+band to which a wireless magnetic tracker (Liberty Latus,
+Polhemus) is fastened for position/orientation tracking of the
+hand. Laser shots are irradiated on the PVC-taped region on
+the glove for tactile rendering.
+
+ACKNOWLEDGMENTS
+
+This work was supported by a Pioneer Research Center Program 2011-0027994 from the National Research Foundation
+of Korea.
+REFERENCES
+
+1. Carter, T., Seah, S. A., Long, B., Drinkwater, B., and
+Subramanian, S. UltraHaptics: Multi-point mid-air haptic
+feedback for touch surfaces. In Proc. of ACM UIST
+(2013), 505–514.
+2. Hoshi, T., Takahashi, M., Iwamoto, T., and Shinoda, H.
+Noncontact tactile display based on radiation pressure of
+airborne ultrasound. IEEE Trans. Haptics 3, 3 (2010),
+155–165.
+3. Jun, J.-H., Park, J.-R., Kim, S.-P., Bae, Y. M., Park, J.-Y.,
+Choi, S., Park, S. H., Yeom, D.-I., Kim, H.-S., Jung, G.-I.,
+Kim, J.-S., and Chung, S.-C. Laser-induced thermoelastic
+effects can evoke tactile sensations. Sci. Rep. 5, 11016
+(2015), 1–16.
+
+DEMONSTRATION SCENARIOS
+
+Our demonstration will proceed in two interactive scenarios of free stroking and symbol messaging. Each interactive
+demo engages two users: a Receiver and a Sender. In both
+demos, the Receiver wears the glove and wrist band in one
+hand. In the free stroking demo, the Sender sits in a chair
+in front of a computer screen and draws a contour on the
+screen using a mouse or a Leap Motion controller (a commercial finger tracking device). In the symbol messaging demo,
+the Sender selects a symbol out of many symbols (shapes or
+alphabets), and then LaserStroke automatically generates a
+predefined trajectory for the selected symbol. For these trajectories, LaserStroke computes desired radiation points on
+the Receiver’s palm to draw the trajectories and controls the
+laser device and mounting platform to irradiate laser shots,
+also based on the measured position/orientation of the hand
+by the magnetic tracker.
+
+4. Lee, H., Kim, J.-S., Kim, J.-Y., Choi, S., Jun, J.-H., Park,
+J.-R., Kim, A.-H., Oh, H.-B., Baek, J.-H., Yang, S.-J.,
+Kim, H.-S., and Chung, S.-C. Mid-air tactile stimulation
+using indirect laser radiation. IEEE Trans. Haptics
+(2016). Early-Access.
+5. Ochiai, Y., Kumagai, K., Hoshi, T., Rekimoto, J.,
+Hasegawa, S., and Hayasaki, Y. Fairy lights in
+femtoseconds: Aerial and volumetric graphics rendered
+by focused femtosecond laser combined with
+computational holographic fields. ACM Trans. Graphics
+35, 2 (2016), 17:1–17:14.
+6. Sodhi, R., Poupyrev, I., Glisson, M., and Israr, A.
+AIREAL: Interactive tactile experiences in free air. ACM
+Trans. Graphics 32, 4 (2013), 134:1–134:10.
+
+CONCLUSIONS
+
+LaserStroke is an interactive mid-air tactile display system
+that tracks the user’s hand and irradiates laser beams on the
+
+74
+
+

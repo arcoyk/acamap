@@ -1,0 +1,340 @@
+Promoting Natural Interactions Through Embedded Input
+Using Novel Sensing Techniques
+Sang Ho Yoon
+School of Mechanical Engineering, Purdue University
+West Lafayette, IN 47907
+yoon87@purdue.edu
+Mark Wesier [13] mentioned that the best technology is
+“weave themselves into the fabric of everyday life”. To
+this extent, my dissertation focuses on enhancing the performance, richness, and affordance of interactions using embedded inputs. As a first step, I came up with a multimodal
+sensing smart textile to support an eyes-free input based on
+somatosensory tactility of the finger. The proposed prototype
+showed performance improvement in terms of response times
+and an accuracy while achieving high satisfaction from users.
+Secondly, the magnetic sensing has been explored deeply to
+offer a full 3D position tracking around the mobile device
+using a stylus. By enabling 3D volume around the mobile
+device interactive, we support upcoming interfaces like mobile augmented reality (AR). Recent work focuses on making
+plain objects interactive by simply embedding a small magnet. With a finger-worn device, instant and customizable user
+interface can be implemented with any given objects. The
+simple setup allows users to easily implement interface with
+everyday objects while preserving rich interactions.
+
+ABSTRACT
+
+From mobile devices to interactive objects, various input
+methods are provided using built-in motion and capacitive
+touch sensors. These inputs are offered in effective and efficient manner where users can operate interface quickly and
+easily. However, they do not fully explore the input space
+supported by human’s natural motion behavior. As a solution, my work focuses on promoting natural interaction
+through hand-driven embedded input powered by multimodal
+and magnetic sensing techniques. In my previous works, embedded inputs were implemented in the form of smart textile,
+stylus, and ring supporting from mobile devices to everyday
+objects. Throughout the paper, I will briefly go over implemented systems along with evaluated results and potential applications. Future research direction is highlighted at the end
+of the paper.
+Author Keywords
+
+Input Device; Wearables; Embedded Interaction; Sensing
+Technique; Mobile Interaction; Magnetism
+
+RELATED WORKS
+
+ACM Classification Keywords
+
+Interaction Through Finger-Worn Devices
+
+H.5.2. Information Interfaces and Presentation (e.g. HCI):
+User Interfaces
+
+Within the hand, the fingers have been explored widely as
+an interaction medium since it represents human intents precisely with high flexibility. Previously, a finger-worn controller is implemented with tactile buttons, capacitive touch
+sensors, and bend sensors [12]. Although this work supports
+rich interactions through a single finger, it would be difficult
+to maintain a comfort due to attached physical components.
+Other sensing technique like computer vision approach has
+been widely explored. However, a line-of-sight view of hands
+or markers should be maintained within the optical sensing
+volume. In our approach [15], we suggest a finger operating
+wearable device which utilizes somatosensory tactility based
+on a passive haptic feedback to enhance eyes-free mobile interactions.
+
+INTRODUCTION
+
+Recent development in computing power, display, and sensors have resulted in providing enhanced interface in terms of
+mobility and performance. Researchers also utilize the affordance and the availability of everyday objects to implement
+user interfaces. To support upcoming trends in user interfaces with various form factors, previous studies suggested
+on utilizing natural correspondences like human motion behaviors [7]. To incorporate natural human motion behaviors
+as an input, recent works explore new input metaphors such
+as eyes-free [1], around device [3], and object interactions [6].
+Still, there are rooms to improve performance, richness, and
+affordance using novel sensing techniques.
+
+Position Tracking with Magnetic Sensing Technique
+
+Magnetic sensing has been explored extensively for position tracking using both active and passive magnetic sources.
+Although active magnetic sources provide accurate position
+tracking, they require a stationary hardware setup which limits user’s mobility. On the other hand, passive magnetic
+sources have provided enhanced mobile inputs without requiring an extensive hardware setup [4, 8]. However, recent approaches still require either extra hardware modifications on the mobile device or desktop-level computing power.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author. Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984782
+
+5
+
+These requirements limit scalability and practicability as a
+stand-alone input. In TMotion [14], we developed a stylus
+embedded with an inertial measurement unit (IMU) and a permanent magnet to fully support 3D position tracking around
+the mobile device without any hardware modifications.
+Everyday Object Interaction
+
+Performing interactions using everyday objects offers task affordances while maintaining current working environment.
+This creates an opportunity for instant and casual interactions where naturally embedded behavior with existing object transforms to a meaningful input method [9]. To this extent, iCon utilized fixed cameras to use everyday objects as an
+auxiliary controller and instant interface [5]. However, previous approaches require a room-level or object-level hardware
+setup that limits the availability and the acceptance of interactions. In our recent work, we utilize a magnetic sensing
+technique to bring an interactivity to existing objects instantly
+with high flexibility in customization.
+
+Figure 1. A finger-worn smart textile prototype provides a multimodal
+sensing (finger bending and pressure) to support an eyes-free interaction
+during daily activities such as exercising, driving, and working
+
+solution, new sensing techniques are more readily acceptable
+to existing devices as well as users.
+
+RESEARCH GOALS
+SYSTEM IMPLEMENTATION
+
+Hand-Driven Embedded Input
+
+To fulfill above research goals, I have implemented three different embedded input system. These input metaphors are
+either directly or indirectly related to the use of human hands.
+In this section, my research works are explained in detail.
+
+Hand has been a dominant input medium for interacting with
+digital devices: 1) mobile devices adopt a finger touch for
+general input, 2) new interface including AR and VR focus
+on bringing a natural hand motion as input, and 3) input accessories like styli and joysticks are operated by hand. To this
+extent, I have focused on developing embedded inputs operable by a hand. To preserve the comfort of using hand, the new
+sensing techniques require seamless interaction that does not
+negatively affect the natural hand usage. To this end, my previous works provide embedded inputs considering prototype
+wearability, coherence with existing input methods, and minimal instrumentation requirements.
+
+Finger-worn Textile Input Device
+
+In my earliest work, I implement a multimodal sensing fingerworn input using a single layer of the textile [15]. Utilizing
+strain and pressure characteristics of the carbon elastomer,
+two types of finger motions are defined for interactions including finger pressing and bending. To support these input signals, the prototype adopts a two-phase and a polynomial regression analysis. These algorithms are used to model
+the relationship between magnitudes of pressure and strain
+against applied finger pressing and bending. With a multilevel threshold, the prototype recognizes different levels of
+pressure and strain sensing. Simple gestures like a swipe are
+captured via the algorithm based on the temporal position
+tracking. By using the prototype with a two-finger interaction, total of 14 or more distinct input signals are created. To
+preserve better tactility and wearability comparing to existing data gloves equipped with hard and rigid components, we
+
+Augmenting Interaction with Sensing Technique
+
+Recent gaming applications starts to utilize hands and whole
+body gestures based on a 3D depth camera. However, the
+overall mobile devices and interactive objects are still limited
+to the flat screen or the surface due to a lack of depth camera.
+In addition, a computer vision approach requires a line-ofsight view which is hard to maintain during interacting with
+mobile devices or objects. For this reason, I explore the magnetic tracking which provides an around-device interaction
+without requiring a line-of-sight view. On the other hand,
+the richness in interactions using a human finger is limited.
+To fulfill the richness of interface, I focus on novel sensing
+techniques using finger wearables to obtain rich inputs while
+preserving a simple form factor.
+Instant and Customizable Interface
+
+Often new sensing techniques require a new set of hardware
+installation on the device or the user. This limits the sustainability and flexibility of employing new approaches. Moreover, customizing interface conventionally requires physical
+modifications on the prototype including a hardware components rearrangement or a new assembly. In my research, I
+aim on employing new sensing techniques while minimizing
+the needs of physical hardware installations. With suggested
+
+Figure 2. Multitasking user study is carried out to compare performance
+with existing input devices
+
+6
+
+Figure 3. With magnetic sensing technique, we enable a real-time 3D position tracking using an embedded magnet and an IMU with an unmodified
+mobile device. Tmotion enlarges interaction spaces above and behind the device and provides rich interactions with 3D position tracking. The prototype
+is implemented in a form of stylus.
+
+utilize elastic and soft textile. The use of elastic textile entitles the robustness of performance while providing proper
+fixation onto the finger.
+To explore the user performance of proposed input in terms
+of a response time and an accuracy, a multitasking user study
+is carried out with existing inputs such as phone, Bluetooth
+headset, and steering wheel. User study is carried out under
+visually distracted conditions. The study results indicate that
+the proposed input is less susceptible to the visual distraction
+comparing to conventional input devices. Since the proposed
+input encourages use of proprioception from fingers, users
+can maintain operation performance. This work shows how
+the multimodal sensing can be utilized in augmenting sensing
+capability and input performance using a single finger.
+Embedded 3D Input using Magnetic Sensing
+
+In the subsequent work, magnet sensing technique is explored
+to enable 3D position tracking around the mobile device. A
+prototype in a form of stylus is embedded with a magnet and
+an IMU. The magnetic field vector and the orientation of the
+embedded magnet are used to compute the magnet’s position
+relative to the mobile device. Lastly, a 3D position tracking
+with rate greater than 30 Hz is achieved only using a single
+magnetometer from the mobile device side. In interactionwise, the prototype supports continuous/discontinuous interactions in above/behind the device spaces.
+
+Figure 4. Recent work demonstrates a finger-worn device with magnetic sensing technique to track fingertip around a permanent magnet.
+By embedding a magnet to the object, we bring interactivity to objects
+where we utilize the affordances existing objects.
+
+interface with plain objects. The prototype supports both fabricated and everyday objects as an interaction medium. Along
+with the position tracking based on the magnetic sensing,
+a particle filter is employed to track the finger tip near the
+permanent magnet. This allows us to simply inserting or attaching a small magnet to bring interactivity to the target object. The discrete and the continuous input types are offered
+through a finger tip based on position tracking capability.
+
+The experiment shows an average error of 4.55 mm in the
+space of 80 mm×120 mm×100 mm. The tracking robustness
+is also confirmed under the dynamic tracings and various orientations. The interaction performances by users are verified
+with tracking precision and targeting accuracy. The potential
+applications such as the around-device interaction using 3D
+volumes around the mobile device and input control in mobile AR are implemented. Throughout this work, interactions
+are augmented by utilizing a 3D input space and tracking natural hand motions with the stylus.
+
+The software tool is also provided to compute the optimal
+magnet location in a 3D model with a given interface set.
+Using this approach, users do not need to modify hardware
+setup where only magnet location can be altered upon interface change. The evaluation confirms high-precision tracking
+performance while user study validates the input performance
+in general control tasks. This work can benefit novice inter-
+
+Instant and Customizable Finger-worn Input
+
+In my recent work, a finger-worn device based on magnetic
+sensing is implemented to provide instant and customizable
+
+7
+
+action designers and general users who want to implement
+interface instantly with flexibility in customization.
+
+REFERENCES
+
+1. Brewster, S., Lumsden, J., Bell, M., Hall, M., and
+Tasker, S. Multimodal’eyes-free’interaction techniques
+for wearable devices. In Proc. of CHI’03, ACM (2003),
+473–480.
+
+POTENTIAL RESEARCH DIRECTION
+
+With a forthcoming evolution in sensor performance and machine learning algorithm, new sensing techniques can be explored. To further support the research claim on ”Promoting
+natural interactions through hand-driven embedded inputs”, I
+plan to investigate following research topics in the future.
+
+2. Burges, C. J. A tutorial on support vector machines for
+pattern recognition. Data mining and knowledge
+discovery 2, 2 (1998), 121–167.
+3. Butler, A., Izadi, S., and Hodges, S. Sidesight:
+multi-touch interaction around small devices. In Prof. of
+UIST’08, ACM (2008), 201–204.
+
+Bio-signal Sensing
+
+Different forms of bio-signals such as electromyography (EMG), pressure distribution around body parts, and skin
+deformation can be thoroughly extracted with recent sensor
+development. Previous approaches [10, 11] suggest the use of
+bio-signals for the hand-driven embedded input. These works
+exploit natural human motions based on bio-signal processing for human machine interface. Inspired from these works,
+I will focus on hand related bio-signal sensing to provide rich
+and robust inputs while preserving affordances.
+
+4. Chen, K.-Y., Lyons, K., White, S., and Patel, S. utrack:
+3d input using two magnetic sensors. In Proc. of
+UIST’13, ACM (2013), 237–244.
+5. Cheng, K.-Y., Liang, R.-H., Chen, B.-Y., Laing, R.-H.,
+and Kuo, S.-Y. icon: utilizing everyday objects as
+additional, auxiliary and instant tabletop controllers. In
+Prof. of CHI’10, ACM (2010), 1155–1164.
+6. Fitzmaurice, G. W., Ishii, H., and Buxton, W. A. Bricks:
+laying the foundations for graspable user interfaces. In
+Proc. of CHI’95, ACM Press/Addison-Wesley
+Publishing Co. (1995), 442–449.
+
+Machine Learning Integration
+
+Machine learning approaches [2] have been utilized to classify user intents with the data from large set of sensors. This
+approach has shown effectiveness to classify a set of small
+number of input commands. With the aid of emerging machine learning methods like support vector machine (SVM)
+and deep convolution neural network (DCNN), richer input
+commands based on human’s natural motion behavior can be
+recognized. To this end, I will explore capability of machine
+learning to integrate with various sensing techniques.
+
+7. Hand, C. A survey of 3d interaction techniques. In
+Computer graphics forum, vol. 16, Wiley Online Library
+(1997), 269–281.
+8. Liang, R.-H., Cheng, K.-Y., Su, C.-H., Weng, C.-T.,
+Chen, B.-Y., and Yang, D.-N. Gausssense: attachable
+stylus sensing using magnetic sensor grid. In Proc. of
+UIST’12, ACM (2012), 319–326.
+
+CONCLUSION
+
+9. Pohl, H., and Rohs, M. Around-device devices: my
+coffee mug is a volume dial. In Proc. of MobileHCI’14,
+81–90.
+
+My dissertation has presented how hand-driven embedded inputs improve performance, richness, and affordance of interactions. Novel sensing techniques such as multimodal (finger
+bending and pressure) and magnetic sensing have been exploited to augment the inputs. To preserve the comfort and the
+acceptability of provided input methods, I focus on embedding prototypes to hand related input metaphors in forms of
+smart textile, stylus, and ring. The evaluations and user studies have confirmed the superior input performance of each
+project and potential applications are illustrated using proposed inputs.
+
+10. Rekimoto, J. Gesturewrist and gesturepad: Unobtrusive
+wearable interaction devices. In Proc. of ISWC’01, IEEE
+(2001), 21–27.
+11. Saponas, T. S., Tan, D. S., Morris, D., Balakrishnan, R.,
+Turner, J., and Landay, J. A. Enabling always-available
+input with muscle-computer interfaces. In Proc. of
+UIST’09, ACM (2009), 167–176.
+
+I envision that upcoming interfaces like AR and VR can be
+benefited from augmented interaction through hand-driven
+embedded input. With the development of sensor technology, various sensing techniques can be utilized to improve
+the existing input metaphors.
+
+12. Tsukadaa, K., and Yasumurab, M. Ubi-finger: Gesture
+input device for mobile use. Ubicomp 2001 Informal
+Companion Proceedings (2001), 11.
+
+ACKNOWLEDGMENTS
+
+14. Yoon, S. H., Huo, K., and Ramani, K. Tmotion:
+Embedded 3d mobile input using magnetic sensing
+technique. In Proc. of TEI’16, ACM (2016), 21–29.
+
+13. Weiser, M. The computer for the 21st century. Scientific
+american 265, 3 (1991), 94–104.
+
+I am grateful for the guidance of my advisor Prof. Karthik Ramani. I would also thank all of my collaborators. This work
+was supported by the National Science Foundation (NSF)
+IGERT Grant #1144843. Any opinions, findings, and conclusions or recommendations expressed in this material are
+those of the authors and do not necessarily reflect the views
+or opinions of the funding agency.
+
+15. Yoon, S. H., Huo, K., and Ramani, K. Wearable textile
+input device with multimodal sensing for eyes-free
+mobile interaction during daily activities. Pervasive and
+Mobile Computing (2016).
+
+8
+
+

@@ -1,0 +1,182 @@
+POVeye: Enhancing E-Commerce Product Visualization by
+Providing Realistic Image Based Point-of-View
+Shogo Yamashita
+Rakuten Institute of Technology, Rakuten Inc.
+The University of Tokyo
+qq146419@iii.u-tokyo.ac.jp
+
+Adiyan Mujibiya
+Rakuten Institute of Technology, Rakuten Inc.
+4-13-9 Higashi-Shinagawa, Shinagawa-Ku, Tokyo
+adiyan@acm.org
+
+Figure 1: We propose POVeye, a user interface solution that enables extensive visualization of multiple viewing angles of a
+product that can provide representative description of its material color and texture. We focus to minimalize user input task,
+and to provide interactive visualization of the product that can be easily embedded into standard web platforms.
+ABSTRACT
+
+ACM Classification Keywords
+
+We present POVeye, a method to help users in capturing
+and creating visualization of products for extensive
+representation of the product’s material color and texture.
+POVeye achieve this by providing realistic images captured
+from various angles, which are positioned correctly based
+on the calculated geometrical centroid. As input, users
+simply provide a video or multiple images of the product
+taken by any camera from arbitrary angles, without
+requiring any pre-calibration. POVeye provides an interface
+that shows object-centric camera positions alongside with
+image taken from respective camera angle. Users are able to
+either manually browse through automatically detected
+camera positions, or visualize the product by automatically
+detected view-angle path. POVeye leverages Structurefrom-Motion (SfM) approach to obtain camera-object map.
+Our approach is unique from other solutions by preserving
+realistic imaging condition. We observe that visualization
+of products from different angles that provide information
+of light reflection and refraction potentially helps users to
+identify materials, and further perceive quality of a product.
+
+H.5.m. Information interfaces and presentation (e.g., HCI):
+Miscellaneous.
+INTRODUCTION
+
+Complex real lighting conditions and viewing angle effects
+on material color and texture are highly relevant aesthetic
+features of a product. This particular aspect has been proven
+to have strong impacts on customers’ perceived quality of a
+product. For the e-commerce industry, representing a
+product’s visual information through images are crucial, as
+costumers’ decision process involves perceived visual
+information. Moreover, misleading visual information or
+excessive usages of subjective text descriptions potentially
+cause costumers to hesitate buying online, or return the
+delivered merchandise due to mismatched expectations.
+Overall, this may cause bad user experience, pose negative
+marketing for merchants, and increase operational costs.
+SfM based approaches have been widely used to obtain 3D
+model of objects [1,2,3]. Depending on the input quality,
+the aggregated point clouds are often very sparse. To obtain
+usable 3D model for better object’s representation, point
+clouds and texture inpainting are often required. However,
+it causes significant information loss on lighting effects. In
+this work, we create an interface design to provide realistic
+visualization of the object relative to its viewing angle and
+lighting condition without any post-processing or rendering.
+
+Author Keywords
+
+Visualization; material texture; view angle; e-commerce.
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for
+components of this work owned by others than ACM must be honored.
+Abstracting with credit is permitted. To copy otherwise, or republish, to
+post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from Permissions@acm.org.
+
+We introduce POVeye, a user interface solution that enables
+extensive visualization of multiple viewing angles of a
+product that can provide representative description of its
+material color and texture. On the basis of the state-of-theart in SfM approach, this paper describes a visualization
+
+AH '15, March 09 - 11, 2015, Singapore, Singapore
+Copyright 2015 ACM 978-1-4503-3349-8/15/03…$15.00
+http://dx.doi.org/10.1145/2735711.2735807
+
+199
+
+Figure 2: Visualization example for a wristwatch, which has glossy metal surface, leather texture, and glass dial cover. Users
+can intuitively navigate through the viewpoints using computer keyboard’s arrow keys and mouse. POVeye uses static
+geometrical centroid to keep stable alignment for images from different angles (illustrated in the bottom part of the figure).
+
+gold iPad (with glossy logo). We depicted our visualization
+approach in Figure 2.
+
+approach that only requires minimal user actions which
+involves video or multiple images capture using any camera
+from arbitrary angles. POVeye software implements basic
+SfM and further extends it to: 1) obtain key image frames
+that represents correctly detected viewing angle achieved
+from 2D features matching, 2) obtain camera-object 3D
+relative position map, 3) obtain object’s center-of-geometry
+that serve as visualization’s pivotal point, and 4) obtain
+optimal camera viewing trajectory to produce automatic
+animation that can be easily portable to standard web page
+as gif or motion jpeg. In this work, we contribute to HCI
+community by presenting our user interface design concept,
+prototype implementation details, as well as brief
+evaluations of POVeye. We also discuss limitations, and
+share our plans for future iteration of this work.
+
+DISCUSSION
+
+Users are able to tell the difference of certain materials by
+observing different light reflections and/or refractions in
+images captured from certain viewing angles. As an
+example, in the wristwatch visualization, users are able to
+easily obtain information on how the metal, glass, and
+leather’s look and feel change relative to illumination and
+viewing angle. Using the simultaneous camera-object
+visualization, users are given awareness on the distance and
+angle of the camera relative to the object. Therefore, users
+are provided with better representation of the actual
+product’s visual information to help their decision process.
+CONCLUSION AND FUTURE WORK
+
+POVEYE IMPLEMENTATION AND EVALUATION
+
+We presented POVeye, a user interface solution that enables
+extensive visualization of multiple viewing angles of a
+product. The visualization also provides intuitive 3D map
+of camera-object relative position to give users full
+awareness of the image spatial contexts. We reported our
+implementation approach and visualization results of
+several representative objects. In future iteration of this
+work, we plan to improve towards more effortless capture
+and refine the UI. We also plan to conduct rigorous user
+study to evaluate effectiveness of POVeye approach, and to
+provide design guidelines for other researchers and
+practitioners who are interested in applying our solution.
+
+POVeye consists of two main components: 1)
+implementation of SfM approach, and 2) user interface part
+which provides interactive visualization of the product. We
+highlight our approach in Figure 1. In order to give better
+visual information in each viewing angle, we designed
+POVeye UI to have a static pivotal point of the object, i.e.,
+the point of origin where x,y,z-coordinates are {0,0,0}
+should be the same across images. We define this static
+pivotal point as the center-of-geometry (i.e., centroid or
+barycenter) calculated from the aggregated 3D point clouds,
+which we treated as the centroid of a finite set of k
+points x1,x2, …, xk in Rn [4]:
+
+REFERENCES
+
+� + � + ⋯ + ��
+�=
+�
+
+1. Szeliski, R., Kang, S., B. Shape ambiguities in structure
+from motion. In Trans. PAMI vol.19, no.5, pp. 506–512.
+2. Wu, C. Towards Linear-Time Incremental Structure
+from Motion. In Proc. of 3D Vision 2013, pp.127–134.
+3. Autodesk 123D Catch. Online at:
+http://www.123dapp.com/catch.
+Accessed at January 23rd, 2015.
+4. Protter, H., M., Morrey, Jr., and Charles B. College
+Calculus with Analytic Geometry (2nd ed.). 1970.
+
+The centroid C minimizes the sum of squared Euclidean
+distances between itself and each point in the set.
+To evaluate the effectiveness of our approach, we
+experimented our visualization method on different material
+types such as: 1) plush toy: thick soft fabrics object, 2)
+wristwatch: glossy metal surface, glass dial cover, and
+leather texture on the strap, 3) the back of a champagne-
+
+200
+
+

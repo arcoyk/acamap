@@ -1,0 +1,208 @@
+Uniformity Based Haptic Alert Network: A Framework for
+Intuitive, Multi-Device Haptic Notifications
+Salem Karani
+MIT Media Lab
+Cambridge, MA 02139
+skarani@mit.edu
+
+Chaitanya Varanasi
+Citigroup Inc.
+New York, NY 10013
+chaitanya.varanasi@citi.com
+
+ABSTRACT
+
+number of alerts begins to create a disruptive and less
+meaningful experience.
+
+We experience haptic feedback on a wide variety of devices
+in the modern day, including cellphones, tablets, and
+smartwatches. However haptic alerts can quickly become
+disruptive rather than helpful to a user when multiple
+devices are providing feedback simultaneously or
+consecutively. Thus in this paper, we propose an
+intercommunicating, turn-based local network between a
+user's devices. This will allow a guaranteed minimal time
+span between device alerts. Additionally, when multiple
+devices provide a notification-based haptic alert, devices
+often produce different feedback due to the varying
+materials they are placed on. To address this, our
+framework allows devices to self-regulate their levels of
+haptic responses based on the material density of the
+surface they are placed on. This allows the framework to
+enforce a uniform level of haptic feedback across all the
+surface-device combinations. Finally, we will also utilize
+this common network to eliminate redundant alerts across
+devices.
+
+HAPTIC ALERT NETWORK
+
+haptic alert; haptic feedback; intercommunicating;
+distributed network; material haptic response
+
+To address these problems, we have developed a novel,
+self-regulating Haptic Alert Network (HAN) which aims to
+repurpose standalone haptic devices into a new mesh
+network of haptic devices acting as an actively selfmonitored, intercommunicating alert system. The
+intercommunicating network has seen prior forms through a
+zigbee-based system [5], and in prior sensor-based systems
+[6]. However, our implementation is more integrated with a
+full set of features rather than just global event notification
+[7], and is not constrained to any single communication
+protocol. HAN is a network of haptic devices connected to
+allow meaningful vibrations, regardless of the surface they
+are placed on or frequency of alerts. For the system to be
+non-intrusive and eliminate redundant outputs, we describe
+an architecture which provides guaranteed minimum
+separation between alerts, and encourages a less disruptive
+experience through the reduction of alerts and a uniform
+level of vibration across all components. Therefore, the user
+is not overwhelmed with triggered alerts and frequent
+notifications.
+
+INTRODUCTION
+
+Haptic Equalization
+
+Keywords
+
+Haptic devices have existed and been significant since the
+1970s, however we have only recently started utilizing the
+full potential of haptics in computing with the Internet of
+Things revolution. With the rising trend of interconnected
+devices, technology has been increasingly adopting the use
+of haptic technology to introduce a new medium of
+notification for the user. The norm for a user to interact
+with the device is to engage in a uniform, easy- tounderstand manner. Yet as number of devices and
+applications providing haptic alerts increases, the sheer
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST'16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984769
+
+Figure 1: Auditory Response after HAN self-adjustment for
+uniform vibration levels across all types of tangent surfaces
+
+In the real world, we interact with multiple surfaces
+including wood, fabric, or granite. If HAN were to act as an
+intercommunicating alert system for all devices within
+some constraint, we have to acknowledge how haptic
+devices will function on different surfaces with varying
+densities and surface material properties. We base our
+algorithm on prior work on identifying materials from
+
+201
+
+impact sound level [2,3,8]. To equalize the vibration
+feedback among different surfaces, we created an
+equalization algorithm to regulate amplitude and frequency
+of the vibration motors. The equalization algorithm will
+first perform a test vibration sample as a control for all the
+devices in the network. With each vibration, the individual
+device will measure the ambient sound from the vibration
+activity. With each control vibration, the individual device
+will measure the ambient sound, alpha, from the vibration
+activity. The multiple alphas can all be placed on the x-axis
+of a logarithmic scale. We use the y-axis of the scale to then
+determine the average of all the alpha constants. Using the
+alpha constant average, we can scale up or scale down the
+power of each haptic device to an average, seen in Figure 1.
+
+notification. Then for any subsequent notifications within
+the experimentally set time window of 30 seconds, the
+system will allow a notification to be broadcast only if the
+hashmap does not already contain an object with the same
+content. Every time a device enters the critical section and
+broadcasts a notification, the map is cleared of all objects
+older than 30 seconds. Thus the system continuously filters
+for redundancy.
+CONCLUSIONS AND FUTURE WORK
+
+The HAN framework has shown to perform well in our
+informal experiments. It successfully eliminated
+simultaneous haptic alerts and cut down on the total number
+of haptic alerts across all devices. The self- regulating
+algorithm also performed well in adjusting the level of
+haptic alerts for a uniform haptic response. Future efforts
+will focus on further optimizing and enhancing the
+framework. This can be done by supporting additional
+inter-device communication protocols, and also by using
+machine-learning for the alert filtering system.
+
+The benefit of such an algorithm would be to ensure that
+devices placed on surfaces with densities on either the very
+low or very high end of the spectrum can still be perceived
+as having a uniform level of haptic feedback by the user.
+Turn-Based Notification System
+
+REFERENCES
+
+1. Leslie Lamport. 1978. Time, clocks, and the ordering of
+events in a distributed system. Communications of the
+ACM Commun. ACM 21, 7 (January 1978), 558–565.
+2. Dinesh K. Pai, Roberta L. Klatzky. 2000. Perception of
+shape and material from contact sounds. The Journal of
+the Acoustical Society of America J. Acoust. Soc. Am.
+107, 5 (2000), 2817.
+3. Bruno L. Giordano and Stephen Mcadams. 2006.
+Material identification of real impact sounds: Effects of
+size variation in steel, glass, wood, and plexiglass plates.
+The Journal of the Acoustical Society of America J.
+Acoust. Soc. Am. 119, 2 (2006), 1171.
+
+Figure 2: Haptic alert frequency and timing across user’s
+devices with HAN
+
+Through work built upon by Lamport, Ricart, and Agrawala
+[1,4], we intend to have a network structure between all of a
+user’s devices, over the Bluetooth protocol. This network
+will regulate a more intuitive, naturally paced sequence of
+haptic notifications when simultaneous notifications occur.
+Using the Ricart-Agrawala Distributed Mutual Exclusion
+Algorithm, each device submits a request to the shared
+network when it desires to send a haptic notification. It is
+guaranteed to only receive permission for the critical
+section if there is no other device in the critical section.
+Once a device has access to the critical section, it allows the
+haptic notification to be broadcast. This will completely
+disallow simultaneous haptic alerts across a user’s devices.
+Our informal experiments show this to present a less
+frenetic pace of alerts to a user.
+
+4. Glenn Ricart and Ashok K. Agrawala. 1981. An optimal
+algorithm for mutual exclusion in computer networks.
+Communications of the ACM Commun. ACM 24, 1
+(January 1981), 9–17.
+5. Neeraja T.p., Sivraj P., and Sasi K.k. 2015. Sensor
+Based Communication Network for WACS with DNP3.
+Procedia Technology 21 (2015), 76–81.
+6. Salman Taherian and Jean Bacon. 2007. State-Filters for
+Enhanced Filtering in Sensor-Based Publish/Subscribe
+Systems. 2007 International Conference on Mobile
+Data Management (2007).
+7. L.f. Cabrera, M.b. Jones, and M. Theimer. Herald:
+achieving a global event notification service.
+Proceedings Eighth Workshop on Hot Topics in
+Operating Systems.
+
+Filtering Redundant Notifications
+
+Using the inter-device network we were able to reduce the
+amount of redundant and simultaneous haptic notifications.
+Every time a device sends a notification, we register a small
+amount of metadata into a shared hashmap. The metadata
+contains time of occurrence and the origin of the
+
+8. J. Sinapov, V. Sukhoy, R. Sahai. 2011. Vibrotactile
+Recognition and Categorization of Surfaces by a
+Humanoid Robot. IEEE Trans. Robot. IEEE
+Transactions on Robotics 27, 3 (2011), 488–497.
+
+202
+
+

@@ -1,0 +1,513 @@
+Work-in-Progress
+
+CHI 2014, One of a CHInd, Toronto, ON, Canada
+
+A Half-Implant Device on Fingernails
+Emi Tamaki
+Waseda University
+2-579-15, Mikajima
+Tokorozawa, Saitama 3591192 JAPAN
+hoimei@acm.org
+Ken Iwasaki
+H2L, Inc.
+4F, 3-17, Kandajimbocho
+Chiyoda-ku, Tokyo 1010051 JAPAN
+iwkn@acm.org
+
+Figure 1. Prototype of the half-implant device on the nail.
+
+Abstract
+Hand gesture feedback systems using tactile or
+
+The UV gel is used to glue the parts onto the user’s nail
+and cover the parts meant to be waterproof. The device
+receives power from the RF antenna; therefore, it does
+not require a battery to function. It notifies whether the
+finger is in a target site by lighting an LED or activating
+a vibration motor. The primary benefit of this device is
+that the user can feel hand gesture feedback, anytime
+and anywhere. The device can be placed on the users’
+fingernail for approximately three weeks. To verify the
+devices’ influence on the users’ pointing task, we
+conducted a preliminary user study. The task success
+rate was 100% over the sessions with tactile and visual
+feedback and 97% without feedback. The experiment
+revealed that the tactile notification reduced the task
+time by 12.3 % compared to that of the test with no
+feedback.
+
+visual information can only be used in given
+situations because of the limitations of the device
+
+Author Keywords
+
+features such as the need for a battery. In this
+
+Half implant; Nail; Fingertip; RF (Radio Frequency);
+Tactile; Haptic; Tangible; Wearable; Design
+
+paper, we propose a half-implant device located
+on the fingernail. The half-implant device consists
+of a radio frequency (RF) receiving antenna, small
+
+ACM Classification Keywords
+
+electronic parts, and UV gel.
+
+H.5.2. Information interfaces and presentation (e.g.,
+HCI): User Interfaces.
+
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that
+copies bear this notice and the full citation on the first page. Copyrights
+for third-party components of this work must be honored. For all other
+uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+CHI 2014, Apr 26 - May 01, 2014, Toronto, ON, Canada.
+ACM 978-1-4503-2474-8/14/04.
+http://dx.doi.org/10.1145/2559206.2581293
+
+Introduction
+Many hand gesture input systems have been suggested
+in HCI (Human-Computer Interaction) and Ubiquitous
+Computing. Hand gesture input systems must be
+adapted to anytime and anywhere. Can we use tactile
+feedback anytime and anywhere without touchable
+
+1447
+
+Work-in-Progress
+
+CHI 2014, One of a CHInd, Toronto, ON, Canada
+
+hand gesture devices? In this paper, we focus on a
+feedback device that can be used anytime and
+anywhere. Feedback devices for hand gesture input are
+classified as touch panel, room-mounted, and wearable
+type. These three device-types are described in the
+following:
+Touch panel-type devices: Touch panel-type devices
+[1-4] generate sound, visual, and tactile feedback
+through the touch panel by recognizing a user’s hand
+gesture on the panel. They can be used without the
+learning of consistent pointing because the input
+sensors and feedback actuators are set in the same
+place. User can only perform hand gesture input
+when they place their hand on the panel. Moreover,
+there can only be limited hand gesture variations
+because it requires the user’s hand to be in constant
+contact with the panel. Finally, the device can only
+be used in 2D space.
+Room-mounted-type devices: Room-mounted-type
+devices give the user sound and visual feedback
+using a speaker and projector [5, 6]. There are few
+tactile feedback devices in this group. As an
+exception, a room-mounted-type device can include
+tactile feedback using airborne ultrasound [7, 8]. The
+device can give a user a tactile feeling anywhere.
+However, the device only generates a maximum 0.8
+gf (gram-force) [7]. This is too weak to notify the
+user if he is doing other things.
+Wearable-type devices: Wearable-type devices vary
+according to the kind of feedback. In this section,
+hand-gesture-input feedbacks are discussed.
+For visual feedback, HMD (Head Mounted Display)
+devices such as Google glass [9] and AiRScouter
+
+[10] are available. The HMD devices have become
+small and lightweight and look like eyeglasses.
+However, HMD devices must be removed in some
+situations, for example, in bedrooms and bathrooms,
+for the user’s safety. A small projector can also be
+used as a wearable feedback device. Sixth Sense
+[11] and BrainyHand [12] are two systems that have
+a battery and a small camera for detecting user hand
+gestures and include a small projector as the visual
+feedback. These devices are placed on the user’s
+head or neck. The two systems do not hinder the
+user’s daily gestures and the visual feedback is
+projected on the user’s hand. Users can input hand
+gestures everywhere. However, the two systems
+require a boot command or switch because the
+user’s daily hand gestures could be mixed with hand
+gesture commands if the systems are always
+detecting user hand gestures. Both systems require
+a battery that must be carried by the user, for
+mobile use. For these reasons, these systems are
+unsuitable for quick hand-gesture input in daily use.
+For sound feedback, wearable, mass-consumption
+Bluetooth earphones [13] can be used. However, the
+earphones would also have to be removed in some
+situations, for the same reasons as the HMD devices.
+For tactile feedback, Master Slave [14] and TELESAR
+[15] are suggested. Both devices give the user a
+tactile feeling using glove-type devices. Master Slave
+and TELESAR allow the user to control a robot hand.
+The tactile feeling is synchronized with the robot
+hand’s feeling. We cannot use these devices on a
+daily basis because they cover the user’s hand and
+inhibit hand motion. In order not to cover the user’s
+hand, PossessedHand [16] is an option.
+
+1448
+
+Work-in-Progress
+
+CHI 2014, One of a CHInd, Toronto, ON, Canada
+
+PossessedHand controls the user’s finger-joint
+movements using non-invasive EMS (Electric muscle
+stimulation) around the user’s arm. To maintain the
+health of the skin and muscle, PossessedHand can
+only be used for limited time periods.
+
+Figure 2. Implementation of the nail attach
+of the half-implant device.
+
+Exceptions: Ubi-Finger [17] and Implanted User
+Interface [18] use the behavior of the controlled
+device as the feedback. Ubi-Finger is designed for
+inputting finger gestures in a ubiquitous
+environment. These devices allow users to select a
+target device to control using a pointing-finger
+gesture. They do cover the user’s finger pad;
+however, the electric leads hinder the user’s daily
+gestures.
+Nail-mounted feedback devices have been suggested
+[19, 20, 21]. In these projects, feedback devices are
+set on the user’s fingernail and do not cover the
+user’s finger pad. These devices, however, are wired
+to a power supply.
+
+Our Goal
+
+Figure 3: How to set the half-implant device
+on a nail. (1) File off the nail surface. (2)
+Coat the nail surface with the UV gel as a
+base coat. (3) Harden the base coat using
+UV light irradiation. (4) Set the half-implant
+device on the base coat. (5) Coat the halfimplant device and the nail with UV gel as a
+topcoat and harden the topcoat. (6) Finish.
+
+Feedbacks that could be used as a starting point for
+hand gesture have been proposed. However, for
+anytime and anywhere usage, the following criteria are
+required: 1. Device must be wireless, lightweight,
+small, and safe. 2. Device must be usable in both dark
+and bright spaces. 3. Device cannot cover the hand. 4.
+Device cannot make noise. 5. Device must work
+without battery (or work with a lightweight and rapidly
+chargeable battery).
+Our goal is to suggest a feedback device that meets the
+above criteria. For anytime and anywhere usage, we
+must be able to attach the tactile device on the user’s
+
+body for 24 hours or more. In addition, the tactile
+device must be waterproof so it can be used anywhere.
+
+Half-implant device
+In this paper, a half-implant device (for tactile and
+visual-feedback) is described. We made a prototype of
+the device for a user’s fingernail. Figure 1 shows the
+prototype. This device consists of a vibration motor or
+LED, RF (Radio frequency) receiving antenna, a
+capacitor, a rectifier diode, and UV gel. The power and
+vibration pattern are supplied from the magnetic field.
+The UV gel can be applied to the user’s nail to bind the
+other parts and cover the parts to be waterproof. To
+apply the UV gel, the nail surface is filed off. Then, the
+UV gel is spread on the roughened nail surface. The
+parts are then securely fixed on the user’s nail (Fig. 2).
+Figure 3 shows the process to install the parts on the
+user’s nail. The UV gel is hardened by UV light
+irradiation. “UV GEL FSM Clear” is used as the UV gel.
+This gel is normally sold for artificial nails. It takes
+approximately 20 minutes to mount the device. In our
+study, the half-implanted device was fixed for five
+weeks. However, the device should be removed before
+three weeks because the user’s fingernail does grow
+out.
+To supply the power, an RF (Radio frequency) receiving
+antenna, which is a small coil, is used. The inductance
+of the coil is set to 17.0~18.0 μH for the
+electromagnetic coupling. A 0.2 mm diameter tinned
+line is used. The inner diameter of the coil is set to 15.0
+mm. The outside diameter of the coil is set to 18.0 mm
+(Fig. 4). A wireless charging module (POW01141B) by
+SeeedStudio is used. From the transmission antenna,
+our receiving antenna captures alternating current.
+
+1449
+
+Work-in-Progress
+
+18mm
+15mm
+
+CHI 2014, One of a CHInd, Toronto, ON, Canada
+
+Tactile feedback-type
+The tactile feedback device activates vibration motor.
+We install a rectifier diode (40V, 600mA) in the circuit
+of our device because the vibration motor (FM34F) by
+T.P.C is designed to run on DC (Direct Current)
+electricity. For noise rejection, a capacitor is also
+included in our device. The vibration motor uses
+2.5V~3V, 50~90mA through the circuit.
+Visual feedback-type
+The visual feedback device (Fig. 5) consists of a
+receiving antenna (3.0~5.0μH) and an LED. An
+LST676-R (20mA) is used for the LED.
+
+The experimental space (24.0cm x 27.0cm) is located
+on a desk. The transmission antenna (target site) is
+also placed on the desk, hidden under a cover. From
+the change of antenna’s current caused by
+electromagnetic coupling, we detected whether the
+participants place their hand over the correct location.
+Participants
+Four volunteers (2 male, 2 female), ranging in age from
+20 to 40 years old, participated in our experiment.
+(Mean (M) = 32, Standard Deviation (SD) = 5.4). All
+participants were right-handed and used our devices on
+the index fingers of their right hand.
+
+Figure 4. Close-up of the prototype
+device with the vibrator
+
+Experiments
+To verify the devices’ influence on the users’ pointing
+task, we conducted a preliminary user study. In our
+experiments, determining the kind of feedback suitable
+to assist users in locating the place to input information
+quickly and accurately, is examined. Tactile feedback
+with a vibration actuator and visual feedback with a
+LED that meet the requirements of our objective (‘Our
+Goal’) are considered. As a standard experiment, the
+absence of feedback is compared with tactile and visual
+feedback.
+
+Figure 5. Close-up of the prototype
+device with the LED
+
+Hypothesis
+Tactile and visual feedback will help users locate the
+place to input information quickly and accurately. In
+addition, for information input, tactile and visual
+feedback will be more effective than the absence of
+feedback.
+
+Procedure
+First, an experimenter pointed the target site (2.0cm x
+2.0 cm) located in the experimental space (24.0cm x
+27.0cm) to the subjects. The antennas were covered,
+so the subjects had to memorize the approximate
+position on the plain cover.
+Second, the subjects set their hand in a fixed start
+position. They then moved their hand to the target site.
+Then, they returned their hand to the fixed start
+position. They repeated the pointing task ten times as
+quickly as possible. The subjects repeated this activity
+five times (five sessions). Before the start of each
+session, the experimenter changed the location of the
+antennas randomly. Fifty pointing trials were measured
+for each condition.
+With these conditions, each subject performed 150
+trials. In this experiment, the difference of the
+efficiency and speed was measured. The results are
+described in the following subsections.
+
+Apparatus
+Two types of half-implant devices are used, the tactile
+feedback-type and the visual feedback-type.
+
+1450
+
+Work-in-Progress
+
+CHI 2014, One of a CHInd, Toronto, ON, Canada
+
+Result: Accuracy
+Task success rate of this experiment is shown in Figure
+6. With visual feedback and tactile feedback, the task
+success rate is 100% over all sessions. The Task
+success rate lowers to 97% with no feedback condition.
+
+Figure 6. Results of the efficiency of each
+condition. With feedback, the gesture is
+100% successful.
+
+Result: Speed
+The average time for one task in the three conditions is
+shown in Figure 7. The average time shows a difference
+among the conditions (21.0 seconds with no feedback,
+21.23 seconds with visual feedback condition, and
+18.38 seconds with tactile feedback condition). In other
+words, the tactile notification reduced the task time by
+12.3 % compared to that of the test with no feedback.
+The variance also shows a difference over the
+conditions (0.58 with no feedback, 1.83 with visual
+feedback condition, and 0.88 with our device).
+
+References
+[1]
+
+Rekimoto, J. SmartSkin: an infrastructure for
+freehand manipulation on interactive surfaces. ACM
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems. No. 8(2002) pp.
+113-120.
+
+[2]
+
+Jefferson, H.Y. Low-cost multi-touch sensing
+through frustrated total internal reflection. ACM
+Proceedings of the 18th annual ACM symposium on
+User interface software and technology (2005).
+pp.115-118.
+
+[3]
+
+Kajimoto, H. Skeletouch: transparent electro-tactile
+display for mobile surfaces. ACM SIGGRAPH Asia
+2012 Emerging Technologies (2012). pp. 21:121:3.
+
+[4]
+
+Sato, M., Poupyrev, I., and Harrison, C. Touché:
+Enhancing Touch Interaction on Humans, Screens,
+Liquids, and Everyday Objects. ACM Proceedings of
+the SIGCHI Conference on Human Factors in
+Computing Systems. No. 10, pp. 483-492(2012).
+
+[5]
+
+G-Speak. oblong industries, Inc.,
+http://www.oblong.com/g-speak/ (2005).
+
+[6]
+
+Xiao, R., Harrison, C., and Hudson, S.E. WorldKit:
+rapid and easy creation of ad-hoc interactive
+applications on everyday surfaces. ACM
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems (2013). pp. 879888.
+
+Discussion
+For accuracy, either feedback (visual or tactile) is
+effective for finding target site. For speed, the visual
+feedback does not effective for quick searching. The
+error bar for visual feedback is higher than other two
+conditions, suggesting a larger overshoot effect.
+However, tactile feedback reduced the task time by
+12.3 % compared to that of the test with no feedback.
+Our experiments show that tactile and visual feedbacks
+are efficient for the half-implant system. Tactile
+feedback is particularly suitable for quick input.
+
+Conclusion
+
+Figure 7. Results of the speed. The average
+speed differs only slightly over the
+conditions, whereas the variance differs a
+great deal.
+
+The primary benefit of this device is that the user can
+feel hand gesture feedback, anytime and anywhere.
+The device can be placed on the users’ fingernail for
+approximately three weeks. Next research interest
+would include surveying social acceptability of this
+concept. For example: 1. What size and weight is
+acceptable for half-implant. 2. How long do users want
+to attach this device. 3. How the user’s feeling changes
+over time.
+
+In this abstract, we proposed a half-implant device
+located on the fingernail. Preliminary user study
+suggested that tactile feedback is effective for quick
+input. As a future work, we are going to build
+applications over this result.
+
+1451
+
+Work-in-Progress
+
+CHI 2014, One of a CHInd, Toronto, ON, Canada
+
+[7]
+
+Iwamoto, T., Tatezono, M., and Shinoda, H. NonContact Method for Producing Tactile Sensation
+Using Airborne Ultrasound. Proc. EuroHaptics 2008,
+LNCS 5024(2008). pp. 504-513.
+
+[8]
+
+Carter, T., Seah, S.A., Long, B., Drinkwater, B.,
+and Subramanian, S. UltraHaptics: Multi-Point MidAir Haptic Feedback for Touch Surfaces.
+Proceedings of the 26th annual ACM symposium on
+User interface software and technology (2013).
+pp.505-515.
+
+[9]
+
+Google Glass, Project Glass. Google.Inc.,
+http://www.google.com/glass/start/ (2012).
+
+[10] AiRScouter. Brother Industries, Ltd.,
+http://www.brother.co.jp/product/hmd/wd100ga/in
+dex.htm (2008).
+[11] Mistry, P., Maes, P., and Chang, L. WUW - Wear Ur
+World - A Wearable Gestural Interface. ACM In the
+CHI '09 extended abstracts on Human factors in
+computing systems, No. 6(2009). pp.4111-4116.
+[12] Tamaki, E., Miyaki, T., and Rekimoto, J.
+BrainyHand: a wearable computing device without
+HMD and it's interaction techniques. Proceedings of
+the International Conference on Advanced Visual
+Interfaces. No. 2(2010), pp. 387-388.
+[13] Bluetooth Wireless headphone BackBeat 903+.
+Plantronics, Inc.,
+http://www.plantronics.com/us/product/backbeat903-plus (2010).
+[14] Sato, K., Minamizawa, K., Kawakami, N. and Tachi,
+S. MasterSlave in “Haptic Telexistance”. ACM
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems, SIGGRAPH2007
+Emerging Technologies(2007).
+
+[15] Fernando, C.L., Furukawa, M., Kurogi, T., Hirota,
+K., Kamuro, S., Sato, K., Minamizawa, K., and
+Tachi, S. TELESAR V: TELExistence surrogate
+anthropomorphic robot. ACM Proceedings of the
+SIGCHI Conference on Human Factors in
+Computing Systems, SIGGRAPH2012 Emerging
+Technologies(2012). pp. 23:1.
+[16] Tamaki, E., Miyaki, T., and Rekimoto, J.
+PossessedHand: techniques for controlling human
+hands using electrical muscles stimuli. Proceedings
+of the SIGCHI Conference on Human Factors in
+Computing Systems. No. 10(2011), pp.543-552.
+[17] Tsukada, K. and Yasumura, M. Ubi-Finger: a Simple
+Gesture Input Device for Mobile and Ubiquitous
+Environment. Journal of Asian Information, Science
+and Life(AISL). Vol. 2, No. 2, Nova Science Inc.
+(2004). pp. 111-120.
+[18] Holz, C., Grossman, T., Fitzmaurice, G. and Agur,
+A., Implanted user interfaces. In Proceedings of the
+SIGCHI Conference on Human Factors in
+Computing Systems (CHI '12).
+[19] Ando, M., and Inami, M. SmartFinger: "NailMounted Tactile Display. Emerging Technologies
+SIGGRAPH (2002).
+[20] Ando, H., Kusachi, E. and Watanabe, J. Nailmounted tactile display for boundary/texture
+augmentation. ACM Proceedings of the
+International Conference on Advances in Computer
+Entertainment Technology(2007). pp. 292-293.
+[21] Weiss, M., Wacharamanotham, C., Voelker, S., and
+Borchers, J. FingerFlux: near-surface haptic
+feedback on tabletops. In Proceedings of the 24th
+annual ACM symposium on User interface software
+and technology(2011). pp.615-620.
+
+1452
+
+

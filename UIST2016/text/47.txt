@@ -1,0 +1,210 @@
+3D Printed Physical Interfaces that
+can Extend Touch Devices
+Kunihiro Kato
+Meiji University
+Nakano, Tokyo, Japan
+kkunihir@meiji.ac.jp
+
+Homei Miyashita
+Meiji University
+Nakano, Tokyo, Japan
+homei@homei.com
+at arbitrary locations on an XY plane. The user can input
+not only tap and scroll operations but also a variety of gestures using our interface simply by connecting it to the touch
+panel. In addition, our technique can be fabricated using an
+FDM-based 3D printer with conductive and non-conductive
+PLA materials. This allows the user to easily prototype touch
+extension interfaces.
+
+ABSTRACT
+
+We propose a method to create a physical interface that allows touch input to be transferred from an external surface
+attached to a touch panel. Our technique prints a grid having
+multiple conductive points using an FDM-based 3D printer.
+When the user touches the conductive points, touch input is
+generated. This allows the user to control the touch input at
+arbitrary locations on an XY plane. By arranging the structure
+of the conductive wiring inside a physical object, a variety of
+interfaces can be realized.
+Author Keywords
+
+Physical interface; 3D printer; Capacitive touch panel.
+ACM Classification Keywords
+
+H.5.2. Information Interfaces and Presentation (e.g. HCI):
+User Interfaces Input Devices and Strategies.
+INTRODUCTION
+
+In recent years, the variety of devices with a capacitive touch
+panel, such as smartphones and tablets, has increased significantly. These devices allow users to perform more instinctive
+operations by touching the display with their finger. Previous
+studies have employed a variety of approaches relation to the
+touch interfaces, such as a tangible user interface using on
+the touch panel [1, 3] and a method for extend touch interface with physical devices [2, 5]. A method to realize these
+interfaces using on a capacitive touch panel with conductive
+materials, is one of the popular methodology. The user also
+fabricates a prototype interface using this method very easy
+and low-cost. However, the most of the interfaces using this
+method can generate touch inputs at specific locations contiguous with conductive surface.
+
+Figure 1. Applications. (a) Generating touch input using conductive
+points; (b) Side touch interface; (c) The touch zoom interface; (d) Transforming the touch movement.
+
+PROPOSED METHOD
+
+The proposed physical interface comprises two portions: the
+input portion that the user directly touches and the output
+portion, which is attached to the area that generates touch
+events. Each portion has a grid layout having multiple conductive points; these points are connected to either side portion’s points via an inside physical interface. When a portion of the conductive points is simultaneously touched by a
+finger, it generates a change in the capacitance sufficient to
+trigger touch recognition. This also allows the user to input
+continuous touch input, such as scroll operations. When the
+user slides their finger, a portion of the conductive points will
+be activated in a given order. This allows the touch panel to
+recognize the uninterrupted touch input. The fundamental approach for this method is based on the technique proposed by
+ZebraWidgets and ExtensionSticker [1, 2]. Our method can
+recognize touch interactions at arbitrary locations on an XY
+plane using a grid layout of multiple conductive points.
+
+In this study, we propose a touch extension physical interface that can generate touch input at an arbitrary location on
+a surface. Our technique generates touch input by activating a grid-layout of multiple conductive points (Figure 1a).
+When the user touches these conductive points, touch input
+is generated. This allows the user to control the touch input
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2985700
+
+We fabricated a physical interface that has a grid layout of
+multiple conductive parts using an FDM-based 3D printer
+with dual print-extruders (BS01 Dual ABS/PLA Model1,
+Bonsai Lab.Inc.). Grid layout of multiple conductive parts
+are exposed on the top and bottom face of the interface.
+
+47
+
+Thus, this physical interface has implanted multiple conductive poles implanted structure. Our interfaces were printed
+using grapheme-based conductive PLA (Graphene 3D Lab.,
+volume resistance: 0.6 Ω-cm) and non-conductive PLA materials. At this time, it is necessary for each conductive
+part to be independent and to not contact other conductive
+parts. CleanColor reported that the printing quality can be
+decayed when using an FDM-based 3D printer having dual
+print-extruders [4]. Due to material smears from the unilateral print head in the idle process, it is possible for conductive parts to come into contact with each other. Therefore,
+it is necessary to further develop the printing of a physical
+interface to improve the printing quality.
+
+We observed that the edge of the conductive part had spread
+laterally. This was attributed to the filament smears caused
+by over extruded materials from the print head. It is presumably the cause of the contact between adjacent conductive
+parts. Then, we measured the resistance between the conductive parts after cutting 1.0 mm from both edges of the plate.
+As the result, the 0.8 mm interval conductive parts achieved
+over 98 % for 0.8 mm and 1.6 mm width, and the 1.6 mm
+width conductive parts achieved 100 % for 0.8 mm and 1.6
+mm width. Therefore, by rasping the face grid-layout conductive points, and laundering the filament smears, the user can
+print the physical interface with considerable reliability. In
+addition, it is necessary that the grid-layout conductive points
+remain in complete contact with the touch panel. Moreover,
+rasping the face of the proposed physical interfaces is also an
+acceptable approach.
+
+In this study, we print a physical interface sideways as conductive poles inside the object are lain on a layer (Figure 2
+Right). Therefore, conductive material is added only at the
+specific conductive points to stand in a low. In addition,
+a non-conductive material layer is printed after conductive
+parts for one line have been printed. Thus, this approach can
+reduce printing errors, such as those reported by CleanColor.
+Based on these techniques, we conducted a reliability experiment to evaluate the print quality. We printed a number of
+striped patterned plates (Figure 2 Left). This plate is comparable with conductive points placed in a row of conductive
+points with grid-layout. As mentioned above, the probability
+of connecting the conductive materials along the vertical direction is very low. Therefore, here we focused on the contact
+of the each conductive part along the side-by-side direction.
+
+APPLICATIONS
+
+Our interface can implement a variety of touch interfaces that
+can extend touch devices by shaping the structure of the conductive wiring inside a physical object. As shown in Figure
+1b, bending the direction of a wire by 90 ° allows the user
+to install touch interfaces on the sides of devices. This allows the user to input a variety of touch operations, such as
+tap, scroll, and swipe in all directions, as well as rotation operations, using only a single object. This example can also
+be applied to a cardboard head-mounted display (HMD). Our
+method can make a cardboard HMD with a trackpad, such as
+the Samsung GearVR, possible at a low cost.
+As shown in Figure 1c, by changing the printed interval of the
+input and output portions of the conductive points, we can
+create a touch zooming interface that can change the speed
+of the touch controls between the user’s touch operation and
+touch event generated on the touch panel. This means the
+touch zooming interface can allow touch devices to generate
+finer movement touch inputs than the user’s touch operations.
+In general, pinch operations are performed when the user
+draws small figures on touch-panel devices, such as smartphones. Our method will allow touch operations on smaller
+touch-panel devices, such as smartwatches.
+In general, touch input can be generated at the output portion with the same movement as the user’s touch operations
+on the input portion, as shown in previous sections. Breaking
+certain portions allows the interface to generate touch input at
+certain areas of the output portion. In addition, arranging the
+location of the input portion in a straight line and changing
+the form of the wiring inside the physical interface allows the
+user to input a unique pattern of touch operations using a simple straight-line scroll operation (Figure 1d). We can record
+the user’s touch operation and fabricate a physical interface
+that can generate the same movement touch operations in the
+output portion. Applying this to a pattern lock, such as the
+Android OS, the user can fabricate an interface that can unlock the smartphone by scrolling or swiping on the face of a
+physical object.
+
+Figure 2. Left: Striped pattern plates. This plate is comparable with
+conductive points to stand in a row of grid-layout conductive points;
+Right: Printing Process.
+
+We measured the resistance between successive conductive
+parts by using a multimeter that can measure resistances up
+to 20 MΩ. A number of multimeter measurements were recognized as errors, and the authenticity rate was recorded.
+The experiment was conducted for conductive striped pattern
+plates having different combinations of point width (0.8 mm
+and 1.6 mm) and point interval (0.8 mm and 1.6 mm).
+We printed 10 striped pattern plates with 10 conductive parts
+each with various combinations of width and interval. Based
+on the experimental results, the 0.8 mm interval conductive
+parts achieved over 75 % for 0.8 mm and 1.6 mm width, and
+the 1.6 mm width conductive parts achieved over 96 % for 0.8
+mm and 1.6 mm width. The experimental results show that
+the authenticity rate dropped as the interval grew narrower.
+
+ACKNOWLEDGMENTS
+
+This work was supported by COI, JST.
+
+48
+
+Controls on Mobile Devices. In Proc. of CHI EA 2011,
+pp.1351-1356.
+
+REFERENCES
+
+1. Chun, L., Muller, S., Roudaut, A. and Baudisch, P.
+CapStones and ZebraWidgets: Sensing Stacks of
+Building Blocks, Dials and Sliders on Capacitive Touch
+Screens. In Proc. of CHI 2012, pp.2189-2192.
+2. Kato, K. and Miyashita, H. ExtensionSticker: A Proposal
+for A Striped Pattern Sticker to Extend Touch Interfaces
+and its Assessment. In Proc. of CHI 2015, pp.1851-1854.
+3. Kratz, S., Westermann, T., Rohs, M. and Essl, G.
+CapWidgets: Tangible Widgets versus Multi-Touch
+
+4. Hergel, J. and Lefebvre, S. Clean color: Improving
+multi-filament 3D prints. Journal of Computer Graphics
+Forum, volume 33 Issue 2(2014), pp.469-478.
+5. Yu, N-H., Tsai, S-S., Hsiao, I-C., Tsai, D-J., Lee, M-H.,
+Chen, M. and Hung, Y-P. Clip-on Gadgets: Expanding
+Multi-touch Interaction Area with Unpowered Tactile
+Controls. In Proc. of UIST 2011, pp.367-372.
+
+49
+
+

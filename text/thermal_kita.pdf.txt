@@ -1,0 +1,388 @@
+Thermal Visualization on Cooking
+Yui Kita
+
+Jun Rekimoto
+
+The University of Tokyo
+
+The University of Tokyo
+Sony Computer Science Laboratory
+
+ABSTRACT
+Sensors for cooking such as a thermometer provide us essential
+clues for a better result. However, they only sense temperature on
+a certain point and the user’s reaction is slow. Thermal cameras
+are capable of getting thermal images of a cooking pan, but it is
+difficult to utilize those images because the user has to rapidly
+shift their eye focus from the screen to the cooking pan, and vice
+versa while cooking. In this paper we propose a visualization
+technique that applies thermal information on cooking. The system
+enables users to acquire thermal information from the surface of the
+food on a cooking pan, using a thermal camera and a projection
+based Augmented Reality (AR) environment. The main contribution
+of this paper is to provide a technique to overlap thermal clues on
+the cooking pan without occluding the important information on
+cooking. We conducted a user study and discussed the potential
+applications of our technique.
+Keywords: Visualization, AR, cooking, Augmented Kitchen.
+
+Figure 1: A visualized thermal image: the green line indicates
+65℃ which is the congealing point of protein, and the red line
+indicates 145℃ which is the ideal temperature for cooking. Users
+can see both the temperature lines and the surface of the food at
+the same time.
+
+1 INTRODUCTION
+While we cook, we utilize visual, olfaction, and audio information
+to recognize the state of food on the cooking process. However, if
+we can use further information like thermal information which we
+can’t assess from the vision that we gain with our own eyes, the
+result would be better. Nowadays, advances on sensors enable us to
+obtain such information about ingredients while cooking.
+For example, thermometer provides accurate temperature
+measurement that is not available with our limited perceptions. Even
+a thermometer is capable of measuring the temperature, it only
+provides sensor value in numbers, which requires users to read.
+With an advance of thermometer, thermal camera is available to
+obtain and analyze spacial temperature clues on cooking. The camera
+captures the surface temperature of the food and the user see a
+heat map on a display. This is a typical way to measure the
+temperature in an experimental cooking, or to analyze the cooking
+process in molecular gastronomy [8]. However, in this case, users
+have to understand the spacial relationship between the thermal
+image and the heating pan (Figure 2a). These reading and recognition
+process are obstacles for cooking.
+On a heating process, such reading burdens are not only obstacles,
+but also results in failures of heat management such as overcooked or
+half-baked eggs. To address this issue, we explored a thermal
+visualization technique and developed an AR environment that
+provides easily recognizable thermal information.
+One of the advantages of AR use on cooking [5] is that they reduce
+the reading burden of sensor values by mapping annotations directly
+onto the actual cooking space. However, they often clutter and
+occlude the main object of interests (e.g. food’s color) with
+projected annotations. For example, projected annotations may hide
+the color of yolk.
+
+Figure 2: The system setup: the user can see the illusion image
+created by the LCD through the acrylic panel. The user sees an
+image as if the screen is arranged on the surface of the heater.
+
+The contribution of this paper is to realize an AR environment that
+provides thermal images without disturbing or hiding important
+objects in the actual workspace (Figure 1).
+2 CONFIGURATION
+Our current prototype is described in Figure 2. The system
+consists of a thermal camera, acrylic panel, LCD display, IH
+cooking heater and computer. Our system’s configuration is
+
+Figure 3: a) Thermal image on a screen makes the user understand the relationship between the image and the
+workspace by rapidly shifting his focus. b) Thermal image using AR environment: although the users can intuitively
+see the temperature of the workspace, it occludes the workspace for the user, and s/he miss important food surface
+changes. c) Our approach: contours indicate important temperatures for cooking. With this method, the user can
+obtain the thermal information without disturbing the workspace.
+
+similar to Holodesk [2], which represents a simple but effective AR
+environment. In this configuration, users can see virtual images
+created by the LCD display through the acrylic panel. The user
+can see optically correct image, i.e., the user can see thermal images
+on the surface of the heater as if a screen is arranged on the
+surface of the heater.
+
+limited within the important values involved on cooking: 65℃	 
+(congealing point of protein) and 140℃	  (ideal temperature for
+cooking). This configuration effectively visualizes the thermal
+information without occluding the workspace.
+
+Contours are generated as below. The server software of the thermal
+camera (provided by OptrisPI200 [6]) sends gray scale images
+(Lowest temperature as black, highest as white) to an image
+processing software. Then the image processing software generates
+contours on the configured threshold (the pixel value that is
+corresponding to the focused temperature, 65℃	 in the case of
+omelet). Then, warps and adjusts it to optically fit the contours
+onto the bottom of the pan.
+
+To confirm the feasibility of the system, we conducted a user study.
+
+We used the OptrisPI200 [6] for the thermal camera. The
+measurement range is between 0 and 250 Celsius. The resolution
+is 160 x 120 with the frame rate of 128 Hz. The measurement error
+is within 2%.
+We considered several possible methods to visualize the surface
+temperature of the cooking pan. The simplest configuration is to
+simply show thermal images on an independent screen (Figure 3a).
+This configuration requires users to understand the relationship
+between the thermal image and the actual workspace. As a result,
+the user has to rapidly shift his/her eye focus between the screen
+and the cooking pan.
+Figure 3b shows an AR environment that simply overlaps the thermal
+image on the workspace. In this case, the user can see the thermal
+image without shifting the eye focus between the two spaces.
+However, in this case, the thermal image occludes the surface of the
+food itself. This is unsuitable for a practical cooking support
+because the food surface information such as reflection or color of
+the food is important for cooking.
+The consideration of the two cases (Figure 3a and b) suggests an
+AR limitation of providing information about an object without
+occluding the object itself, as [3] suggested.
+To address this issue, our system adopts the visualization of enclosing
+the area with similar temperature (Figure 3c). To minimize the hidden
+area of the workspace, the contours are
+
+3 USER STUDY
+
+There are several recipes that require heat management. For example,
+boiling (e.g. stew) or frying requires careful heat management to
+heat the food sufficiently, or avoid over cooking. Although these
+recipes are suitable to evaluate the system in some cases, we used
+omelet recipe to evaluate the system by following reasons:
+First, as the previous work shows, to evaluate a cooking support
+system, the recipe of the user study should be popular [4]. This is
+because distinctive prior knowledge and skills about cooking of
+participants make it difficult to evaluate the system itself. We
+considered omelet is suitable to evaluate the system because all
+participants have s i m i l a r experience of cooking omelet.
+The omelet is thin (we used only one egg for each omelet), and it
+requires rapid and accurate heat management compared to other
+recipes. We considered this difficulty makes it easier to evaluate
+the system limitation.
+Our user study setup and procedures are described in the following:
+l
+l
+l
+
+Our system visualizes the thermal information of the surface
+of the cooking pan as well as the foods on it.
+The contours indicate the temperature of congealing point for
+protein (65℃) while cooking.
+Participants are asked to bring the pan out of the heater if
+the contours are all disappeared (at this point, all proteins
+are just cooked and the egg is neither overcooked nor halfcooked).
+
+We recruited two males (A, C) and one female (B). Participants
+were asked to cook an omelet with and without the system, one
+time for each. Every participant cooks 2 to 3 times in a week.
+
+Professionals are not included, and they cook at home in their daily
+life. Participants were also asked to use the same type of heater
+prior to the user study. This is because the type of heater can be
+a strong factor of the result, and different types of heater requires
+a few times of exercise to get used to it.
+Participant A is 27 years old, male. He lives with his family. He
+lived by himself for four years. He cooked for himself about once
+a week when he was living by himself. His brother and father are
+working for food-related companies, and he has advanced knowledge
+about food and cooking. He also cooks with his family using foods
+from his family's garden. He has own cooking pan for omelet, and
+he prefers better eggs.
+Participant B is 25 years old, female. She lived by herself for four
+years. Currently, she lives with her family, and she often cooks
+with her family. Her mother is good at cooking, and she said she
+learned cooking by looking her mother. She is especially good at
+cooking Japanese foods. She also has skills and knowledge about
+sweets cooking, and she cooks sweets such as muffins and cookies
+about once a month with her mother.
+Participant C is 24 years old, male. He lived by himself four years,
+cooks about twice in a week. His family lives near his house, and
+he often comes backs and cooks with his family. He likes Japanese
+and Chinese food. He also cooks using a cooking pan and used to it.
+Participant A and B cooked an omelet with the system first, and C
+cooked an omelet without the system first.
+3.1 Result
+Figure 4 shows the result of omelet cooked with the system (left)
+and without the system (right). The result shows that the omelets
+cooked with the system are evenly heated and tender, while omelets
+cooked without the system are unevenly heated and overcooked or
+not half-baked.
+We asked the participants about the results and the usability of the
+system. All participants answered that the omelets cooked with the
+system are more preferable compared to those cooked without the
+system.
+
+In addition to the user's comment, we asked another five people to
+decide which do they prefer (We showed the real omelet of
+Figure 4), and four out of five preferred the omelets cooked with
+the system.
+Participant A had difficulties on cooking with the pan, because he
+usually cooks omelets with specialized cooking pan. He also argued
+that the acrylic panel could be an obstacle for cooking.
+4 DISCUSSION
+We consider that one of the reasons of this significant result is
+because we are not capable to see the denaturation of protein: when
+we bake eggs, visible changes of egg surface begin on 68-70℃,
+while egg’s protein will be congealed with 65℃.
+Using the system, users are able to see the congealing point of
+protein by the contours that indicate the 65℃	 line and thus help to
+perform better heat management. All participants also answered
+that the contours were thin enough, and they felt no difficulty on
+cooking referring the contours and see the surface of the omelet at
+the same time.
+Participant A commented that he usually estimate the temperature
+of the cooking pan according to his experience, but using the system,
+he could grasp the temperature, and also felt easiness because the
+system shows important temperature for cooking an omelet.
+Participant B also answered that she was thinking that she cannot
+cook well in an unfamiliar kitchen environment because she uses
+lots of tools for cooking in her kitchen. On the contrary of her
+concern, she commented she could cook well because all she could
+focus on checking the important information in stead of relaying her
+experience.
+Participant C commented that he has confident both of the omelet
+(omelets cooked with/without the system). However, he also
+commented that using the system reduced his work to check and
+estimate the temperature of the pan while cooking, and it made
+him to cook omelet easier.
+These comments suggest that participants can manage the
+temperature of the pan using the thermal information without being
+disturbed by it. They also suggest that the system reduce their work
+to estimate the temperature of the pan. This is useful to help users to
+cook multiple foods simultaneously.
+While minimum contours are enough for cooking an omelet, contours
+can be obstacles when the user needs to monitor several different
+temperatures. In this case, our visualization technique is not
+sufficient to provide thermal information to the user without
+disturbing the workspace.
+5 FUTURE WORK
+This visualization is efficient for users to know if s/he has heated
+the foods enough. However, it is inefficient for them to find cooler
+area and smoothly correct the unevenness of heating, because the
+visualization only shows the temperature on the line, and it is not
+clear which side of the line is higher (Figure 5a). By providing
+thinner auxiliary lines around the main line (Figure 5b), the system
+can indicates heat information to the users. They are useful for the
+users to correct the unevenness of heating by moving the cooking
+pan on the heater.
+
+Figure 4: Results of omelet cooked with the system (left, 1), and
+without the system (right, 2) by participant A, B and C. Although
+each participant has different cooking skills, there was a
+significant difference between results 1 and results 2. Omelets
+cooked with the system (A1, B1 and C1) are smooth and tender
+while these cooked without the system are overcooked (A1) or
+half raw (C2).
+
+In addition to the occlusion problem, AR fails when colors are
+mixed into the initial view. For example, the configuration for omelet
+(note that we manually used green and red contours for yellow
+omelet) is not applicable for Chinese food that often contains red or
+green food because the AR indication will be mixed into the colors
+of the view.
+One of the simple solutions for this issue is to setup a camera to
+capture the color of the view, and color the indication in high contrast
+colors. However, it requires additional camera settings to AR
+systems that use non-camera information for AR (e.g. location
+information). In addition, it requires the camera to share the view
+with the user.
+Our visualization technique will also support human perception in
+various situations (Figure 6). For example, on surgery, cutting a
+thick blood vessel causes extra bleeding which will be a crucial
+visual obstacle for a successful operation. Using our visualization
+technique, the surgeon can ware a lightweight AR devices such as
+Google Glass[1]. Based on the thermal information on the part of
+operation, the system can visualize important blood vessels,
+maintaining the workspace that contains complex issues, at the same
+time.
+
+Figure 5: Contours indicate the important temperature without
+occluding the workspace (left). However, contours are often
+insufficient for users to know which side of the contour is the
+higher side. This makes users confused especially when they
+want to correct the unevenness of heating. Our system indicates
+the higher side by providing thinner lines around the main line
+(right).
+
+Another possible application is air condition designing for
+architectures. Architects would be able to explore and inspect
+functional defects of the air conditioning on the architectures, at the
+same time confirming materials of walls or windows.
+Recent studies show practical and low-cost implementation for gaze
+tracking [7]. They are useful to analyze where and what people tend
+to see in the workspace.
+Analysis of the gaze tendency would reveal the important area where
+people frequently see. By using this data, the thermal information
+can be arranged more effectively to avoid the important area, and
+appear where people less frequently see. For example, by tracking
+chefs’ gazing area during cooking process, the system finds areas
+where chefs less frequently see, and arrange the thermal information
+visualization.
+
+6 RELATED WORK
+Previous works focusing on cooking activities have been proposed:
+Panavi [4] supports professional cooking at home using video
+instruction or thermal sensor attached on the pan. As far as we
+know, Panavi is the first experiment that utilized thermal
+information of a pan for real time feedback. Although it supports
+brief thermal information, and thus the system cannot measure the
+temperature of cooking ingredients.
+Bonnani et al proposes a graphically enhanced kitchen environment.
+Counter Intelligence [5] is a system to provide an AR environment
+in a conventional kitchen. Their focus is to coordinate between
+multiple tasks and increase confidence in the system with the
+projection of information onto the surfaces of objects in the kitchen
+or cookware. Counter Intelligence includes five discrete systems.
+HeatSink and RangeFinder provide techniques to provide
+temperature information in the kitchen.
+HeatSink is a thermal information display that colorizes cold water as
+blue, and hot water as red. Although their thermal visualization of
+water is simple and effective display, the application is limited in
+transparent water.
+
+Figure 6: The system can visualize important blood vessels to the
+surgeon without disturbing the workspace that contains complex
+issues (left). Another possible application is air condition
+designing for architectures. Architects would be able to explore
+and inspect functional defects of the air conditioning, at the same
+time confirming other conditions such as materials of walls or
+windows (right).
+
+RangeFinder [5] measures the surface temperature of the food while
+cooking using a remote infrared thermometer, and projects useful
+information directory onto the cookware or food itself. For example, it
+determines when food reaches a desired temperature (for example,
+when water boils), and time the duration of the state.
+The difference between CounterIntelligence and our system is that
+our system provides detailed information without occluding the
+workspace while CounterIntelligence is based on projections. In
+this configuration, detailed information projected around the
+workspace confuses the busy user because users have to shift their
+focus between the information and the workspace. For a more
+suitable visual support, the information should be visualized on the
+workspace to reduce user’s focus shift. In this case, projections are
+unsuitable because projections on foods make both colors
+undistinguishable. Our system provides a practical visualization
+technique and AR environment for the temperature control without
+confusing the temperature information and the workspace.
+
+7 CONCLUSION
+This paper proposes a visualization technique of thermal information in cooking environment using a thermal camera and simple
+AR environment.
+Our contribution is to provide thermal information without disturbing
+the cooking workflow. Our system visualizes contours which
+indicate important temperature to avoid overlapping thermal
+information onto the workspace.
+We conducted a user study and demonstrated the utility of our
+approach where participants advanced their skill in cooking an omelet.
+We conclude this paper by discussing limitations and potential
+applications.
+REFERENCES
+[1] Google Glass.s http://www.google.com/glass/start/
+[2] Hilliges, O., Kim, D., Izadi, S., Weiss, M. and Wilson, A.D. 2012.
+Holodesk: Direct 3D Interactions with a Situated SeeThrough
+Display. In Proc. of ACM SIGCHI ’12.
+[3] Bell, B., Feiner, S. and Höllerer, T. View management for virtual
+and augmented reality. Proc. UIST '01. ACM Press (2001), 101-110.
+[4] Uriu, D., Namai, M., Tokuhisa, S., Kashiwagi, R., Inami, M., and
+Okude, N. panavi: Recipe medium with a sensors-embedded pan for
+domestic users to master professional culinary arts. Proc. CHI ’12.
+[5] L. Bonanni and C.-H. Lee. The Kitchen as a Graphical User Interface.
+In ACM SIGGRAPH 2004 Art gallery (SIGGRAPH ’04), Sue
+Gollifer (Ed.). 109-111.
+[6] Optris, http://www.optris.com/
+[7] Ishiguro, Y., Mujibiya, A., Miyaki, T., and Rekimoto, J. Aided eyes:
+eye activity sensing for daily life. Proc. Augmented Human 2010,
+ACM Press, (2010), 1-7.
+[8] N.Myhrvold, C.Young, M.Bilet, R.M.Smith, Modernist Cuisine: The
+Art and Science of Cooking, 2011, Cooking Lab
+
+
