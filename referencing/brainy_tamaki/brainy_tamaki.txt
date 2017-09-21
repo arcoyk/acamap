@@ -1,0 +1,341 @@
+CHI 2009 ~ Spotlight on Works in Progress ~ Session 2
+
+April 4-9, 2009 ~ Boston, MA, USA
+
+Brainy Hand: An Ear-worn Hand
+Gesture Interaction Device
+Emi Tamaki
+Graduate School of Interdisciplinary Information Studies,
+The University of Tokyo.
+Tokyo, JAPAN
+hoimei@acm.org
+Takashi Miyaki
+Interfaculty Initiative in Information Studies,
+The University of Tokyo.
+Tokyo, JAPAN
+miyaki@acm.org
+Jun Rekimoto
+Interfaculty Initiative in Information Studies,
+The University of Tokyo.
+Tokyo, JAPAN
+rekimoto@acm.org
+
+Abstract
+Existing wearable hand gesture interaction devices are
+very bulky and cannot be worn in everyday life,
+because of the presence of a large visual feedback
+device. In particular, an eyeglass-type head-mounted
+display is very large for constant usage. To solve this
+problem, we propose Brainy Hand, which is a simple
+wearable device that adopts laser line, or more
+specifically, a mini-projector as a visual feedback
+device. Brainy Hand consists of a color camera, an
+earphone, and a laser line or mini-projector. This
+device uses a camera to detect 3D hand gestures. The
+earphone is used for receiving audio feedback. In this
+study, we introduce several user interfaces using Brainy
+Hand. (e.g., music player, phone)
+
+Keywords
+interaction device, input device, wearable, hand
+gesture, laser, audio feedback, projector
+
+ACM Classification Keywords
+
+Copyright is held by the author/owner(s).
+CHI 2009, April 4 – 9, 2009, Boston, MA, USA
+
+H5. Information interfaces and presentation (e.g.,
+HCI):
+H5.2 User Interfaces – Input devices and
+strategies (e.g., mouse, touchscreen)
+
+ACM 978-1-60558-247-4/09/04.
+
+4255
+
+CHI 2009 ~ Spotlight on Works in Progress ~ Session 2
+
+Introduction
+Wearable hand gesture interaction devices are believed
+to be effective user interfaces, because many people
+communicate using hand gestures. Moreover, hand
+gesture input system doesn’t require plane desk.
+Therefore, a number of such devices have been
+proposed.
+LASER
+CAMERA
+
+EARPHONE
+
+Figure 1. Simplified brainy hand.
+
+HandVu[1] is a device that consists of a camera and a
+head-mounted display. The camera and an electronic
+substrate are placed on the head-mounted display.
+This device is connected to a computer placed in a
+backpack. Even though the device is used as a hand
+gesture interaction device, it is difficult to wear it all the
+time, because of its weight.
+Tinmith[2] is a lightweight hand gesture interaction
+device, which is designed with a helmet comprising a
+head-mounted display. The device detects hand
+gestures by recognizing 2D makers on the hand gloves
+using a camera. Users can monitor their own gesture
+inputs and feedbacks in mixed realty world through the
+head-mounted display. Tinmith is an excellent device
+in that it provides a lot of information to the user.
+However, it is difficult for the user to always wear the
+helmet with the head-mounted display. In other words,
+it is impractical for the user to wear this device while
+eating, talking, and sleeping.
+Weavy[3] is a compact and lightweight hand gesture
+interaction device. This device is compact and
+lightweight because it comprises a one-eyed headmounted display. However, this device is
+inconspicuous in that it occasionally obstructs the view
+of the user.
+Although wearable hand gesture interaction devices
+have to be not only lightweight but also compact and
+inconspicuous, existing wearable hand gesture
+interaction devices are very bulky and cannot be worn
+in everyday life, because of the presence of visual
+feedback devices such as a head-mounted display.
+
+April 4-9, 2009 ~ Boston, MA, USA
+
+To solve the abovementioned problem, we propose
+Brainy Hand, which is a simple device that avoids the
+use of displays. Functions of the display are to inform
+the user about the range of camera, provide operation
+feedbacks, and present the drawn words and images.
+In the case of Brainy Hand, a projected laser line is
+used to inform the user about the range of the camera.
+An earphone is used for receiving operation feedbacks.
+When the system provides considerable amount of
+information, a mini-projector is used to draw words and
+images on the user’s hands.
+The proposed device consists of a camera, an earphone
+and a laser line, or more specifically, a mini-projector
+used for providing visual feedback. This device is very
+compact and lightweight, and easily set with ducking
+out of view on earphone, which is a popular wearable
+device. In other words, Brainy Hand without any
+display can be used as wearable hand gesture
+interaction devices that can be worn in everyday life.
+In this study, we introduce two versions of Brainy Hand,
+namely, the simple and projector versions (Fig. 2). The
+simple version of Brainy Hand uses a laser line. The
+projector version uses a mini-projector. We develop
+the simple version of Brainy Hand in practice. In
+addition, we develop a music player application using
+Brainy Hand.
+
+Brainy Hand Configuration 1: Simple Version
+In this section, we introduce the simple version of
+Brainy Hand that uses a laser line (Fig. 1). In this
+version, Brainy Hand consists of a single color camera
+for 3D hand gesture recognition, a laser line as a visual
+maker to inform the user about the visible range of the
+camera, and an earphone for receiving audio feedbacks.
+And this device connected by a wire to a PC or PDA.
+
+4256
+
+CHI 2009 ~ Spotlight on Works in Progress ~ Session 2
+
+April 4-9, 2009 ~ Boston, MA, USA
+
+Simple Version
+
+Pointing gesture
+
+Hand gesture input
+
+Sign
+
+Motion gesture
+Camera is used to detect
+hand gesture. Line laser is
+used for providing visual
+feedback, and it acts as a
+visual maker. This device is
+used to perform one-handed
+operation
+
+Projector Version
+
+This version device
+uses a small
+projector to receive
+visual feedback.
+User performs a twohanded operation.
+
+Figure 2. Two versions of Brainy hand.
+
+4257
+
+CHI 2009 ~ Spotlight on Works in Progress ~ Session 2
+
+Figure 4. Hand gesture input
+by using brainy hands.
+
+April 4-9, 2009 ~ Boston, MA, USA
+
+Figure 3. A Laser Line indicates
+the range of the camera.
+
+Users operate by attaching Brainy Hand to one ear.
+They can observe the width of the range of the camera
+using a guided laser line (Fig. 3). The device detects
+hand gestures, as long as the user’s hand is around the
+laser line. The system recognizes hand signs by
+matching the captured hand’s contour with those
+contours and signs stored in the database. When more
+than five signs are to be detected, the system uses a
+3D hand gesture estimation technique, which is
+described in a later section.
+We developed the simple version of Brainy Hand in
+practice. Figure 4 shows that in reality, this
+configuration is small and inconspicuous.
+
+Configuration 2: Projector Version
+In this section, the projector version of Brainy Hand is
+described. In this version, Brainy Hand uses a small
+projector for projecting images and words on the user’s
+palm. The projector is useful when the user needs to
+be presented with a large amount of information that
+must be read out. Users can easily perform an input
+operation using both hands. The bottom-left picture
+shown in Figure 2 shows an example of the projected
+information on the user’s palm.
+
+Figure 5. State transition diagram of music player.
+
+Application Example: Music Player
+We developed a music player as an example of the
+application of Brainy Hand. Figure 5 shows a state
+transition diagram. With a few signs, users can operate
+simple applications such as this music player.
+In a select mode of music lists, the laser line indicates
+the visual maker as well as the range of the camera.
+On the side of laser line, users can control the selected
+music. The title of the selected song is spoken as an
+audio feedback, when it is too long to read out. The
+projector version of Brainy Hand is very useful.
+
+4258
+
+CHI 2009 ~ Spotlight on Works in Progress ~ Session 2
+
+Technical Back ground: 3D Hand Gesture
+Estimation
+For estimating a 3D hand gesture, our system uses a
+single camera without creating any makers on the
+user’s hands.
+The system searches a similar data sets from the
+database to estimate the 3D hand gesture. The
+database consists of data sets of a hand contours, nail
+positions, and finger joint angles (Fig. 6).
+Our system creates data sets while a color camera
+captures gestures involving a moving hand wearing a
+data glove, a white glove, and with artificial fingernails.
+We use an 18-DOF sensor Cyberglove from Immersion
+as the data glove. The white glove is used to eliminate
+the textures of the data glove.
+
+April 4-9, 2009 ~ Boston, MA, USA
+
+Hand contour is digitalized using a higher-order local
+auto-correlational function(HLAC)[4]. Nail position is
+defined with respect to the center of the area of the nail.
+When the system estimates 3D hand gestures, the nail
+areas and skin areas are extracted by projecting the
+RGB pixels of the captured image on to the user’s
+personalized color space[5] (Fig. 7). Then, the system
+searches a similar data set with nail positions and the
+hand contour data from the database. Finally, the
+system outputs the finger joint angles of the data set
+as a result of the search (Fig. 8). The similarity is
+defined by weight sum of Euclid distances of nail
+positions and contour features.
+We test by comparative experiments between the data
+glove and our system. Our experimental results show
+high accuracy in estimating hand gestures with the
+wrist rotation, such a standard deviation of error of
+approximately 7.23° in estimation of the finger joint
+angles (Fig. 9).
+
+Figure 7. Extractions of nail and skin areas.
+
+Figure 6. Construction of dataset in database.
+
+Figure 8. Results of 3D hand gesture estimation.
+
+4259
+
+CHI 2009 ~ Spotlight on Works in Progress ~ Session 2
+
+April 4-9, 2009 ~ Boston, MA, USA
+
+gestures. The laser line is used to inform users about
+the range of camera. The earphone is used for
+receiving operation feedbacks. When the system
+provides large amount of information to be read out, a
+mini-projector draws words and projects images on the
+user’s hands.
+We developed the simple version of Brainy Hand in
+practice, and confirmed that in reality, this device is
+compact, lightweight and inconspicuous of view. In
+addition, a music player is developed as an application
+example by using Brainy Hand.
+
+Acknowledgments
+This work was supported by the MITOH software
+project developed by the Information-Technology
+Promotion Agency in Japan.
+
+References
+[1] Mathias Kölsch, Matthew Turk, and Tobias Höllerer:
+Vision-Based Interfaces for Mobility. Mobile and
+Ubiquitous Systems, Networking and Services,
+MOBIQUITOUS2004, (2004), 86-94.
+
+Estimation of middle finger joint angle
+with the wrist rotation. (a)Thin line represents the
+result obtained from our system.
+Heavy line
+represents the measured joint angle obtained using
+data glove. Dotted line represents the wrist rotation
+angle. (b)Thin line represents the estimation error.
+Figure 9.
+
+Conclusions
+We propose a small device; Brainy Hand which avoids
+the use of a display. We describe two versions of this
+device, namely, simple and projector versions. In the
+simple version, Brainy Hand consists of a color camera,
+an earphone, and a laser line.
+In the projector version of Brainy Hand consists of a
+mini-projector, which is used as a visual feedback
+device. The camera is used to estimate 3D hand
+
+[2] Ross Smith, Wayne Piekarski, Grant Wigley: Hand
+Tracking For Low Powered Mobile AR User Interfaces.
+ACM International Conference Proceeding Series,
+Proceedings of the Sixth Australasian conference on
+User interface, Vol. 104 (2005), 7-16.
+[3] Takeshi Kurata, Takekazu Kato, Masakatsu Kourogi,
+Jung Keechul, and Ken Endo: A Functionally-Distributed
+Hand Tracking Method for Wearable Visual Interfaces
+and Its Applications, In IAPR Workshop on Machine
+Vision Applications (MVA2002), (2002), 84-89.
+[4] N.Otsu, and T.Kurita: A New Scheme for Practical,
+Flexible and Intelligent Vision Systems. Proc. IAPR
+Workshop on Computer Vision, (1988), 431–435.
+[5] Emi Tamaki and Kiyoshi Hoshino: Personalized
+Color System for Robust Extraction of Skin-color. The
+Virtual Reality Society of Japan, 12, 4, (2007), 471–478.
+
+4260
+
+

@@ -1,0 +1,368 @@
+Flying Sports Assistant: External Visual Imagery
+Representation for Sports Training
+Keita Higuchi
+
+Tetsuro Shimada
+
+Jun Rekimoto
+
+Graduate School of
+Interdisciplinary Information
+Studies
+The University of Tokyo
+
+Graduate School of
+Interdisciplinary Information
+Studies
+The University of Tokyo
+
+qq106412@iii.utokyo.ac.jp
+
+qq106408@iii.utokyo.ac.jp
+
+Interfaculty Initiative in
+Information Studies
+The University of Tokyo
+Sony Computer Science
+Laboratories, Inc.
+
+rekimoto@acm.org
+
+ABSTRACT
+Mental imagery is a quasi-perceptual experience emerging
+from past experiences. In sports psychology, mental imagery
+is used to improve athletes’ cognition and motivation. Eminent athletes often create their mental imagery as if they
+themselves are the external observers; such ability plays an
+important role in sport training and performance. Mental
+image visualization refers to the representation of external
+vision containing one’s own self from the perspective of others. However, without technological support, it is difficult
+to obtain accurate external visual imagery during sports. In
+this paper, we have proposed a system that has an aerial vehicle (a quadcopter) to capture athletes’ external visual imagery. The proposed system integrates various sensor data
+to autonomously track the target athlete and compute camera angle and position. The athlete can see the captured
+image in realtime through a head mounted display, or more
+recently through a hand-held device. We have applied this
+system to support soccer and other sports and discussed how
+the proposed system can be used during training.
+
+Figure 1: External visual imagery capturing system:
+User can experience the external views captured by
+a camera mounted on the aerial vehicle.
+
+Categories and Subject Descriptors
+H.5.2 [Information Systems]: Information Interfaces and
+PresentationUser Interfaces[Prototyping]
+
+General Terms
+Human Factors
+
+Keywords
+Sports Assistant, Aerial Vehicle, Mental Imagery
+
+1.
+
+INTRODUCTION
+
+Previous studies have shown that athletes use mental imagery for improvement of sport skill performance [2, 8]. White
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+AH ’11, Mar 12-14 2011, Tokyo, Japan.
+Copyright 2011 ACM 978-1-4503-0426-9/11/03 ...$10.00.
+
+and Hardy have defined mental imagery as: An experience
+that mimics real experience. We can be aware of “seeing”
+an image, feeling movements as an image, or experiencing
+an image of smell, tastes, or sounds without actually experiencing the real thing... It differs from dreams in that we
+are awake and conscious when we form an image [14].
+Although the mechanism of mental imagery is still under debate [1], mental imagery serves two functions in sport
+because of the many possibilities of its usage [10]. One is
+motivational imagery, which is related to individual goals
+and physiological arousal emotions. The other is cognitive
+imagery, which includes images of specific sport skills, strategies and game plans. Athletes can imagine the execution of
+a skill from the perspective of an external observer as if they
+are watching themselves as the spectators in the stands (external visual imagery) [7].
+The important point is that one’s own self is seen in external visual imagery. This is because external visual imagery
+mediates visual and internal kinesthetic information. For
+example, during goal-directed reaching, visual information
+is an important aid for remapping sensory-detected arm positions [13]. It is easy to get visual information about motor
+
+?$@
+-.)/$*+0.1/2*.
+
+behavior except behind oneself. Thus, athletes have to use
+external visual imagery for integrating kinesthetic and visual
+information in an environment lacks mirrors, videotapes, or
+coaching.
+Visual imagery vividness is an important factor that contributes to effective sport skills [12]. However, it is difficult for nonprofessional athletes to vividly imagine external
+visual imagery due to their lack of experience. Mental imagery forms an image that arises from memories not directly
+from the sense organs [5]. Therefore, we have developed a
+representation system for gaining visual experience from an
+external point of view. We have adopted an aerial vehicle
+camera system with the capability to track and pursue a
+user (Figure 1). The user can see the camera vision as external visual imagery through a head mounted display or a
+handheld device.
+
+!"##$%&'$%&'!"%()"*+,!
+
+2.
+
+?B@
+-.)/$*+0.1/2*.
+
+EXTERNAL VISUAL IMAGERY
+
+Most of the research on imagery ability has focused on
+processing imaginary mental visualizations, often referred to
+as imagery perspective [7]. Athletes can imagine themselves
+performing from the perspective of an external observer. For
+using this imagery for visual-motor adaption, it must contains the athlete’s own image. One supporting subject is
+that visual information contributes to motor accuracy [13].
+When you reach for an object within your sight, sensory information about the spatial location of the target is used to
+plan and initiate appropriate movements. We define “external visual imagery” as follows: It is external an vision from
+the perspective of others, and it contains self-image.
+External visual imagery experiences are perceived by their
+subjects as echoes, copies, or reconstructions of actual perceptual experiences from their past. A eminent athlete can
+assemble vivid external visual imagery from several previous
+experiences, but it is difficult for nonprofessional athletes.
+Therefore, we have developed a representation system that
+facilitates the perception of external visual imagery.
+We have proposed two representation methods: delayed
+representation(Figure 2(a)) and real-time representation(Figure
+2(b)). Delayed representation is a method that shows a user
+his external visual imagery after capturing it. Real-time representation is a method used to show to a user his external
+visual imagery in real-time. The user can combine external visual information and internal kinesthetic information
+using a head mounted display.
+
+3.
+
+3.1
+
+=.$46).+"8+
++&/).2>"%+$%&+1./71(+
+
+Aerial Vehicle with Camera
+
+We have used an AR. Drone[11] from Parrot Inc, as the
+platform for the autonomous aerial vehicle with an onboard
+camera. It sends sensor information, including the onboard
+
+,$(19$:++
+
+!$5(6)/%7+8)$#.+ 2"##$%&
+$%&+4.%4")+0$*6.4
+
+!$5(6)/%7+8)$#.+
+
+34.)
+
+=.$46).+"8+&/).2>"%+
+
+C=D
+
+=.$46).+"8+
++&/).2>"%+$%&+1./71(+
+
+A.$)$B*.+&.0/2.+
+
+34.)
+
+Figure 2: System configurations to represent external visual imagery:(a) Delay representation. (b) Realtime representation.
+
+camera view and its height, through a downside ultrasonic
+sensor to the command-and-control PC. We have also added
+a digital azimuth compass to estimate the absolute directions of the aerial vehicle and the track. The command-andcontrol PC estimates the aerial vehicle’s pathway using this
+information. The aerial vehicle’s parameters, i.e., velocity,
+height, and direction are controlled by the command-andcontrol PC. The user can also control the state of the aerial
+vehicle, including its velocity, height, and relative angle using a portable device (Figure 3). For computing the relative
+angle psi between the angles of the user theta and the aerial
+vehicle phi, they equip each digital compass (Figure 4).
+ψ = (θ − φ) mod 2π
+
+FLYING SPORTS ASSISTANT SYSTEM
+
+We have developed a prototype system for capturing and
+representing external visual imagery. This system includes
+an aerial vehicle with an onboard camera for capturing external visual imagery and a command and a control PC that
+computes its pathway. The aerial vehicle can autonomously
+maintain a stable flight and follow commands sent by the
+command-and-control PC. The command-and-control PC
+sends navigation commands to the aerial vehicle according
+to the information received from the aerial vehicle sensor
+and user input.
+
+;)$2</%7+$%&+
+2$5(6)/%7
+
+3.2
+
+Human Tracking
+
+In order to visually represent external imagery, simultaneous user recognition and tracking is required. In this research, we have performed a color extraction and particle
+filtering algorithm for human tracking. The system requires
+the subject to wear a discriminative color suit (In this research, discriminative color is red). It determines and tracks
+the subject by recognizing only a specific color. the captured
+image data contains noise because of variable color. Particle
+filter algorithm enables noise-robust tracking by observing
+time-series data; further, it estimates the current and subsequent states of the tracked object [3].
+We configured the system to initialize 1000 particles in
+a QVGA-size (320 × 240 pixel) image obtained by the on-
+
+Figure 3: Portable device: (a) User can control relative angle between the user and the aerial vehicle
+by touch-controlling the panel. (b)User can control
+the aerial vehicle’s state i.e., height and velocity
+
+!
+
+Figure 5: (a) Aerial vehicle following the user playing soccer. (b)External visual imagery obtained
+from the vehicle.
+
+$
+
+#
+
+external visual imagery in realtime.
+
+5.
+"
+Figure 4: Relative angle ψ is calculated from the
+user angle θ and aerial vehicle angle φ.
+
+board camera of the aerial vehicle. The system samples each
+particle with a dispersion of 32 pixel. Each particle’s gravity
+is subject’s area window size bounds for 10 × 10 pixel.
+
+4.
+
+RESULT
+
+We applied this system to capture playing soccer and stair
+climbing scenes as examples of delayed representation. It
+could capture the sequence of a player dribbling the soccer
+ball in the field and shooting it to score a goal (Figure 5).
+It could also capture the stair climbing scene (Figure 6).
+However, the examples of delayed representation had two
+problems. In the soccer scene, the player had to dribble
+the ball slowly because he ran faster than the aerial vehicle.
+In the stair climbing scene, the aerial vehicle often aborted
+height modulation due to the measurement error of the ultrasonic sensor.
+The system also captured a practice running (Figure 7
+(a)(b)) and swinging of a baseball bat (Figure 7 (c)(d))
+scenes as real-time representations. the user could watch
+
+DISCUSSION
+
+Losing Presence Identity
+After several experiences of realtime external visual imagery,
+we found out that external visual imagery would distract
+presence identity. It is unusual experiences of representation both ego-centric visual information and intrinsic kinesthetic information. Surely, using a more sophisticated display, including virtual reality displays, would provide immersive external visual imagery. However, the feeling of
+losing reality may be natural while viewing external visual
+imagery. In sports psychology, self-monitoring refers to selfconsciousness externalization [4]. To induce the feeling that
+your body is no longer yours contributes to the composition
+of a vivid external visual imagery.
+
+Sports Training Application
+During training, a performer uses feedback to detect errors
+in his performance by comparing his movements with the
+expected goal in order to improve the next attempt. Recent, advances in technology have made it possible to augment and improve the feedback that performers receive during training and competition [6]. For instance, for hammer
+throw training, Ohta et al. proposed cybernetic training
+using a few miniaturized sensors for biofeedback [9]. The
+system propose by us exhibits the possibility of facilitating
+real-time video feedback training for long-distance sports including marathons and cross-country skiing.
+
+Figure 7: (a) Aerial vehicle following the user who
+is running. (b) External visual imagery of (a). (c)
+Aerial vehicle following the user playing baseball.
+(d) External visual imagery of (c).
+
+[5]
+
+[6]
+
+Figure 6: (a) Aerial vehicle following the user climbing stairs. (b)External visual imagery obtained from
+the aerial vehicle.
+
+6.
+
+CONCLUSION
+
+In this paper, in sport psychology, we have introduced
+external visual imagery derived from mental imagery. We
+have developed an external visual imagery representing system using an aerial vehicle. The results of the experiments
+performed by us have shown that our system can be applied
+to cybernetic training.
+
+7.
+
+REFERENCES
+
+[1] P. Bartolomeo. The Relationship Between Visual
+Perception and Visual Mental Imagery: A Reappraisal
+of the Neuropsychological Evidence. Cortex,
+38(3):357–378, 2002.
+[2] J. E. Driskell, C. Copper, and A. Moran. Does Mental
+Practice Enhance Performance? Journal of Applied
+Psychology, 79(4):481–492, 1994.
+[3] M. Isard and A. Blake. Contour Tracking By
+Stochastic Propagation of Conditional Density. Lecture
+Notes in Computer Science, 1064:345–356, 1996.
+[4] D. S. Kirschenbaum, A. M. Ordman, A. J. Tomarken,
+and R. Holtzbauer. Effects of Differential
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+[12]
+
+[13]
+
+[14]
+
+Self-monitoring and Level of Mastery on Sports
+Performance: Brain Power Bowling. Cognitive
+Therapy and Research, 6:335–341, 1982.
+S. M. Kosslyn. Remembering Images. In M. A. Gluck,
+J. R. Anderson, and S. M. Kosslyn, editors, Memory
+and mind: A festschrift for Gordon H. Bower, pages
+93–110. Psychology Press, 2007.
+D. G. Liebermann, L. Katz, M. D. Hughes, R. M.
+Bartlett, J. McClements, and I. M. Franks. Advances
+in the Application of Information Technology to Sport
+Performance. Journal of Sports Sciences,
+20(10):755–769, 2002.
+M. J. Mahoney and M. Avener. Psychology of the
+Elite Athlete: An Exploratory Study. Cognitive
+Therapy and Research, 1(2):135–141, 1977.
+K. A. Martin, S. E. Mortitz, and C. R. Hall. Imagery
+Use in Sport: a Literature Review and Applied Model.
+The Sport Psychologist, 13(3):245–268, 1999.
+K. Ohta, K. Umegaki, and K. Murofushi. Cybernetic
+Training for Hammer Throw Using Miniaturized
+Sensors. Japan Sports Engineering Assosiation, 2009.
+A. Paivio. Cognitive and Motivational Functions of
+Imagery in Human Performance. Canadian Journal of
+Applied Sport Science, 10:22–28, 1985.
+ParrotInc. AR.Drone. http://ardrone.parrot.com/.
+A. M. Rymal and D. M. Ste-Marie. Does
+Self-Modeling Affect Imagery Ability or Vividness?
+Journal of Imagery Research in Sport and Physical
+Activity, 4(1), 2009.
+P. Vindras and P. Viviani. Frames of Reference and
+Control Parameters in Visuomanual Pointing. Journal
+of Experimental Psychology: Human Perception and
+Performance, 24(2):569 – 591, 1998.
+A. White and L. Hardy. An In-depth Analysis of the
+Uses of Imagery by High-level Slalom Canoeists and
+Artistic Gymnasts. The Sport Psychologist,
+12(4):387–403, 1998.
+
+

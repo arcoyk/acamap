@@ -1,0 +1,233 @@
+Parallel Eyes: Exploring Human Capability and Behaviors with Paralleled First
+Person View Sharing
+Shunichi Kasahara†, Mitsuhito Ando‡, Kiyoshi Suganuma‡and Jun Rekimoto†
+†SonyCSL, Tokyo Univ, Tokyo, Japan, ‡YCAM Interlab, Yamaguchi, Japan
+kasahara@csl.sony.co.jp, ando@ycam.jp, suga@ycam.jp and rekimoto@acm.org
+
+Abstract
+Our research explores how humans can understand and develop
+viewing behaviors with mutual paralleled first person view sharing
+in which a person can see others’ first person video perspectives as
+well as their own perspective in realtime. We developed a paralleled
+first person view sharing system which consists of multiple video
+see-through head mounted displays and an embedded eye tracking
+system. With this system, four persons can see four shared first person videos of each other. We then designed a simple chasing game
+with our view sharing system and studied the human behavior. Our
+results show that people can develop their viewing behaviors to understand their own physical embodiment and spatial relationship
+with others in complex situations. Our Insights derived from Parallel Eyes will contribute to building design experience in paralleled
+view sharing and exploring augmentation of human embodiment.
+Keywords: Video Communication, Shared Experiences, Wearable, First Person Video, Embodiment
+Concepts: •Human-centered computing → Empirical studies in
+interaction design;
+
+1
+
+Figure 1: Parallel Eyes: a system for creating a mutual visual
+shared parallel experience. With Parallel Eyes, users wear a head
+mounted display which shows shared videos of each other’s perspectives as well as one’s own perspective in realtime.
+
+Introduction
+
+As small wearable networked cameras emerge as common technologies, first person video is becoming a significant form of media for sharing one’s experiences. The combination of a wearable
+camera and a head mounted display (HMD) will provide significant
+benefits for parallel experiences in various applications. The relationship between visual perspective and embodiment is tightly connected. Therefore, connecting, unbinding and reconstructing those
+relationship will provide an interesting field of research ,art and
+technical development to produce brand-new experiences [Hachiya
+1993] [Philippe et al. 2014] [Kasahara and Rekimoto 2015]. We
+think that mutual view sharing is one of the possible configurations
+to augmenting human embodiment. It will produce a practical impact upon education, reality games, technology mediated sports and
+entertainment.
+To explore this scenario, we developed a “Parallel Eyes system”
+which is a system in which users wear a HMD which shows multiple shared first person video perspectives as well as one’s own perspective in realtime. This system generates a mutual visual shared
+parallel experience among four persons in realtime (Fig. 1). Our
+aim is to investigate and analyze how humans develop their viewing
+behaviors to acquire their own embodiment and spatial relationship
+Permission to make digital or hard copies of part or all of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. Copyrights for thirdparty components of this work must be honored. For all other uses, contact
+the owner/author(s). c 2016 Copyright held by the owner/author(s).
+SIGGRAPH 2016 VR Village, July 24-28, 2016, Anaheim, CA
+ISBN: 978-1-4503-4377-0/16/07
+DOI: http://dx.doi.org/10.1145/2929490.2929495
+
+in such paralleled visual sharing situations. Therefore, we designed
+the “game of tag” with Parallel Eyes.
+
+2
+
+Parallel Eyes System
+
+To create a mutual visual shared parallel experience and to investigate and analyze how humans acquire and develop their behaviors,
+we developed the Parallel Eyes system. With Parallel Eyes, users
+wear a HMD which shows each other’s shared perspectives as well
+as one’s own perspective in realtime. Furthermore, the embedded
+eye tracking camera reveals how users watch displayed paralleled
+shared first person video.
+The Parallel Eyes system includes a HMD (Google Cardboard) with
+a smartphone screen as shown in Fig. 2. The smartphone also has a
+camera that captures the wearer’s field of vision so that we can create a video see-through HMD. Four head mounted smartphones are
+connected via a wireless connection. The video captured from the
+camera of the smartphone is displayed on the smartphone screen,
+and it is additionally transmitted to other head mounted smartphones. On each smartphone display, the wearer can see a video
+stream of the others’ fields of view as well as one’s own perspective. These video images are displayed with a four split layout as
+shown in Fig. 1. To investigate and visualize unconscious watching
+behaviors , we embedded a eye tracking system including small IR
+camera and IR-LED inside the head mounted smartphone goggles.
+
+2.1
+
+Game of tag with Parallel Eyes
+
+In a “game of tag with Parallel Eyes”, players play a game of tag
+with the Parallel Eyes on a specially designed stage (Fig. 4). On
+the game stage, several cardboard columns were placed at regular
+
+(a)
+
+(b)
+
+P1
+
+P2
+
+P1
+
+P2
+
+*3
+
+P4
+
+*1
+P3
+
+Figure 2: A wearable system for Parallel Eyes: a video see-through
+HMD, a small board computer, and a small battery module attached
+to the body.
+
+P3
+
+P4
+
+P4
+
+P3
+
+*2
+
+*4
+
+(c)
+
+(d)
+
+P1
+
+P2
+
+P1
+
+P2
+P3
+
+*6
+P3
+
+P4
+
+P3
+
+P4
+
+*5
+
+P3
+
+P4
+P1
+
+(e)
+P1
+
+(f)
+P2
+
+P1
+
+P2
+P3
+
+P3
+
+Figure 3: Stage design of chasing game. Cardboard columns are
+placed at regular intervals.
+P3
+
+intervals (Fig. 3). In addition, there is a large projector screen to
+display four streamed perspective images and eye tracking pointers
+of each players. This is also essential setup to provide the sense
+of the each player’s viewing behavior in real-time, which also produces engaging experience for the audience of the games.
+In the beginning, some participants found it very confusing to walk
+around; however, by guiding them to find their own perspective (for
+instance, having them look down to find their own foot), they found
+a way to recognize their own body. In the earlier stage of the game,
+several participants were astonished when they found themselves in
+the perspective of the chaser. However, as the game proceeded, they
+got used to Parallel Eyes and started to develop viewing strategies.
+Observation of actual games revealed that people can develop their
+viewing behaviors to understand their own physical embodiment
+and spatial relationship with others in complex situations [Kasahara et al. 2016]. We found that viewing strategies were pursued
+in accordance with two successive factors. The first one is a visual
+“attention cue,” which made the person find something that is related to their own body. The second is “context building,” where the
+person understands the relationships between the attention cue and
+their own body, then produces information to determine the next
+action. The revealed patterns of viewing behaviors indicate design
+factors for both conscious and unconscious action. Those findings
+led to design implications which will contribute to building design
+experience in mutual paralleled view sharing applications, brand
+
+P4
+
+P3
+
+*7
+
+P4
+P3
+
+Figure 5: Example of moments during game of tag with Parallel
+Eyes. Traces of color line indicate eye movement history of each
+player. (a) shows moment when P1(Player 1) found chaser (*1)
+in P2’s view, P3 is in the “stealth” mode (*2). (b) shows that P1
+is looking at P2 (chaser’s) view (*3), P3 found his own (*4) in
+P4’s view (c) shows that P4 is escaping using the perspective of
+the chaser P3 (*5). (d) shows that P2 and P4(*6) are engaged in
+watching the event between P1 and P3. (e) shows the moment when
+P3 unconsciously a found item (*7) with a similar color to their
+own clothing. (f) shows the moment when P3 could be found in
+other 3 views.
+
+new technology mediated sports and broad research agenda about
+human perspective and embodiment.
+
+References
+H ACHIYA , K. 1993. Inter dis-communication machine. Prix Ars
+Electronica 96, 138–139.
+K ASAHARA , S., AND R EKIMOTO , J. 2015. Jackin head: Immersive visual telepresence system with omnidirectional wearable
+camera for remote collaboration. In Proceedings of the 21st ACM
+Symposium on Virtual Reality Software and Technology, ACM,
+New York, NY, USA, VRST ’15, 217–225.
+K ASAHARA , S., A NDO , M., S UGANUMA , K., AND R EKIMOTO ,
+J. 2016. Parallel eyes: Exploring human capability and behaviors with paralleled first person view sharing. In Proceedings
+of the 2016 CHI Conference on Human Factors in Computing
+Systems, ACM, New York, NY, USA, CHI ’16, 1561–1572.
+
+Figure 4: Game of tag with Parallel Eyes : Participants play a
+game of tag with Parallel Eyes on a specially designed stage.
+
+P HILIPPE , B., G ONZ ÁLEZ -F RANCO , D., P OINTEAU , A., AND
+C HERENE , C. 2014. The machine to be another - embodied
+telepresence using human performers. Prix Ars Electronica.
+
+

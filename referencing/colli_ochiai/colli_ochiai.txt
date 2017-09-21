@@ -1,0 +1,90 @@
+A Colloidal Display:
+membrane screen that combines transparency, BRDF and 3D volume
+Yoichi Ochiai* Alexis Oyama** Keisuke Toyoshima***
+*the University of Tokyo **Carnegie Mellon University ***University of Tsukuba
+
+Figure 1: (top-left)controllable transparency, (top-center) sardine’s back texture (top-right) wood texture on membrane screen
+(bottom-left) plane based 3D screen (bottom-center) metal texture on screen (bottom-right) piercing the object into the screen
+It’s very difficult to take the picture as we see this display. The reflection of projector light is difficult to capture in cameras.
+
+1. Introduction
+It is a common knowledge that the surface of soap
+bubble is a micro membrane. It allows light to pass
+through and displays the color on its structure. We developed an ultra thin and flexible BRDF screen using the
+mixture of two colloidal liquids. There have been several
+researches on dynamic BRDF display[1] in the past.
+However, our work is different in several points. Our
+membrane screen can be controlled using ultrasonic vibrations. Membrane can change its transparency and
+surface states depending on the scales of ultrasonic
+waves. Based on these facts, we developed several applications of the membranes such as 3D volume screen.
+The combination of the ultrasonic waves and ultra thin
+membranes makes more realistic, distinctive, and vivid
+imageries on screen. This system contributes to open up
+a new path for display engineering with sharp imageries,
+transparency, BRDF and flexibility.
+
+2. Design
+We developed the first prototype by using soap and
+milk. These are colloidal liquids and their molecules
+have different sizes and colors. With ultrasonic parametric speakers, we could control their movements (liquids
+and particles) on the membranes. If they move with intensity, the reflections change while the membrane
+works as a projector screen. Since we can control the
+dynamics of the wavelengths, the state of the surface can
+be easily changed.
+
+Ultrasonic
+Light
+
+membrane surface
+
+0-4000Hz
+modulated
+by 50kHz
+
+-40° to 40°
+
+3. Application
+First we developed a screen for displaying realistic
+material. The display’s state changes in correspondence
+to the images the projector shows.
+Secondly, we developed the plane based 3D screen
+with three membranes using a single projector. (changing frequency 25Hz) The transparency of each membrane is controllable by frequency of the sound from the
+parametric speakers. We set the projector and linked it
+with the transparency of each membrane.
+In addition, we developed polyhedrons made from
+these membranes and displayed several images on it.
+This system shows that this is useful to flexibly display
+3D objects.
+
+4. Future Work
+We introduced the first prototype of a new kind of display by using colloidal liquids and a method of controlling them by using ultrasonic waves. Due to its thinness
+and transparency, the method could be applied to a variety of cases in using display technologies. The 3Ds
+screen and texture screen are exemplary applications of
+this system.
+Currently our membrane can maintain its surface
+(screen) for 5 minutes. However, there are several solutions for this problem and there are rooms for new potential colloidal materials for the use.
+
+REFERENCES
+
+display
+transparency
+
+With the parametric speakers, this system can make the
+screens drastically thinner since it does not need any
+additional systems or materials on the screen. The thinness of the screen is approximately 1 micrometer. Since
+we could control the state of the surface, we were able to
+have several interactions such as piercing a finger
+through it or enlarging it by using its elasticity and flexibility.
+
+transparency
+
+[1] M. Hullin et al., Dynamic Display of BRDFs. In: Proceedings of Eurographics 2011.
+
+Figure2: ultrasonic & membrane
+Copyright is held by the author / owner(s).
+SIGGRAPH 2012, Los Angeles, California, August 5 – 9, 2012.
+ISBN 978-1-4503-1435-0/12/0008
+
+*email: ochyai@me.com
+
+

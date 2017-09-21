@@ -1,0 +1,936 @@
+Intentiō: Power Distribution through a Potentialized Human
+Body
+Michinari Kono
+
+Hiromi Nakamura
+
+Jun Rekimoto
+
+The University of Tokyo
+JSPS Research Fellow
+7-3-1 Hongo, Bunkyo-ku
+Tokyo, Japan
+
+The University of Tokyo
+JSPS Research Fellow
+7-3-1 Hongo, Bunkyo-ku
+Tokyo, Japan
+
+mkono
+@g.ecc.u-tokyo.ac.jp
+
+hirominakamura.b
+@gmail.com
+
+The University of Tokyo
+7-3-1 Hongo, Bunkyo-ku
+Tokyo, Japan
+Sony CSL
+3-14-13 Higashigotanda,
+Shinagawa-ku, Tokyo, Japan
+
+rekimoto@acm.org
+
+Figure 1: Intentiō and its applications: (a) Intentiō enables users to distribute power to electronic devices from power passing through
+their body. (b) Electronic and IoT devices are activated and powered by power distributed from the user. (c) Electronic stuffed toy
+activated by the user. The LED eyes emit light when the user touches the toy. (d) The user can adjust the amount of power distributed
+to the target device. Here, the volume of an electric music box is being adjusted.
+
+ABSTRACT
+We present Intentiō, which allows a potentialized human body to
+activate low-power electronic devices by touching them. A potentialized human body, i.e., one carrying our device, acts as a
+common power source and distributes power to electronic devices
+through their body. An electronic device generally requires its own
+power source that needs to be managed individually. The diversity of battery sources, which must also be frequently charged or
+exchanged, has introduced complications for users who manage
+them. Providing a common power source may help users more easily manage electric devices because the devices are passive, with
+no power source of their own. This paper presents Intentiō’s design
+and implementation, followed by several proof-of-concept applications based on a potentialized human body. We also discuss the
+safety concerns of our method. Intentiō is a concept and framework for augmenting humans so that they may interact with and
+handle electronic devices with power distribution, where the elecPermission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than
+ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+
+AH ’17, March 16-18, 2017, Mountain View, CA, USA
+c 2017 ACM. ISBN 978-1-4503-4835-5/17/03. . . $15.00
+DOI: http://dx.doi.org/10.1145/3041164.3041175
+
+tric devices can passively exist without complex wiring or power
+sources.
+
+CCS Concepts
+•Human-centered computing → Human computer interaction
+(HCI); HCI theory, concepts and models; Ubiquitous and mobile
+computing; Ubiquitous and mobile computing systems and tools;
+
+Keywords
+Power Distribution, Passive Activation, Potentialized Human Body,
+Low-Power Electronics, Human-Centered Interaction, Augmented
+Human.
+
+1.
+
+INTRODUCTION
+
+A power supply has always been an inevitable element of electric
+and electronic devices [10, 15]. Many low-power electric devices
+at home are powered by batteries, e.g., remote controllers, electric
+toys, and various types of tools. However, using batteries is not
+always beneficial to the user, since batteries come in a variety of
+sizes and standards, which makes it difficult for users to find the
+right type when replacing one.
+Although power supplies still have significant issues, an increasing number of electronic devices are becoming popular because of
+the development and spread of the Internet of Things (IoT) and
+ubiquitous computing. This also results in an increase of battery
+
+power supplies or corded connections to commercial power supplies. Rechargeable batteries are now common for these types of
+electronic devices; however, they still need to be recharged frequently. Furthermore, lines connected to external power sources
+may disturb a user’s activity or even conflict with other devices because of a limited number of power outlets.
+As electric devices have multiplied, their power consumption has
+decreased. Low-power electronic components, including semiconductors, sensors, and microcontrollers, only consume a few microwatts. As the demands of electronic devices increase, their power
+requirements will continue to decrease. This will enable the supply of power through various methods, not simply with batteries
+or commercial power. Moreover, it may also enable devices to become smaller, as the power source is placed outside the device,
+enabling them to exist passively.
+In this paper, we introduce the concept of human-centered interaction based on power distribution through the human body (Figure 1). We present a method for distributing power to low-power
+electric devices using a common power source. The system enables a user to carry a common power source on his/her body that
+distributes power by interacting with electronic devices that have
+no power sources of their own. It is obvious that many low-power
+electric devices will require interaction from the user in order to
+activate.
+Some researchers have explored battery-free user interfaces that
+source their power from the physical effort involved or required
+when interacting with them [6, 45, 2]. These are methods for harvesting energy; however, in this work, instead of harvesting the
+power, we use power sources existing and held on the body. We
+always carry some kind of power source, and it is now common,
+and possibly indispensable, to have smart devices or other wearables (smartphones, smartwatches, or even mobile batteries) with
+us. We focus on obtaining a radical power source from these devices and supply the power to the target devices via a human-body
+interaction.
+To allow the power to safely travel through the user, a highvoltage power source oscillates at a high frequency. The target
+devices have simple rectifying and regulating circuits, need no internal power source, and therefore remain passive.
+Our contributions are summarized as follows.
+• We have developed a wearable power source for powering
+low-power electric devices. The power is supplied through
+the human body and its interactions; therefore, the electric
+devices need no internal power sources and remain passive.
+• We clarify the safety concerns for using our system and designed the device based on observing electricity passing safely
+through a human body.
+• We present several example applications and scenarios to
+prove our concept and its feasibility. We show examples of
+powering electronic devices and paper crafts/cards, as well
+as interactions between multiple users, and discuss further
+possibilities for Intentiō.
+
+2.
+
+POWER DISTRIBUTION THROUGH A
+HUMAN BODY
+
+In this section, we present an overview of Intentiō and its operating principles (Figure 2). The words high-voltage and highfrequency are generally used for voltage over 600 V and signals
+around RF (radio frequency), however, in this paper, note that we
+use the words high-voltage and high-frequency for voltage above
+
+Figure 2: Principle of operation. The wearable device converts
+the original input, which is supplied to the user, to an appropriate power. The user distributes the power by touching the
+target device, which rectifies and regulates the signal for its activation.
+
+100 V and frequency of around 10–100 kHz to address the difference from requirements of small electronic devices, commercial
+power supplies (100–250 V, 50–60 Hz), and other research based
+on signals up to 1 kHz [3, 4]. Power distribution to passive electronic devices through a human body is accomplished through the
+following steps.
+1. High-voltage and high-frequency AC power is applied to the
+body through a wearable device that potentializes the user.
+2. The potentialized user touches the target electronic device,
+and power is supplied to the device by electricity passing
+through the user’s body.
+3. The AC signal received from the user is rectified. The rectified signal is regulated to an appropriate value to activate the
+device or is otherwise left as a fluctuating signal controllable
+by the user.
+The wearable device that supplies power to the body is powered
+by a smart device or an external power source. It consists of a
+transformer that boosts the voltage to a few hundred volts and oscillates the signal at a few thousand hertz. Since the human body is
+not completely safe when conducting electricity, it was necessary
+to consider the system’s values carefully. We provide a detailed
+discussion of the safety concerns in the next section, including the
+reason such high-frequency signals were used. The body acts as a
+power cable and can supply power to devices by touching or holding them. It is necessary for a user to touch the devices with his/her
+hands. The activated target device requires no power sources, e.g.,
+batteries or corded connections from power supplies. Instead, it
+requires a simple electric circuit that will rectify and regulate the
+power supplied by the potentialized user. The idea is to use a common power source and have each device adjust the power for its
+own required values. This will help users to more easily manage such devices because they exist passively and can be activated
+through a single common power source.
+
+3.
+
+SAFETY
+
+The human body is not completely safe when conducting electricity; therefore, we must consider safety issues in our work. Although many researchers have attempted to electrify humans and
+
+Figure 3: Intentiō system: (a) The design and size of the wearable device. (b) The wearable device is worn on the wrist, belt, ankle,
+or inside a shoe. (c) An example design of the receiving circuit. The size is not fixed, and can be designed to be the same shape as a
+coin cell.
+
+have discussed safety concerns in the human–computer interaction
+field, our purpose differs and we consider using a larger amount of
+current. This may decrease its acceptability with users; thus, we
+must address this issue.
+
+3.1
+
+Current and Frequency Conditions
+
+According to the IEC (International Electrotechnical Commission) [12], when considering electric shock, the important element
+is the amount of current passing through the body. For a 15–100
+Hz AC signal (including commercial power supplies), humans do
+not perceive less than 0.5 mA of electricity. Further, up to 10 mA
+of electricity does not pose a serious risk to humans. However,
+although they may be safe, currents from 0.5 to 10 mA are perceptible and are quite uncomfortable to experience. These current
+levels are inappropriate. REVEL [3] is a prior related study that
+limited its current to 150 µA.
+However, the perception current changes depending on the frequency conditions. According to Dalziel [7], the perception current
+decreases at higher frequencies. Therefore, to design a system that
+can carry a larger amount of current through the body, we must use
+higher frequency AC signals.
+We know that using high-frequency AC signals will be better for
+the usability of our system; however, this does not mean that higher
+frequencies are always better. High-frequency signals will not be
+perceived by a human; however, they carry the risk of heat generation [40]. Another concern is that the current perception threshold changes depending on the condition of a human body (e.g.,
+sweat level, weight, gender, or the route the current takes through
+the body). Therefore, we must design an offset value that can be
+adapted for these elements. Dalziel reported that the perception
+of current is more than 10 mA at 30 kHz. We use this value and
+describe our actual design in the implementation section.
+
+3.2
+
+Voltage
+
+The main threat that causes electric shocks to the human body
+is the amount of current. However, using high-voltage power may
+cause electrical discharge on the skin that may be painful and burn.
+This can occur when a high-voltage electrode is held close to the
+skin with a small gap. Turning on the power after attaching the
+electrode to the skin will prevent this risk, which we assume for
+our system. Considering that the electrode could be accidentally
+detached from the skin, we avoid using extremely high-voltage and
+use 250 V power. We refer to a report that mentions the stimulus
+is perceived at voltages above 330 V [34]. However, some stimuli
+were perceived even at 250 V when the electrode was weakly con-
+
+nected to the skin. Therefore, we must take care that the electrode
+is not detached when activated.
+
+3.3
+
+Continious Usage
+
+As our system is for continuous use, we must carefully discuss
+safety in such conditions. The main risk of continuous usage of
+high-frequency power is heating. For example, high-power and
+high-frequency current is used for electrosurgery [41]. However,
+this phenomenon is usually considered to occur for frequencies
+over 100 kHz, and studies report that no established effects are
+found at lower frequencies [40, 41, 13]. Nevertheless, in these papers, it is also mentioned that further studies are required and the
+effects of long-term usage are unknown. Therefore, we must still be
+careful when using our system continuously, and further research
+is necessary.
+
+4.
+
+IMPLEMENTATION OF INTENTIŌ
+
+Intentiō’s implementation consists of three main features: a wearable power source, a circuit to receive the power from the user, and
+carefully designed grounding conditions to create a closed-circuit
+model.
+
+4.1
+
+Wearable Power Supply
+
+The wearable power supply (Figure 3 (a)) is powered by smart
+devices or other external power sources. The device can be connected via USB or more direct methods, and direct connection to
+the battery inside the external power source is required. Since they
+have different voltage outputs (usually DC 3.7–5.0 V), we first regulate them to 3.3 V. Then, the source is applied to a transformer
+(LM05100), which boosts the voltage to approximately AC 250 V
+at 30 kHz. The maximum current at this point is less than 6 mA,
+and is considered safe to pass through a human body at 30 kHz.
+The AC signal is then supplied to the body through an electrode
+pad. We used an electrode that was originally designed for electric
+therapy equipment (Omron HV-LLPAD, 98 mm × 64 mm or cut to
+half the size, the electrode is washable and reusable). The device
+must be in contact with the user; however, its location is not fixed
+and there is a lot of freedom as to where the user can carry it, e.g.,
+on the wrist, in pockets, in shoes, or anywhere else on the body
+(Figure 3 (b)). An electrode can be attached on the back of the
+device, or it can be extended from the device with an additional
+wire to enable contact with the body when the device is covered by
+the user’s clothing.
+
+4.2
+
+Device Receiver
+
+The target electric device does not need an internal power source;
+however, it will require a different circuit for activation. Highvoltage AC power is first supplied to the device; therefore, we must
+rectify the signal and step-down the power voltage. It is important
+to take care not to consume too much current at this stage so that
+the power will not influence the performance of the device significantly. We used an LM385 (National Semiconductor) for our prototype, which consumes 10 µA at minimum. However, appropriate
+components must be selected depending on the input voltage of the
+activated device. An alternative approach is to use a current limiting diode and protect the device from overcurrent. We may also
+leave the signal to fluctuate and make it controllable by the user for
+interaction. The circuit can be implemented in various forms. Figure 3 (c) is an example of the receiving circuit in a form of a coin
+cell.
+
+4.3
+
+Designing the Grounding Conditions
+
+To activate the target device, the device and user must share a
+common ground. The user can share a common ground with the device without direct grounding connections because the device can
+be connected to the ground via an insulating layer (e.g., air, table
+with an insulated coat). However, the conditions of the user and device, in particular, the impedance of the capacitive links connecting
+the device to a common ground, crucially influence performance.
+For example, the performance may change depending on the distance or the insulating material between the device and the ground.
+In the following subsections, we present example circuit models
+followed by impedance considerations and performance details of
+our current prototype.
+
+4.3.1
+
+Circuit Models
+
+Figure 4 (a) displays an example circuit model of Intentiō. The
+user has the Intentiō system in his shoe, where one side of the output is connected to the user via an electrode and the other is connected to the ground. The device side couples its ground to the
+table, and the table is linked to the ground. Figure 4 (b) shows an
+alternative model in which the grounding is accomplished through
+the Intentiō device on the user’s wrist. A variety of circuit models
+are available, depending on where the Intentiō device is worn by
+the user.
+Providing a direct connection between grounds ensures more stability and a larger amount of power. We designed our work for safe
+use under these conditions so we can leave application space for
+devices that require a larger amount of power. However, creating
+direct connections via wires may disturb the users; therefore, we focus on the method that does not require directly connected grounds
+for now.
+
+4.3.2
+
+Capacitive Coupling and Body Impedance
+
+Capacitive coupling with the load and the ground are applied,
+and the capacitance can be expressed as C = 0 r S/d, where 0 is
+the permittivity of free space, r is the permittivity of the relative
+material (e.g., air or a table), S is the area of the electrode, and d
+is the distance between the electrodes. The reactance X is X =
+1/2πf C, where f is frequency. Thus, the relation of the reactance
+to the distance and area of the electrodes can be expressed as X =
+d/2πf 0 s S.
+Although an equivalent model of the body impedance can be expressed as Xb = −1/2πf Cb (Xb is the reactance of the body
+and Cb is the capacitance of the body) [8], considering and estimating the impedance of body precisely is difficult because there
+are so many elements that influence its value (e.g., voltage, fre-
+
+quency, current duration, contact area, contact pressure, skin condition, moisture level, and current route) [11]. The skin impedance is
+the most difficult to characterize since it is nonlinear, time-variable,
+and depends on environmental and physiological factors [35]. However, studies show that skin impedance under high-frequency conditions decreases in value and the total body impedance approaches
+the internal body impedance [38, 36]. Nevertheless, the impedance
+is still difficult to estimate.
+The total impedance Zt of the Intentiō circuit model can be expressed as Zt = Zg + Zi + Zb + Zl + Zg0 , where Zg is the
+impedance of the device to the ground, Zi is the internal impedance
+of the device, Zb is the impedance of the load, and Zg0 is the
+impedance of the load with respect to the ground. In most scenarios, Zg and Zi are constant, therefore, techniques mentioned
+in REVEL [3] (current sensing the output from the generator) for
+constant current output may be applied to stabilize the output of
+Intentiō. However, in our present prototype, we stabilize the power
+on the receiving device module.
+
+4.3.3
+
+Performance
+
+In the meantime, our system model enables a maximum distribution of approximately 2.0 mA and 5.0 mW. The voltage is not
+really an issue because the system can supply over 100 V, which is
+far higher than the requirements of low-power electronics, i.e., the
+system can activate components requiring up to 100 V as long as
+the total power requirement remains under 5.0 mW. Nevertheless,
+note that to allow Intentiō to supply this value, a robust connection
+is required (e.g., large electrodes or another human body must be
+used for grounding). Therefore, lower power is supplied in major
+capacitive coupling grounding conditions.
+We will display results of some measurements. In the situation
+of Figure 4 (a), we used an LED (OptoSupply,OSG58A5111A) as a
+load, which was powered by approximately 2.0 V–2.2 V. The voltage was not fixed, since we attempted to measure the performance
+of the current value. The LED was loaded on a breadboard with our
+receiving circuits. No additional electrode was implemented. The
+table used for the capacitance coupling was 1600 mm x 800 mm,
+which was made of wood with metallic legs, covered by dielectric
+material. When the LED board was on the table, the current value
+passing through the LED was 84.5 µA. However, when the board
+was lifted up and the distance between the board and the table was
+100 mm, the value decreased to 46 µA. The measurement of Figure
+4 (b) was established with the same board with the LED. When the
+board was 50 mm away from the device, the current value was 52
+µA. The value was 43 µA when the distance between the board and
+the device was 200 mm. Note that the results may change depending on the body conditions (i.e., the body impedance) as mentioned
+in the previous section.
+
+5.
+
+APPLICATION
+
+In this section, we present several proof-of-concept Intentiō applications. We present examples in which we use the system as a
+power supply as well as interaction methods that can be applied
+through our system. The system has the potential to promote communication between multiple users.
+
+5.1
+
+Activating Electronic Devices
+
+One of our main purposes is to activate the electronic devices that
+are increasing in number nowadays, including IoT devices. Many
+of these devices require low power, and button cells are often used;
+e.g., the standard discharge current of an LR44 button cell is 0.12
+mA (in the case of the Toshiba LR44EC). This is sufficiently low
+and matches our system’s specifications.
+
+Figure 5: Calculator powered by Intentiō.
+
+Figure 4: Example grounding connections: (a) A user has a
+wearable device in his shoe and is potentialized. He touches the
+electronic device and distributes power. The powered device is
+connected to the ground via the table. (b) A user has a wearable
+device on his wrist. The power is distributed to the electronic
+device through the user. The ground of the wearable device and
+the electronic device is coupled via the air between them.
+
+the music box.
+Implanting our receiving circuit into electronic paper crafts [32]
+or event cards (e.g., birthday and Christmas cards) may be worth
+considering (Figure 6 (c)). Instead of using buttons, sensors, and
+button cells to activate these types of paper, the user will simply
+touch the card to simultaneously activate it and act as a power supply. Intentiō can eliminate button cells from these types of lowpowered electric elements.
+
+5.3
+Figure 5 shows an example of activating a calculator that was
+originally powered by button cells. We modified the device, removed the cells, and implanted our own power-receiving circuit.
+Furthermore, two electrodes were added to the back of the device;
+one the user must touch to supply the power, and the other creates
+grounding conditions from the floor or table.
+
+5.2
+
+Interaction for Entertainment
+
+Our system can be used to interact with electronic toys or other
+entertainment products that have low-power electronic components.
+Figure 6 (a) shows a stuffed toy powered by our system. The toy’s
+eyes (LEDs) light up when the user touches and holds the toy. Instead of stabilizing the power supply, we may leave the signal to
+vary depending on the grounding conditions. The user can then
+move the toy up and down to control the brightness of the eyes,
+since creating a larger gap between the toy and the table will change
+the power supplied to the toy. This implementation can be also be
+applied to an electronic music box (Figure 6 (b)). The user can
+switch on the music box and play the music by holding the music
+box on the table. When the user wants to adjust the volume, he/she
+can hold up the music box. The volume is related to the height of
+
+Multiple-User Interaction
+
+We previously mentioned the issue of ground coupling. A human without our system can also act as a good ground connection.
+One user with our system and another user without it can share a
+common ground and supply electricity through elements that exist between the two users. Figure 7 (a) shows an LED activated
+by two people. The left user is potentialized by wearing the Intentiō device, and the right user is not potentialized. A potential
+difference occurs between the users, causing the LED to emit. We
+assume that these types of interaction methods can be applied to
+encourage and develop communication, e.g., when users touch or
+shake hands. Compared with prior research that allows communication and signal transmission via handshaking [1, 50], our system
+focuses on visible or perceptual application domains.
+Electric gustatory variation is another possible application for
+this interaction method. It is known that a human perceives some
+taste or food texture when electricity is applied to their tongue [26,
+33]. We previously developed an electric fork to augment the gustatory sense when eating [26], and applications for communication
+through taste augmentation [25]. However, the electric fork contains circuits and batteries. Using our Intentiō system, electric gustatory variation can be attained using a normal metal fork or a fork
+containing simple circuits without batteries. We can consider sce-
+
+Figure 6: Example applications of Intentiō: (a) An electric
+stuffed toy powered by the user. (b) A music box powered and
+adjusted by the user. (c) A Christmas card with electric components activated by the user.
+
+narios where a user eating with a fork perceives a normal taste, but
+when a user with our system helps him/her eat with the fork, he/she
+will perceive a different type of taste or texture (Figure 7 (b)).
+
+6.
+
+DISCUSSION
+
+Intentiō has several limitations. We will discuss the limitations
+due to interaction and power. We also introduce our vision for future applications that can be considered by applying our concept.
+
+6.1
+
+Interaction Limitation
+
+As the Intentiō system requires the user to directly touch the target device, our approach will not be appropriate for devices that
+require continuous power supplies. We assume Intentiō will be
+applied to devices that require human interaction and that do not
+require continuous power when they are not in use. In addition, the
+target device’s range of operation is limited because of the grounding limitations mentioned in the previous section, i.e., the device
+cannot be freely held in mid-air. The limitations differ depending
+on the size of the devices’ ground areas. However, we are exploring
+possibilities by investigating conductive clothing and considering
+where to place the wearable device.
+
+6.2
+
+Current Limitation
+
+Our present implementation enables the activation of certain electronic devices and components; however, some devices will require a larger amount of current. The largest issue occurs from
+the grounding condition; thus, our circuit model may not be appropriate for such usage. We believe that there is still room to improve
+our system to increase the available current. To overcome this limitation, we consider connecting the ground of the device and the user
+via an additional wearable. Figure 8 presents a wearable designed
+
+Figure 7: Example applications based on multiple-user interaction: (a) An LED emitted by two people. The left user is potentialized by wearing the Intentiō device, and the right user is not
+potentialized. (b) Electric gustatory variation can be attained
+using a normal metal fork. The potential differences between
+the two users gives one of the users the effect of taste or texture.
+
+for this purpose, where one electrode is extended to the index finger. The power is supplied through the index finger and creates a
+closed circuit with the user’s thumb.
+
+6.3
+
+Acceptability
+
+Considering the acceptability for our work is a significant issue. Even though the human body is naturally potentialized by
+some electric signals (e.g., from commercial power supplies), some
+users still have concerns about applying electricity on their bodies.
+Therefore, addressing the safety discussions and presenting safety
+guidelines for usage will be important and will help users increase
+the acceptability.
+Since the device is designed to be wearable, the design may influence this concern as well. We therefore aim to design the wearable system to be small and comfortable. However, the hardware
+may be made even smaller by redesigning the circuit, which we are
+working on for future studies.
+Finally, discussing application domains will also help our system’s acceptance. Clarification of the results and applications that
+
+7.
+
+RELATED WORK
+
+We describe related work from two aspects. One is the powersource side. Several researchers have investigated power distribution to passive objects or the collection and harvesting of energy
+to activate low-powered devices. In contrast, many attempts have
+been made to apply electricity to the human body. Moving electricity through the human body has been applied for sensing and
+actuating human interaction.
+
+7.1
+
+Figure 8: Connecting the ground of the wearable device and
+the electronic device will allow a larger amount of power to be
+supplied.
+
+would benefit from the system is required. More detailed results
+are still required. However, we discuss some potential applications
+in the following section.
+
+6.4
+6.4.1
+
+Vision of Future Application
+Activating Wearables
+
+As well as activating IoT, ubicomp, and everyday devices, we envision applying our concept to activating wearables. We are aware
+of an increasing number of wearable devices being developed, including very thin components, circuits, and sheets attached to the
+skin [46, 16, 48]. Although these types of wearables are naturally
+worn and attached to the user, they require wires or batteries for the
+power source, which disturbs the design. Using our system, we can
+eliminate the wiring or batteries and activate them from the power
+applied from the skin in specific situations. This will still require
+some process to the clothing or require limitation of the system position on the user at the current stage.
+
+6.4.2
+
+Signal Modulation
+
+Many applications have been powered using electric signals passing through the body (e.g., Touche [39], Red Tacton [1], PAN [50]
+etc.). In these cases, high-frequency signals are used to recognize
+the user’s gestures or to communicate with signal transmission. Intentiō does not need to oscillate at a specific frequency; therefore,
+we can merge techniques from these types of previous research to
+acquire additional information. This can be applied for security
+purposes; e.g., a device that only activates when touched by a user
+with a specific frequency pattern. However, note that additional
+safety discussions are required before using such higher frequency
+signals with large current.
+
+6.4.3
+
+Supplying Power from a Distance
+
+In the system described above, we assumed that the user directly
+touched the target device. However, a noticeable leakage current
+is present, and we may consider using this feature. The amount of
+current is very low, so applications might be quite limited; nevertheless, it is possible to slightly light the LED of a stuffed toy by
+bringing the user’s hand close to the toy without actually touching
+it. We hope that the development of lower-power electric components will improve the possibilities for our applications.
+
+Power Distribution and Harvest
+
+When we consider dealing with electric devices, it is important to
+consider their power sources. Although circuits and wires are now
+thinner, lighter, and more functional, power sources, e.g., batteries,
+are still required. Some researchers have proposed solutions by
+distributing power from external elements [28].
+The use of a magnetic field is a major method of transferring
+power without wiring connections. Magnetic MIMO [14] and PowerShake [47] are devices that charge phone batteries without a direct connection. They use multiple coils and coupling for the power
+transfer.
+Radio-frequency identification (RFID) is also a common solution, and many RFID products have been deployed [27]. RFID
+technologies enable power to be transferred over a distance. WISP
+[29], PaperID [20], and RapID [42] are examples of transferring
+power to an object and enabling input sensing. They use ultrahigh frequencies and activate the sensors using the power generated
+from transceivers, allowing the target device or object to be passive,
+without any batteries or other direct power sources.
+Gathering energy from the environment is also a method of creating power [24]. The usage of microwave oven leakage [17] is an
+energy-harvesting example of activating low-power kitchen devices
+with power generated from the environment. Instead of passively
+gathering the power from the environment, studies that attempt to
+harvest energy from users’ active interaction have been conducted
+[6, 45, 2, 43, 19]. These studies consider harvesting power from
+handling and interacting with user interfaces. We also build on
+these studies’ ideas and focus on supplying power when the user
+interacts with an electric device. However, our work does not harvest power; rather, it uses power sources that exist around the user;
+e.g., smart devices and mobile batteries.
+
+7.2
+
+Human Body and Electricity
+
+The human body has many electrical characteristics, e.g., resistance, impedance and capacitance, etc. A major use of such characteristics is based on the capacitance change sensed when a human touches an electrode [37, 9, 5, 18]. Gesture recognition is
+also a major application. For example, Touche [39] detects human
+gestures and interactions by sweeping frequency waves through
+the body and detecting the changes. Tomo [49] uses electrical
+impedance tomography for monitoring and recognizing gestures.
+Mirage [23] is a small sensor that detects abstract gestures made by
+the user. The system is based on capacitance changes of the wave
+value influenced by the commercial power supply on the body.
+Another application is the generation of haptics. Teslatouch [4]
+and REVEL [3] induce various haptic sensations, depending on
+the frequency and waveform of the electricity offered to the finger. Corona [22] is a wearable device that provides a haptic sensation to users by applying a high voltage to the body and observing the corona discharge that occurs when the user interacts with a
+grounded object.
+Recently, in the human-computer interaction field, EMS (Electric Muscle Stimulation) technology has been used to computationally manipulate the human body. Possessed Hand [44] and Affor-
+
+dance++ [21] are major examples using EMS. They are applied for
+actively training or providing affordance to objects.
+There are some notable studies that attempt to use body tissues
+as conductive leads. Red Tacton [1] and PAN [50] are studies that
+transmit signals through the body for the use of a communication
+network.
+Although we are aware of many studies that use electricity and
+apply it to the human body, Corona and the work proposed by Post
+et al. [31, 30] are the only prior work that is applied for power distribution. We share a common interest with these works; however,
+we contribute to the research field by proposing further variations
+of applications and circuit models with our original method, including safety considerations and discussion. We believe that there is
+plenty of room for further studies, discussions, and applications for
+power distribution through the human body.
+
+8.
+
+CONCLUSION
+
+In this paper, we introduced a concept where a potentialized human body supplied power through their body by interacting with
+low-powered electric devices. A wearable device that supplies highfrequency AC power to the body was presented, followed by a circuit model to enable the activation of electronic devices without
+their own power sources.
+We addressed the safety concerns that arise when supplying electricity to a human body and presented carefully considered solutions to safely develop and manage our system. Several proofof-concept applications were demonstrated, including the activation of electronic devices, interaction techniques, and application
+by multiple users. We discussed the limitations of our system and
+introduced possible future applications. We believe that a potentialized human body has the potential to augment and diffuse humancentered interaction.
+
+9.
+
+ACKNOWLEDGMENTS
+
+We thank all the reviewers for their thoughtful comments for
+our submission. We also thank Takashi Miyaki, The University
+of Tokyo for helping us improve our work.
+This work is supported by JSPS KAKENHI grant number 15J03919
+and 14J09902.
+
+10.
+
+REFERENCES
+
+[1] R. Antil, Pinki, and S. Beniwal. Red Tacton : A Review.
+International Journal of Science and Engineering Research,
+4(3):1–7, March 2013.
+[2] A. Badshah, S. Gupta, G. Cohn, N. Villar, S. Hodges, and
+S. N. Patel. Interactive generator: a self-powered haptic
+feedback device. In Proceedings of the SIGCHI Conference
+on Human Factors in Computing Systems, CHI ’11, pages
+2051–2054, New York, NY, USA, 2011. ACM.
+[3] O. Bau and I. Poupyrev. REVEL: tactile feedback technology
+for augmented reality. ACM Transactions on Graphics (TOG)
+- Proceedings of ACM SIGGRAPH 2012, 31, 4(89), 2012.
+[4] O. Bau, I. Poupyrev, A. Israr, and C. Harrison. TeslaTouch:
+electrovibration for touch surfaces. In Proceedings of the
+23nd annual ACM symposium on User interface software
+and technology, UIST ’10, pages 283–292, New York, NY,
+USA, 2010. ACM.
+[5] P. Dietz and D. Leigh. DiamondTouch: a multi-user touch
+technology. In Proceedings of the 14th annual ACM
+symposium on User interface software and technology, UIST
+’01, pages 219–226, New York, NY, USA, 2001. ACM.
+
+[6] M. E. Karagozler, I. Poupyrev, G. K. Fedder, and Y. Suzuki.
+Paper generators: harvesting energy from touching, rubbing
+and sliding. In Proceedings of the 26th annual ACM
+symposium on User interface software and technology, UIST
+’13, pages 23–30, New York, NY, USA, 2013. ACM.
+[7] C. F. Dalziel. Electric shock hazard. IEEE Spectrum,
+9(2):41–50, 1972.
+[8] K. R. Foster and H. C. Lukasaki. Whole-body
+impedance–what does it measure? The American Journal of
+Clinical Nutrition, 64(3S):388S–396S, 1996.
+[9] T. G. Zimmerman, J. R. Smith, J. A. Paradiso, D. Allport,
+and N. Gershenfeld. Applying electric field sensing to
+human-computer interfaces. In Proceedings of the SIGCHI
+Conference on Human Factors in Computing Systems, CHI
+’95, pages 280–287, New York, NY, USA, 1995. ACM.
+[10] S. Gangopadhyay, S. Bin Nasir, and A. Raychowdhury.
+Integrated power management in IoT devices under wide
+dynamic ranges of operation. In Proceedings of the 52nd
+Annual Design Automation Conference, number 149 in DAC
+’15, New York, NY, USA, 2015. ACM.
+[11] E. Greenwald. Electrical Hazards and Accidents, pages
+28–36. Wiley, 1991.
+[12] IEC. IEC 60479: Effects of current on human beings and
+livestock, 2005.
+[13] International Commission on Non-Ionizing Radiation
+Protection. Guidelines for Limiting Exposure to
+Time-Varying Electric, Magnetic, and Electromagnetic
+Fields (up to 300 GHz). Health Physics, 74(4):494–522,
+1998.
+[14] J. Jadidian and D. Katabi. Magnetic MIMO: how to charge
+your phone in your pocket. In Proceedings of the 20th
+annual international conference on Mobile computing and
+networking, MobiCom ’14, pages 495–506, New York, NY,
+USA, 2014. ACM.
+[15] S. K. Ghai, Z. Charbiwala, D. Mylavarapu, Swarnalathaand
+P. Seetharamakrishnan, and R. Kunnath. DC picogrids: a
+case for local energy storage for uninterrupted power to DC
+appliances. In Proceedings of the fourth international
+conference on Future energy systems, e-Energy ’13, pages
+27–38, New York, NY, USA, 2013. ACM.
+[16] L. Kao, Hsin, C. Holz, A. Roseway, A. Calvo, and
+C. Schmandt. DuoSkin: rapidly prototyping on-skin user
+interfaces using skin-friendly materials. In Proceedings of
+the 2016 ACM International Symposium on Wearable
+Computers, ISWC ’16, pages 16–23, New York, NY, USA,
+2016. ACM.
+[17] Y. Kawahara, X. Bian, R. Shigeta, Z. Vyas, M. M. Tentzeris,
+and T. Asami. Power harvesting from microwave oven
+electromagnetic leakage. In Proceedings of the 2013 ACM
+international joint conference on Pervasive and ubiquitous
+computing, UbiComp ’13, pages 373–382, New York, NY,
+USA, 2013. ACM.
+[18] K. Kurita, Y. Fujii, and K. Shimada. A new technique for
+touch sensing based on measurement of current generated by
+electrostatic induction. Sensors and Actuators A: Physical,
+170(1):66–71, 2011.
+[19] J. Kymisis, C. Kendall, J. Paradiso, and N. Gershenfeld.
+Parasitic Power Harvesting in Shoes. In the Second IEEE
+International Conference on Wearable Computing, ISWC
+’98, pages 132–139. IEEE, 1998.
+[20] H. Li, E. Brockmeyer, E. J. Carter, J. Fromm, S. E. Hudson,
+S. N. Patel, and A. Sample. PaperID: A Technique for
+
+[21]
+
+[22]
+
+[23]
+
+[24]
+
+[25]
+
+[26]
+
+[27]
+
+[28]
+
+[29]
+
+[30]
+
+[31]
+
+[32]
+
+[33]
+
+Drawing Functional Battery-Free Wireless Interfaces on
+Paper. In Proceedings of the 2016 CHI Conference on
+Human Factors in Computing Systems, CHI ’16, pages
+5885–5896, New York, NY, USA, 2016. ACM.
+P. Lopes, P. Jonell, and P. Baudisch. Affordance++:
+Allowing Objects to Communicate Dynamic Use. In
+Proceedings of the 33rd Annual ACM Conference on Human
+Factors in Computing Systems, CHI ’15, pages 2515–2524,
+New York, NY, USA, 2015. ACM.
+A. Mujibiya. Corona: Interactivity of Body Electrostatics in
+Mobile Scenarios Using Wearable High-Voltage Static
+Charger. In Proceedings of the 17th International Conference
+on Human-Computer Interaction with Mobile Devices and
+Services, MobileHCI ’15, pages 435–444, New York, NY,
+USA, 2015. ACM.
+A. Mujibiya and J. Rekimoto. Mirage: exploring interaction
+modalities using off-body static electric field sensing. In
+Proceedings of the 26th annual ACM symposium on User
+interface software and technology, UIST ’13, pages
+211–220, New York, NY, USA, 2013. ACM.
+A. Mujibiya and J. Torii. Walls Have Ears: Using Conductive
+Surfaces of Furniture and Everyday Objects for Room-Wide
+Power Usage and Crowd Activity Sensing. In Proceedings of
+the 2015 International Conference on Interactive Tabletops
+and Surfaces, ITS ’15, pages 241–246, New York, NY, USA,
+2015. ACM.
+H. Nakamura and H. Miyashita. Communication by change
+in taste. In CHI ’11 Extended Abstracts on Human Factors in
+Computing Systems, CHI EA ’11, pages 1994–2004, New
+York, NY, USA, 2011. ACM.
+H. Nakamura and H. Miyashita. Controlling saltiness without
+salt: evaluation of taste change by applying and releasing
+cathodal current. In Proceedings of the 5th international
+workshop on Multimedia for cooking and eating activities,
+CEA ’13, pages 9–14, New York, NY, USA, 2013. ACM.
+H. Nishimoto, Y. Kawahara, and T. Asami. Prototype
+implementation of ambient RF energy harvesting wireless
+sensor networks. In The 9th Annual IEEE Conference on
+Sensors, IEEE Sensors 2010, pages 1282–1287. IEEE, 2010.
+A. Noda and H. Shinoda. Selective Wireless Power
+Transmission Through High-Q Flat Waveguide-Ring
+Resonator on 2-D Waveguide Sheet. IEEE Transactions on
+Microwave Theory and Techniques, 59(8):2158–2167,
+August 2011.
+A. P. Sample, D. J. Yeager, P. S. Powledge, and J. R. Smith.
+Design of a Passively-Powered, Programmable Sensing
+Platform for UHF RFID Systems. In 2007. IEEE
+International Conference on RFID, RFID ’07, pages
+149–156, Piscataway, NJ, USA, 2007. IEEE.
+E. Post, B. Nivi, and N. Gershenfeld. Method and apparatus
+for transbody transmission of power and information, 2001.
+US Patent 6,211,799.
+E. R. Post, M. Reynolds, M. Gray, J. Paradiso, and
+N. Gersheneld. Intrabody Buses for Data and Power. In First
+International Symposium on Wearable Computers, 1997,
+ISWC ’97, pages 52–55. IEEE, 1997.
+J. Qi and L. Buechley. Electronic popables: exploring
+paper-based computing through an interactive pop-up book.
+In Proceedings of the fourth international conference on
+Tangible, embedded, and embodied interaction, TEI ’10,
+pages 121–128, New York, NY, USA, 2010. ACM.
+N. Ranasinghe and E. Yi-Luen Do. Digital Lollipop:
+
+[34]
+
+[35]
+
+[36]
+
+[37]
+
+[38]
+
+[39]
+
+[40]
+[41]
+
+[42]
+
+[43]
+[44]
+
+[45]
+
+[46]
+
+[47]
+
+[48]
+
+Studying Electrical Stimulation on the Human Tongue to
+Simulate Taste Sensations. ACM Transactions on Multimedia
+Computing, Communications, and Applications,
+13(1):Article No. 5, November 2016.
+J. P. Reilly. Applied Bioelectricity - From Electrical
+Stimulation to Electropathology, chapter 2, pages 52–60.
+Springer, 1998.
+J. P. Reilly. Applied Bioelectricity - From Electrical
+Stimulation to Electropathology, chapter 2, pages 45–48.
+Springer, 1998.
+J. P. Reilly. Applied Bioelectricity - From Electrical
+Stimulation to Electropathology, chapter 2, pages 20–31.
+Springer, 1998.
+J. Rekimoto. SmartSkin: an infrastructure for freehand
+manipulation on interactive surfaces. In Proceedings of the
+SIGCHI Conference on Human Factors in Computing
+Systems, CHI ’02, pages 113–120, New York, NY, USA,
+2002. ACM.
+J. Rosell, J. Colominas, P. Riu, R. Pallas-Areny, and
+J. Webster. Skin impedace from 1 Hz to 1 MHz. IEEE
+Transactions on Biomedical Engineering, 35(8):649–651,
+August 2002.
+M. Sato, I. Poupyrev, and C. Harrison. Touché: enhancing
+touch interaction on humans, screens, liquids, and everyday
+objects. In Proceedings of the SIGCHI Conference on
+Human Factors in Computing Systems, CHI ’12, pages
+483–492, New York, NY, USA, 2012. ACM.
+SCENIHR. Possible effects of Electromagnetic Fields (EMF)
+on Human Health, 2007.
+S. K. Sinha and A. Dhua. Energy Sources in Neonatal
+Surgery: Principles and Practice. Journal of Neonatal
+Surgery, 3(2)(17), April 2014.
+A. Spielberg, A. Sample, S. E. Hudson, J. Mankoff, and
+J. McCann. RapID: A Framework for Fabricating
+Low-Latency Interactive Objects with RFID Tags. In
+Proceedings of the 2016 CHI Conference on Human Factors
+in Computing Systems, CHI ’16, pages 5897–5908, New
+York, NY, USA, 2016. ACM.
+T. Starner. Human-powered wearable computing. IBM
+Systems Journal, 35(3-4):618–629, 1996.
+E. Tamaki, T. Miyaki, and J. Rekimoto. PossessedHand:
+techniques for controlling human hands using electrical
+muscles stimuli. In Proceedings of the SIGCHI Conference
+on Human Factors in Computing Systems, CHI ’11, pages
+543–552, New York, NY, USA, 2011. ACM.
+N. Villar and S. Hodges. The peppermill: a human-powered
+user interface device. In Proceedings of the fourth
+international conference on Tangible, embedded, and
+embodied interaction, TEI ’10, pages 29–32, New York, NY,
+USA, 2010. ACM.
+M. Weigel, T. Lu, G. Bailly, A. Oulasvirta, C. Majida, and
+J. Steimle. iSkin: Flexible, Stretchable and Visually
+Customizable On-Body Touch Sensors for Mobile
+Computing. In Proceedings of the 33rd Annual ACM
+Conference on Human Factors in Computing Systems, CHI
+’15, pages 2991–3000, New York, NY, USA, 2015. ACM.
+P. Worgan, J. Knibbe, M. Fraser, and D. Martinez, Plasenicia.
+PowerShake: Power Transfer Interactions for Mobile
+Devices. In Proceedings of the 2016 CHI Conference on
+Human Factors in Computing Systems, CHI ’16, pages
+4734–4745, New York, NY, USA, 2016. ACM.
+T. Yokota, P. Zalar, M. Kaltenbrunner, H. Jinno,
+
+N. Matsuhisa, H. Kitanosako, Y. Tachibana, W. Yukita,
+M. Koizumi, and T. Someya. Ultraflexible organic photonic
+skin. Science Advances, 2(4), April 2016.
+[49] Y. Zhang and C. Harrison. Tomo: Wearable, Low-Cost
+Electrical Impedance Tomography for Hand Gesture
+Recognition. In Proceedings of the 28th Annual ACM
+Symposium on User Interface Software and Technology,
+UIST ’15, pages 167–173, New York, NY, USA, 2015.
+ACM.
+[50] T. G. Zimmerman. Personal Area Networks: Near-field
+intrabody communication. IBM Systems Journal, 35(3,
+4):609–617, 1996.
+
+
