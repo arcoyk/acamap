@@ -1,0 +1,700 @@
+MoveMe: 3D Haptic Support for a Musical Instrument
+Katsuya Fujii
+Sophia S Russo
+MIT Media Lab
+MIT
+The University of Tokyo Cambridge, USA
+Tokyo, Japan
+ssrusso@mit.edu
+katauyaf@media.mit.edu
+
+Pattie Maes
+Jun Rekimoto
+MIT Media Lab
+The University of Tokyo
+Cambridge, USA
+Tokyo, Japan
+pattie@media.mit.edu
+rekimoto@acm.org
+
+Figure 1 (a) Theremin (b) The system connects an expert and a beginner via two haptic robots.
+(c) An expert can pre-record his/her movements so that a beginner can play it back later as necessary.
+ABSTRACT
+
+INTRODUCTION
+
+Fine motor skills like finger/hand manipulations are
+essential for playing musical instruments and these skills
+require a great amount of time and effort to acquire.
+Researchers have been introducing haptic feedback
+systems in order to facilitate the process of learning motor
+skills but little research has expanded the possibility of
+applying to the field of musical instruments. Hence, we
+developed a system called “MoveMe” that provides threedimensional haptic support for playing a musical
+instrument. The system guides a user’s hands as if
+someone else was holding their hands to help a beginner
+play a musical instrument. With the system, an expert can
+pre-record his/her movements so that a beginner can play
+it back later as necessary. Alternatively, the system
+connects an expert and a beginner via two haptic robots
+and the expert can, in real time, guide and correct the
+beginner’s movement. In addition to those functionalities,
+we introduce a new proficiency metric provided by force
+feedback. A master can evaluate how much a beginner
+has improved using both audio feedback as well as this
+new force-based metric. Through the experiments that we
+conducted, we found that our system is effective in terms
+of playing a song at a correct speed and rhythm.
+
+Playing musical instruments utilizes kinesthetic learning
+skills that require a great amount of time and effort to
+acquire. Kinesthetic haptic interfaces are haptic interfaces
+that exert controlled forces on the human body to train
+motor skills, and they have proved to be efficient in
+teaching skills in such fields as surgery, assembly or
+rehabilitation [1]. Generally, the motor skills controlled
+by this type of system are finger- or hand-manipulation.
+Several research projects have been conducted with these
+movements in mind, not only for musical instruments, but
+also for artistic disciplines such as drawing or sculpting
+[5][6].
+
+AUTHOR KEYWORDS
+
+Haptic, hand manipulation, music, learning, remote
+teaching
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that
+copies bear this notice and the full citation on the first page. Copyrights
+for components of this work owned by others than ACM must be
+honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior
+specific permission and/or a fee. Request permissions
+from Permissions@acm.org. ACE '15, November 16-19, 2015, Iskandar,
+Malaysia
+© 2015 ACM. ISBN 978-1-4503-3852-3/15/11 $15.00
+DOI: http://dx.doi.org/10.1145/2832932.2832947
+
+In the field of musical instruments, vibration feedback or
+electrical stimuli to the muscles around the forearm is
+commonly utilized for manipulating finger movements
+programmatically [2][3]. Those systems allow users to
+play melodies with no previous experience in playing a
+musical instrument. Like the research above, most of the
+research has been focusing on finger-manipulation,
+despite the fact that hand manipulation is as important as
+finger manipulation in playing musical instruments.
+Musical instruments have several factors that make it
+uniquely inappropriate for currently existing projects to
+be applied to them. For example, playing musical
+instruments requires continuous movements, unlike object
+manipulations that can be executed in step-by-step
+processes. Performing a song relies on playing sets of
+shifting notes, and the way you shift from one note to
+another can dramatically change the atmosphere of the
+song. Additionally, the output from musical instruments is
+audial, which means timing, rhythm and other real-time
+properties should be taken into account.
+
+Talkegwa et al took a similar approach [4][19]. Xiao
+developed MirroFugure [8], a system that shows video of
+full-scaled physical hands shown in situ at the keyboard
+and Andante [9], a representation of music as animated
+characters walking along the piano keyboard appearing to
+play the physical keys with each step. Some systems are
+even commercially available [10]. Haptic detents provide
+the augmented interface for the theremin so that the
+musician can feel the locations of equal tempered pitch,
+which provide improved accuracy in pitch selection [11].
+SYSTEM CONFIGURATION
+Figure 2 System Configuration for MoveMe
+(a. Top view, b. Front view)
+
+In this paper, we propose a 3D hand manipulation system
+called “MoveMe” focusing specifically on the use of hand
+manipulation in playing a musical instrument. (Figure
+1,2) With the system, an expert can pre-record his
+movements so that beginners can play it back later as
+necessary. Additionally, the system connects an expert
+and a beginner via two haptic robots and the expert can, in
+real time, guide and correct the beginner’s movements.
+We then introduce a new proficiency metric provided by
+force feedback. A master can evaluate how much a
+beginner has improved using both audio feedback as well
+as this new force-based metric.
+RELATED WORK
+
+Here are some several projects that focus on hand
+manipulation. Also, we look into supporting systems for a
+musical instrument.
+Hand Manipulation
+
+Providing a physical force is not the only way to support
+hand manipulations. For decades, augmented reality has
+been used to provide rich visual contents that support
+some tasks, including hand manipulations [12]. While not
+visual, haptic feedback is often used for hand
+manipulation by stimulating different nerves and
+receptors in the user’s skin, including free and sensory
+hair nerves as well as receptors for cold, heat, touch,
+pressure, and pain [13][14]. Researchers compared those
+haptic feedback approaches in order to find out the
+efficiency of each [15][16] Recent projects include
+SPIDAR-8, which is a system for implementing direct,
+two-handed, multi-finger manipulations in a virtual world
+[7]. Affordance++ stimulates the user’s arm with
+electricity and allows objects not only to allow the user
+actuate them but also perform required movements [17].
+Support System for Musical Instruments
+
+Several projects have been conducted in order to enhance
+instrument learning, in which visual representations are a
+common approach. One recent project is P.I.A.N.O, an
+interactive projected augmentation system in which users
+can see block graphics colored to represent fingering.
+
+Our system aims to explore the possibility of a haptic
+support system for playing a musical instrument,
+specifically focusing on hand manipulation. In order to
+implement the first proof-of-concept prototype, we chose
+the theremin, a musical instrument that a musician plays
+by moving his hands in the air to manipulate an
+electromagnetic field. Thus, correct hand manipulations
+are critical in order to make a proper sound. Additionally,
+as theremins work by producing an electromagnetic field
+that could get disrupted by the proximity of additional
+people, a teacher cannot get close to a theremin when
+teaching a beginner. A haptic device can be utilized in
+this case, as it minimizes interference with the
+electromagnetic field. As for haptic feedback, we adopted
+a physical force feedback that mechanically moves the
+user’s hands rather than vibro-tactile feedback or
+electrical muscle stimulation that might be too vague in
+terms of providing support for hand manipulation.
+Theremin
+
+The theremin is an electrical music instrument which
+creates a unique sound by detecting user's hand position.
+It contains two metal antennas, the distance from one
+antenna determines the pitch and the distance from other
+the controls volume.
+Theremins emit electromagnetic fields around two
+antennae and sense the proximity of the user's hand.
+Inexperienced players often produce earsplitting blats and
+squawks as they don't have any visual cues, such as those
+they would get from pianos or guitars. More specifically,
+pianos and guitars have keys and frets, respectively, that
+provide haptic sensation and each position on the
+instrument has designated sound. Novices can practice by
+visually confirming their finger position which helps
+drive them to perform the correct movements. This is not
+the case for the theremin as there is no physical contact
+with the instrument.
+A great player must possess a good ear, fine muscle
+control and ample coordination. Also, as a theremin is
+affected by ambient temperature or capacitive
+environments which cause the electronics inside to
+change, it is hard to achieve the same tuning unless you
+re-adjust the pitch correction every time you play.
+
+Figure 3 (a) User’s hand can be easily attached to the device.
+(b) Pre-recording a master’s movement.
+Phantom Haptic
+
+We used a Phantom haptic interface by SensAble
+Technologies [18]. The device includes a robot arm with a
+stylus pen connected to its end. The device measures hand
+movement caused by pivoting at wrist by providing the
+position of the stylus in x, y, and z coordinates. It is
+capable of measuring the stylus position with a resolution
+of less than 0.005mm at a speed of 1kHz. The workspace
+is 60 width x 120 height x 70 depth mm. A user of this
+system wears gloves attached to the stylus pen of the
+Phantom Device and the stylus pen can be easily attached
+to the device. (Figure 3). We aimed to design this in such
+a way that users do not have to spend a long time to learn
+how to use this system, so the system’s movements
+closely resemble natural hand motions.
+Force Feedback
+
+The system gets inputs of the current position of the
+device (Ci) and a target position (Ti) at time i (i = 0...k) in
+1kHz . At N times, the system calculates difference (Di)
+between Ci and Ti.
+!! = !! , !! , !! !(! = 0. . !)
+
+(1)
+
+!! = !! , !! , !! !(! = 0. . !)
+
+(2)
+
+!! = !! − !!
+
+(3)
+
+Force feedback is calculated using a standard force spring
+model and a user can define the value of multiplier setting
+the parameters in the external GUI. The calculated force
+is used as parameters to move motors of the device.
+!! = !!×!!!
+
+(4)
+
+Figure 4 shows the hand movements in Cartesian
+coordinates (x and y). We first recorded a hand movement
+of a user drawing a square in two-dimensional mid-air
+space and this movement set as target positions. Then we
+played it back so that another user can draw the same
+square feeling the haptic feedback calculated with the
+equation mentioned above. The maximum error was
+4.43(mm).
+
+Figure 4 Accuracy evaluation of the playback
+
+We then measured the maximum force in threedimension. The result was 1.3N, 1.48N, 1.86N for x, y,
+and z in Cartesian coordinates respectively. This is the
+necessary force that users need when they want to reject
+the support from the master at the maximum. In other
+words, the users can override the feedback from the
+master if necessary.
+Force-Based Proficiency Metric
+
+The more similarly the beginner plays to the master, the
+less force feedback the beginner feels because he no
+longer requires adjustment by the master. By looking at
+the change in force feedback, we can create a numerical
+learning metric that shows how correctly the beginner is
+playing.
+
+Figure 5 Force feedback can be used as proficiency metric
+
+Figure 5 shows the same movements as the accuracy test
+above. But we intentionally added one movement that
+rejected the guide. We can see that the extra force is
+provided in order to get the beginner’s movement to the
+correct positions.
+By combining audial feedback, we can make it more
+efficient for a master to teach a beginner. This can also be
+used by a beginner to see, numerically, how much he has
+improved.
+
+Figure 6 System Configuration of Record-Playback System
+
+Figure 7 System Configuration of Remote-Teaching System
+
+FUNCTIONALITY
+
+With the implementation above, we created two different
+modes the system: Record-Playback and RemoteTeaching.
+Record-Playback System
+
+An important aspect of musical learning is practice and,
+by extension, repetition. The haptic system we developed
+allows a teacher to record his movements so that a student
+can playback the sequence as many times as he might
+desire and learn from a consistent set of motions. (Figure
+6) By placing the coordinates of the device in a queue
+every millisecond, the motions of the master can be
+replayed with high fidelity at a later point in time.
+Given the same type of device, the same sequence can be
+replayed on every device, thus expanding the lesson
+setting from an individual session to one closer
+resembling a classroom. Alternatively, our interface
+allows the teacher to record different sets of motions on
+different devices, which reincorporates the ideas behind
+one-on-one teaching into the wider classroom.
+Remote-Teaching System
+
+The two devices can communicate with each other and an
+external graphical user interface over a UDP connection.
+(Figure 7) Over this connection, the two devices can
+synchronize their movements and positions and this
+synchronicity can be adjusted according to parameters set
+in the external GUI. (Figure 8) Our system supports
+bidirectional force feedback. In other words, not only can
+a beginner feel what a master is doing, but the master can
+also feel what the beginner is doing. By changing the
+value of multiplier, the beginner may also change how
+much he wants to feel the feedback from the master.
+
+Figure 8 (a) Two devices are synchronized over UDP
+connection (b) Scaling functionality (c) Offset functionality (d)
+Graphical User Interface of the system.
+Remote Teaching in Real-Time
+
+One device guides the movements of the other and force
+parameters can be adjusted so that the guided device feels
+the instructions of the teaching device more or less
+strongly, thus allowing the student less or more freedom
+(respectively) to make his own motions. Conversely, the
+guided device’s parameters may be adjusted to allow the
+teacher to feel more or less of the student’s movements.
+By adjusting the position scale between the two devices,
+the motions of one can reflect the amplified motions of
+the other; for example, moving a device one inch to the
+right could make the other move two inches to the right.
+This allows a student the chance to appreciate even subtle
+movements by first feeling them in an amplified manner.
+The position of the devices is given in three-dimensional
+Cartesian space. By implementing the ability to offset one
+device’s motion a set quantity (in terms of x, y, and z)
+from the other, a master can adjust a pitch of the other
+device in case the tunings of two devices are different. In
+case of theremin, pitches might be different even at the
+same coordinates due to the surrounding environment that
+affects the electromagnetic field.
+Furthermore, with the offset functionality, the two devices
+can become more than the sum of their parts. In the case
+of the theremin, offsetting one device from the other can
+
+allow the two to play in harmony, thus adding another
+aspect—that of collaboration—to a student’s education.
+EXPERIMENTS
+
+In this section, we explored the possibility of using haptic
+feedback for a musical instrument.
+Record-Playback
+
+In 2002 work by Feygin looked at learning motor skills
+with haptic feedback, and they found that visual training
+was better for teaching the trajectory shape whereas
+temporal aspects of the task were more effectively learned
+from haptic guidance. [20] Therefore in this experiment,
+we compare the effectiveness of haptic feedback to visual
+feedback, as applied to playing a musical instrument. The
+participants of this experiment consist of 3 males (21, 25
+and 32 years old) and 2 females (20 and 25 years old).
+None of the participants play musical instruments on a
+daily basis nor have they taken any serious lessons of
+musical instruments. They were asked to play different
+notes in series and they received three different feedbacks
+during the experiments: visual, haptic and visual-haptic
+(Figure 9). Haptic feedback is provided by a master's hand
+movements. We randomized the order of the feedback
+depending on the participants in order to get rid of
+“getting used to” results.
+
+Figure 9 Comparison of visual, haptic and visual-haptic
+
+For visual feedback, we used a pitch detector, which is
+commonly used for practicing musical instruments. The
+pitch detector could detect 12 different pitches (C note to
+B note) as the participants played and the note was
+projected on a display as shown in Figure 9. The
+experiment was conducted twice and we recorded
+novice's hand movement in x, y, z and compared the
+result with the master's hand movement.
+Result
+
+Figure 10 shows the result of experiments with visual,
+haptic and visual-haptic feedback respectively for each
+participant with the comparison of the master movements
+in x coordinate.
+
+Figure 10 The tests done with the haptic feedback (including visual-haptic) resulted in superior results compared to the tests done
+with only visual feedback.
+
+Figure 11 Force feedback that the participant 1
+received during the experiment Test 1
+
+The tests done with the haptic feedback (including visualhaptic) resulted in superior to the tests done with only
+visual feedback. In terms of hitting the correct notes, the
+tests done with visual also resulted correctly.
+Interestingly, some participants said that they didn’t know
+if they should move their hands to the right or left, and
+that made them take several seconds until they hit the
+correct note. Even though they could hit the correct notes,
+the timing and speed deviated from the original tune,
+whereas the haptic feedback allowed users to copy all of
+the movements, such as shifting from one note to another,
+correctly. This is extremely important when playing a
+musical instrument as the way one shifts between notes
+can dictate a wide variety of sounds. The visual-haptic
+support resulted slightly better than the haptic-only
+support. Figure 11 shows the force feedback that the
+participant1 (female participant) was getting during the
+experiment Test1 with the visual-haptic support and the
+visual-only support. Force feedback was provided when
+she shifted from one note to another. When she got closer
+to the point, we can see that she felt slightly stronger
+adjustment at the first and the last notes when guided by
+the haptic-only system. This metric makes it possible to
+evaluate their improvement in hand manipulations.
+Remote-Teaching
+
+In addition to the experiment above, we asked a master
+with 3 years of experience in playing a theremin to play
+"Happy Birthday Song". (Figure 12) First we asked a
+beginner (a 25 year old who had never played the
+theremin before) to practice the song for 20 minutes. We
+recorded
+his
+hand
+movements
+in
+Cartesian
+coordinates. Second, the master taught the beginner via
+the remotely connected haptic devices and we gave them
+another 20 minutes of practice. We compared the hand
+movements of before and after practicing. We conducted
+these two experiments in different days (the second
+experiment was conducted a week later of the first
+experiment day) in order to make it clear whether the
+training itself had an effect or whether participants got
+more practice in a given condition.
+
+Figure 12 A master teaches a beginner how to play a song
+
+Result
+
+Figure 13 shows the hand movements of the beginner
+playing the song after 20 minutes of self-practicing and
+with the Remote-Teaching system. When he first started
+practicing, he tended to ignore the visual tuning display
+and kept playing the song with incorrect pitches.
+
+Figure 13 Remote-Teaching system helped a beginner learn
+effectively
+
+After a few minutes, he began to use feedback from the
+pitch detector. Repeating this routine ended up being
+inefficient since the sound feedback he received
+sometimes contained incorrect sounds. After 20 minutes
+of practice, the sounds he created remained mismatched
+to the original melody. The tempo and rhythm were
+likewise different from the master’s song.
+On the other hand, in Remote-Teaching system, the
+master kept asking the beginner to adjust the tuning and
+hit the first note correctly (in the case of “Happy Birthday
+Song”, the first note is C) throughout the whole
+experiment. This allowed the beginner to get a correct
+feedback and he modification of the movements were
+made notes by notes. As a result, the beginner could play
+the similar pitch with more correct rhythm.
+
+MOVEME AS A LEARNING SYSTEM
+
+The system is capable of letting a user perform a song,
+even for the first time trial. Self-achievement is always a
+pleasure and thus encourages a beginner to continue
+practicing.
+It is important to mention that our system is very effective
+when it comes to practicing a theremin, as pitch is created
+by changing the emitted electromagnetic field with one’s
+hand. Thus, it is not appropriate for a master to step in
+since it might affect the field generated by the instrument.
+With our system, the master can teach remotely or the
+beginner can use the pre-recorded movements of the
+master to play.
+As to “learning” in general, we can design a learning
+routine using MoveMe. (Figure 14) We assume that the
+Record-Playback mode can allow a user to learn how he
+should move his hand. Through the experiment, we found
+that people with no experience in playing a musical
+instrument cannot tell whether they should move their
+hand to right or left in order to shift from one note to
+another. This functionality would help people learn in
+what direction and roughly how far they should move
+their hand. We also found that people tend to ignore other
+forms of feedback when they receive guidance from the
+haptic device. This is possibly because it is too hard for
+users to pay attention to both haptic and audial feedback.
+As a future work, we plan to make our system more
+interactive so that the system can give them information
+that would encourage them to adjust the tuning.
+
+DISCUSSION AND FUTURE WORK
+Technical limitations
+
+In order to pursue the scalability of our system, we need
+to take into account some technical limitations that We
+aim to as we explore further research.
+Comparison with other types of feedback
+
+As the first prototype, our system adopted Phantom
+Haptic, which is only capable of providing x, y, and z
+positions and cannot provide pitch, roll and yaw
+parameters. In this paper, we found out that our system is
+effective in terms of hand manipulation for shifting from
+one point to another. This appears to be an advantage
+compared to other types of feedback such as vibro-tactile
+feedback, which does not provide such clear instructions
+in terms of direction. In the future, we would like to
+explore subtlety in hand movements including rotation
+angels and conduct further experiments to compare other
+types of feedback in several conditions.
+Connectivity between two haptic devices
+
+Our system allows a master to teach a beginner remotely
+via haptic devices. We adopted UDP protocol in localhost
+and we didn’t find any issues in terms of latency.
+However, in real-world applications where the connection
+would take place over other network areas we would
+likely have to take into account delays in connectivity.
+Considering the fact playing musical instruments requires
+a real-time feedback, this should be explored in detail.
+Other Musical instruments
+
+In this paper, we explored the possibility of using our
+system for 3D hand manipulation relevant to musical
+instruments. By combining our system with finger
+manipulation projects, we can expand the applications of
+the system. For example, with a finger manipulation
+system and a position detection system like motion
+capture cameras, the combined system can teach users
+how to properly hold a string on guitar or violin and our
+system can teach how to stroke. As a future work, we
+would like to improve our system and explore the
+possibility of applying our research to other musical
+instruments.
+CONCLUSION
+
+Figure 14 Design of learning routing using MoveMe
+
+We believe that the Remote-Teaching can be effective for
+learning musical instruments. This mode is an extension
+of the conventional “hand in hand” system. In our
+experiment, the master kept asking the beginner to adjust
+the tuning and hit each note throughout the whole
+experiment. Every time the beginner hit next note, the
+master adjusted with sending a subtle haptic feedback. In
+this way, a beginner can get correct audio feedback as
+well as how he should move his hands.
+
+We developed a system called “MoveMe” that provides
+three-dimensional haptic support for playing a musical
+instrument. The system has two different modes, RecordPlayback and Remote-Teaching mode. In the RecordPlayback mode, an expert can pre-record his movements
+so that beginners can play it back later as necessary.
+Remote-Teaching mode connects an expert and a
+beginner via two haptic robots and the expert can, in real
+time, guide and correct the beginner’s movement. By
+looking at the change in force feedback, users can tell
+how much they have improved in via a numerical metric
+which we refer to as “Force-Based Proficiency Metric”.
+
+The master can use this metric in order to know how
+much the beginner has improved. In the experiments, we
+found out that our system can help beginner to play a
+song at the correct speed and rhythm. When a beginner
+was connected with a master through this system, the
+beginner could practice a song more effectively than he
+could by practicing without the system. We then
+discussed the possibility of using our system as a learning
+method, which was followed by a description of the
+technical limitations. Further research is to be conducted
+in order to explore the full potential of the system.
+ACKNOWLEDGMENTS
+
+We thank all our supporting colleagues at the MIT Media
+Lab and the Jun Rekimoto’s lab, who have provided us
+the insights and suggestions that enabled us to realize this
+project.
+REFERENCES
+
+[1] Guanyang Liu1, Keke Lu1, Yuru Zhang1 and
+Lingzhi Liu. 2013. Networked Haptic Interaction to
+Implement “Hand in Hand” Human Motor Skill Training
+for Tank Gunnery. In International Journal of Advanced
+Robotic Systems, ISSN 1729-8806
+[2] Kevin Huang, Thad Starner, Ellen Do, Gil Weiberg,
+Claas Ahlrichs, Ruediger. 2010. Mobile music touch:
+mobile tactile stimulation for passive learning. CHI '10
+Proceedings of the SIGCHI Conference on Human
+Factors in Computing Systems Pages 791-800
+
+computing systems(CHI EA '11). ACM, New York, NY,
+USA
+[9] Xiao Xiao, Basheer Tome, and Hiroshi Ishii. 2014.
+Andante: Walking Figures on the Piano Keyboard to
+Visualize Musical Motion. In Proceedings of the 14th
+International Conference on New Interfaces for Musical
+Expression (NIME ‘14).
+[10] Activision. Guitar hero. http://guitarhero.com/, 2013.
+[11] Using Haptics to Assist Performers in Making
+Gestures to a Musical Instrument (Edgar Berdahl, Günter
+Niemeyer, Julius O. Smith), In Proceedings of the
+International Conference on New Interfaces for Musical
+Expression (Noel Zahler, Roger B. Dannenberg, Tom
+Sullivan, eds.), 2009.
+[12] J. Amores, X. Benavides, P. Maes. ”ShowMe: A
+Remote Collaboration System that Supports Immersive
+Gestural Communication”. In CHI’15 Extended Abstracts
+on Human Factors in Computing Systems (2015). ACM.
+[13] Hick, C., and Hartmann, J. Intensivkurs Physiologie.
+Elsevier, Urban & Fischer, 2006.
+[14] Hagn, U., Ortmaier, T., Konietschke, R., Kubler,
+B.,Seibold, U., Tobergte, A., Nickl, M., Jorg, S., and
+Hirzinger, G. Telemanipulator for remote minimally
+invasive surgery. Robotics Automation Magazine, IEEE
+15, 4 (2008), 28–38.
+
+[3] Emi Tamaki, Takashi Miyaki, Jun Rekimoto. 2011.
+PossessedHand: a hand gesture manipulation system
+using electrical stimuli. Proceedings of the SIGCHI
+Conference on Human Factors in Computing Systems
+Pages 543-552
+
+[15] Max Pfeiffer,Stefan Schneegass,Florian Alt. Michael
+RohsLet me grab this: a comparison of EMS and
+vibration
+for
+haptic
+feedback
+in
+free-hand
+interaction.Proceeding AH '14 Proceedings of the 5th
+Augmented Human International Conference Article No.
+48
+
+[4] M. Weing, A. Ro ̈hlig, K. Rogers, J. Gugenheimer, F.
+Schaub, B. Ko ̈nings, E. Rukzio, and M. Weber. 2013.
+P.I.A.N.O.: Enhancing instrument learning via interactive
+projected augmentation. Proceedings of the 2013 ACM
+conference on Pervasive and ubiquitous computing
+adjunct publication.
+
+[16] Lehtinen, V., Oulasvirta, A., Salovaara, A., and
+Nurmi, P. Dynamic tactile guidance for visual search
+tasks. In Proceedings of the 25th annual ACM symposium
+on User interface software and technology, UIST ’12,
+ACM (New York, NY, USA, 2012), 445–452.
+
+[5] Zoran, Amit, R. S. S. N., and Paradiso, J. A. The
+hybrid artisans: A case study in smart tools. ACM Trans.
+Comput.-Hum. Interact, 21,3 (2013), 15.
+[6] Roy Shilkrot, Pattie Maes, A. Z. Physical painting
+with a digital airbrush. SIGGRAPH 2014 Emerging
+Technologies and Studio.
+[7] Katsuhito Akahane, Jungwoo Hyun, Itsuo
+Kumazawa, Makoto Sato. Two-Handed Multi-finger
+String-Based Haptic Interface SPIDAR-8. Springer Series
+on Touch and Haptic Systems 2013, pp 109-147
+[8] Xiao, X., and Ishii, H.
+MirrorFugue for Single User
+Performances. Proceedings of
+conference extended abstracts
+
+Duet for Solo Piano:
+Playing with Recorded
+the 30th international
+on Human factors in
+
+[17] Pedro Lopes, Patrik Jonell, and Patrick Baudisch.
+Affordance++: allowing objects to communicate dynamic
+use. Proceedings of the 33rd Annual ACM Conference on
+Human Factors in Computing Systems Pages 2515-2524.
+[18] SensAble Technologies. http://geomagic.com/.
+[19] Takegawa, Y., Terada, T., and Tsukamoto, M.
+Design and Implementation of a Piano Practice Support
+System using a real-time Fingering Recognition
+Technique. Proceeding of International Computer Music
+Conference (ICMC2011), pp. 1--8 (Aug. 2011).
+[20] Feygin, Keehner, Tendick, “Haptic Guidance:
+Experimental Evaluation of a Haptic Training Method for
+a Perceptual Motor Skill”, Haptic Interfaces for Virtual
+Environment and Teleoperator Systems, 2002. HAPTICS
+2002. Proceedings. 10th Symposium on.
+
+

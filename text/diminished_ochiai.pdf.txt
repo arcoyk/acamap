@@ -1,0 +1,291 @@
+Diminished Haptics: Towards Digital
+Transformation of Real World Textures
+Yoichi Ochiai1,2(&), Takayuki Hoshi3, Jun Rekimoto1,4,
+and Masaya Takasaki5
+1
+
+Graduate School of Interdisciplinary Information Studies,
+University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-0033, Japan
+ochyai@me.com, rekimoto@acm.org
+2
+Japan Society for the Promotion of Science,
+6 Ichiban-cho, Chiyoda-ku, Tokyo 102-8471, Japan
+3
+Nagoya Institute of Technology,
+Gokisocho, Showa-ku, Nagoyashi, Aichi 466-855, Japan
+star@nitech.ac.jp
+4
+Sony CSL, 3-14-13 Higashigotanda, Shinagawa-ku,
+Tokyo 141-0022, Japan
+5
+Saitama University, 255 Shimo-Okubo, Sakura-ku,
+Saitama 338-8570, Japan
+masaya@mech.saitama-u.ac.jp
+
+Abstract. In this study, we develop and implement a method for transforming
+real-world textures. By applying a squeeze ﬁlm effect to real-world textures, we
+make haptic textures reduced. This method could transform real-world textures,
+e.g., from paper-like to metal-like, from wood-like to paper-like, and so on. The
+textures provided by this system are inherently high resolution because realworld textures are used instead of synthesized data. We implemented a system
+using a 28-kHz transducer. Evaluations were conducted using a three-axis
+accelerometer.
+Keywords: Diminished haptics  Real-world texture  Texture transformation 
+Ultrasonic
+
+1 Introduction
+The representation of texture is a major concern during fabrication and manufacture in
+many industries. Thus, the manner of fabricating everyday objects and the digital
+expression of their textures have become a popular research area [1]. It is not easy to
+change the texture of objects in the real world although it is easy in the digital world (i.e.
+just setting texture parameters). Recently, computer graphics are getting to be used in the
+real world. For example, digital fabrication technologies are employed widely from
+laboratories to consumer uses. The fabricated (3D-milled, 3D-printed, etc.) objects
+represent their speciﬁc textures. There are some methods to modify their textures after
+fabrication. For design and other industrial applications, it would be useful if the fabricated objects are malleable [2] like computer graphics in the digital world. In the
+© Springer-Verlag Berlin Heidelberg 2014
+M. Auvray and C. Duriez (Eds.): EuroHaptics 2014, Part I, LNCS 8618, pp. 409–417, 2014.
+DOI: 10.1007/978-3-662-44193-0_51
+
+410
+
+Y. Ochiai et al.
+
+Fig. 1. (Left) System overview (right) real material surfaces.
+
+human computer-interaction and graphics communities, the following concepts have
+been proposed: Programmable matter [3], radical atoms [4], etc. In the present study, we
+aim to transform the textures of real-world objects.
+Two steps are required to transform real-world textures. The ﬁrst step is to reduce
+the original texture and the second is to rewrite the texture. There are many different
+types of haptic textures in the real world and it is necessary to reduce them as preprocessing. It is then possible to rewrite the textures. In the present study, we focus on
+the ﬁrst step and we introduce a technique named “Diminished Haptics” (Fig. 1). This
+technique reduces the degrees of real-world haptic textures using ultrasonic vibration
+based on a squeeze ﬁlm effect [12].
+This paper is structured as follows. First, a brief overview and background were
+provided in the introduction. Then, related work and the principle are shown. Finally,
+the equipment used for the implementation and the results of experiments related to
+haptic textures are presented. This technology will facilitate new relationships between
+people and textures in the real world.
+
+2 Related Work
+There have been several related studies on haptic texture representation. One approach
+is wearable devices to provide additional vibration to users’ ﬁngers [11]. The other is
+haptic displays add haptic feedback on their smooth surfaces. The technologies
+employed in the latter approach include ultrasonic vibrations [5, 6] and electrostatic
+forces [7]. These technologies have been applied to trackpads [8], pointing devices [9],
+and augmented reality (AR) systems [10]. The ultrasonic technology utilizes a squeeze
+ﬁlm effect to reduce the friction of a ﬂat surface and reproduces the texture by modulating the ultrasonic vibration (as shown in Fig. 2, top). The electrostatic technology
+also adds textures to smooth surfaces.
+In the present study, we aim to achieve the opposite effect, i.e., we reduce the texture
+of a real material using a squeeze ﬁlm effect. We focus on the transformation of real
+textures and we employ a real material as the surface of haptic display (Fig. 2, bottom).
+We consider that the reduction process has an important role as a preprocessing step in
+
+Diminished Haptics: Towards Digital Transformation
+
+411
+
+Fig. 2. Basic idea (top) conventional studies (bottom) our approach.
+
+the transformation of real-world textures. Our approach is also applicable to other
+purposes such as increasing textures and expanding conventional technologies by
+reducing the original haptic textures.
+
+3 Design and Implementation
+Our approach aims to transform the haptic textures of real materials. In particular, our
+method transforms real textures by utilizing ultrasonic vibration. We employ ultrasonic
+vibration to reduce and erase the haptic textures of real-world objects based on the
+squeeze ﬁlm effect. Using our system, the texture obtained is inherently high resolution
+and the altered textures are felt without lateral movement of ﬁngers because real
+material has its own texture (Fig. 1, right). These features are different from those
+obtained using previous methods [5–8]. Figure 3 shows a diagram of our system, which
+has four components: The host computer, the resonance controller, the ultrasonic
+transducer, and real material textures. Users can touch the real material with their bare
+ﬁngers. The height of levitation by the squeeze ﬁlm effect is controlled to transform
+the textures. The process operates as follows. The computer sends a start signal to the
+controller, which adjusts the resonance frequency. Next, the controller generates the
+input signal to the transducer. The amplitude of the input signal determines the levitation height of the ﬁnger relative to the material surface based on the squeeze effect.
+We paste papers of various real textures (Fig. 1, right) onto a metallic plate that is
+acoustically coupled to the 28-kHz transducer. Resonance control (adjusting the
+
+412
+
+Y. Ochiai et al.
+
+Fig. 3. System components; computer, controller, 28-kHz transducer, and real material.
+
+Fig. 4. (Left) ﬁnger tracking, (right) image projection.
+
+frequency of the input signal) is necessary for this use because the resonance of
+transducer changes when user touches the transducer.
+In further applications, we also employ a projector, a camera, and other equipment.
+These are optional components which are connected to the computer for the application
+purpose (Fig. 3). A ﬁnger tracking system with a camera is shown in Fig. 4 (left).
+A camera (640 × 480 pixels) is set above the material’s surface. Because the ﬁnger
+moves only two-dimensionally, tracking with a binary image is enough to detect the
+ﬁnger position. Thanks to this ﬁnger-tracking, multiple textures can be provided on the
+same material by altering the ultrasonic vibration according to the ﬁnger position.
+In addition, a projector is set above the material’s surface, which projects an image onto
+the surface to transform the visual appearance of the material. By utilizing ultrasonic
+vibration and projection, our system can transform the real material in terms of haptic
+and visual characteristics.
+
+4 Evaluation
+In this section, we describe the experimental evaluation of our approach. Our evaluation involved a quantitative evaluation based on a three-axis accelerometer and
+interviews with subjects. First, we describe the experimental design and we provide an
+overview of the results, which are followed by a description of the quantitative evaluation and interviews.
+
+Diminished Haptics: Towards Digital Transformation
+
+413
+
+Fig. 5. Experiment overview: 3-axis accelerometer attached to the nail and ﬁnger trace the
+texture on the transducer.
+
+4.1
+
+Experimental Design and Results Overview
+
+To evaluate the reduction of the haptic texture, we focused on the high-frequency
+components of the ﬁnger vibration when a ﬁnger was traced on the surface. Using a
+three-axis accelerometer (KXR94-2050) attached to a ﬁngernail, we measured the
+degree of haptic texture reduction (as shown in Fig. 5). Graphs were obtained for the
+accelerometer in two states: transducer active (levitated) and inactive (not levitated),
+where the shapes of the graphs contained waves that exhibited changes in the high
+frequency components. When the transducer was inactive, the friction was not altered
+and the high frequency components of the graphs were evident. When the transducer
+was active, the friction was decreased and the high frequency components of the graphs
+were reduced.
+In this experiment, the area of the touch surface was 2 cm2 and the ﬁnger movement
+was regulated to 4 cm/s. The accelerometer could measure ±2 × g and the output data
+were captured using an oscilloscope.
+
+4.2
+
+Experimental Tests of Roughness and Levitation
+
+In these experiments, we investigated the reduction of haptic textures based on a
+quantitative evaluation. We used sandpaper as the surface. We cut sandpaper into
+pieces that measured 2 cm2 and pasted them onto the transducer. The sandpaper grades
+ranged from #600 (smooth) to #240 (rough), i.e., #600, #500, #400, #320, #280, and
+#240. The diameters of the particles on the sandpaper surfaces are shown in Table 1.
+The particles were attached to the surface of the sandpaper and their diameters
+determined the roughness of the sandpaper. We adjusted the output voltage from 0 V to
+40 V (5 V steps). The squeeze ﬁlm effect began to occur at 10 V. If the output exceeded
+40 V, the subjects felt heat on their ﬁnger. The graph obtained using the three-axis
+
+414
+
+Y. Ochiai et al.
+Table 1. Sandpaper number grades, diameters of particles, and bump height.
+
+Fig. 6. (Left) maximum value of acceleration #600 vs #400 vs #240 (right) RMS value of
+acceleration #600 vs #400 vs #240.
+
+accelerometer is shown in Fig. 6. The RMS and maximum value of acceleration were
+reduced with high amplitude.
+
+4.3
+
+Experiments Using Real Materials
+
+In these experiments, we investigated the reduction in the haptic textures of several
+materials: sticky plastic, rough paper, copy paper, metal, bumpy rubber, and doublesided tape. We cut the materials into pieces that measured 2 cm2 and pasted them onto
+the transducer (30 V RMS). Each subject traced the textures on the transducer with a
+ﬁnger. The three-axis accelerometer was attached to a ﬁngernail. The examples of the
+results are shown in Fig. 7. It is conﬁrmed that the textures are effectively reduced.
+
+4.4
+
+Human Factors
+
+Four subjects stated: “The texture changed,” “I did not feel vibration,” “The texture
+became smooth but it was slightly jagged,” “It is very high resolution,” etc. The
+ultrasonic vibration was sufﬁciently high frequency not to be detected by the human
+sensory system. If the squeeze ﬁlm was not sufﬁciently thick to levitate the ﬁnger, the
+subjects felt a jagged sensation from the tops of the geometry of rough materials. All
+subjects (age; 23, 26, 33, 41) recognized the texture transformation.
+
+Diminished Haptics: Towards Digital Transformation
+
+415
+
+Fig. 7. Results (30 V RMS) on several materials (left) rough paper, (center) plastic, (right)
+bumpy rubber.
+
+Fig. 8. Application: spatiotemporal control with projection.
+
+5 Application
+Examples of possible applications of the proposed method are as follows.
+1. Haptic transformation: The proposed method controls the magnitude of the texture
+using a squeeze ﬁlm effect. While the texture is eliminated when the squeeze ﬁlm is
+sufﬁciently thick, the texture is reduced when the squeeze ﬁlm is thinner than the
+height of the texture peaks.
+2. Spatiotemporal Control: The proposed method can provide multiple areas of different textures on the same material (Fig. 8) based on levitation control according to
+the ﬁnger position. Switching the squeeze ﬁlm effect can also provide additional
+textures on a real material.
+
+416
+
+Y. Ochiai et al.
+
+3. High resolution haptic texture: Real materials are employed and their textures are
+reduced in the proposed method, the presented textures are inherently high resolution. Additionally they can be felt from the onset of the touch (without lateral
+movement).
+4. Multimodal display: The proposed method can be combined with projection to
+provide visual and haptic textures at the same time (Fig. 8).
+
+6 Discussion, Conclusion, and Future Work
+In this study, we developed a method that allows the haptic transformation of real
+textures. This method reduces the haptic texture of a real material using the squeeze
+ﬁlm effect generated by ultrasonic vibration. We discussed several related methods that
+use ultrasonic haptic systems. Our approach is different from these approaches because
+it reduces the texture of surfaces. We also implemented and evaluated the proposed
+method. The textures generated by this method are inherently high resolution.
+We conducted evaluations using a three-axis accelerometer and we conﬁrmed that our
+prototype system operated successfully. In future research, we will apply this method to
+3D-printed objects by applying ultrasonic vibration at adequate frequency. Resonance
+analysis is needed because the resonance frequency is different depending on the shape
+of the object.
+
+References
+1. Hullin, M.B., Ihrke, I., Heidrich, W., Weyrich, T., Damberg, G., Fuchs, M.: State of the art
+in computational fabrication and display of material appearance. In: EUROGRAPHICS
+2013 Stateof-the-Art Report (STAR) (2013)
+2. Poupyrev, I., Nashida, T., Okabe, M.: Actuation and tangible user interfaces: the Vaucanson
+duck, robots, and shape displays. In: Proceedings of 1st International Conference on
+Tangible and Embedded Interaction (TEI ‘07) (2007)
+3. Goldstein, S.C., Campbell, J., Mowry, T.C.: Programmable matter. IEEE Comput. 38(8),
+99–101 (2005)
+4. Ishii, H., Lakatos, D., Bonanni, L., Labrune, J.B.: Radical atoms: beyond tangible bits,
+toward transformable materials. Interactions 19(1), 38–51 (2012)
+5. Biet, M., Casiez, G., Giraud, F., Lemaire-Semail, B.: Discrimination of virtual square
+gratings by dynamic touch on friction based tactile displays. In: Proceedings of 2008
+Symposium on Haptic Interfaces for Virtual Environment and Teleoperator Systems,
+pp. 41–48 (2008)
+6. Winﬁeld, L., Glassmire, J., Colgate, J.E., Peshkin, M.: T-PaD: tactile pattern display through
+variable friction reduction. In: Proceedings of Second Joint EuroHaptics Conference and
+Symposium on Haptic Interfaces for Virtual Environment and Teleoperator Systems,
+pp. 421–426 (2007)
+7. Bau, O., Poupyrev, I., Israr, A., Harrison, C.: TeslaTouch: electrovibration for touch
+surfaces. In: Proceedings of the 23rd Annual ACM Symposium on User Interface Software
+and Technology, pp. 283–292 (2010)
+
+Diminished Haptics: Towards Digital Transformation
+
+417
+
+8. Amberg, M., Giraud, F., Lemaire-Semail, B., Olivo, P., Casiez, G., Roussel, N.: STIMTAC,
+a tactile input device with programmable friction. In: Adjunct Proceedings UIST’11, pp. 7–8
+(2011)
+9. Casiez,G., Roussel, N., Vanbelleghem, R., Giraud, F.: Surfpad: riding towards targets on a
+squeeze ﬁlm effect. In: Proceedings of CHI’11, pp. 2491–2500 (2011)
+10. Bau, O., Poupyrev, I., Goc, M.L., Galliot, L., Glisson, M.: REVEL: tactile feedback
+technology for augmented reality. ACM Trans. Graph. 34(1), 89–100 (2012)
+11. Ando, H., Miki, T., Inami, M., Maeda, T.: SmartFinger: nail-mounted tactile display. In:
+Proceedings of ACM SIGGRAPH 2002, p. 78 (2002)
+12. Watanabe, T., Fukui, S.: A method for controlling tactile sensation of surface roughness
+using ultrasonic vibration. In: Proceedings of IEEE International Conference on Robotics
+and Automation, vol. 1, pp. 1134–1139 (1995)
+
+

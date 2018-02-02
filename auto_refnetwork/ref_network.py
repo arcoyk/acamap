@@ -1,18 +1,20 @@
 import os
 
 def get_references(text):
-  r = text.find('REFERENCE')
+  r = max(text.find('REFERENCE'), text.find('References'))
   return text[r:]
 
 def get_head(text):
   return text[:500]
 
 def validate(point):
-  p = point > 5
+  p = point > 2
   return p
 
 def skipwords(tar, skips):
-  return list(filter(lambda x:not x in skips, tar))
+  tar = list(filter(lambda x:not x in skips, tar))
+  tar = list(filter(lambda x:len(x) > 3, tar))
+  return tar
 
 def is_referenced(from_text, to_text):
   refs_words = get_references(from_text).split(' ')
@@ -23,6 +25,7 @@ def is_referenced(from_text, to_text):
   for rw in refs_words:
     if rw in tops_words:
       rst.append(rw)
+  print(rst)
   return validate(len(rst))
 
 def get_text(path):

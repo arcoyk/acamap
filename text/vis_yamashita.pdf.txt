@@ -1,0 +1,971 @@
+Visualizing Water Flows with Transparent Tracer Particles
+for a Surround-Screen Swimming Pool
+Shogo Yamashita
+
+The University of Tokyo
+Tokyo, Japan
+
+Xinlei Zhang
+
+The University of Tokyo
+Tokyo, Japan
+
+Shunichi Suwa
+
+The University of Tokyo
+Sony Computer Science
+Laboratories
+Tokyo, Japan
+
+Miyaki Takashi
+
+The University of Tokyo
+Tokyo, Japan
+
+Jun Rekimoto
+
+The University of Tokyo
+Sony Computer Science
+Laboratories
+Tokyo, Japan
+
+ABSTRACT
+A surround-screen swimming pool can realize various forms
+of underwater entertainment and enable enhanced swimming training with supplemental visual information during
+underwater activities. However, one of the big challenges
+for such an augmented swimming pool is user interaction
+because the surround screen and water can make existing
+position-tracking methods unusable. In this paper, we propose a water ﬂow visualization method with transparent
+tracer particles to enhance interactivity. We used an optical property of clear plastics called birefringence that provides vivid colors on transparent tracer particles when they
+are between two circular polarization sheets. Tracing objects using cameras in front of a complex background is not
+a stable method, but this technology enables visible tracer
+particles on a simple and dark background. For underwater
+entertainment, the water ﬂow tracing works as a user interface because the transparent tracer particles do not stop
+users from viewing the images on the screen. For enhanced
+swimming training, swimmers can view visualized water ﬂow
+caused by strokes in the augmented swimming pool. From
+the results of our stability evaluation of water ﬂow tracing,
+the proposed method is valid even for complex backgrounds.
+We also conducted a feasibility test of the enhanced swimming training. According to the trial, the tracing particles
+could visualize the water ﬂow caused by the strokes made
+by a swimmer.
+
+Keywords
+Swimming; Augmented Sports; Water Flow Visualization;
+Underwater Entertainment
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for proﬁt or commercial advantage and that copies bear this notice and the full citation on the ﬁrst page. Copyrights for components of this work owned by others than
+ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior speciﬁc permission
+and/or a fee. Request permissions from permissions@acm.org.
+
+AH ’17, March 16-18, 2017, Mountain View, CA, USA
+c 2017 ACM. ISBN 978-1-4503-4835-5/17/03. . . $15.00
+
+DOI: http://dx.doi.org/10.1145/3041164.3041171
+
+Figure 1: Surround-screen swimming pool for underwater entertainment and enhanced swimming
+training.
+
+1.
+
+INTRODUCTION
+
+Moderate exercise is useful in maintaining our physical
+ﬁtness. Swimming is a healthy activity widely enjoyed by
+many people. In general, people swim in a swimming pool,
+but it is sometimes problematic to stick to a workout routine.
+One of the reasons is that repeating the same activity in the
+same place tends to be dull. Swimming in a pool involves
+constantly repeating monotonous motions in less diversiﬁed
+scenery.
+Therefore, we introduced an augmented swimming pool
+where the entire view of the user is surrounded by synthetic
+images (Figure 1). With this conﬁguration, the user can
+enjoy a swimming experience as if he or she were swimming
+in a real sea with coral reefs. This conﬁguration can provide
+users with an enhanced swimming experience.
+To provide underwater entertainment, user interfaces to
+interact with the system are required. However, existing
+devices for this purpose (such as game controllers and visionbased sensors) are diﬃcult or impossible to use in a surroundscreen swimming pool [25]. Moreover, position tracking devices using Infrared (IR) are not functional owing to IR absorption by the water [6]. Devices using visible light do not
+work reliably in the surround-screen environment when displaying complex images [30].
+In this paper, we describe a polarization-based technique
+
+to put water ﬂow tracing in practice in the surround-screen
+swimming pool. This water ﬂow tracing technology enables
+a user interface for underwater entertainment. For example,
+the user is able to move computer-generated characters in
+the scene by water ﬂow. The user may also change the
+setting of the system by causing predetermined directions of
+water ﬂow in the swimming pool. In addition, for swimming
+training, swimmers can view visualized water ﬂow caused by
+strokes in the swimming pool.
+Water ﬂow tracing can be realized by using tracer particles
+scattered in the water [19]. Cameras track the movement of
+the particles in the water to measure the water ﬂow. However, tracer particles used in previous studies are not preferable for the augmented swimming pool because the particles
+stop users from viewing the content on screen. Therefore, we
+propose transparent plastics as tracer particles. The tracing particles show vivid colors on the surface when they are
+between two polarizing sheets. Thus, the particles enable
+water ﬂow tracing that does not interfere with the underwater entertainment.
+
+2.
+
+RELATED WORK
+
+Surround-screen environments are widely used for entertainment and collaboration in other research works. The
+Cave Automatic Virtual Environment is a surround-screen
+projection-based virtual reality environment [7, 31]. There
+were several attempts using this system to enhance product
+development [9, 15] and games [13]. Therefore, it is known
+that a surround-screen environment can enhance the entertainment experience and improve the eﬃciency of learning.
+However, the capability of this environment in the water
+has not been studied. In this research, we introduce an underwater surround-screen swimming pool and evaluate its
+capability.
+The AquaTop Display enables underwater entertainment
+by detecting the user’s body movement in a bath [17], but
+this system cannot be used as a swimming training environment because the water must be white to display images
+from a projector on the water surface.
+Morales proposed a system with a hand-held augmented
+reality display for supporting divers [20]. Ukai et al. proposed a swimming support system using an underwater robot
+that swims with a user and shows information via an attached underwater display [29]. This might be useful for
+swimming training. However, these displays are mainly used
+for providing information, and the size of the display is limited. For this reason, it is still diﬃcult to cover a users’
+entire view as in the case of entertainment.
+For ﬂuid measurement, tracer particles or tufts [12] are
+widely used. Fluid visualization methods such as Particle
+Image Velocimetry [1] and Laser Doppler Velocimetry [14]
+use lasers to illuminate the measurement environment to
+make the particles visible. These methods are not suitable for the surround-screen environment because the illumination itself and visible tracer particles interfere with the
+user’s ability to view the screens. Therefore, we introduce a
+method to provide a clear view and achieve water ﬂow visualization using lights only from screens. PhotoelasticTouch
+achieves a user interface in front of a display using the photoelastic eﬀects of soft plastics [26, 24]. A user grabs a lump
+of clear and soft plastic with his or her ﬁngers and places it
+in front of a display. The system detects the user’s pinches
+and the positions by measuring the changes in the polar-
+
+ization property of the plastic. However, this measurement
+method is unusable for tracing particles because the stress
+applied to the plastic is not caused by water.
+There has been some research on swimming motion simulations [16, 5]. Motion simulation from actual captured data
+may enable water ﬂow estimation, but accurate motion capture is quite challenging in the surround-screen environment.
+There have been attempts to improve the eﬃciency of the
+swimming motion. Tan et al. proposed a system to improve
+the swimming form of an underwater robot ﬁsh by using
+water ﬂow visualization [27]. Nakashima et al. conducted
+research, using an underwater robot arm, on unsteady ﬂuid
+forces acting on limbs in swimming [23]. However, water ﬂow
+visualization in a swimming environment with humans has
+not been achieved. There exist several methods to measure
+swimming form using sensors such as wearable sensors [2]
+and underwater motion-capture systems [4]. Nevertheless,
+showing captured information to a swimmer in real time is
+still an issue because wireless communication between the
+device and a computer in water is quite challenging [21],
+and motion capture in a complex background is not always
+stable [30].
+
+Transparent tracer particles
+are scattered in a water tank 
+
+Transparent tracer particles
+do not stop users from
+viewing the images
+(a) Transparent tracer particles are distributed in a water tank in
+front of a screen coated with right circular polarizing sheets. 
+Visualized tracer particles
+
+Left circular polarizing sheet
+
+(b) Transparent tracer particles seen through a left circular
+polarizing sheets. The transparent tracer particles do not stop users
+from viewing the images on the screen, but are clearly visible for a
+camera for tracking.
+
+Figure 2: Transparent tracer particles in
+the water. The particles show vivid color
+when placed between tow polarizing sheets.
+This ﬁgure shows a result when the screen is
+coated with right-handed circular polarizing
+sheets. 1 .
+
+3.
+
+WATER FLOW TRACING WITH TRANSPARENT TRACER PARTICLES
+
+We implemented water ﬂow visualization and tracing technology for underwater entertainment and enhanced swimming training. To visualize the water ﬂow in a surroundscreen swimming pool, we scattered tracer particles in the
+water. The tracing particles were made of plastic and were
+transparent in the water. However, the tracing particles
+showed vivid color when we observed them in front of a
+right-handed circular polarizing sheet through a left-handed
+circular polarizing sheet. Simultaneously, the background
+images became dark owing to the light shielding caused by
+the combination of left- and right-handed circular polarizing sheets. This enables us to provide the user a constantly
+clear view of the displayed content in the pool, and stable
+visible-light-based water ﬂow tracing as user interfaces. Figure 2 (a) shows scattered transparent tracer particles in a
+water tank in front of a display coated with a right-handed
+circular polarizing sheet. Figure 2 (b) shows the visualized
+tracer particles by a left-handed circular polarizing sheet.
+
+3.1
+
+Figure 3: Scenery for underwater entertainment. The bottom and walls of the swimming pool display a computer-generated
+scene ﬁlled with coral reefs.
+
+User causing a water flow
+Transparent tracer particle 
+
+Surround-Screen Swimming Pool
+
+In a surround-screen swimming pool, a swimmer’s entire
+view is surrounded by a synthetic image. This environment
+has two main characteristics to enhance the swimming experience. One of the functions of the pool is to provide underwater entertainment. The user in the pool can enjoy the
+content displayed on the walls and/or bottom. For example,
+users can enjoy swimming in beautiful underwater scenery
+and can interact with aquatic life. Another characteristic is
+enhanced swimming training. The environment is helpful in
+improving swimming skills because the pool can show useful
+information to users, including the user’s swimming form or
+any sensing data in the pool.
+We prepared a prototype of the augmented swimming
+pool. The size of the swimming pool was 3m × 2m × 1m.
+Acrylic panels with a thickness of 3cm were used as the walls
+of the swimming pool. Each panel was coated with a rearprojection sheet, except for one side that remained uncoated
+in order to view the inside of the pool. We used six ultrashort throw projectors (RICOH PJ WX4141): three for the
+side panels and three for the bottom screen. A single Mac
+Pro with six Thunderbolt display ports was used to generate the images for the projectors. The inside of the pool was
+coated with circular polarizing sheets.
+
+3.1.1
+
+Virtual character of a jellyfish.
+(The character moves in accordance
+with a tracer particle in the water tank)
+
+Figure 4: A user causing a water ﬂow to interact with a virtual character of a jellyﬁsh.
+The character moves in accordance with a
+tracer particle in the water tank.2 .
+Visualized water flow
+produced by strokes
+
+User can view his/her own
+swimming form in real time
+
+Underwater Entertainment
+
+In the surround-screen swimming pool, swimmers can enjoy the surrounding scenery as if they were swimming in a
+real sea with coral reefs. Figure 3 shows the swimming pool
+displaying a computer-generated scene ﬁlled with coral reefs.
+Water ﬂow tracing technology enables a user interface for
+controlling the system and interactions with virtual characters for the underwater entertainment. For example, the
+user is able to move a computer-generated character by water ﬂow (Figure 4). The user may also change the setting
+of the system by causing predetermined directions of water
+ﬂow in the water.
+1
+The picture was taken by Greg Goebel.
+Photo title: False Clown Anemoneﬁsh, Scrips Birch Aquarium,
+La Jolla, California 2012
+License: CC BY-SA 2.0
+https://ﬂic.kr/p/dLAGyC
+
+Figure 5: Enhanced swimming training with
+visualized water ﬂow. A swimmer’s form
+is displayed on the bottom, and he/she
+can view his/her own swimming form in
+real time with the water ﬂow produced by
+strokes.
+
+3.1.2
+
+Enhanced Swimming Training
+
+Analyzing one’s own swimming form is important in improving swimming skills. However, it is not easy for a swim2
+
+Tsukamoto. http://www.wanpug.com/kitei.html
+
+mer or even a coach to correctly recognize swimming forms.
+In the augmented swimming pool, the swimmer can view
+an ideal swimming form and/or his/her swimming form displayed on the bottom and/or walls of the swimming pool.
+Water ﬂow visualization is helpful for swimming training because the swimmer can visually see the water current caused
+by his/her strokes in the swimming pool. By comparing the
+visualized water ﬂow and swimming form with those of a
+professional swimmer, a swimmer can learn how to swim
+more eﬃciently. Figure 5 shows a user swimming, with his
+own swimming form displayed on the bottom of the pool
+with visualized water ﬂows.
+
+3.2
+
+(a) Polystyrene tray seen
+without polarizing sheets
+
+(b) Polystyrene tray between a left
+circular polarizing sheet and a
+right circular polarizing sheet
+
+Transparent Tracer Particles
+
+We prepared two types of transparent particles. One type
+of particle consists of polystyrene pieces taken from trays
+widely used for packing foods. Tracer particles made of
+polystyrene sink in the water and are buoyed by a slight water ﬂow because the speciﬁc gravity of polystyrene is close
+to that of water. The other particles are polyethylene ﬁlms
+ﬂoating on the water.
+Photoelasticity eﬀects are seen on transparent plastics
+placed between two polarizing sheets [22, 10]. The eﬀects
+produce vivid colors in the transparent plastic, as shown in
+Figure 6. Photoelastic materials exhibit the property of double refraction upon the application of stresses at the time of
+manufacture. We used some parts of a polystyrene tray as
+one type of tracer particle to show this vivid color.
+Birefringence is an optical property of a material. Birefringence is formally deﬁned as the double refraction of light
+in transparent materials such as plastic ﬁlms for wrapping
+[11]. When the materials are placed between two polarization sheets, the clear materials exhibit vivid colors. Figure 7
+shows the setup for viewing the colored plastic ﬁlms. We prepared a polyethylene ﬁlm of 0.03-mm thickness and placed
+it between two linear polarizing sheets on a white backlight.
+Figure 8 shows the color on the transparent plastic ﬁlm. The
+left side of Figure 8 shows the ﬁlm placed between two linear
+polarizing sheets with parallel polarization angles, and the
+right side of Figure 8 shows those with orthogonal polarization angles. The ﬁlm shows diﬀerent colors depending on
+the polarization angles of the polarization sheets. We used
+the polyethylene ﬁlms as one type of tracer particle.
+
+3.3
+
+Left circular polarizing sheet 
+
+(c) Tracer particles made of Polystyrene are placed between left and
+right circular polarizing sheets. The particles are taken from the place
+surrounded by a red dot on Polystyrene trays. A White backlight for
+the display is placed under the sheets to take the picture.
+
+Figure 6: Photoelasticity eﬀects produce colors in
+transparent plastics placed between two polarizing
+sheets.
+Camera
+Plastic sheet
+
+Polarizing
+sheet
+(0° or 90°)
+
+Polarizing
+sheet (0°)
+
+Backlight
+
+Figure 7: Setup for showing vivid colors
+caused by birefringence.
+
+Difference between Linear and Circular
+Polarization
+
+Vivid colors are seen on plastic sheets between two polarization sheets. We used circular polarizing sheets instead of
+linear polarizing sheets in the pool.
+The reason is that the vivid color on plastic sheets disappears at certain angles between two linear polarizing sheets,
+as shown in Figure 9. However, vivid colors are always seen
+independent of the angles of plastic sheets between two circular polarizing sheets, as shown in Figure 10. For linear
+polarizing sheets, the plastic sheet becomes clear at 0◦ and
+90◦ . On the other hand, the plastic sheet remains colored
+between two circular polarizing sheets. When tracking the
+water ﬂow, the tracer particle must always be visible from
+the camera. Therefore, we used right-handed circular polarizing sheets in the pool and left-handed circular polarizing
+sheets for the cameras to track tracer particles placed above
+and/or in the pool.
+
+Figure 8: Polyethylene ﬁlm placed between
+two linear polarizing sheets with parallel polarization angles and orthogonal polarization
+angles.
+
+-45°
+
+-10°
+
+Image
+
+Polarizing Sheet
+
+Screen
+
+Tracer Particle
+
+(a)
+
+Without
+
+Visible
+
+Invisible
+
+(b)
+(c)
+
+Left Circular
+Right Circular
+
+Invisible
+Visible
+
+Visible
+Visible
+
+0°
+
+(a)
+
+10°
+
+45°
+
+(c)
+
+90°
+
+Figure 11: Relationship of visibility between
+types of polarizing sheets as seen by a camera, screens, and tracer particles when the
+screen is coated with right-handed circular
+polarization sheets.
+
+Figure 9: Colors on a polyethylene ﬁlm disappear at certain angles for linear polarizing
+sheets.
+
+-45°
+
+-10°
+
+0°
+
+10°
+
+45°
+
+90°
+
+Figure 10: Colors on polyethylene ﬁlm are
+always seem independent of the angles for
+circular polarizing sheets.
+
+3.4
+
+(b)
+
+Difference between Left- and Right-Handed
+Circular Polarization
+
+Figure 11 shows tracer particles in a water tank coated
+with a right-handed circular polarizing sheet, without polarizing sheets, through a left-hand circular polarizing sheet,
+and with a right-handed circular polarizing sheet.
+The situation shown in Figure 11 (a) provides a clear view
+of screens to users. The situation in Figure 11 (b) enables
+the stable tracking of tracer particles because bright tracer
+particles on a simple background are ideal for tracking objects. The inside of the pool is coated with right-handed
+circular polarizing sheets. Right-handed circularly polarized
+lights are shielded by left-handed circular polarizing sheets.
+In brief, the projected images seem dark if we mount a lefthanded circular polarization sheet on the lens of a camera.
+This conﬁguration enables stable water ﬂow tracing in environments with complex backgrounds.
+Both the screen and the tracer particles are visible in the
+situation of Figure 11 (c). The colors of the tracer particles
+become complementary colors when we change the circular polarizing sheet from left-handed to right-handed. By
+wearing goggles when using right-handed circular polarizing
+sheets, users can directly view visualized water ﬂows and images on the screen simultaneously. The colors of the tracer
+particles become complementary colors when we change the
+circular polarizing sheet from left-handed to right-handed.
+
+(a) Result of blob detection 
+
+(b) Result of optical flow 
+
+Figure 12: Tracer particles are traceable by using
+simple image processing such as blob detection and
+optical ﬂow.
+
+3.5
+
+Tracing Method
+
+To track the tracer particles ﬂoating in or on the water, we
+can use image processing such as optical ﬂow and blob detection [8]. Figure 12 (a) and (b) show the results of tracking
+blob detection and optical ﬂow, respectively. Tracer particles made of polystyrene move in accordance with the water
+ﬂows in the water tank. As backlights, we used a display
+showing a white image. Tracer particles are recognized as
+blobs and are traceable by using blob detection technology.
+We used a blob detection processing library for the test. The
+threshold value of luminosity was 0.5, which is the default
+value. The optical ﬂow can visualize the water ﬂow by tracing the movement of tracer particles ﬂoating in the water.
+To test the optical ﬂow approach, we used code for the optical ﬂow that was uploaded at openprocessing.com by Sid
+Gabriel Hubbard.
+We have to correct for the pincushion distortion when
+using a ﬂat-shaped underwater housing for a camera to track
+the particles in the water. Pincushion distortion is an eﬀect
+in the water that causes images to become pinched at the
+center. This distortion is seen in images taken in the water
+because of the diﬀerences in the refractive index between
+air and water [28]. A dome-shaped lens can correct the
+pincushion distortion optically [3]. Image-processing-based
+camera calibration [18] is also valid for this purpose.
+
+3.6
+
+Dependence on Background Images
+
+Figure 13 shows the changes in brightness depending on
+the color of the backlight. Figure 13 (a) shows the color of
+a tracer particle on a white backlight. The color is orange
+with a white background, which indicates the ﬁlm will pass
+through light with a wavelength of approximately 400 nm
+more than other colors. In other words, the tracing particle reduces the brightness with a blue backlight because
+blue is the complementary color of orange. Figure 13 (b)
+shows the same tracing particle with a blue background. The
+brightness is signiﬁcantly reduced in this case. However, the
+brightness increases with a red background, as shown in Figure 13 (b) because the wavelength is close to that of orange.
+Distorting the particles or using particles with the photoelasticity eﬀect can reduce the loss of traceable particles.
+Figure 14 shows a distorted tracing particle ﬂoating in a water tank with various colors of backlight. Figure 14 (a) shows
+the ﬁlm in front of a white backlight. With the distortion on
+the ﬁlm, other colors in addition to orange are seen on the
+tracer particle. This indicates the tracer particle is visible
+on a background with more colors. This enables the tracing of water ﬂow in complex scenes displayed on the screen
+in the pool. As shown in Figure 14 (b) and (c), diﬀerent
+parts of the tracer particle are bright on the blue and red
+backgrounds.
+The color changes in accordance with the distance that
+the polarized lights pass in the plastic. For example, our
+polyethylene sheet of 0.03 mm thickness shows orange color
+with a white background. If the thickness is approximately
+0.06 mm or 0.12 mm, the sheet shows yellow and green,
+respectively. This change in color occurs when the sheet
+is slanted in the horizontal direction, because the polarized
+lights pass more in the plastic in this case. For this reason,
+the distorted sheet shows multiple colors.
+
+3.7
+
+Transparency
+
+The transparency of tracer particles in the water depends
+on their material. The refractive index of water is 1.33. If
+the refractive index of the material is close to the water, the
+material is more transparent in the water (Figure 15). A
+tracing particle is visible on the surface of the water, but
+becomes mostly invisible in the water. This transparency
+also depends on the angles of the tracing particle in the
+water because the surface sometimes reﬂects the light from
+the background at certain angles, and the particle becomes
+visible at that time.
+
+3.7.2
+
+(c) Red backlight
+
+Figure 13: Change in brightness depending
+on color of background image.
+
+(a) White backlight
+
+(b) Blue backlight
+
+(c) Red backlight
+
+Figure 14: Distortion on the ﬁlm produces
+other colors in addition to the default color
+on the tracer particle. This enables the
+tracer particle to be traceable in more colors
+of background images.
+
+Tracer particle on the water
+
+Tracer particle in the water
+
+Differences by Material
+
+The characteristics of the tracer particles greatly depend
+on their material. Therefore, we describe several factors affecting water ﬂow visualization and tracking in this section.
+We prepared two types of tracer particles in this study. Distorted polyethylene ﬁlms ﬂoat on the water, and polystyrene
+ﬁlms sink in the water. Both tracer particles easily sink and
+ﬂoat in the water with a little water ﬂow. By combining
+these tracer particles, we can visualize water ﬂow on the
+surface of the water, and in the water near the bottom.
+
+3.7.1
+
+(a) White backlight (b) Blue backlight
+
+Flotation
+
+Several types of plastic can ﬂoat on the water surface. For
+example, tracer particles made of polyethylene ﬂoat on the
+water surface, yet sink into the water easily by the stroke of
+a user in the swimming pool. The ﬂotation depends on the
+
+Figure 15: Transparency of a tracer particle in the
+water and on the water.
+speciﬁc gravity of the material. The speciﬁc gravity of water
+is 1.00, and polyethylene is approximately 0.95. This means
+pure polyethylene ﬂoats on the water. The speciﬁc gravity
+of polystyrene is approximately 1.04, which indicates that it
+sinks in water. The tracer particles are buoyed by the water
+currents in the swimming pool.
+
+3.7.3
+
+Durability to Water
+
+We conducted a test to check the durability in water. As a
+result, some plastics changed color and transparency after an
+hour in the water. While polyethylene and polystyrene retained their transparency, ﬁlms made of oriented polypropylene quickly became whiter in the water.
+
+4.
+
+EVALUATION
+
+We evaluated the stability of water ﬂow tracking technology by using transparent tracer particles in the water
+with various types of background. Tracer particles having
+photoelasticity eﬀects were traceable with most of the backgrounds, including underwater video. However, the technology was not available with a dark background that had a
+
+scene of the universe.
+We also conducted a feasibility test of water ﬂow visualization for swimming training. Tracer particles made of
+polyethylene ﬂoating on the water were able to visualize the
+movement of the water near the water surface. Moreover,
+tracer particles made of polystyrene were able to visualize
+the water ﬂow in the water near the bottom. However, the
+water ﬂow in the middle of the water layer was barely seen
+by the tracer particles. To visualize water currents caused
+by strokes in the middle of the water via breaststrokes, more
+investigation into materials for tracer particles is required.
+
+4.1
+
+Threshold 0.5 (Default value) 
+(b) Green background
+
+(a) White background
+
+Stability Test of Water Flow Tracing
+Threshold 0.3 (To detect darker blobs) 
+
+4.1.1
+
+Experiment environment
+
+(c) Blue background
+
+We used a library named blobdetection for processing to
+trace the particles. We also limited the size of the detected
+blobs to around the size of the tracer particles. We distributed 10 pieces of tracing particles in a water tank ﬁlled
+with water to a depth of 5 cm. We put the water tank
+in front of a display. The screen was coated with a righthanded circular polarizing sheet on the screen to make the
+lights from the screen right-circularly polarized. A camera
+coated with a left-handed circular polarizing sheet was installed above the water tank to track the movement of the
+particles. We used a USB camera that snaps 30 images per
+second, and the ﬁeld of view was limited so the camera only
+captured the inside of the water tank. We caused water ﬂows
+in the water tank by moving a plate from the back (far) to
+the front (near). Two vortexes in opposite rotation to each
+other were observed on the left and right sides of the tank.
+
+4.1.2
+
+Figure 16: Results of blob detection for
+tracer particles having photoelasticity on
+single-color backgrounds.
+Darker parts
+
+Not traceable particles
+
+Figure 17: Tracer particles on a complex
+background showing an underwater scene.
+The tracer particles are recognizable, but
+darker places in the background reduced the
+traceability. 3 .
+
+Results
+
+Figure 16 shows the results of blob detection for tracer
+particles made of polystyrene with simple color backgrounds.
+Figure 16 (a), (b), (c), and (d) show the results with white,
+green, blue, and red backgrounds, respectively. We found
+that with the white and green backgrounds, the water ﬂow
+tracings were stable and there were no misdetections throughout the test. However, with the blue and red backgrounds,
+the tracer particles become darker, and we had to adjust the
+threshold for luminosity. We found that the detection rate
+depends on the angles of the particles. When the ﬂat surface of the tracer particle is close to horizontal orientation
+of the camera, the tracking system can track the particle.
+However, when the angle of a particle is close to a right angle, the tracking system loses the particles. The angles of
+the particles continued to change in the vortex. The tracking system was able to measure the direction and speed of
+the water ﬂow even though the tracing particles sometimes
+became untraceable.
+Figure 17 shows the results with underwater scenery. The
+tracer particles are traceable in most parts of the background, but become less traceable in the darker parts of the
+scene. This issue occurred with the background having an
+image of the universe, as shown in Figure 18. For this background, we were unable to trace the movement of particles
+using any threshold value for luminosity. When the value
+was adjusted to ﬁnd darker blobs, our setup started detecting bubbles as tracer particles. Distorted tracer particles
+made of polyethylene ﬁlm also showed similar characteristics to the particles made of polystyrene with photoelasticity
+eﬀects.
+
+(d) Red background
+
+Bubbles on the water
+
+Figure 18: Tracer particles on a dark background showing a universe scene. The tracer
+particles are not functional in front of a dark
+background. 4 .
+
+4.2
+
+Feasibility Test for Enhanced Swimming
+Training
+
+In this test, we asked two swimmers to swim in a swimming pool ﬁlled with tracing particles. One of the testers
+was a trained swimmer with more than 10 years of experience, and the other was an amateur swimmer. Figure 19
+3
+
+Image taken by John Smith.
+Photo title:
+Universe
+License:
+CC
+BY-SA
+2.0
+https://www.ﬂickr.com/photos/94908112@N07/8645017104
+4
+Image taken by Tetsuji Sakakibara. Photo title: 1412312 South Emma Reaf #2 6 License: CC BY-SA 2.0
+https://www.ﬂickr.com/photos/tetsuji0105/16435879016
+
+shows the test environment. More than 1,000 pieces of tracer
+particles made of polyethylene were scattered in the swimming pool. We put right-handed circular polarizing sheets
+on the bottom of the swimming pool. The swimming pool
+displayed a video of a swimmer on the bottom with a white
+background. To sustain the position of the user in the pool
+even after strokes, we asked the users to wear harnesses and
+to ﬁx the edge of the harness at a place outside of the pool,
+as shown in Figure 20. Users swam in the swimming pool using two types of swimming styles: breaststroke and freestyle.
+We found that the water ﬂow generated near the water surface was visualized by the stroke. However, with the ﬂoating
+tracer particles, visualizing the water ﬂow produced at the
+middle and bottom of the swimming pool by the breaststroke
+was not eﬃcient. The reason is that only a few particles sank
+in the water based on the swimming style. Tracer particles
+made of polystyrene sunk in the water. Therefore, the particles could move in the swimming pool in accordance with
+water ﬂows caused by strokes.
+
+5.
+
+Right circular polarizing sheets are on the
+bottom screens of the swimming pool
+
+Figure 19: Surround-screen swimming pool
+ﬁlled with tracer particles.
+Users swam in the swimming pool using two types
+of swimming styles: breaststroke and freestyle
+
+LIMITATIONS
+
+The transparent tracer particles have a ﬂat shape. The
+shape results in three issues. First, the tracking system
+sometimes loses the visualized particles when they are vertical because they look very thin in front of the camera for
+tracking. Second, ﬂat tracer particles become recognizable
+when they reﬂect light from the background. In addition,
+the particles tend to stick to the body of the swimmer, and
+thus may reduce the swimming experience.
+Ball-shaped tracer particles should solve these issues. Waterabsorptive polymers used for growing plants are shaped balls
+that become quite transparent in water without requiring reﬂection. With some stress on the surface, the plastic also
+shows the characteristic of photoelasticity. We suspect that
+ball-shaped tracer particles made of water-absorptive polymers can solve these issues.
+To visualize the water ﬂows caused by strokes, the tracing
+particles need to be in the middle of the water. We also
+have to invent materials that have a speciﬁc gravity closer
+to that of the water.
+Preparing a surround-screen swimming pool is quite expensive and time-consuming. For swimming training with
+visualized water ﬂow, we can put reﬂective plates as mirrors
+around the swimming pool. By emitting white light through
+a polarizing sheet to the plates in the pool, people wearing
+goggles coated with polarizing sheets can view the vivid colors of the tracer particles. A reﬂective object can maintain
+its polarization property when the lights are reﬂected. This
+enables the same situation as tracer particles placed between
+two polarizing sheets.
+Users might accidentally swallow the tracer particles in
+the water when they breathe. Therefore, wearing a face
+mask for swimming is advisable for the method. To avoid
+mechanical issues in the water circulation system of the
+swimming pool, placing sponges in the inlet port is recommended.
+
+6.
+
+More than 1,000 pieces of tracer particles made of
+polyethylene were scattered in the swimming pool
+
+CONCLUSION
+
+We introduced a surround-screen swimming pool ﬁlled
+with transparent tracer particles for water ﬂow visualization. The particles enable interactions in underwater entertainment by tracing the water ﬂow by a camera. Moreover,
+
+Harnesses to sustain the position of the user
+in the pool even after strokes
+
+Figure 20: Feasibility test using tracer particles for swimming training.
+
+for swimming training, users can view their swimming form
+displayed on the bottom via visualized water ﬂows caused
+by strokes in the swimming pool.
+According to our test for checking the stability of water
+ﬂow tracing, the tracer particles enable stable tracing even
+with complex backgrounds. However, the traceability decreased signiﬁcantly with darker backgrounds. We found
+that water ﬂow visualization caused by a swimmer’s strokes
+is also possible from the feasibility test. Nevertheless, the visualization of water movement in the middle of a swimming
+pool was not eﬃcient because the tracer particles tended
+to ﬂoat on the surface of the water or sink to the bottom.
+Further research on how to sustain the positions of tracer
+particles in the middle of the water is required for swimming training support.
+We used ﬂat-shaped tracer particles in this research. However, the shape of transparent tracer particles becomes visible in the water depending on their angles because of reﬂection. In addition, the particles always change their width
+and height in the images because of their shape. This situation makes stable tracing diﬃcult when using a camera. As a
+solution, we are planning to use ball-shaped tracer particles
+with birefringence.
+The reﬂective index of plastics such as polyethylene and
+polystyrene are closer to that of water than air, but are nevertheless diﬀerent. For this reason, the particles are not completely invisible to the user. We can use water-absorptive
+polymers as tracer particles to solve the issue. The material
+becomes invisible when placed in the water, and changes its
+polarization property when using two polarization sheets.
+
+7.
+
+REFERENCES
+
+[1] R. J. Adrian and J. Westerweel. Particle Image
+Velocimetry. Cambridge University Press, 2011.
+[2] M. Bächlin and G. Tröster. Swimming performance
+and technique evaluation with wearable acceleration
+sensors. Pervasive and Mobile Computing, 8(1):68–81,
+2012.
+[3] F. Bruno, G. Bianco, M. Muzzupappa, S. Barone, and
+A. Razionale. Experimentation of structured light and
+stereo vision for underwater 3D reconstruction. ISPRS
+Journal of Photogrammetry and Remote Sensing,
+66(4):508–518, 2011.
+[4] E. Ceseracciu, Z. Sawacha, S. Fantozzi, M. Cortesi,
+G. Gatta, S. Corazza, and C. Cobelli. Markerless
+analysis of front crawl swimming. Journal of
+biomechanics, 44(12):2236–2242, 2011.
+[5] R. C. Cohen, P. W. Cleary, and B. Mason.
+Simulations of human swimming using Smoothed
+Particle Hydrodynamics. In 7th International
+conference on CFD in the minerals and process
+industries, Melbourne, Australia, 2009.
+[6] D. Coker, J. Reimers, and R. Watts. The infrared
+absorption spectrum of water. Australian Journal of
+Physics, 35(5):623–638, 1982.
+[7] C. Cruz-Neira, D. J. Sandin, and T. A. DeFanti.
+Surround-screen projection-based virtual reality: the
+design and implementation of the CAVE. In
+Proceedings of the 20th annual conference on
+Computer graphics and interactive techniques, pages
+135–142. ACM, 1993.
+[8] R. Cucchiara, C. Grana, M. Piccardi, and A. Prati.
+Detecting moving objects, ghosts, and shadows in
+video streams. IEEE transactions on pattern analysis
+and machine intelligence, 25(10):1337–1342, 2003.
+[9] A. G. De Sa and G. Zachmann. Virtual reality as a
+tool for veriﬁcation of assembly and maintenance
+processes. Computers & Graphics, 23(3):389–403,
+1999.
+[10] V. N. Dubey and G. S. Grewal. Eﬃcacy of
+photoelasticity in developing whole-ﬁeld imaging
+sensors. Optics and Lasers in Engineering,
+48(3):288–294, 2010.
+[11] S. Edwards and A. Langley. On producing colours
+using birefringence property of transparent, colourless
+stretched cellophane. Leonardo, pages 187–190, 1981.
+[12] J. G. Hay and A. M. Thayer. Flow visualization of
+competitive swimming techniques: the tufts method.
+Journal of biomechanics, 22(1):1119–17, 1989.
+[13] J. Jacobson, M. Le Renard, J.-L. Lugrin, and
+M. Cavazza. The CaveUT system: immersive
+entertainment based on a game engine. In Proceedings
+of the 2005 ACM SIGCHI International Conference
+on Advances in computer entertainment technology,
+pages 184–187. ACM, 2005.
+[14] S. Kato, H. Ito, T. Ichikawa, and M. Kagami. Laser
+doppler velocimeter, Dec. 24 1996. US Patent
+5,587,785.
+[15] D. Kibira and C. McLean. Manufacturing modeling
+methods: virtual reality simulation of a mechanical
+assembly production line. In Proceedings of the 34th
+conference on Winter simulation: exploring new
+frontiers, pages 1130–1137. Winter Simulation
+
+Conference, 2002.
+[16] C. Kirmizibayrak, J. Honorio, X. Jiang, R. Mark, and
+J. K. Hahn. Digital analysis and visualization of
+swimming motion. International Journal of Virtual
+Reality, 10(3):9, 2011.
+[17] H. Koike, Y. Matoba, and Y. Takahashi. AquaTop
+display: interactive water surface for viewing and
+manipulating information in a bathroom. In
+Proceedings of the 2013 ACM international conference
+on Interactive tabletops and surfaces, pages 155–164.
+ACM, 2013.
+[18] J.-M. Lavest, G. Rives, and J.-T. Lapresté. Dry
+camera calibration for underwater applications.
+Machine Vision and Applications, 13(5-6):245–253,
+2003.
+[19] A. Melling. Tracer particles and seeding for particle
+image velocimetry. Measurement Science and
+Technology, 8(12):1406, 1997.
+[20] R. Morales, P. Keitler, P. Maier, and G. Klinker. An
+underwater augmented reality system for commercial
+diving operations. In OCEANS 2009, pages 1–8.
+IEEE, 2009.
+[21] F. Mueller, S. Stellmach, S. Greenberg, A. Dippon,
+S. Boll, J. Garner, R. Khot, A. Naseem, and
+D. Altimira. Proxemics play: understanding proxemics
+for designing digital play experiences. In Proceedings
+of the 2014 conference on Designing interactive
+systems, pages 533–542. ACM, 2014.
+[22] H. Mueller. Theory of the photoelastic eﬀect of cubic
+crystals. Physical review, 47(12):947, 1935.
+[23] M. Nakashima and A. Takahashi. Clariﬁcation of
+unsteady ﬂuid forces acting on limbs in swimming
+using an underwater robot arm. Journal of Fluid
+Science and Technology, 7(1):114–128, 2012.
+[24] K. Nitta, T. Sato, H. Koike, and T. Nojima.
+PhotoelasticBall: a touch detectable ball using
+photoelasticity. In Proceedings of the 5th Augmented
+Human International Conference, page 16. ACM,
+2014.
+[25] W. L. Raﬀe, M. Tamassia, F. Zambetta, X. Li, S. J.
+Pell, and F. F. Mueller. Player-computer interaction
+features for designing digital play experiences across
+six degrees of water contact. In Proceedings of the
+2015 Annual Symposium on Computer-Human
+Interaction in Play, pages 295–305. ACM, 2015.
+[26] T. Sato, H. Mamiya, H. Koike, and K. Fukuchi.
+PhotoelasticTouch: transparent rubbery tangible
+interface using an LCD and photoelasticity. In
+Proceedings of the 22nd annual ACM symposium on
+User interface software and technology, pages 43–50.
+ACM, 2009.
+[27] G.-K. Tan, G.-X. Shen, S.-Q. Huang, W.-H. Su, and
+Y. Ke. Investigation of ﬂow mechanism of a robotic
+ﬁsh swimming by using ﬂow visualization
+synchronized with hydrodynamic force measurement.
+Experiments in Fluids, 43(5):811–821, 2007.
+[28] T. Treibitz, Y. Schechner, C. Kunz, and H. Singh. Flat
+refractive geometry. IEEE transactions on pattern
+analysis and machine intelligence, 34(1):51–65, 2012.
+[29] Y. Ukai and J. Rekimoto. Swimoid: a swim support
+system using an underwater buddy robot. In
+Proceedings of the 4th Augmented Human
+
+International Conference, pages 170–177. ACM, 2013.
+[30] S. Yamashita, X. Zhang, T. Miyaki, and J. Rekimoto.
+AquaCAVE: An Underwater Immersive Projection
+System for Enhancing the Swimming Experience. In
+D. Reiners, D. Iwai, and F. Steinicke, editors,
+ICAT-EGVE 2016 - International Conference on
+Artiﬁcial Reality and Telexistence and Eurographics
+Symposium on Virtual Environments. The
+Eurographics Association, 2016.
+[31] S. Yamashita, X. Zhang, and J. Rekimoto.
+AquaCAVE: Augmented Swimming Environment with
+Immersive Surround-Screen Virtual Reality. In
+Proceedings of the 29th Annual Symposium on User
+Interface Software and Technology, pages 183–184.
+ACM, 2016.
+
+

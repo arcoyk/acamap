@@ -1,0 +1,928 @@
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+PossessedHand: Techniques for Controlling Human Hands
+using Electrical Muscles Stimuli
+Emi Tamaki
+Graduate school of
+Interdisciplinary
+Information Studies,
+The University of Tokyo.
+hoimei@acm.org
+
+Takashi Miyaki∗
+Interfaculty Initiative in
+Information Studies,
+The University of Tokyo.
+miyaki@acm.org
+
+Jun Rekimoto
+Interfaculty Initiative in
+Information Studies,
+The University of Tokyo.
+Sony Computer Science
+Laboratories, Inc.
+rekimoto@acm.org
+
+ABSTRACT
+
+If a device can control human hands, the device can be useful for HCI and tangible application’s output. To aid the
+controlling of finger movement, we present PossessedHand,
+a device with a forearm belt that can inform when and which
+fingers should be moved. PossessedHand controls the user’s
+fingers by applying electrical stimulus to the muscles around
+the forearm. Each muscle is stimulated via 28 electrode
+pads. Muscles at different depths in the forearm can be selected for simulation by varying the stimulation level. PossessedHand can automatically calibrate the system for individuals. The automatic calibration system estimates relations between each electrode pad, stimulation level and muscle movement. Experiments show that PossessedHand can
+control the motion of 16 joints in the hand. Further, we also
+discuss an application based on this device to aid in playing
+a musical instrument.
+Author Keywords
+
+EMS, FES, Electric Stimulation, Hand Gesture, Musical Performance
+
+Figure 1. Our concept. PossessedHand controls user’s finger.
+
+ACM Classification Keywords
+
+a device can control human hands, the device would lead the
+next generation of HCI and tangle applications.
+
+H.5 Information interfaces and presentation: [HCI]
+General Terms
+
+In this paper, we introduce PossessedHand, a device with a
+forearm belt (Figure. 1) that can control several hand gestures and inform their timing; this device achieves this by
+providing electrical stimulus to the muscles in the forearm.
+However, a controlling the muscles requires special knowledge for the system setting because positions of the stimulation, the stimulation level and timing differ greatly in individuals. We also introduce an automatic calibration system
+of PossessedHand. On this calibration system, user can use
+PossessedHand without any special knowledge. Finally, we
+discuss applications of PossessedHand.
+
+Design, Experimentation, Human Factors
+INTRODUCTION
+
+HCI and tangible devices use many actuators as outputs. On
+the other hand, human beings have many actuators such as
+their muscles in their body. In particular, human hands have
+the dexterous fingers which are used to output for communications, playing, touching and so on. However, human actuators have not been adapted to HCI and tangible devices. If
+∗
+
+Karlsruhe Institute of Technology.(Author’s current affiliation)
+
+RELATED WORK
+
+Many devices and systems that directly stimulate a user’s
+fingers have been researched [14, 16]. However, users prefer to avoid wearing devices on area A, shown in Figure. 2,
+because this area is used to touch, hold, and pinch real objects. The skin on this area is important sensor for communication, touching, playing musical instruments or in other
+
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for profit or commercial advantage and that copies
+bear this notice and the full citation on the first page. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific
+permission and/or a fee.
+CHI 2011, May 7–12, 2011, Vancouver, BC, Canada.
+Copyright 2011 ACM 978-1-4503-0267-8/11/05...$10.00.
+
+543
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+We presented a designe of PossessedHand[28]. The paper
+shows that PossessedHand needs seven electrodes to control 16 finger joint angles of user’s hand. Electrode pads,
+which is noninvasive electrodes, are set on user’s forearm.
+However, a location setting of the pas took many time and
+required knowledges about muscle locations in forearm. We
+must make a personal belt for each user because the size
+of user’s forearm differs widely in individuals. For widely
+uses, PossessedHand should have automatically calibration
+system.
+
+Figure 2. Area A: This area is involved in pinching, gripping, and holding motions. Area B: Electrical stimuli are provided to this area.
+
+PHASE OF DEVELOPMENT
+
+There are four phases to control hand gestures as outputs
+of HCI and tangible applications. The applications are suggested on each phases. In this research, we identify three
+phases in which PossessedHand can be used.
+
+performing arts. Glove-type devices that dynamically and
+mechanically control a user’s hand are available [29]. Such
+devices cover most of area A. Although a device that can be
+worn on the forearm has been developed, it is too large to be
+comfortably used for daily uses.
+To solve these problems, we develop a small device, PossessedHand, that can control a user’s hand without covering
+area A. PossessedHand can be used for controlling fingerjoint movements; it operates by applying an electrical stimulus to the muscles in the forearm with noninvasive electrode
+pads. The muscles involved in finger motions are clustered
+in the forearm [23]. PossessedHand has electrode pads that
+are fastened to the forearm to stimulate these muscles. The
+tendons that are connected to the muscles move the finger
+joints. To date, there have been no research on controlling
+the position of the hand solely through electrical stimulation
+to the forearm. The electrical stimulation by PossessedHand
+is similar to Electrical Muscle Stimulation(EMS) [5, 6, 11]
+and Functional Electrical Stimulation(FES) [22, 9, 11, 17,
+7, 26].
+
+Phase 1: Although the user cannot visually confirm the hand
+motion, he/she feels the motion owing to his/her somatic
+sense. (e.g., providing feedback for recognizing virtual
+objects)
+Phase. 2: The user visually confirms the motion. The user’s
+fingers are dependently controlled. (e.g., systems used in
+performing arts).
+Phase 3: The user’s fingers are independently controlled to
+perform grasping and opening motions (e.g., support systems for musical performances and sport activities, navigation systems, and sensory substitution systems for the
+visually impaired and the hearing impaired).
+Phase 4: The user’s hand is controlled to perform dexterous and powerful motions such as pinching by using the
+thumb and index finger (e.g., learning systems for finger
+languages and for making handicrafts)
+
+EMS has several applications. EMS is widely used in lowfrequency therapeutic equipment and in devices used for ergotherapy [2, 33]. EMS allows in 15 min of continuous
+uses[2]. Akamatsu et al. used EMS in performing arts [19,
+25]. EMS is similar to FES [8, 21, 31, 30, 32]. In FES, electrical currents are used to activate nerves innervating extremities that are affected by paralysis resulting from a stroke or
+other neurological disorders and spinal cord or head injuries.
+FES can be used to treat people with disabilities [34].
+Watanabe et al. and Kruijff et al. presented a technique
+in which a user’s wrist can be controlled with two degrees
+of freedom by stimulating four muscles [15, 30]. They observed that they could control wrist motion by electrically
+stimulating a muscle, which resulted in the motion of the tendon connected to the wrist. However, they did not consider
+the motion of finger-joints, which is important for controlling the position of the hand. Moreover, they used invasive
+electrodes embedded in the skin. Such electrodes are not
+suitable for playing musical instruments.
+
+OUR PLAN AND GOAL OF AN APPLICATION
+
+Our goal of an application is to develop a support system for
+playing musical instruments with PossessedHand, that can
+teach the appropriate hand gestures and timing to a beginner playing a musical instrument. Beginners must devote
+considerable time to learning because it is difficult to simply
+observe a skillful performance and imitate the required hand
+gestures and their timing. This type of learning in which
+beginners compare their performance with a skillful performance leads to over fatigue. Skillful playing can be achieved
+if the appropriate hand gestures and timing can be taught to
+a beginner while he or she is playing a musical instrument.
+First, we describe an experiment conducted to identify which
+and how finger-joints can be controlled by several stimulation levels. Second, we select the electric pads for daily
+uses. Third, we develop PossessedHand device and calibration systems about the location of the pads, the stimulation
+level, and stimulation timing. Forth, we verify that the each
+joint can be controlled, and users can correctly feel each joint
+movement induced by PossessedHand. In addition, we also
+discuss the results on the basis of the four phases discussed
+above. Finally, we will discuss a support system based on
+PossessedHand for playing musical instruments.
+
+It is necessary to use noninvasive electrodes and to avoid fastening electrodes to the hands or fingers because the hands
+and fingers are used to hold or touch real objects. The haptic
+drum kit is developed by Simon et al [12]. This kit signals
+when a drum should be struck while playing drums by using
+vibrations. However, it is not effective for playing musical
+instruments other than drums such as piano and koto, because it cannot signal which finger should be moved.
+
+544
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+Figure 3. A prototype of PossessedHand.
+
+joint, the third joint in each finger. These muscles are located
+at the same position, however these muscle are at different
+depths in the user’s forearm [3]. The existing electrical pads
+cannot be used to select muscles at different depths because
+the pads do not contact the muscles directly. Therefore, invasive needles are used when fine control of finger-joints is
+required. However, as previously described, controlling fingers by needles is difficult in daily life.
+
+SOLUTIONS
+Muscles and stimulations for making hand postures
+
+We use electrical pulses, 14 channels, and three levels of
+electrical stimulations to control the user’s hand. The impulses generated by PossessedHand are transmitted to the
+muscles that are to be stimulated through electrode pads fastened to the skin. PossessedHand uses EMS to achieve its
+desired output energy and maintain a compact size [13, 27].
+An electrical stimulus from PossessedHand is applied to the
+user’s forearm because most of the muscles that control the
+fingers and the wrist are located the forearm. For this purpose, a forearm belt is used along with PossessedHand. The
+electrical stimuli are generated by an electronic pulse generator and transmitted via the electrode pads. The pads are
+arranged on the upper and lower parts of the user’s forearm (Figure. 3-(a)). At least, five channels are needed to
+stimulate the muscles that are used to bend finger-joints, and
+two additional channels are needed to stimulate the muscles
+that are used to bend finger extensions and cause wrist flexions. PossessedHand stimulates seven muscles (the superficial flexor muscle, deep flexor muscle, long flexor muscle
+of the thumb, common digital extensor muscle, flexor carpi
+radialis muscle, long palmar muscle, and flexor carpi ulnaris
+muscle). These muscles are located in area B in Figure. 2.
+We can select a channel between a pad on the upper portion
+of the forearm and one on the lower portion of the forearm.
+
+We tried to select the stimulated muscle by regulating voltages of stimulation. Moreover, we tried to stimulate both the
+flexor digitorum superficialis muscle and the flexor digitorum profundus muscle by applying higher voltages of stimulation. We conducted an experiment with various stimulation levels to see which muscle was selected. Figure. 5
+shows the result of the experiment. The vertical axis indicates the joint angle. The horizontal axis shows voltages of
+the applied current generated by PossessedHand. In this experiment, subjects wore PossessedHand and were told to relax their muscles. We set the back of subjects’ hand touched
+the flat of a desk. We measured joint angles starting from
+zero (when the finger is completely straight). Then, we raised
+the voltage by one volt and measured the joint angles.
+The applied stimulation pulse frequency was set to 40 Hz,
+and the pulse width was 0.2 ms, and the pulse height (voltage) was in the range of 17 - 29 V (Figure. 4). The pulse
+reported is that which gives the user no pain, because it is
+similar to the human impulse to move muscles [5, 6, 11].
+From this experiment, we found that the depth of the stimulated muscle could be selected by regulating voltages. The
+movement of each joint (PIP, DIP, and MP joints) was selected by different voltages. The PIP joint moved independently at 17 V . The PIP joint also moved at 19 V . Therefore,
+
+Stimulation levels and the pulse of electrical stimulation
+
+PossessedHand selects the depth of the muscle by the stimulation levels. The flexor digitorum superficialis muscle is
+connected to the proximal interphalangeal(PIP) joint, the
+second joint in each finger. The flexor digitorum profundus muscle is connected to the distal interphalangeal(DIP)
+
+545
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+Figure 4. Pulse of electric stimulation by PossessedHand. The Pulse
+height is adjusted for the voltage. Pulse width is set 0.2ms to be similar
+to nervous signals in human muscles.
+
+Figure 6. A belt and pads.
+
+SYSTEM CONFIGURATION
+Prototype of the device
+
+We built a prototype of PossessedHand that consists of a
+battery, a condenser, a timing volume, a switching board
+(Photo-MOS Relays Series AQV221), a microcontroller, and
+24 electrode pads on two belts(Figure. 3, Figure. 6). These
+devices are controlled by a graphical user interface (GUI) on
+a PC (Figure. 7). The microcontroller is connected to the
+PC via a USB cable. The dimensions of PossessedHand are
+10.0 cm × 7.0 cm × 8.0 cm, which are portable and suitable
+for daily uses and playing musical instruments. The pulse
+width is 0.2 ms, and the voltage is in the range of 17 - 29 V .
+For safety reasons, the electric are charged in the condenser
+that is limited.
+
+Figure 5. An example of the selected muscle depth and movement by
+the electric stimulation levels (voltage). Blue line with Diamond makers: MP joint movement. Red line: PIP joint movement. Green line
+with times makers: DIP joint movement.
+
+Electric pads and pain
+
+We used solid gel type electrodes (electrical pads) of sizes
+10 × 10 mm or larger to prevent electric stimulations from
+causing pain. There are three types of noninvasive electrodes.
+
+we concluded that the voltage from 17 to 19 V stimulates the
+flexor digitorum superficialis muscle selectively. Voltages
+higher than 23 V also stimulated the flexor digitorum profundus muscle, resulting in the movement of the DIP joint
+and MP joint.
+
+Dry type electric pads
+
+These pads are made of metallic sheets. These pads are used
+to get galvanic skin response (GSR) values. The pads cause
+pain when the contact area is small.
+
+Operable joints
+
+Our previous paper/,[28] reported that PossessedHand could
+control the motion of 16 joints in the hand. We conducted
+an experiment to confirm whether the finger-joints can be
+appropriately moved to achieve desired hand postures. We
+selected an anode from the seven electrodes placed on the
+upper arm and a ground electrode from the seven electrodes
+placed on the hand. We tested 7 − by − 7 patterns of the
+electronic paths corresponding to each of three peak values
+of the pulse (17 V , 23 V , and 29 V ); in other words, we performed 147 stimulations. We asked the subjects to eliminate
+strain in the hand. We confirmed that PossessedHand could
+control 5 independent and 11 linked joints, 16 joints in total.
+We also found that a clasped hand could be opened by stimulating a common digital extensor muscle. Further, users
+could recognize the motion of their hands even when their
+eyes were closed. These results suggest that PossessedHand
+can control hand postures in phases 1, 2, and 3, as discussed
+above.
+
+Liquid gel type electric pads
+
+Liquid gel type electric pads have a sponge base. The user
+must put some liquid gel on the base before placing the pad
+on the user’s skin. The pads cause pain when the human
+skin becomes dry because the contact area becomes small
+with moisture conditions of the pads.
+Solid gel type electric pads
+
+Solid gel type electric pads include conductive gel on thin
+metallic sheets. User cause relatively little pain, because the
+pads attach to the skin surface with certainly, and the contact
+area does not decrease. Self Stick Tyco gel Carbon Electrodes [1] are adapted to PossessedHand.
+
+546
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+(d) Timing calibration button!
+(a) Power button!
+
+(e) Auto calibration button of
+pad’s positions and stimulation
+levels!
+(f) Indicator of Stimulation
+levels!
+
+(b) Stimulation
+buttons by pad’s
+number!
+
+(g) Indicator of timing volume !
+
+(h) Sound volume interface!
+
+(c) Stimulation buttons by each joint !
+Figure 7. Screenshot of the PossessedHand GUI.
+
+STEP 4. The system checks the pads that can be used to
+move each joint.
+
+We also confirmed that users felt no pain from electrical
+stimulation (33 V , 100 mA, the pulse width = 0.2 ms) with
+the 10 × 10 mm pads. In our experiments, we had ten subjects who wore an eye mask. We adopted solid gel type electric pads that were bigger than 10 × 10 mm in size. In this
+work, 10 × 30 mm pads are used on the belts of PossessedHand. We cut the pads into pieces the same height size as
+the height of the belt.
+
+STEP 5. The system also selects three optimal stimulation
+levels from twelve stimulation levels for use in moving
+each joint.
+Calibration system for stimulation timing
+
+We suggest an automatic calibration system for PossessedHand that can calibrate the pads’ positions and the electrical
+stimulation levels according to individual variations. It is
+difficult to fasten the seven pads and set the stimulation levels correctly on a user’s forearm. To solve this problem, we
+include as many pads as possible on the belts. 14 pads can be
+set on a belt. PossessedHand has two belts, and 28 pads. The
+calibration system identifies the pads that are used to stimulate a user’s muscles. The system also selects three optimal
+stimulation levels to move each joint from twelve stimulation levels. It works by software base. The calibration steps
+are given below:
+
+It is also important that the timings for appropriate musical
+instruments are correctly set. We built a calibration system
+of stimulation timing on PossessedHand. A user can calibrate the stimulation timing by using a timing volume (Figure. 3-(e) Timing volume). There is always a lag between
+the sound timing and the stimulation timing because it takes
+some time to generate the electrical stimulations and for the
+stimulations to be felt. To synchronize the timing, we introduce a calibration system. The system gives sound and stimulation at the same time. A user can then adjust the timing
+using the timing volume (Figure. 3(e) Timing volume), (Figure. 7-(d) Timing calibration button, (g) Indicator of timing
+volume). For eight subjects, the average time lag was 0.34
+s. The standard error was 0.16 s. In our experiments, all the
+subjects could adjust the timing.
+
+STEP 1. Wear PossessedHand. Start the auto calibration
+system. (Figure. 7-(e) Auto-calibration button to calibrate
+pads’ positions and stimulation levels)
+
+EXPERIMENTS
+Probability of each joint movement
+
+Calibration system for individual variation
+
+We checked the probability of each joint movement by PossessedHand and the calibration systems. We had eight subjects. Table. 1 shows the results. We confirmed that PossessedHand could control 5 independent and 11 linked joints,
+16 joints in total, with the calibration systems. Figure. 10
+shows over half of the probability of each joint movement
+from Table 1. Figure. 8 shows that PossessedHand was controlling each of the user’s finger-joints. The results indicate
+
+STEP 2. The auto-calibration system gives 168 stimulation
+patterns that include 14 paths (via electric pads on the
+belts) and 12 stimulation levels.
+STEP 3. Push the joint button on the GUI when the joints
+are moved. (Figure. 7-(c) Stimulation buttons for each
+joint)
+
+547
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+Table 1. Probability of each joint movement (%)
+
+joint name
+MP(Index finger)
+MP(Middle finger)
+MP(Medicinal finger)
+MP(Littile finger)
+PIP(IP) (Thumb)
+PIP(Index finger)
+PIP(Middle finger)
+PIP(Medicinal finger)
+PIP(Littile finger)
+DIP(Thumb)
+DIP(Index finger)
+DIP(Middle finger)
+DIP(Medicinal finger)
+DIP(Littile finger)
+Palmar flexion
+Dorsal flexion
+Radial flexion
+Ulnar flexion
+
+Figure 8. Examples of finger-joint movement by PossessedHand.
+
+with other joints
+100
+100
+100
+100
+100
+100
+100
+100
+100
+100
+100
+87.5
+75
+87.5
+100
+100
+37.5
+0
+
+independently
+0
+0
+0
+0
+0
+100
+100
+100
+12.5
+12.5
+0
+0
+0
+0
+0
+0
+0
+0
+
+180
+
+that PossessedHand and the calibration systems can realize
+Phases 1, 2, and 3.
+
+160
+140
+
+Force per finger
+
+120
+
+We measured the force generated by PossessedHand on each
+finger with a spring balance. The eight subjects took part
+in this experiment, and did not move their fingers by themselves. The stimulation levels were set to the maximum possible values that did not cause pain to the subjects. The limit
+of voltage was 42 V . The locations of the pads were identified by our calibration system. PossessedHand moved MP,
+PIP and DIP joints in each finger at the same time. The fingers turned in. The force of each finger were measured by a
+spring scale, which mounted on a table and a finger. We set
+the back of subjects ’hand touched the flat of a desk. We
+noted maximum values of the force in the three seconds.
+
+100
+80
+60
+40
+20
+(g)! 0
+Thumb
+
+Index finger Middle finger
+
+Medicinal
+finger
+
+Little finger
+
+Figure 9. Measured forces for each finger.
+
+In this experiment, all forces were too weak to grap real objects and to play musical instruments. Figure. 9 shows the
+results. The horizontal axis indicates fingers, while the vertical axis represents the forces (g). The error bars denote
+the standard error values. The number of trials per finger
+was three, and the total number of trials was 120. The average force was 88.75 g. The forces were not sufficient to
+grap and to play musical instruments however were enough
+to point out the fingers to be moved.
+The Controlling the amount is next step of this research.
+That is feasible system, if the system calibrate the relation
+between the electric stimulation level and the amount of bend
+in a joint. It is reported that the muscle controlling method
+is similar to motor controlling method(proportional integral
+derivative controller, PID controller), on the electric stimulation experiment by using needle. It will be useful to tell correct hand postures, strength and weakness. In present system
+of PossessedHand can not reach the Phase. 4.
+
+Figure 10. Operable joints. Squares indicate independently operable
+joints. Arrows and circles indicate ganed operable joints.
+
+548
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+Figure 12. An example of koto score.
+
+Figure 11. Playing styles of Koto. (a) one playing style using 1-3rd
+finger, (b) another playing style using 4 or 5th finger.
+
+ger numbers guide which finger should be moved. However,
+performers’ view points are almost set on the string numbers of the score for their performances. It is hard to read
+the string numbers, timings and finger numbers at the same
+time. Then, PossessedHand directly tells the finger number
+and timing to the performers.
+
+Somatesthesia
+
+In this experiment, we confirmed that eight subjects could
+correctly feel each joint movement induced by PossessedHand. While wearing an eye mask, the subjects could correctly guess which joints were moved by PossessedHand.
+The stimulation levels and the locations of the pads were
+identified by our calibration system. For three seconds, PossessedHand moved MP, PIP and DIP joints in each finger.
+We conducted three trials for each fingers. The total number
+of the trials was 120. The results show that PossessedHand
+can teach which finger must be moved to output information
+and to play musical instruments.
+
+SUPPORT SYSTEM FOR MUSICAL INSTRUMENTS
+
+PossessedHand can be used to help a beginner how to play
+musical instruments. In musical instruments, koto, subtle
+differences in tones are achieved by fine finger movements.
+In this study, we developed an example application: a support system for playing koto. The koto is a traditional Japanese
+stringed instrument. Kotos are about 180 centimeters wide
+and made from paulownia wood. Koto has 13 strings that
+are strung over 13 movable bridges along the width of the
+instrument. Players can adjust the string pitches by moving
+these bridges before playing. A koto player uses all fingers
+to pluck the strings. The player puts three different picks
+on the thumb, index finger, and middle finger, respectively
+(Figure. 1). In playing koto, it is important when and which
+finger should be moved because each finger produces different sound and has a different playing style (Figure. 11).
+It is difficult for performers to use visual or sound guides
+for the support of the Koto performance, because the performers should read a Koto score and listen to their own performances during their performances. On the score, string
+numbers, timings and finger numbers are written. The fin-
+
+For a sample of perfect performances, we transcribe Japanese
+koto scores to PossessedHand scores. The Japanese koto
+scores included information on when and which fingers should
+be moved (Figure. 12). Two beginners (subjects) tried to
+play koto by wearing PossessedHand. In this experiment,
+we checked that beginners could get the rhythm and make
+fewer mistakes by wearing PossessedHand. We used a score,
+which was named “Usagi” [18]. The subject played 8-bar
+in quadruple time. For eight times, the subject alternated
+between normal playing and supported playing by wearing
+PossessedHand. The arm located by user-self. The result
+is shown in Table 2. It attests that PossessedHand supports
+beginners’ playing. Furthermore, PossessedHand will help
+beginners move fingers appropriately when playing musical
+instruments.
+
+DISCUSSION AND COMMENTS
+
+In Table. 3, We list the comments of the subjects, who contributed to our experiments. Regarding the first comment,
+almost all subjects are not used to electric stimulation by
+PossessedHand. We must be careful to consider the feeling
+of terror. In our future work, PossessedHand’s appearance
+will be improved to lessen the feeling of terror.
+
+Table 2. The results of the experiment about the musical performance.
+
+mistakes about finger
+timing errors
+
+549
+
+supported
+3
+4
+
+normal
+4
+13
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+Table 3. Comments from the subjects.
+
+subject’s number
+
+comment
+
+1
+
+Scary... just scary...
+
+2
+
+I felt like my forearm was pushed by someone.
+
+3
+
+I felt like when I got a cramp in my arm.
+
+4
+
+A kind of new sense!
+
+5
+
+I want to be controlled remotely.
+
+6
+
+It would be possible that I can do difficult task (such as driving helicopter) without training.
+
+7
+
+It will be useful when playing other instruments such as Piano or Sax other than koto.
+
+8
+
+I felt like my body was hacked.
+
+As for the second comment, the current could stimulate not
+only muscles, however also sensory organs. In this case,
+pressure sensory organs in the surface of the skin were stimulated. This is unavoidable. However, selecting which ones
+to stimulate might be possible in the future by changing the
+stimulation frequency or controlling the stimulation depth.
+
+joint. Auto-Calibration systems have been introduced to set
+pads’ locations, levels of electrical stimulations and the timing. The calibration system gave 168 stimulation patterns
+that included 14 paths (via electric pads on the belts) and 12
+stimulation levels. Than, the system selected the pad’s locations and the levels of electrical stimulations from feedback
+of finger motions. To synchronize the timing, the system
+gave sounds and stimulations at the same time. The user can
+adjusted the timing by using a timing volume of PossessedHand.
+
+As for the third comment, PossessedHand now applies current only to two points in one muscle. More elaborated
+application of current, such as adding current application
+points, would prevent cramp-like feeling.
+
+PossessedHand can selectively apply simulations to muscles at different depths according to three levels of electrical
+stimulations, and it can control 5 independent and 11 linked
+joints, 16 joints in total, with our auto-calibration systems.
+In our experiments, subjects could correctly feel each joint
+movement induced by PossessedHand. We also measured
+the force generated by PossessedHand for each finger. The
+average force was 88.75 g. The forces were not sufficient
+to grap a real object and to play musical instruments were
+enough to indicate the fingers that needed to be moved.
+
+As for the fourth and eighth comments, people believed their
+body was totally “under control”, However PossessedHand
+raises questions about their control or “free will”.
+As for the sixth comment, PossessedHand now controls only
+the hand to enhance musical experiences. In the future, difficult tasks such as flying a helicopter might be possible. Applying current to the shoulder should be studied in the future.
+Moreover, combining PossessedHand with other technology
+such as context-recognition should be necessary.
+
+We discussed a support system based on PossessedHand for
+playing koto, which is a traditional Japanese musical instrument. About the support system of the Koto performance,
+we are in the first stage. We must consider effective feedbacks, the controlling the amount of bend, motivations[20]
+and so on. In this paper, we confirmed that PossessedHand
+could tell a user which finger should be moved at which timing. When using PossessedHand, the subjects could maintain a correct rhythm and made fewer mistakes in finger selection.
+
+As for the seventh comment, PossessedHand can be used to
+play any musical instruments. In this study, the koto was
+selected as the musical instrument in experiments because it
+was the only instrument with which the author was familiar.
+We also feel that the use of PossessedHand can be extended
+to sports, learning finger languages, performing arts, and
+making handicrafts. To extend the use of PossessedHand,
+we have to consider reaction rates, accuracy, and muscle fatigue [4, 10, 24].
+
+ACKNOWLEDGEMENTS
+CONCLUSION
+
+The authors would like to thank our anonymous reviewers
+for their feedback and great suggestions. We thank a japanese
+Koto player, Mayuko Kobayashi for her advice. We also
+thank all subjects for their participation in the experiments,
+Lab-Cafe members and Ken Iwasaki for their help with the
+experiments, and Kenichi Kumatani for the discussion. This
+
+PossessedHand can inform the appropriate hand gestures and
+the timing of these gestures to a beginner playing a musical instrument. We used electric pulses, 14 channels, and
+three levels of electrical stimulations. The system stimulates
+the user’s forearm muscles that are connected to each finger-
+
+550
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+work was supported in part by the research fellowship for
+young scientists from the Japan Society for the Promotion
+of Science(JSPS).
+
+11. Hakansson, N., and Hull, M. Muscle stimulation
+waveform timing patterns for upper and lower leg
+muscle groups to increase muscular endurance in
+functional electrical stimulation pedaling using a
+forward dynamic model. vol. 56(9) (2009), 2263–70.
+
+REFERENCES
+
+1. Self stick, tyco gel - carbon electrodes. Tyco.
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+
+7.
+
+12. Holland, S., Bouwer, A. J., Dalgelish, M., and Hurtig,
+T. M. Feeling the beat where it counts: fostering
+Omron, omron battery-operated electronic nerve
+multi-limb rhythm skills with the haptic drum kit. In
+stimulator (ens), model e2 elite (hv-f127-e), 2009.
+Proceedings of the fourth international conference on
+http://www.omronTangible, embedded, and embodied interaction, TEI
+healthcare.com/export/sites/default/ global/EMC/EMCinfo’10, ACM (New York, NY, USA, 2010), 21–28.
+HV-F127-v01.pdf.
+13. Horst, H., Maier-Loth ML, and C, E. The functional
+Adams, G., Harris, R., Woodard, D., and Dudley, G.
+value of electrical muscle stimulation for the
+Mapping of electrical muscle stimulation using mri.
+rehabilitation of the hand in stroke patients.
+Journal of applied physiology 2 (1993), 532― 537.
+Scandinavian journal of rehabilitation medicine 29(1)
+(1997), 3.
+Boncompagni, S., Kern, H., Micaroni, M., Fano, G.,
+Hofer, C., Forstner, C., Modlin, M., Mayr, M., Carraro,
+14. Huang, K., Starner, T., Do, E., Weiberg, G., Kohlsdorf,
+U., and Protasi, F. Functional electrical stimulation
+D., Ahlrichs, C., and Leibrandt, R. Mobile music touch:
+(fes) of long-term denervated and degenerated muscles
+mobile tactile stimulation for passive learning. In
+(ddm) in humans: its effect on the rearrangement of the
+Proceedings of the 28th international conference on
+excitation-contraction coupling apparatus. Journal of
+Human factors in computing systems, CHI ’10, ACM
+Muscle Research and Cell Motility. Abstracts: 32nd
+(New York, NY, USA, 2010), 791–800.
+European Muscle Conference‘ A link between
+15. Kruijff, E., Schmalstieg, D., and Beckhaus, S. Using
+fundamental research and therapeutic trials ’The
+neuromuscular electrical stimulation for pseudo-haptic
+Annual Meeting of the European Society for Muscle
+feedback. In Proceedings of the ACM symposium on
+Research 24 (2003), 354.
+Virtual reality software and technology, VRST ’06,
+ACM (New York, NY, USA, 2006), 316–319.
+E. C. Hummelsheim H, M.-L. M. The functional value
+of electrical muscle stimulation for the rehabilitation of
+16. Kuroki, S., Kajimoto, H., Nii, H., Kawakami, N., and
+the hand in stroke patients (1997). 3–10.
+Tachi, S. Proposal for tactile sense presentation that
+combines electrical and mechanical stimulus. In
+EB, M., and R, K. Functional walking in paralyzed
+EuroHaptics Conference, 2007 and Symposium on
+patients by means of electrical stimulation. vol. 175
+Haptic Interfaces for Virtual Environment and
+(1983), 30–36.
+Teleoperator Systems. World Haptics 2007. Second
+Joint (2007), 121 –126.
+Faghri, P., Rodgers, M. M., Glaser, R., J. Bors, C. H.,
+and Akuthota, P. The effects of functional electrical
+17. Marsolais, E., and Kobetic, R. Functional electrical
+stimulation on shoulder subluxation, arm function
+stimulation for walking in paraplegia. In The Journal of
+recovery, and shoulder pain in hemiplegic stroke
+Bone and Joint Surgery 69 (1987), 728–733.
+patients. Archives of physical medicine and
+rehabilitation 75 (1994), 73–79.
+18. N, M. Usagi, 1968.
+
+8. Farbiz, F., Yu, Z. H., Manders, C., and Ahmad, W. An
+electrical muscle stimulation haptic feedback for mixed
+reality tennis game. In ACM SIGGRAPH 2007 posters,
+SIGGRAPH ’07, ACM (New York, NY, USA, 2007).
+
+19. Nagasawa, Y., Akamatsu, M., and Teruoka, M.
+Development of bio-feedback system and applications
+for musical performances. vol. 40 (2002), 27―32.
+20. Percival, G., Wang, Y., and Tzanetakis, G. Effective use
+of multimedia for computer-assisted musical instrument
+tutoring. In Proceedings of the international workshop
+on Educational multimedia and multimedia education,
+Emme ’07, ACM (New York, NY, USA, 2007), 67–76.
+
+9. Field-Fote, E. Combined use of body weight support,
+functional electric stimulation, and treadmill training to
+improve walking ability in individuals with chronic
+incomplete spinal cord injury. In Archives of physical
+medicine and rehabilitation (2001).
+
+21. Poboroniuc, M., and Stefan, C. A method to test
+fes-based control strategies for neuroprostheses. In
+Proceedings of the 9th WSEAS International
+Conference on International Conference on Automation
+and Information, World Scientific and Engineering
+Academy and Society (WSEAS) (Stevens Point,
+Wisconsin, USA, 2008), 344–349.
+
+10. Griffin, L., Decker, M., Hwang, J., Wang, B., Kitchen,
+K., Ding, Z., and Ivy, J. Functional electrical
+stimulation cycling improves body composition,
+metabolic and neural factors in persons with spinal cord
+injury. Journal of Electromyography and Kinesiology
+19(4) (2009), 614―622.
+
+551
+
+CHI 2011 • Session: Art, Music & Movement
+
+May 7–12, 2011 • Vancouver, BC, Canada
+
+22. Rushton, D. Functional electrical simulation and
+rehabilitationan hypothesis. In Medical Engineering
+and Physics 25 (2003), 75–78.
+
+29. Tsetserukou, D., Sato, K., Neviarouskaya, A.,
+Kawakami, N., and Tachi., S. Flextorque: innovative
+haptic interface for realistic physical interaction in
+virtual reality. ACM (2009), 69.
+
+23. Schuenke, M., Schulte, E., Schumacher, U., Lamperti,
+E. D., Ross, L. M., and Wesker, K. H. Atlas of
+anatomy: General anatomy and musculoskeletal
+system. Prometheus (2005).
+
+30. Watanabe, T., Iibuchi, K., Kurosawa, K., and
+Hoshimiya, N. A method of multichannel pid control of
+two-degree-of-freedom wrist joint movements by
+functional electrical stimulation. Systems and
+Computers in Japan 34(5) (2003), 25–36.
+
+24. Shioyama, T., Kondo, T., and ITo, K. Lower-limb joint
+torque and position controls by functional electrical
+stimulation(fes). IEICE technical report. ME and bio
+cybernetics 104(757) (2005), 25―28.
+
+31. Woo, S. H., J.Y.Jang, Jung, E. S., hyun Lee, J., Moon,
+Y. K., w Kim, T., Won, C. H., Choi, H. C., and Cho,
+J. H. Electrical stimuli capsule for control moving
+direction at the small intestine. ACTA Press (2006),
+311―316.
+
+25. Stelarc. Ping body.
+http://stage.itp.nyu.edu/history/timeline/pingbody.html,
+1996.
+
+32. Yagi, R., Sugimoto, Y., Nakatsuchi, Y., Yasunobu, H.,
+Shimada, Y., Komatsu, S., Naito, A., Ichie, M., and
+Hoshimiya, N. Analysis of hand movement indubed by
+functional electrical stimulation in tetraplegic and
+hemiplegic patients. The Japanese Journal of
+Rehabilitation Medicine 21(4) (1984), 235―242.
+
+26. T. Thrasher, V. Z., McIlroy, W., and Popovic, M.
+Rehabilitation of reaching and grasping function in
+severe hemiplegic patients using functional electrical
+stimulation therapy. Neurorehabilitation and neural
+repair 22, 6 (2008), 706.
+27. Tachi, S., Tanie, K., and Abe, M. Effects of pulse
+height and pulse width on the magnitude sensation of
+electrocutaneous stimulus. Japanese journal of medical
+electronics and biological engineering 15(5) (1977),
+315―320.
+
+33. Zatsiorsky, K. Science and practice of strength training
+- ems. Human Kinetics (2006), 132–133.
+34. Zhang, D., Guan, T. H., Widjaja, F., and Ang, W. T.
+Functional electrical stimulation in rehabilitation
+engineering: a survey. In Proceedings of the 1st
+international convention on Rehabilitation
+engineering; assistive technology: in conjunction with
+1st Tan Tock Seng Hospital Neurorehabilitation
+Meeting, i-CREATe ’07, ACM (New York, NY, USA,
+2007), 221–226.
+
+28. Tamaki, E., Miyaki, T., and Rekimoto, J.
+Possessedhand: a hand gesture manipulation system
+using electrical stimuli. In Proceedings of the 1st
+Augmented Human International Conference, AH ’10,
+ACM (New York, NY, USA, 2010), 2:1–2:5.
+
+552
+
+

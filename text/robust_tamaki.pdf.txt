@@ -1,0 +1,160 @@
+A Robust and Accurate 3D Hand Posture Estimation
+Method for Interactive Systems
+Emi Tamaki
+Graduate School of Interdisciplinary Information Studies,
+The University of Tokyo.
+Tokyo, Japan
+hoimei@acm.org
+ABSTRACT
+
+I!n! !t!h!i!s! !p!a!p!e!r!,! !a! !n!e!w! !3!D! !h!a!n!d! !p!o!s!t!u!r!e! !e!s!t!i!m!a!t!i!o!n! !s!y!s!t!e!m! !u!s!i!n!g! !a! !s!i!n!g!l!e!
+!c!a!m!e!r!a! !a!n!d! !3! !i!n!t!e!r!a!c!t!i!v!e! !s!y!s!t!e!m!s! !a!r!e! !i!n!t!r!o!d!u!c!e!d!.! !E!x!i!s!t!i!n!g! !h!a!n!d!
+!g!e!s!t!u!r!e! !r!e!c!o!g!n!i!t!i!o!n! !s!y!s!t!e!m!s! !e!s!t!i!m!a!t!e! !h!a!n!d!'!s! !3!D! !m!o!d!e!l!s! !b!a!s!e!d! !o!n!
+!i!m!a!g!e! !f!e!a!t!u!r!e!s! !s!u!c!h! !a!s! !c!o!n!t!o!u!r! !o!r! !s!k!i!n! !t!e!x!t!u!r!e!.! !H!o!w!e!v!e!r!,! !i!t! !w!a!s!
+!difficult! !t!o! !e!s!t!i!m!a!t!e! !t!h!e! !w!r!i!s!t! !r!o!t!a!t!i!o!n! !b!e!c!a!u!s!e! !t!h!e! !c!o!n!t!o!u!r! !a!n!d! !t!h!e!
+!t!e!x!t!u!r!e! !d!a!t!a! !d!o! !n!o!t! !h!a!v!e! !e!n!o!u!g!h! !i!n!f!o!r!m!a!t!i!o!n! !t!o! !d!i!s!t!i!n!g!u!i!s!h! !h!a!n!d!'!s!
+!s!i!d!e!s!.! ! !T!o! !s!o!l!v!e! !t!h!i!s! !p!r!o!b!l!e!m!,! !w!e! !p!r!o!p!o!s!e! !a! !n!e!w! !3!D! !h!a!n!d! !p!o!s!t!u!r!e!
+!e!s!t!i!m!a!t!i!o!n! !s!y!s!t!e!m! !t!h!a!t! !u!s!e!s! !d!a!t!a! !o!f! !n!a!i!l! !p!o!s!i!t!i!o!n!s!.! !N!a!i!l! !p!o!s!i!t!i!o!n!s! !a!r!e!
+!a!n! !i!m!p!o!r!t!a!n!t! !f!a!c!t!o!r! !t!o! !r!e!c!o!g!n!i!z!e! !h!a!n!d!'!s! !s!i!d!e!s!.! !U!s!i!n!g! !n!a!i!l! !p!o!s!i!t!i!o!n!s!,! !i!t!
+!b!e!c!o!m!e!s! !p!o!s!s!i!b!l!e! !t!o! !d!e!t!e!c!t! !w!h!e!t!h!e!r! !t!h!e! !c!a!m!e!r!a! !i!s! !f!a!c!i!n!g! !p!a!l!m! !o!r!
+!d!o!r!s!u!m!.! !I!n! !a!d!d!i!t!i!o!n!,! !n!a!i!l! !a!r!e!a!s! !c!a!n! !b!e! !r!o!b!u!s!t!l!y! !e!x!t!r!a!c!t!e!d! !f!r!o!m! !a! !s!k!i!n!
+!a!r!e!a! !b!y! !a! !s!i!m!p!l!e! !i!m!a!g!e! !p!r!o!c!e!s!s!i!n!g! !t!e!c!h!n!i!q!u!e!.! !O!u!r! !P!r!o!p!o!s!e!d! !s!y!s!t!e!m!
+!u!s!e!s! !a! !d!a!t!a!b!a!s!e! !c!o!n!s!i!s!t!s! !o!f! !d!a!t!a!-!s!e!t!s! !o!f! !t!h!e! !h!a!n!d!'s! !c!o!n!t!o!u!r!,! !t!h!e! !n!a!i!l!
+!p!o!s!i!t!i!o!n!s!,! !a!n!d! !finger! !j!o!i!n!t! !a!n!g!l!e!s!.! !T!o! !e!s!t!i!m!a!t!e! !t!h!e! !h!a!n!d! !p!o!s!t!u!r!e!,! !t!h!e!
+!s!y!s!t!e!m! !fir!s!t! !e!x!t!r!a!c!t!s! !t!h!e! ! !h!a!n!d!'s! !c!o!n!t!o!u!r! !a!n!d! !t!h!e! !n!a!i!l! !p!o!s!i!t!i!o!n!s! !f!r!o!m! !t!h!e!
+!c!a!p!t!u!r!e!d! !i!m!a!g!e!,! !a!n!d! !s!e!a!r!c!h!e!s! !f!o!r! !a! !s!i!m!i!l!a!r! !d!a!t!a!-!s!e!t! !f!r!o!m! !t!h!e! !d!a!t!a!b!a!s!e!.! !
+!T!h!e! !s!y!s!t!e!m! !t!h!e!n! !o!u!t!p!u!t!s! !t!h!e! !finger! !j!o!i!n!t! !a!n!g!l!e!s! !o!f! !t!h!e! !s!e!a!r!c!h!e!d! !d!a!t!a!!s!e!t!.! !O!u!r! !e!x!p!e!r!i!m!e!n!t!a!l! !r!e!s!u!l!t!s! !s!h!o!w! !h!i!g!h! !a!c!c!u!r!a!c!y! !i!n! !t!h!e! !h!a!n!d! !p!o!s!t!u!r!e!
+!e!s!t!i!m!a!t!i!o!n! !w!i!t!h! !t!h!e! !w!r!i!s!t! !r!o!t!a!t!i!o!n!.!
+
+Figure 1. BrainyHand: An Ear-worn Gesture Interaction Device.
+
+Figure 2. RobotHand manipulator.
+
+Figure 3. PossessedHand: Human
+manipulator using electrical muscle
+stimulation(EMS).
+
+the user does not have to sit at the desk or hold the mobile device in
+his/her hand for the manipulation.
+The 3D hand posture estimation system using the single camera is
+expected for the interaction devices(Fig. 1, 2, 3) with the bare hands.
+A number of single camera approaches have been suggested for
+posture estimation. The most common approach[1] uses 2D
+contours of captured hand to estimate hand posture. This approach
+matches the captured hand contour with the contours of hand
+models or a database, to estimate hand posture with high-speed
+processing. However, this approach will failing to estimate the
+postures, when the captured contour data does not have enough
+information to distinguish hand's sides. Figure 2-(a) shows an
+example of the hand posture which is likely to fail.
+
+Author Keywords
+
+Hand gesture, interaction device, robot, tactile feedback.
+ACM Classification Keywords
+
+H5.2 User Interfaces: Interaction styles (e.g., commands, menu,
+forms, direct manipulation).
+General Terms
+
+Design.
+
+To solve this problem, another approach which is considered inside
+line of hands[2] has been proposed. In this approach, it is easy to
+estimate hand posture as it is shown in Figure 4-(a). At the same
+time, this approach fails to estimate posture as shown Figure 4-(b),
+because this posture only has hands contour. By using previous
+result, the false recognition can be prevented. However, initial
+hand's posture becomes restricted.
+
+INTRODUCTION
+
+The hand posture estimation system can be used for various
+systems. It is important to estimate the hand posture with a single
+camera for the realization of the hand gesture input. If it is possible,
+user can manipulate the devices while doing other things, because
+Copyright is held by the author/owner(s).
+TEI 2010, January 24–27, 2010, Cambridge, Massachusetts, USA.
+ACM 978-1-60558-841-4/10/01.
+
+321
+
+Figure 4. Examples of ambiguous hand postures. (left column) captured image.
+(center column) contour. (right column) contour and nail.
+
+Figure 6. System outlines. (a)An construction of a database. (b)A hand gesture
+estimation.
+
+! b!e!t!w!e!e!n! !t!h!e! !d!a!t!a! !g!l!o!v!e! !a!n!d! !o!u!r! !s!y!s!t!e!m!.! !T!h!e!n!,! !w!e! !c!o!n!f!i!r!m!e!d! !a!n!
+!a!c!c!u!r!a!c!y! !o!f! !h!a!n!d! !p!o!s!t!u!r!e! !e!s!t!i!m!a!t!i!o!n! !w!i!t!h! !t!h!e! !w!r!i!s!t! !r!o!t!a!t!i!o!n!.! ! !
+
+Figure 5. Results of 3D Hand Posture Estimations.
+An approach using texture as crease in the hand besides hands
+contour and inside line is also suggested[3]. This approach
+estimates both hand postures on Figure 4-(a) and (b), although this
+is not consistently result in outcomes, because the textures of crease
+are easily effected by the lighting environments change. In addition
+to the approaches above, an estimation approach which uses
+shading of hands is proposed[4]. However, this approach can not
+recognize hand's sides in shade-less environments because of
+diffused lighting.
+
+!O!u!r! !e!x!p!e!r!i!m!e!n!t!a!l! !r!e!s!u!l!t!s! !s!h!o!w! !h!i!g!h! !a!c!c!u!r!a!c!y! !i!n! !t!h!e! !h!a!n!d! !p!o!s!t!u!r!e!
+!e!s!t!i!m!a!t!i!o!n! !w!i!t!h! !t!h!e! !w!r!i!s!t! !r!o!t!a!t!i!o!n!(!F!i!g!.! !5!)!.! !T!h!e! !fing!e!r! !j!o!i!n!t! !a!n!g!l!e!s!
+!e!s!t!i!m!a!t!i!o!n! !i!s! !a!p!p!r!o!x!i!m!a!t!e!l!y! !7!.!2!3! !d!e!g!r!e!e! !o!f! !s!t!a!n!d!a!r!d! !d!e!v!i!a!t!i!o!n! !o!f!
+!e!r!r!o!r!.! !T!h!e! !p!r!o!c!e!s!s!i!n!g! !t!i!m!e! !i!s! !w!i!t!h!i!n! !1!0!m!s!.! ! !T!h!e! !s!y!s!t!e!m! !w!o!r!k!s!
+!c!o!r!r!e!c!t!l!y! !e!x!c!e!p!t! !i!n! !b!l!u!e! !l!i!g!h!t!i!n!g! !a!n!d! !i!n!t!e!n!s!e! !l!i!g!h!t!i!n!g! !c!o!n!d!i!t!i!o!n!s!
+CONCLUSION
+
+The 3D hand posture estimation system is proposed. Brainy
+Hand(Fig. 1), Robothand manipulator(Fig. 2), and Human
+manipulator(Fig. 3) are also suggested as the application examples by
+using the estimation system. RobotHand manipulator is nearlycompleted system. On the other hand, BrainyHand and
+PossessedHand need more discussions for efficient interaction ideas.
+
+The key to prevent false estimation is to distinguish hand's sides
+correctly. The existing image-based approaches use texture and
+shading to distinguish hand’s sides; these are effective approaches.
+Nevertheless, an extraction of texture and shading is not robust in
+some lighting environments. In short, hand posture estimation
+system needs a new extractable factor that can robustly distinguish
+hand’s sides.
+
+REFERENCES
+1. T!a!e!h!e!e! !L!e!e! !a!n!d! !T! !H!o!l!l!e!r!e!d!:! !H!y!b!r!i!d! !F!e!a!t!u!r!e! !T!r!a!c!k!i!n!g! !a!n!d! !U!s!e!r! !I!n!t!e!r!a!c!t!i!o!n!
+!f!o!r! !M!a!r!k!e!r!l!e!s!s! !A!u!g!m!e!n!t!e!d! !R!e!a!l!i!t!y!.! ! !P!r!o!c!.! !I!E!E!E! !V!R! !2!0!0!8! !(!1!0!t!h! !I!n!t! l!
+!C!o!n!f!e!r!e!n!c!e! !o!n! !V!i!r!t!u!a!l! !R!e!a!l!i!t!y!)!,! !(!2!0!0!8!)!,! !1!-!8!.!
+
+SYSTEM CONFIGURATION
+
+N!a!i!l! !p!o!s!i!t!i!o!n!s! !h!a!v!e! !i!n!f!o!r!m!a!t!i!o!n! !t!o! !d!i!s!t!i!n!g!u!i!s!h! !h!a!n!d!’s! !s!i!d!e!s!,! !a!s!
+!s!h!o!w!n! !i!n! !F!i!g!u!r!e! !4!.! ! !O!u!r! !p!r!o!p!o!s!e!d! !s!y!s!t!e!m!(!F!i!g!.! !6!)! !u!s!e!s! !a! !d!a!t!a!b!a!s!e!,!
+!c!o!n!s!i!s!t!i!n!g! !t!h!r!e!e! !e!l!e!m!e!n!t!s!:! !d!a!t!a!-!s!e!t!s! !o!f! !a! !h!a!n!d! !c!o!n!t!o!u!r!,! !n!a!i!l!
+!p!o!s!i!t!i!o!n!s!,! !a!n!d! !f!i!n!g!e!r! !j!o!i!n!t! !a!n!g!l!e!s!.! !T!h!e! !c!o!n!t!o!u!r! !i!s! !d!i!g!i!t!a!l!i!z!e!d! !b!y!
+!H!i!g!h!e!r!-!o!r!d!e!r! !L!o!c!a!l! !A!u!t!o!C!o!r!r!e!l!a!t!i!o!n! !(!H!L!A!C!)!.! !T!h!e! !n!a!i!l! !a!r!e!a!s! !c!a!n!
+!b!e! !e!a!s!i!l!y! !e!x!t!r!a!c!t!e!d! !f!r!o!m! !a! !s!k!i!n! !a!r!e!a! !b!y! !s!i!m!p!l!e! !i!m!a!g!e! !p!r!o!c!e!s!s!i!n!g!
+!t!e!c!h!n!i!q!u!e![!5!]!.! !T!h!e! !t!e!c!h!n!i!q!u!e! !c!a!n! !e!x!t!r!a!c!t!s! !t!h!e! !n!a!i!l! !a!n!d! !s!k!i!n! !a!r!e!a!s!
+!e!x!c!e!p!t! !i!n! !b!l!u!e! !l!i!g!h!t!i!n!g! !a!n!d! !i!n!t!e!n!s!e! !l!i!g!h!t!i!n!g! !c!o!n!d!i!t!i!o!n!s!.! !T!h!e! !f!i!n!g!e!r!
+!j!o!i!n!t! !a!n!g!l!e!s! !a!r!e! !m!e!a!s!u!r!e!d! !b!y! !t!h!e! !d!a!t!a! !g!l!o!v!e! !o!f! !1!8! !d!e!g!r!e!e!s! !o!f!
+!f!r!e!e!d!o!m!.! ! T!o! !e!s!t!i!m!a!t!e! !t!h!e! !h!a!n!d! !p!o!s!t!u!r!e!,! !s!y!s!t!e!m! !f!i!r!s!t!l!y! !e!x!t!r!a!c!t!s!
+!h!a!n!d!s! !c!o!n!t!o!u!r! !a!n!d! !n!a!i!l! !p!o!s!i!t!i!o!n!s! !f!r!o!m! !t!h!e! !c!a!p!t!u!r!e!d! !i!m!a!g!e!,! !s!e!c!o!n!d!l!y!
+!i!t! !s!e!a!r!c!h!e!s! !f!o!r! !a! !s!i!m!i!l!a!r! !d!a!t!a!-!s!e!t! !f!r!o!m! !t!h!e! !d!a!t!a!b!a!s!e!.! T!h!e! !s!y!s!t!e!m! !t!h!e!n!
+!o!u!t!p!u!t!s! !t!h!e! !f!i!n!g!e!r! !j!o!i!n!t! !a!n!g!l!e!s! !o!f! !t!h!e! !s!e!a!r!c!h!e!d! !d!a!t!a!-!s!e!t!.! !T!o! !s!h!o!w! !t!h!e!
+!e!f!f!e!c!t!i!v!e!n!e!s!s! !o!f! !o!u!r! !s!y!s!t!e!m!,! !w!e! !t!e!s!t!e!d! !b!y! !c!o!m!p!a!r!a!t!i!v!e! !e!x!p!e!r!i!m!e!n!t!s! !
+
+2. ! !N!.! !S!h!i!m!a!d!a!,! !K!.! !K!i!m!u!r!a! !a!n!d! !Y!.! !S!h!i!r!a!i!:! !R!e!a!l!-!t!i!m!e! !3! !D! !H!a!n!d! !P!o!s!t!u!r!e!
+!E!s!t!i!m!a!t!i!o!n! !b!a!s!e!d! !o!n! !2! !D! !A!p!p!e!a!r!a!n!c!e! !R!e!t!r!i!e!v!a!l! !U!s!i!n!g! !M!o!n!o!c!u!l!a!r! !C!a!m!e!r!a!,!
+!P!r!o!c!.! !I!n!t!.! !W!S!.! !o!n! !R!A!T!F!G!-!R!T!S! !(!s!a!t!e!l!l!i!t!e! !W!S! !o!f! !I!C!C!V!2!0!0!1!)!,! !(!2!0!0!1!)!,! !2!3!3!0!.! !
+3. !R!a!f!a!e!l! !D!i!a!z!,! !M!.!,! !T!r!a!v!i!e!s!o!,! !C!.!M!.!,! ! !A!l!o!n!s!o!,! !J!.!B!.!,! !a!n!d! ! !F!e!r!r!e!r!,! !M!.!A!.!:!
+!B!i!o!m!e!t!r!i!c! !s!y!s!t!e!m! !b!a!s!e!d! !i!n! !t!h!e! !f!e!a!t!u!r!e! !o!f! !h!a!n!d! !p!a!l!m!.! !S!e!c!u!r!i!t!y! !T!e!c!h!n!o!l!o!g!y!
+!2!0!0!4!.! !3!8!t!h! !A!n!n!u!a!l! !2!0!0!4! !I!n!t!e!r!n!a!t!i!o!n!a!l! !C!a!r!n!a!h!a!n! !C!o!n!f!e!r!e!n!c!e!,! !(!2!0!0!4!)!,! !1!3!6!!1!3!9!.!
+4. !M!a!r!t!i!n! !d!e! !L!a! !G!o!r!c!e!,! !N!i!k!o!s! !P!a!r!a!g!i!o!s!,! !D!a!v!i!d! !J!.! !F!l!e!e!t!:! !M!o!d!e!l!-!B!a!s!e!d! !H!a!n!d!
+!t!r!a!c!k!i!n!g! !w!i!t!h! !t!e!x!t!u!r!e!,! !S!h!a!d!i!n!g! !a!n!d! !S!e!l!f!-!o!c!c!l!u!s!i!o!n!s!.!,! !C!V!P!R!0!8!,! !(!2!0!0!8!)!,! !1!-!-!8!.!
+
+5. !E!m!i! !T!a!m!a!k!i! !a!n!d! !K!i!y!o!s!h!i! !H!o!s!h!i!n!o!:! !P!e!r!s!o!n!a!l!i!z!e!d! !c!o!l!o!r! !s!y!s!t!e!m! !f!o!r! !r!o!b!u!s!t!
+!e!x!t!r!a!c!t!i!o!n! !o!f! !s!k!i!n!-!c!o!l!o!r!,! !T!h!e! !V!i!r!t!u!a!l! !R!e!a!l!i!t!y! !S!o!c!i!e!t!y! !o!f! !J!a!p!a!n!,! !V!o!l!.!1!2!(!4!)!,!
+!(!2!0!0!7!)!,! !4!7!1!-!4!7!8
+
+322
+
+
