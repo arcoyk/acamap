@@ -1,0 +1,424 @@
+Nomadic Virtual Reality: Exploring New Interaction
+Concepts for Mobile Virtual Reality Head-Mounted Displays
+Jan Gugenheimer
+Ulm University, Germany
+jan.gugenheimer@uni-ulm.de
+hardware such as sensors and actuators to fit the specific scenario.
+Similar to the evolution of the smartphone which after its first
+release changed drastically over time in terms of sensing and actuation (e.g. camera, gyro, touch input, vibration motor). I expect the
+same to happen with mobile VR HMDs which will extend their
+input and output capabilities after a significant benefit for the user
+can be shown (e.g. eye-tracking to enable foveated rendering).
+
+ABSTRACT
+
+Technical progress and miniaturization enables virtual reality (VR)
+head-mounted displays (HMDs) now to be solely operated using
+a smartphone as a display, processing unit and sensor unit. These
+mobile VR HMDs (e.g. Samsung GearVR) allow for a whole new
+interaction scenario, where users can bring their HMD with them
+wherever they want and immerse themselves anytime at any place
+(nomadic VR). However, most of the early research on interaction
+with VR HMDs focused around stationary setups. My research
+revolves around enabling new forms of interaction for these
+nomadic VR scenarios. In my research I choose a user-centered
+design approach where I build research prototypes to solve
+potential problems of nomadic VR and evaluate those prototypes
+in user studies. I am going to present three prototypes revolving
+around current challenges of nomadic VR (input and feedback).
+
+The research goal of my thesis is to identify the specific interaction
+challenges in nomadic VR and address those by proposing possible solutions through research prototypes. These are being evaluated in user-studies comparing them to the state-of-the-art in terms
+of immersion, engagement, enjoyment and simulator sickness.
+The focus of my thesis lies on interaction and end-users/consumers
+using VR for leisure, rather then on professional applications.
+
+Author Keywords
+
+NOMADIC VIRTUAL REALITY
+
+nomadic VR; mobile VR; VR interaction; Virtual Reality;
+
+Nomadic VR can be seen as an interaction scenario where a user
+operates a mobile VR HMD in an uninstrumented environment
+often in social settings (e.g. commute to work in a subway).
+In contrary to Kleinrock et al. [8] my focus for nomadic
+virtual reality lies on interaction scenarios/concepts and not the
+underlying technology infrastructure. The technology used for
+nomadic VR is a mobile VR HMD but the interaction scenario
+is not fully mobile (e.g. no walking condition). To interact with
+a mobile VR HMD a user will pick a spot where he or she feels
+comfortable to interact and immerse him or herself.
+
+ACM Classification Keywords
+
+H.5.2. [Information Interfaces and Presentation] : User Interfaces:
+Input Devices and Strategies, Interaction Styles
+INTRODUCTION
+
+After the first big wave of virtual reality (VR) in the 90s, VR
+head-mounted displays (HMDs) are once again at a state where
+they can potentially penetrate the consumer market. Major
+companies such as Facebook, Samsung and HTC are releasing
+consumer products (e.g. GearVR) this year (2016). Mobile
+VR has the potential to make virtual reality as ubiquitous as
+smartphones. Due to the low price of these mobile VR HMDs,
+they are more likely to penetrate the consumer market. Therefore,
+enhancing the usability and interaction of these mobile devices
+could potentially help them with user acceptance.
+
+Research questions for nomadic VR can partially be derived
+and adapted from research questions of stationary VR [24, 11].
+Nomadic VR comes with additional constraints for some of
+the research questions such as input. As an example, the HTC
+Vive controllers can currently be considered as one of the better
+ways to interact with stationary VR systems but would force an
+additional accessory upon the user in the nomadic VR scenario.
+The Leap Motion sensor can be integrated into a mobile VR
+HMD and allows for hand tracking in nomadic environments but
+would force the user to spread their arms away from the body
+and potentially bump into and touch things and people in the
+surrounding. These examples show that a stationary solution does
+not necessary apply to the nomadic VR scenario. Nomadic VR
+also comes with additional challenges such as social acceptance.
+The following list of research questions is partially derived from
+the prior work. In my thesis I am currently planning a bigger
+survey to derive further research questions and challenges of
+nomadic VR HMDs and extend/modify the following list.
+
+Research around VR interaction mostly focused on stationary concepts where you assume you have control over the environment
+[24]. However, the nomadic VR scenario comes with new research challenges such as ”how to design input techniques in a public space”. I decided to choose an engineering approach by extending the interaction space of mobile VR HMDs through additional
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed for
+profit or commercial advantage and that copies bear this notice and the full citation on the
+first page. Copyrights for third-party components of this work must be honored. For all
+other uses, contact the Owner/Author. Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16–19, 2016, Tokyo, Japan.
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984783
+
+• RQ1 Input: Which input concept allow for an efficient
+interaction for the nomadic VR scenario ?
+
+9
+
+Figure 1. (a) A user interacting with FaceTouch, a multi-touch surface mounted on the back of a VR HMD. FaceTouch allows for precise interactions which
+can be used to implement applications such as text entry (b) or 3D modeling (c). Leveraging the sense of proprioception a user is able to blindly interact with
+control elements such as used in a gamepad to control a shooter game (d).
+
+• RQ2 Feedback: How to enable additional sensory feedback
+for mobile VR HMDs which increase the level of immersion ?
+
+the viability for everyday usage. The second user study compared
+three different mounting positions (face, hand and side) showing
+that mounting the touchpad at the back of the HMD resulted in
+a significantly lower error rate, lower selection time and higher
+usability. Finally, we present interaction techniques and three
+example applications that explore the FaceTouch design space.
+
+• RQ3 Social Acceptance: How to increase the social acceptance
+of mobile VR HMDs when used in public places ?
+One of the big constraints for nomadic VR is to avoid additional
+accessory for the user. All of the solutions should be in one way
+either integrable into the HMD itself or into other devices of the
+user (e.g. smartwatch). In the future, mobile VR HMDs itself can
+be integrated inside of a bumper case for the smartphone or even
+become part of the future smartphone itself. The reason for this
+”accessory constraint” is that most mobile appliances are fighting
+for the ”pocket space” of the user. A device with only one specific
+feature is more likely to not be brought along compared to a general device such as the smartphone [7]. Imagine you would have to
+bring an additional mp3 player, a camera and a video player with
+you on your daily commute. For VR to become an integral part of
+users everyday life it has to become an integral part of every smartphone. One can imagine a future, where after receiving a picture
+from a friend who is currently on vacation, instead of only looking
+at it on your smartphone screen you would just hold your smartphone to your face and immerse yourself into a 360 scene being
+able to actually look around, interact and feel the environment.
+
+Overall, we showed how by simply changing size and location
+of the currently widely spread touchpad at the temple, mobile
+VR HMDs can increase the interaction capabilities and enable
+features such as text entry.
+GyroVR [Conditionally Accepted at UIST 2016]
+
+DISSERTATION STATUS
+
+Figure 2. Left: A user wearing a VR HMD with GyroVR attached. Right:
+A prototype implementation of GyroVR attaching flywheels on the front of
+an Oculus Rift DK2.
+
+In my thesis I currently focused on the first two research questions
+(RQ1 and RQ2). In the following I am going to present three
+research projects which addressed these questions.
+
+The work around GyroVR [5] aimed to enable new forms of
+haptic feedback for mobile VR HMDs (RQ2) which work in a
+nomadic VR scenario.
+
+FaceTouch [Conditionally Accepted at UIST 2016]
+
+With FaceTouch [4] our goal was to design an interaction
+concepts for the nomadic VR scenario which extends the input
+capabilities of mobile VR HMDs (RQ1). We focused on short
+interaction bursts (utilitarian interaction to select content or input
+text) which fit the nomadic VR scenario.
+
+GyroVR uses head worn flywheels designed to render inertia in
+nomadic VR (figure 2). Motions such as flying, diving or floating
+in outer space generate kinesthetic forces onto our body which
+impede movement and are currently not represented in VR. We
+simulate those kinesthetic forces by attaching flywheels to the
+users head which leverage the gyroscopic effect of resistance
+when changing the spinning axis of rotation. GyroVR is an
+ungrounded, wireless and self contained device allowing the
+user to freely move inside the virtual environment. We build
+several iterations of the prototype exploring the optimal mounting
+position on the users body. In a final evaluation we measured
+the impact of GyroVR on immersion, enjoyment and simulator
+sickness in different mounting positions on the head (back and
+front). The results showed that participants preferred the front
+mounting which resulted in the highest level of immersion and
+
+FaceTouch is a novel interaction concept for mobile VR HMDs
+that leverages the backside as a touch-sensitive surface (figure
+1. With FaceTouch, the user can point at and select virtual content
+inside their field-of-view by touching the corresponding location
+at the backside of the HMD utilizing their sense of proprioception.
+This enables a rich interaction (e.g. gestures) in nomadic scenarios
+without having to carry additional accessories (e.g. a gamepad).
+To evaluate the performance of FaceTouch we conducted two user
+studies. In the first study we measured the precision of FaceTouch
+in a display-fixed target selection task using three different
+selection techniques showing a low error rate of 2% indicating
+
+10
+
+enjoyment. We additionally raised the question of how realistic
+haptic forces have to be which are generated for VR.
+
+RELATED WORK
+
+I will mainly focus on HCI research for VR HMDs and divide
+the prior art in Input and Feedback. CAVE environments were
+predominant in the last years of VR research but only partially
+influence my thesis.
+
+Our preliminary results indicate that the level of immersion
+can also be increased by using unrealistic forces (as we had in
+one of our example applications) as long as they fit the certain
+environment. Further research must be conducted to show what
+exactly must be fulfilled that users accept these unrealistic forces.
+Overall, GyroVR showed how it is possible to create haptic
+feedback in nomadic VR scenarios by modifying a mobileVR
+HMD with flywheels.
+
+Input: Concepts for interaction in VR are mostly based on the
+field of 3D interaction techniques [1]. Those can be classified
+as exocentric (third-person view) and egocentric (first-person
+view) interaction metaphors [16]. My current projects mostly
+focused around egocentric interaction concepts of which the most
+prevalent are the virtual hand and virtual pointer metaphors [1,
+17]. Virtual hand metaphors work by tracking the users hands
+to allow for interact with content within arms reach [10] (e.g.
+Leap Motion). This approach partially breaks with the nomadic
+VR scenario since it forces the user to reach into an unknown
+environment, potentially bumping into and touch people or
+objects in the surrounding. Virtual pointer metaphors rely on
+casting a ray into the virtual scene to enable user interaction
+[12]. Several techniques were proposed to determine the rays
+orientation which mostly rely on tracking the users hand [13, 15].
+More recent research on mobile VR already started to use the
+additional sensors of the smartphones such as magnetometer or
+gyroscope to allow for novel interaction concepts [20, 22].
+
+SwiVRChair [CHI 2016]
+
+Feedback: One of the big directions of research in VR is focused
+around generating haptic feedback [9, 18] which can be divided
+into kinesthetic and tactile feedback. Motion platforms which
+often induce kinesthetic feedback are mostly based on the Steward
+platform [21]. Early prototypes in CAVE systems attached exoskeletons [23] or pulley system [14] to the users limbs. Most of
+these feedback mechanisms work only with specialized hardware
+or environments dedicated for this one task. More recent projects
+such as HapticTurk [2] and TurkDeck [3] used the approach of
+harvesting people in the surrounding to generate haptic feedback.
+Furthermore, some research projects on feedback in VR which
+were not particularly tailored towards nomadic VR presented
+concepts which still would fit the nomadic VR scenario [9, 19].
+
+Figure 3. Left: A participant being rotated inside a virtual scene sitting on
+the SwiVRChair. Right: The physical prototype of the SwiVRChair
+
+With SwiVRChair [6], we again focused on adding additional
+sensory feedback for mobile VR HMDs in nomadic VR scenarios
+(RQ2). In contrast to GyroVR we picked a different approach
+by not modifying the HMD itself but a swivel chair which is used
+to initiate the nomadic VR experience. We picked a swivel chair
+since its a perfect tool to explore 360 degree content which is a
+promising application scenario for VR.
+SwiVRChair is a motorized swivel chair to nudge users orientation
+in 360 degree storytelling scenarios (figure 3). Rotating a scene
+in VR without actual physical movement can lead to simulator
+sickness. This reduces the freedom of storytellers since they have
+no way of nudging users attention. SwiVRChair allows creators
+of 360 degree VR content to be able to rotate or block users movement to either show certain content or prevent users from seeing
+something. We implemented SwiVRChair by modifying a regular
+swivel chair using a 24V DC motor and an electromagnetic clutch.
+The clutch was an essential part in the design since it allows the
+user to always break out of the computer initiated rotation. We
+evaluate the concept by developing two demo scenarios of a 360
+degree movie and conducting a first user evaluation (n=16). The
+focus hereby was on presence, enjoyment and simulator sickness
+of SwiVRChair in comparison to a regular swivel chair.
+
+My goals is to publish my work in HCI venues such as CHI
+and UIST and focus on the interaction challenges for mobile VR
+HMDs.
+RESEARCH SITUATION
+
+I am currently in the third year of my PhD at the Institute of Media Informatics at Ulm University, Germany. The program I am
+enrolled in does not have any time constraints but I plan to hand in
+my thesis in approximately two years. From the Doctoral Consortium I hope get valuable feedback on my research direction and
+approach since at the current state I am still able to adjust those.
+FUTURE WORK
+
+Our results show that users enjoyed the experience using
+SwiVRChair and rated the immersion and enjoyment to be
+significantly higher compared to a regular swivle chair. We further
+observed the effect that participants valued the aspect of ”leaning
+back” and not having the pressure of searching inside the scene
+for the next narrative. Overall, our work shows how a currently
+regular piece of furniture can be extended in the future to enhance
+360 degree story telling applications for mobileVR HMDs.
+
+Until now all the projects I have done for nomadic VR were
+focusing on more traditional VR interaction research questions
+(input and output). I am currently planing to collect data with
+early adopters of mobile VR HMDs to be able to identify more
+specific challenges for the nomadic VR scenario. Furthermore, I
+am working on RQ3 (social acceptance) which is something most
+technologies face which have to be operated in a public setting.
+One of my hypotheses is that mobile VR HMDs will have similar
+
+11
+
+problems as Google Glass had, since bystanders are not able to
+see and understand what the immersed user is doing.
+
+11. McGill, M., Boland, D., Murray-Smith,
+R., and Brewster, S. A dose of reality: Overcoming
+usability challenges in vr head-mounted displays.
+
+The overreaching goal of my thesis will be to identify specific
+problems inside the nomadic VR scenario and solve some of
+them through future prototypes which are evaluated in user
+studies. The findings of my thesis will extend the prior work
+of interaction research for virtual reality in the specific context
+of nomadic VR. Additionally, I hope that my work will also
+have an impact onto the VR industry and help to support the
+user acceptance of future mobile VR HMDs since some of my
+presented prototypes can already be implemented using currently
+available off the shelf hardware (e.g. FaceTouch).
+
+12. Mine, M., et al. Virtual environment
+interaction techniques. UNC Chapel Hill computer
+science technical report TR95-018 (1995), 507248–2.
+13. Mine, M. R., Brooks Jr, F. P., and Sequin, C. H.
+Moving objects in space: exploiting proprioception in virtualenvironment interaction. In Proceedings of the 24th annual
+conference on Computer graphics and interactive techniques,
+ACM Press/Addison-Wesley Publishing Co. (1997), 19–26.
+14. Murayama, J., Bougrila, L., Luo,
+Y., Akahane, K., Hasegawa, S., Hirsbrunner, B., and Sato, M.
+Spidar g&g: a two-handed haptic interface for bimanual vr
+interaction. In Proceedings of EuroHaptics (2004), 138–146.
+
+ACKNOWLEDGMENTS
+
+I would like to thank my supervisor Enrico Rukzio and all my
+colleagues for their valuable feedback on my thesis proposition.
+This work was conducted within the Transregional Collaborative
+Research Centre SFB/TRR 62 Companion Technology for
+Cognitive Technical Systems funded by the German Research
+Foundation (DFG).
+
+15. Pierce,
+J. S., Forsberg, A. S., Conway, M. J., Hong, S., Zeleznik,
+R. C., and Mine, M. R. Image plane interaction techniques
+in 3d immersive environments. In Proceedings of the 1997
+symposium on Interactive 3D graphics, ACM (1997), 39–ff.
+
+REFERENCES
+
+1. Argelaguet, F., and Andujar, C. A survey
+of 3d object selection techniques for virtual environments.
+Computers & Graphics 37, 3 (2013), 121–136.
+2. Cheng, L.-P., Lühne, P., Lopes, P., Sterz, C., and
+Baudisch, P. Haptic turk: a motion platform based on people.
+In Proceedings of CHI ’14, ACM (2014), 3463–3472.
+3. Cheng, L.-P., Roumen, T., Rantzsch,
+H., Köhler, S., Schmidt, P., Kovacs, R., Jasper, J., Kemper, J.,
+and Baudisch, P. Turkdeck: Physical virtual reality based on
+people. In Proceedings of UIST ’15, ACM (2015), 417–426.
+4. Gugenheimer, J., Dobbelstein, D., Winkler,
+C., Hass, G., and Rukzio, E. Facetouch: Enabling touch
+interaction in display fixed uis for mobile virtual reality. In
+Conditionally Accepted UIST ’16, UIST ’16, ACM (2016).
+5. Gugenheimer, J., Wolf,
+D., Eyhtor, E., Maes, P., and Rukzio, E. Gyrovr: Simulating
+inertia in virtual reality using head worn flywheels. In
+Conditionally Accepted UIST ’16, UIST ’16, ACM (2016).
+6. Gugenheimer, J., Wolf, D.,
+Haas, G., Krebs, S., and Rukzio, E. Swivrchair: A motorized
+swivel chair to nudge users’ orientation for 360 degree
+storytelling in virtual reality. In Proceedings of CHI ’16,
+CHI ’16, ACM (New York, NY, USA, 2016), 1996–2000.
+7. Kjeldskov, J. Mobile
+computing. In In Mads Soegaard and Rikke Friis Dam (Eds.),
+The Encyclopedia of Human-Computer Interaction, 2nd edn,
+8. Kleinrock, L. Nomadic computing&mdash;an opportunity.
+SIGCOMM Comput. Commun. Rev. 25, 1 (Jan. 1995), 36–40.
+9. Lopes, P., Ion, A., and Baudisch,
+P. Impacto: Simulating physical impact by combining
+tactile stimulation with electrical muscle stimulation.
+In Proceedings of UIST ’15, ACM (2015), 11–19.
+10. Lubos, P.,
+Bruder, G., and Steinicke, F. Analysis of direct selection in
+head-mounted display environments. In 3D User Interfaces
+(3DUI), 2014 IEEE Symposium on, IEEE (2014), 11–18.
+
+16. Poupyrev, I., and Ichikawa,
+T. Manipulating objects in virtual worlds: Categorization
+and empirical evaluation of interaction techniques. Journal
+of Visual Languages & Computing 10, 1 (1999), 19–35.
+17. Poupyrev, I., Ichikawa, T., Weghorst, S., and Billinghurst,
+M. Egocentric object manipulation in virtual environments:
+empirical evaluation of interaction techniques. In Computer
+graphics forum, vol. 17, Wiley Online Library (1998), 41–52.
+18. Ramsamy, P., Haffegee, A., Jamieson,
+R., and Alexandrov, V. Using haptics to improve immersion
+in virtual environments. In International Conference
+on Computational Science, Springer (2006), 603–609.
+19. Sand,
+A., Rakkolainen, I., Isokoski, P., Kangas, J., Raisamo, R.,
+and Palovuori, K. Head-mounted display with mid-air tactile
+feedback. In Proceedings of VRST’15, ACM (2015), 51–58.
+20. Smus, B., and Riederer, C. Magnetic input for mobile
+virtual reality. In Proceedings of the 2015 ACM International
+Symposium on Wearable Computers, ACM (2015), 43–44.
+21. Stewart, D.
+A platform with six degrees of freedom. Proceedings of the
+institution of mechanical engineers 180, 1 (1965), 371–386.
+22. Tregillus, S., and Folmer, E. Vr-step: Walking-in-place
+using inertial sensing for hands free navigation
+in mobile vr environments. In Proceedings of CHI ’16,
+CHI ’16, ACM (New York, NY, USA, 2016), 1250–1255.
+23. Tsetserukou, D., Sato, K., and Tachi, S. Exointerfaces: novel
+exosceleton haptic interfaces for virtual reality, augmented
+sport and rehabilitation. In Proceedings of the 1st Augmented
+Human International Conference, ACM (2010), 1.
+24. Zhao, Q. A survey on virtual reality. Science in
+China Series F: Information Sciences 52, 3 (2009), 348–400.
+
+12
+
+

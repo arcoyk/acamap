@@ -1,11 +1,23 @@
 import os
 import numpy as np
+import random
 import logging
 from subprocess import call
 from gensim.models.doc2vec import LabeledSentence
 from gensim import models
 from sklearn.decomposition import PCA
 
+# Process PDF to metadata hash
+# data = [
+# {
+#   'pdf': 'A Semantic Implication for HCI',
+#   'doc': 'This paper present an implication...',
+#   'tag': ['william@acm.org', 'CHI2016'],
+#   'vec': [0.23, 0.54, 0.23 ... (doc2vec vector)],
+#   'xyz': [0.33, 0.63, 0.23] (PCA of vec)
+# }, ...]
+
+ROOT_DIR = 'RKMTLAB'
 TEXT_DIR = 'text'
 MODEL_DIR = 'doc2vec.model'
 
@@ -24,13 +36,13 @@ def train(data):
 
 def all_files(r, d=list()):
   # Get all file paths under the root (r) recursively.
-  if '.pdf' in r:
-    d += [r]
+  if '.' in r:
+    if '.pdf' in r:
+      d += [r]
     return
   else:
     for f in os.listdir(r):
-      if not f == '.DS_Store':
-        all_files(r + '/' + f, d)
+      all_files(r + '/' + f, d)
   return d
 
 def read(path):
@@ -76,13 +88,16 @@ def pdf2vec(pdf, model):
 def valid_model(model, data):
   for d in data:
     pdf = d['pdf']
-    if not d in model.docvecs.doctags.items():
+    tags = model.docvecs.doctags
+    tags = tags.items()
+    tags = [tag[0] for tag in tags]
+    if not d in tags:
       return False
   return True
 
 def get_model(data):
   model = models.Doc2Vec.load(MODEL_DIR)
-  if valid_model(model, data):
+  if not valid_model(model, data):
     print('Generating new model')
     model = train(data)
   return model
@@ -123,7 +138,21 @@ def get_pdfs(dr):
     data.append(d)
   return data
 
-data = get_pdfs('RKMTLAB')
+def random_choice():
+  i = random.choice(range(len(data)))
+  return by_id(i)
+
+def by_id(i):
+  # for server
+  d = data[i]
+  rst = {}
+  rst['text'] = d['pdf']
+  rst['x'] = d['xyz'][0]
+  rst['y'] = d['xyz'][1]
+  rst['z'] = d['xyz'][2]
+  return rst
+
+data = get_pdfs(ROOT_DIR)
 data = append_doc(data)
 data = append_tag(data)
 data = append_vec(data)

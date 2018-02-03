@@ -1,0 +1,301 @@
+Histo
+ogram: Spatio
+otemporral Pho
+oto-Disp
+playing Interfa
+ace
+Soomin Kim
+Seoul National
+N
+Univ
+versity
+Seoul, Republic
+R
+of Korea
+K
+soomin
+nkim@snu.aac.kr
+
+Jon
+ngHwan Oh
+Seoul Naational Univeersity
+Seoul, Republic
+R
+of K
+Korea
+whee0501@snu.acc.kr
+
+Joon
+nhwan Lee
+Seoul Nattional Univeersity
+Seoul, Reepublic of Koorea
+joonhw
+wan@snu.ac.kkr
+
+Figure 1. Interface of the H
+Histogram.
+A
+ABSTRACT
+
+ACM C
+Classification K
+Keywords
+
+A
+As the smartph
+hone has becom
+me more wideely available, we
+w
+eeasily take pho
+otos and uploaad them onlin
+ne to share wiith
+oothers. Photogrraphs are abu
+undant, but theey are not used
+pproperly, even though they provide
+p
+meanin
+ngful informatio
+on
+aabout the sociaal scenes of ou
+ur daily lives. To address th
+his
+issue, Histograam was creatted as a new
+w interface for
+f
+ddisplaying an
+nd sharing location-relateed photograp
+phs
+cchronologically
+y to trace thee changes in a location. Th
+he
+pprototype of th
+his system is mobile-optimiz
+m
+zed to encourage
+uusers to easily upload
+u
+photos with their smaartphones, so th
+hat
+thhe system can be
+b run through social cooperaative work.
+
+K.4.3 [[Computers andd Society]: Orgganizational Im
+mpacts; J.4
+[Sociall and Behavioraal Science]: Soociology; H.3.5 [Online
+Inform
+mation Services]]: Web-based sservices
+INTRO
+ODUCTION
+
+Througgh the widespreead usage of sm
+martphones, wee use social
+networrking services in our daily liives. Instagram
+m exceeded
+500 m
+million monthlyy active users in June 2015, exceeding
+Twitterr1. Also accordding to the Pew
+w Research Centter, 55% of
+online adults ages 18 to 29 use Instaagram2. Those pphenomena
+imply tthat image-baseed communicaation is emerginng as a new
+social media usage pattern. Userss share their eexperiences
+with otthers by uploadding photos taggged with the location or
+with haashtags. As reecording locatioons with photoos becomes
+routinizzed behavior, pprofessional geenres of photoggraphy such
+as streeet photographhy, landscape photography, etc., have
+been exxtended to amaateurs.
+
+A
+Author Keywords
+
+D
+Digital photograaphy; photograaph interface; geo-tagged
+pphotography; hiistory tracking;; timeline; histo
+orical geograph
+hic
+innformation.
+
+With thhe developmennt and widespreead use of technnology and
+with thhe evolution m
+media usage ppatterns, photoos and the
+
+P
+Permission to mak
+ke digital or hard copies of part or all of this work for
+ppersonal or classroo
+om use is granted without
+w
+fee provideed that copies are not
+n
+m
+made or distributed
+d for profit or com
+mmercial advantagee and that copies beear
+thhis notice and the full citation on th
+he first page. Copy
+yrights for third-paarty
+ccomponents of thiss work must be ho
+onored. For all oth
+her uses, contact the
+t
+O
+Owner/Author.
+C
+Copyright is held by
+y the owner/authorr(s).
+U
+UIST'16 Adjunct, October
+O
+16-19, 2016, Tokyo, Japan
+A
+ACM 978-1-4503-4
+4531-6/16/10.
+hhttp://dx.doi.org/10.1145/2984751.298
+84759
+
+1
+
+http://w
+www.cnbc.com/20016/06/21/instagram
+m-now-has-500-m
+millionusers.htm
+ml
+2
+
+http://w
+www.pewinternet.oorg/2015/08/19/thhe-demographics-oof-socialmedia-u sers/
+
+181
+
+embedded metadata of time and place included therein are
+providing meaningful information about each location.
+However, the current systems and services do not support
+tracking the transition of the location over time. This research
+presents a new interface for arranging location pictures
+chronologically to make socially created photos to function
+as the historic documents that provide meaningful
+information about the location.
+
+representative photos of the year at once. Users can trace the
+transition of the location, which is the history of the venue.
+Browse by time
+
+This section contains photos clustered by a specific period.
+This helps users to easily find the specific time of the photos
+they’re looking for. Also, users can select the criteria for the
+period from the screen’s dropdown menu. Existing services
+like Instagram display photographs in descending
+chronological order, so it is hard to find the photos of the
+past. However, by clustering pictures by period, this interface
+allows users to simply browse the photos of the past.
+
+RELATED WORK
+
+Research studies about image displaying system present
+interfaces that arrange photos using either temporal criteria
+[1, 2] or spatial criteria [3, 5]. Each of these works separate
+time and space. Although research applying both temporal
+and spatial information has been performed [4], it focuses on
+the technological aspect of dynamic scene analysis and
+temporal reasoning. This method could be applied in our
+works to extract photos from the Internet.
+
+Gallery
+
+If users click the “see more” menu on the browsing screen,
+the screen moves to the Gallery screen, which displays all the
+photos of the selected area. By scrolling down, users can
+skim through the photos (Figure 1C).
+CONCLUSION
+
+Compared with the above systems, Histogram contains both
+temporal and spatial information simultaneously to trace the
+transition of the space. By providing a mobile-optimized
+interface for easily uploading photos from the users’
+smartphones, we aim to accelerate the voluntary uploading of
+photos by people so that the system is run through social
+cooperative works.
+
+Reflecting time series and space data simultaneously,
+Histogram provides a different view of utilizing usergenerated digital photos as historical records. Based on the
+current prototype, we need to collect further image data from
+online and develop the system. Also, further studies about
+how to select the representative photos and about the visual
+display methods, like scrolling down or swiping to browse
+the pictures, should be conducted to develop the system.
+
+INTERFACE DESCRIPTION
+
+The interface of Histogram has been subdivided into three
+stages: 1) Search; 2) Browse; and 3) the Gallery (Figure 1).
+
+ACKNOWLEDGMENTS
+
+The search page features an adapted map-based interface,
+and it also provides general information about the location
+(Figure 1A).
+
+This research was supported by the MSIP(Ministry of
+Science, ICT and Future Planning), Korea, under the Open
+ICT Convergence support program program(IITP-2016R0250-16-1001) supervised by the IITP(Institute for
+Information &communications Technology Promotion).
+
+Location selection
+
+REFERENCES
+
+Search
+
+1. Ames, M., & Manguy, L. (2006, April). PhotoArcs: a tool
+for creating and sharing photo-narratives. In CHI'06
+Extended Abstracts on Human Factors in Computing
+Systems (pp. 466-471). ACM.
+
+Selecting the venue allows the user to search or upload
+photographs by GPS. The user can select the venue directly
+on the map or with a keyword search.
+Histogram trend
+
+2. Drucker, S. M., Wong, C., Roseway, A., Glenner, S., &
+De Mar, S. (2004, May). MediaBrowser: reclaiming the
+shoebox. In Proceedings of the working conference on
+Advanced visual interfaces (pp. 433-436). ACM.
+
+After selecting the venue, at the bottom of the screen, the
+‘Histogram Trend’ is presented and contains information
+about the number of photos uploaded by year with a line
+graph to track changes directly. This helps to discern the
+popularity of the spot by the time.
+
+3. Fisher, D. (2007). Hotmap: Looking at geographic
+attention. IEEE transactions on visualization and
+computer graphics, 13(6), 1184-1191.
+
+Browse
+
+Once the target spot is selected, users can browse the photos
+in the browsing screen, which contains three menus: today’s
+history, history overview and browse by time (Figure 1B).
+
+4. Matzen, K., & Snavely, N. (2014, September). Scene
+chronology. In European Conference on Computer Vision
+(pp. 615-630). Springer International Publishing.
+
+Today’s history
+
+The section for today’s history displays the uploaded photo
+of the day selected by users. By exposing users’ photos on
+the main screen, the system encourages users’ participation.
+
+5. Ratti, C., Frenchman, D., Pulselli, R. M., & Williams, S.
+(2006). Mobile landscapes: using location data from cell
+phones for urban analysis. Environment and Planning B:
+Planning and Design, 33(5), 727-748.
+
+History overview
+
+The history overview is what differentiates the system. By
+swiping the photos in this section, users can browse all of the
+
+182
+
+

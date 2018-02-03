@@ -1,0 +1,149 @@
+Flying User Interface
+Pramod Verma
+Flying Interface
+founder@flyinginterface.com
+
+Figure 1. In left picture, Flying User Interface consists of (G) vacuum (or electroadhesion) based gripper, (R) motors for quadcopter, (B) computer, (P)
+projector, (C) camera, and (A) robotic arm. In right picture, flying user interface (F) is projecting user interface (I) on the glass or semi-transparent
+wall (W). User (U) is interacting with device using touch or natural gestures.
+
+ABSTRACT
+
+Author Keywords
+
+This paper describes a special type of drone called “Flying
+User Interface”1 , comprised of a robotic projector-camera
+system, an onboard digital computer connected with the Internet, sensors, and a hardware interface capable of sticking
+to any surface such as wall, ceilings, etc. Computer further
+consists of other subsystems, devices, and sensors such as accelerometer, compass, gyroscope, flashlight, etc. Drone flies
+from one place to another, detects a surface, and attaches itself to it. After a successful attachment, the device stops all
+its rotators; it then projects or augments images, information,
+and user interfaces on nearby surfaces and walls. User interface may contain applications, information about object being augmented and information from Internet. User can interact with user-interface using commands and gestures such as
+hand, body, feet, voice, etc.
+
+User Interface; Drone; Display Device; Augmented Reality.
+
+1
+
+ACM Classification Keywords
+
+H.5.m. Information Interfaces and Presentation (e.g. HCI):
+Miscellaneous
+INTRODUCTION
+
+Currently available augmented reality devices such as projector camera systems, head-mounted displays, etc. are wearable
+in nature. Mobile projector camera systems such as SixthSense [2] have various augmented reality applications. Due
+to their mobility, they support various special projector camera system applications of many types and nature.
+One problem with these devices is that they are not fully mobile and the user has to wear them all the time. For example,
+it is difficult to project a path on the road during running or
+walking because motion creates an unstable projection image or user interface. In another example we cannot use (or
+wear) the system during some unusual scenario such as in the
+shower. In another situation, these devices cannot display or
+augment information above the user’s height without using
+additional hardware such as rod, etc.
+
+Patent Pending
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984770
+
+A non-wearable system such as Displaydrone [3] is a
+projector-equipped drone or multicopter (flying robot) that
+projects information on the wall, surfaces, and objects in
+
+203
+
+physical space. Recently researchers also attempted to display information in mid-air using a device called “Flying Display” which consists of two UAVs (Unmanned Aerial Vehicles) with a projector and a display screen. Some mobile
+robots such as “Keecker” project information on the walls
+while navigating around the home like a robotic vacuum
+cleaner. In another example, LUMINAR [1] lamp system
+consists of a robotic arm and a projector camera system designed to augment projection on a table surface.
+One of the common drawbacks in drone based display system is continuous noise during the projection. These drone
+systems also consume lots of power to stay in the air while
+displaying projections. Displaydrone and SixthSense approaches each have a common problem of image flicker and
+unstable projection due to their movement.
+FLYING USER INTERFACE
+
+Figure 2. A Prototype of Flying User Interface device projecting a user
+interface on a wall using onboard projector camera system. Vacuum
+based grippers were used to stick to ceiling.
+
+To address above problem, this paper introduces a drone or
+Unmanned Aerial Vehicle comprised of a robotic arm based
+projector camera system, an onboard digital computer connected with the Internet and sensors, and a hardware interface
+capable of sticking itself to any surface such as a wall, ceilings, etc. We call this special type of drone a “Flying User
+Interface”, because it provides real-time augmented realitybased user interface while perched on any surface. A smartphone or any computing device can be used as the onboard
+computer containing other devices such as accelerometer, gyroscope, compass, flashlight, microphone, speaker, etc.
+
+there augment a user interface application by helping the user
+learn dancing, games, music, cooking, navigation, etc. It can
+be used as a display interface for the purpose of advertisement. For example we can deploy these devices in a jungle
+or garden where these device(s) can hook or stick to rock or
+tree trunk to provide navigation, especially during the night
+or evening time. Device can be used with another drone or
+devices to solve complex problems. For example, multiple
+devices can be used to create a large display or panoramic
+view. Or, if we have two devices along both side of a wall,
+the system can be used to simulate a virtual window by projecting, processing and passing images to each other. The
+device can be used to project information in difficult situations, such as in the bathroom during the shower, or in the
+exploration of a dark cave (with simultaneous mapping, visualization, and navigation). More information about possible
+applications can be found in US patent application [4]. This
+work is in progress. You can read more information and get
+updates about the project at http://flyinginterface.com.
+
+Drone flies from one place to another, detects a surface, and
+attaches itself to it. After successful attachment, the device
+stops all its rotators and begins to project information on surfaces. This mechanism generates a stabilized projection irrespective of the user’s motion. The interface is also noiseless,
+because the drone is now attached to a surface and no longer
+requires flying to stay in the air. The drone can project clear
+images and user-interfaces on many nearby surfaces using a
+projector camera system. For example, when stuck to the ceiling it can project information on the floor and walls. Projector is attached to a small robotic arm that enables projection
+of information in any direction using two or three degrees of
+freedom, even on the same surface where device is attached.
+In some embodiments, if a heavy projector is used, the projector can be attached to the main body or frame of the device, and a robotic arm with the help of mirrors can navigate
+or change the direction of the projection or projected rays to
+nearby surfaces. Projected user-interface may contain information about an object being augmented and/or information
+from Internet. User can interact with the user-interface using
+gestures from any part of body, such as feet, finger, hand, etc.
+
+REFERENCES
+
+1. Linder, N., and Maes, P. The design evolution of luminar:
+A compact and kinetic projected augmented reality
+interface. In CHI ’12 Extended Abstracts on Human
+Factors in Computing Systems, CHI EA ’12, ACM (New
+York, NY, USA, 2012), 1435–1436.
+2. Mistry, P., and Maes, P. Sixthsense: A wearable gestural
+interface. In ACM SIGGRAPH ASIA 2009 Sketches,
+SIGGRAPH ASIA ’09, ACM (New York, NY, USA,
+2009), 11:1–11:1.
+
+APPLICATIONS
+
+This system supports all types of applications supported by
+previous projector camera systems and drone display systems
+described in the prior art. For example it can find or detect
+some hard surface such as paper or plastic sheets, stick to it,
+and fly with it with a projected user interface.
+
+3. Scheible, J., Hoth, A., Saal, J., and Su, H. Displaydrone:
+A flying robot based interactive display. In Proceedings of
+the 2Nd ACM International Symposium on Pervasive
+Displays, PerDis ’13, ACM (New York, NY, USA, 2013),
+49–54.
+
+This system also has its own unique and interesting applications. For example it may stick to a nearby surface and from
+
+4. Verma, P. Flying User Interface. US patent application
+20160041628.
+
+204
+
+

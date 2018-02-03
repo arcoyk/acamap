@@ -1,0 +1,385 @@
+Making Fabrication Real
+Xiang ‘Anthony’ Chen
+HCI Institute, Carnegie Mellon University
+xiangchen@acm.org
+a
+
+c
+
+b
+
+d
+
+Figure 1. With the print-over technique, the user specifies where to attach to an existing object (a), the system analyzes, orients and scaffolds the object
+(b) and generates G-code controlling an FDM printer to directly fabricate the attachment onto the object (c), which can augment it for custom purposes,
+such as making a fridge magnet from an existing Teddy bear toy.
+
+However, despite these advances in the virtual world, our ability as end-users to transform the physical world has remained
+limited. However, the emergence of low-cost fabrication technology (most notably 3D printing) has sought to change this.
+
+ABSTRACT
+
+Low-cost, easy-to-use 3D printers have promised to empower
+everyday users with the ability to fabricate physical objects of
+their own design. While these printers specialize in building
+objects from scratch, they are innately oblivious to the real
+world in which the printed objects will be situated and in
+use. In my thesis research, I develop fabrication techniques
+with tool integration to enable users to expressively specify
+how a design can be attached to, augment, adapt, support, or
+otherwise function with existing real world objects. In this
+paper, I describe projects to date as well as ongoing work that
+explores this space of research.
+
+Despite the promises of 3D printing, the technology itself is
+innately oblivious of the physical world—things are, in most
+cases, assumed to be printed from scratch in isolation from the
+real world objects they will be attached to and work with.
+To bridge this ‘gulf of fabrication’, my thesis research focuses
+on developing fabrication techniques with tool integration to
+enable users to expressively create designs that can be attached
+to and function with existing real world objects.
+
+ACM Classification Keywords
+
+To tackle this problem, my first project explores a range of
+attachment options between 3D printed and real world objects.
+Specifically, I have developed Encore [1] —a design tool with
+a suite of techniques that allow a user, with an consumer grade
+Fused Deposition Modeling (FDM) printer, to directly print
+attachments over, around or through existing objects with
+consideration of both objects’ geometric properties.
+
+H.5.2. Information interfaces and presentation: User Interfaces.
+Author Keywords
+
+Fabrication; 3D printing; real world objects; augmentation;
+adaptation; design tool.
+
+While Encore provides attachment solutions, it remains unclear how to design such attachments in user-customized ways.
+Such design tasks are usually difficult for non-experts with
+general-purpose modeling software. To overcome this obstacle, my next project focuses on enabling the design of 3D
+printable add-on components that can adapt everyday objects
+for user-defined purposes. Specifically, I develop Reprise
+[2]—a design tool that leverages simple interaction techniques
+and computational geometry for users to specify, generate,
+customize and fit such adaptations onto existing objects.
+
+BACKGROUND AND INTRODUCTION
+
+The increasingly personal and ubiquitous capabilities of
+computing—everything from smartphones to virtual reality—
+are enabling us to build a brave new world in the digital realm.
+
+Permission to make digital or hard copies of part or all of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the Owner/Author.
+Copyright is held by the owner/author(s).
+UIST’16 Adjunct, October 16-19, 2016, Tokyo, Japan
+ACM 978-1-4503-4531-6/16/10.
+http://dx.doi.org/10.1145/2984751.2984785
+
+However, either extending or adapting existing objects only
+allows for incremental ‘delta’ for transforming the real world.
+
+17
+
+a
+
+a
+
+b
+
+b
+
+Figure 2. Examples of print-to-affix: making a glue gun stand attached
+using adhesives (a) and a reusable ‘4 pack’ holder attached using zip ties
+(b).
+
+Figure 3. Example of a print-through process: the printer pauses at a
+point where the scissors can be dropped to interlock with the name tag,
+after which the print job resumes.
+
+In my ongoing work, I am developing a design tool that takes
+a mixed-initiative approach to guide users to compose and
+fabricate self-contained objects based on the functional requirements they will face once installed and deployed in the
+real world. Specifically, users start with sketching a design
+from their intuition; the system in the background optimizes
+their initial design based on the functional requirements; then
+users can further tweak the design while the system provides
+feedback and suggestion for keeping it functional.
+
+simply bring in ready-made objects, digitalize and use them to
+model a target object [8].
+Fabricating Augmentation of Real World Objects
+
+The need to augment everyday objects predated the dawn of
+personal fabrication. For example, Davidoff et al. propose
+‘mechanical hijacking’ - using motors that are designed to
+actuate existing controls or physical interface in specific ways
+[3]. However, these ‘hijacking’ devices have to be manually
+designed. RetroFab, on the other hand, provides a design
+environment for end users to scan existing physical interfaces,
+design new add-ons to modify their controls, and fabricate and
+install them so as to automate or optimize the usage with these
+devices or appliances [9].
+
+Through the exploration in these projects, my thesis contributes to the vision of personal fabrication by bridging the
+design and making process to encompass a range of real world
+objects as well as the functional relationships with them. In
+the remainders of this paper, I review related literature, present
+my projects to date, describe my ongoing work, and discuss
+lessons learnt as well as opportunities for future research.
+
+One fundamental issue of 3D printed augmentations is how to
+attach them to existing objects. Teibrich et al. explore the idea
+of ‘patching physical object’. Their printer—augmented with
+a milling bit and a 5 degree-of-freedom movement platform—
+is able to mill out parts of an existing object so that new
+components can be readily printed on it [10].
+
+RELATED WORK
+
+Two themes of existing research has sought to make fabrication
+real: (i) using real world objects as components to fabricate
+new designs; and (ii) fabricating augmentation that modifies
+or enhances existing objects.
+
+RESEARCH TO DATE
+
+My research to date has explored techniques for fabricating
+attachments onto real world objects, which then extends to
+the design of such functional attachments, e.g., fabricating
+adaptations that can mechanically repurpose existing objects.
+
+Real World Objects as Components for New Fabrication
+
+Research that follows the first approach is perhaps motivated
+by the need to overcome the limited speed of 3D printing—if
+it is possible to substitute 3D printed parts with something that
+already exists, less of the object needs to be printed hence the
+smaller amount of overall time.
+
+Encore: Attaching Fabricated to Real World Objects
+
+Although it is a common practice for people to attach one
+object to another (e.g., using adhesives), relatively little is
+understood about how this process can benefit from the additive manufacturing capabilities of 3D printers. In developing
+Encore, my goal is to push the boundary of 3D printing to
+explore the variety of techniques whereby a printed piece can
+be attached to an existing object.
+
+For example, faBrickation substitutes the majority of an object with Lego bricks while only keeping precision-sensitive
+components to be 3D printed [6]. While this approach only
+provides fairly limited resolution; however, it manages to instantiate a rough object of a user’s design, which is amenable
+to the iterative design process. Luo et al. go beyond prototyping and attains to make functional objects with Lego bricks by
+applying a force-based analysis to achieve a layout that makes
+the target object stable even at a fairly large scale [5]. Yoshida
+et al. go even further, using chopsticks as primitive building
+blocks for constructing architecture-scale objects [11].
+
+Print-Over prints an attachment directly onto an existing object. Encore analyzes the feasibility of printing a new part at
+different surface locations of the object (e.g., whether there is
+a relatively flat area, and whether the extruder will collide with
+the existing object whilst printing the new one). The result is
+visualized as a heat map to inform the users of the properties of
+their proposed design (Figure 1b). Once an attachment point
+is selected, the object is oriented and scaffolded with support
+structures to provide a feasible and stable configuration for
+direct print-over (Figure 1c).
+
+The generalized idea is anything can become part of something we wish to fabricate, at least geometrically. 3D collage
+demonstrates this idea by allowing artist to compose a target
+geometry with a collection of other objects [4]. RealFusion
+provides a 3D reconstructing environment wherein a user can
+
+18
+
+Figure 4. Reprise provides tool integration and a formalized design workflow for making 3D printable adaptations onto everyday objects. For example,
+an occupational therapist can use our tool to explore different strategies of adapting a wire cutter (a), such as creating a wrapper to soften the grip (b-e),
+adding two levers to assist with clutching (f-h), or replacing one lever with an anchor to situate the cutter on the work surface (i-m).
+
+Print-to-Affix uses a connector that matches the surface geometry of the existing object and also snug-fits to the attachment.
+This allows the attachment to be fabricated separately, and
+made to be affixed using fasteners or adhesives. Encore analyzes how the object’s surface properties afford a given affixing
+mechanism (e.g., how the convexity of a cross section affects
+using straps). Figure 2 shows two print-to-affix examples.
+
+Once the actions are specified, this information is fed into
+a library of design strategies—Wrapper/Extension, Handle,
+Lever, Anchor/Stand, and Guide. These adaptation strategies
+were derived from an analysis of over 3000 lifehacking and
+assistive technology examples found in books and online communities. A user can select one or more strategies, which
+automatically generate an initial design of an adaptation, such
+as a wrapper for a cutter’s handle (Figure 4c), levers for easing
+clutching operation (Figure 4g), or a structure to anchor the
+cutter for situated use (Figure 4i).
+
+Print-Through leverages the structural holes in some existing
+objects (e.g., keys and rings) to print the attachment through
+and around it. To accomplish this, the attachment is partially
+printed, the existing object is placed so that part of the attachment goes through the existing object, and then printing
+continues until the two objects are interlocked and the print
+is complete. Encore performs physics simulation to compute
+when to pause the print so that the attachment can be inserted
+without interfering the remainders of the print job. Figure 3
+shows an example of the print-through process.
+
+To further iterate on the design, a user can manipulate simple
+slider widgets to customize these adaptations to better suit the
+person’s needs and preferences, such as making the cutter’s
+wrapper longer and thicker for easier gripping (Figure 4d),
+increasing the levers’ torque for clutching (Figure 4g), or
+adjusting the overall size for aesthetics. Finally, Reprise also
+provides a simple toolkit for making the adaptations more
+attachable onto the objects, such as generating a pipe clamp
+that connects the cutter’s handle to the anchor (Figure 4k).
+
+Reprise: Fabricating Adaptations on Real World Objects
+
+The main contribution of the Reprise lies in its ability to automatically generate and iterate across a range of likely useful
+adaptations. It can also be seen as an early exemplar in a class
+of design tools that go beyond the specification of geometry
+alone to provide very application domain specific knowledge
+and features related to real world objects. This helps to substantially reduce the gulf of execution [7] that users must
+bridge as they cross from geometry to function, e.g., from
+geometric form to the implications of that geometry on the
+desired end result when used in the real world.
+
+While Encore provides attachment solutions, it remains unclear how users design such attachments to work with existing
+objects, such as to adapt objects in customized ways. As a
+next step, I developed Reprise, a design tool for specifying,
+generating, customizing and fitting functional adaptations onto
+everyday objects.
+Specifically, Reprise allows a user to specify how an object
+is used and with what types of action, such as using a virtual
+hand (Figure 4b) to indicate how a person would hold a wire
+cutter. As 3D geometry itself does not encode how an object
+is used in the real world, Reprise’ techniques enable a user to
+interactively describe this information in situ on models of the
+objects.
+
+ONGOING RESEARCH
+
+To tackle the grand challenge of transforming the physical
+world, my next step would go beyond making add-on aug-
+
+19
+
+mentations or adaptations, but rather focus on designing and
+fabricating larger-scale objects that also have to address various functional requirements of the real world.
+
+help and support of my work. This work was funded in part by
+the National Science Foundation under grant NSF IIS 1217929
+and Adobe Research PhD Fellowship.
+
+In both Encore and Reprise, the design task is based on an
+existing object and the outcome is some sort of extension that
+enhances a specific function of that object. While this approach works for creating something incremental (e.g., adaptation), it becomes problematic when scaling up—creating
+self-contained objects such as bookshelf, step stool, or wine
+rack.
+
+REFERENCES
+
+1. Chen, X., Coros, S., Mankoff, J., and Hudson, S. E.
+Encore: 3d printed augmentation of everyday objects
+with printed-over, affixed and interlocked attachments. In
+Proceedings of the 28th Annual ACM Symposium on User
+Interface Software & Technology, ACM (2015), 73–82.
+2. Chen, X., Kim, J., Mankoff, J., Grossman, T., Coros, S.,
+and Hudson, S. E. Reprise: A design tool for specifying,
+generating, and customizing 3d printable adaptations on
+everyday objects. In the 29th Annual ACM Symposium on
+User Interface Software & Technology, ACM (2016).
+
+There are several challenges in designing this class of objects.
+Foremost, as they are no longer incremental add-ons to existing objects, it would be difficult to create a design in situ
+from these real world objects. Consider making a bookshelf.
+It is less straightforward if one has to start the design with
+some books; rather, a more intuitive approach is the reverse:
+create the bookshelf first, then see if it has enough space, or
+is strong enough to accommodate the books. However, for
+non-expert users, it is hard to create a functional design by
+intuition. A user might have an intuition about what their
+bookshelf should look like, and might be able to sketch the
+design; but they would probably have trouble making sure that
+this design would work—that is, supporting all the books to
+be put on it.
+
+3. Davidoff, S., Villar, N., Taylor, A. S., and Izadi, S.
+Mechanical hijacking: how robots can accelerate
+ubicomp deployments. In Proceedings of the 13th
+international conference on Ubiquitous computing, ACM
+(2011), 267–270.
+4. Gal, R., Sorkine, O., Popa, T., Sheffer, A., and Cohen-Or,
+D. 3d collage: expressive non-realistic modeling. In
+Proceedings of the 5th international symposium on
+Non-photorealistic animation and rendering, ACM
+(2007), 7–14.
+
+To ensure that a design meets its functional requirement, one
+popular approach is to employ topology optimization—a wellestablished practice in mechanical and civil engineering. Essentially, topology optimization ‘automates’ the design process by reducing the design input to only the functional requirements, e.g., overall size, amount of material, weight of
+loads, how the object is affixed to the world. The method then
+attempts to generate the strongest possible design given all
+these parameters as constraints. Although it gives functional
+assurance, from an HCI standpoint, topology optimization is
+too much of a ‘black box’ that gives users very little control
+of expressing or editing their own design.
+
+5. Luo, S.-J., Yue, Y., Huang, C.-K., Chung, Y.-H., Imai, S.,
+Nishita, T., and Chen, B.-Y. Legolization: optimizing
+lego designs. ACM Transactions on Graphics (TOG) 34,
+6 (2015), 222.
+6. Mueller, S., Mohr, T., Guenther, K., Frohnhofen, J., and
+Baudisch, P. fabrickation: fast 3d printing of functional
+objects by integrating construction kit building blocks. In
+Proceedings of the 32nd annual ACM conference on
+Human factors in computing systems, ACM (2014),
+3827–3834.
+7. Norman, D. A. The design of everyday things: Revised
+and expanded edition. Basic books, 2013.
+
+In my ongoing work, I want to combine the best parts of both
+worlds: enabling users to sketch functional objects of their
+design by bootstrapping the process with topology optimization to transform the design into a functional one. Meanwhile,
+users will also receive step-by-step feedback and suggestion
+that connects the two worlds: as they create or edit their work,
+visualization informs them how the functionality is changing
+and what are the options to tweak the current design while
+staying with constraints. This mixed-initiative approach allows the system to assist users with their design task without
+limiting their freedom of creating or editing the object. As a
+result, users can benefit from delegating the functional aspects
+of design to the system while focusing on the visual appearance and styles. I hope such a design environment can help
+people fabricate a variety of things that meet real world requirements without imposing too much expertise requirements
+on the users.
+
+8. Piya, C., Vinayak, Zhang, Y., and Ramani, K. Realfusion:
+An interactive workflow for repurposing real-world
+objects towards early-stage creative ideation. In
+Proceedings of the 42th Graphics Interface Conference
+(2016).
+9. Ramakers, R., Anderson, F., Grossman, T., and
+Fitzmaurice, G. Retrofab: A design tool for retrofitting
+physical interfaces using actuators, sensors and 3d
+printing. Proc. of SIGCHI. ACM (2016).
+10. Teibrich, A., Mueller, S., Guimbretière, F., Kovacs, R.,
+Neubert, S., and Baudisch, P. Patching physical objects.
+In Proceedings of the 28th Annual ACM Symposium on
+User Interface Software & Technology, ACM (2015),
+83–91.
+11. Yoshida, H., Igarashi, T., Obuchi, Y., Takami, Y., Sato, J.,
+Araki, M., Miki, M., Nagata, K., Sakai, K., and Igarashi,
+S. Architecture-scale human-assisted additive
+manufacturing. ACM Transactions on Graphics (TOG)
+34, 4 (2015), 88.
+
+ACKNOWLEDGMENTS
+
+I thank all my collaborators—Scott Hudson, Stelian Coros,
+Tovi Grossman, Jennifer Mankoff and Jeeeun Kim—for their
+
+20
+
+
