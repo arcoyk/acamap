@@ -91,7 +91,7 @@ def valid_model(model, data):
     tags = model.docvecs.doctags
     tags = tags.items()
     tags = [tag[0] for tag in tags]
-    if not d in tags:
+    if not pdf in tags:
       return False
   return True
 
@@ -123,6 +123,17 @@ def append_xyz(data):
     d['xyz'] = vecs[i]
   return data
 
+def append_hsl(data):
+  # require tag
+  for d in data:
+    tags = d['tag']
+    if len(tags) != 0:
+      tag = tags[0]
+      d['hsl'] = word2hsl(tag)
+    else:
+      d['hsl'] = [0, 0, 0]
+  return data
+
 def pdfs2drops(data):
   data = append_doc(data)
   data = append_tag(data)
@@ -138,6 +149,14 @@ def get_pdfs(dr):
     data.append(d)
   return data
 
+def word2hsl(word):
+  h = s = l = 0
+  h = (ord(word[0]) % 26) * (360 / 26)
+  if len(word) >= 2:
+    s = (ord(word[1]) % 26) * (100 / 26)
+  l = 50
+  return [h, s, l]
+
 def random_choice():
   i = random.choice(range(len(data)))
   return by_id(i)
@@ -150,6 +169,9 @@ def by_id(i):
   rst['x'] = d['xyz'][0]
   rst['y'] = d['xyz'][1]
   rst['z'] = d['xyz'][2]
+  rst['h'] = d['hsl'][0]
+  rst['s'] = d['hsl'][1]
+  rst['l'] = d['hsl'][2]
   return rst
 
 data = get_pdfs(ROOT_DIR)
@@ -157,4 +179,5 @@ data = append_doc(data)
 data = append_tag(data)
 data = append_vec(data)
 data = append_xyz(data)
-
+data = append_hsl(data)
+print(data[0]['hsl'])
