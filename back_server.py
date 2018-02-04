@@ -9,8 +9,9 @@ class Handler(SimpleHTTPRequestHandler):
     self.send_response(200)
     self.send_header("Access-Control-Allow-Origin", "*")
     self.end_headers()
-    # rst = {'x':random.random(), 'y':random.random(), 'z': random.random(), 'text':'hoge'}
-    rst = pdf2map.random_choice()
+    qs = parser.parse_qs(self.path)
+    doc_id = int(qs['id'][0])
+    rst = pdf2map.by_id(doc_id)
     rst = json.dumps(rst)
     body = bytes(rst, 'utf-8')
     self.wfile.write(body)

@@ -163,6 +163,7 @@ def random_choice():
 
 def by_id(i):
   # for server
+  i %= len(data)
   d = data[i]
   rst = {}
   rst['text'] = d['pdf']
@@ -172,6 +173,7 @@ def by_id(i):
   rst['h'] = d['hsl'][0]
   rst['s'] = d['hsl'][1]
   rst['l'] = d['hsl'][2]
+  rst['limit'] = len(data)
   return rst
 
 data = get_pdfs(ROOT_DIR)
@@ -180,4 +182,3 @@ data = append_tag(data)
 data = append_vec(data)
 data = append_xyz(data)
 data = append_hsl(data)
-print(data[0]['hsl'])
